@@ -1,7 +1,9 @@
-# Pwnable.kr - Toddler's Battle - fd
+# Pwnable.kr - Toddler's Battle - [fd]
 
 
 <!--more-->
+
+## Description
 
 This post will focus on an easy pwn challenge *fd* from pwnable.kr
 
@@ -28,6 +30,8 @@ Running the binary.
 We have to provide a number as argument but whatever we write for now it returns *Learn about Linux file IO*
 
 ![Output](6.png "Output")
+
+## Exploitation
 
 Looking at the source code of the binary.
 
