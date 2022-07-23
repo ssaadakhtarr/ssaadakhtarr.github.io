@@ -75,6 +75,10 @@ Now looking at the ```check_password()``` function, it takes our argument value 
 
 With this step, it basically converting our ```char``` value to ```int``` value and our argument value of ```20``` bytes will now be interpreted as an integer.
 
+{{< admonition tip "Tip" >}}
+Read [here](https://www.geeksforgeeks.org/difference-between-int-p-and-int-p/) for a better understanding of pointers.
+{{< /admonition >}}
+
 We know that ```int``` is of ```4``` bytes, so entire ```20``` bytes will be stored in ```5``` blocks of ```4``` bytes.
 
 After that it is looping through ```5``` times and adding the value of each block into the ```res``` variable.
