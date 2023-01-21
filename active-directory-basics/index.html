@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Active Directory - An Overview! - Saad Akhtar</title><meta name="Description" content="Some basic and core Active Directory concepts."><meta property="og:title" content="Active Directory - An Overview!" />
+<meta property="og:description" content="Some basic and core Active Directory concepts." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/active-directory-basics/" /><meta property="og:image" content="/active-directory-basics/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-25T19:26:21+05:00" />
+<meta property="article:modified_time" content="2022-06-25T19:26:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/active-directory-basics/0.png"/>
+<meta name="twitter:title" content="Active Directory - An Overview!"/>
+<meta name="twitter:description" content="Some basic and core Active Directory concepts."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/active-directory-basics/" /><link rel="prev" href="/hackthebox-paper/" /><link rel="next" href="/pwnable.kr-toddlers-bottle-fd/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Active Directory - An Overview!",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/active-directory-basics\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/active-directory-basics\/0.png",
+                            "width":  720 ,
+                            "height":  340 
+                        }],"genre": "posts","keywords": "active directory, windows","wordcount":  1223 ,
+        "url": "\/active-directory-basics\/","datePublished": "2022-06-25T19:26:21+05:00","dateModified": "2022-06-25T19:26:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Some basic and core Active Directory concepts."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Active Directory - An Overview!</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/active-directory/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Active Directory</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-25">2022-06-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1223 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/active-directory-basics/0.png"
+        data-srcset="/active-directory-basics/0.png, /active-directory-basics/0.png 1.5x, /active-directory-basics/0.png 2x"
+        data-sizes="auto"
+        alt="/active-directory-basics/0.png"
+        title="Some basic and core Active Directory concepts." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-active-directory">What is Active Directory?</a></li>
+    <li><a href="#so-why-active-directory">So why Active Directory?</a></li>
+    <li><a href="#active-directory-domain-services">Active Directory Domain Services</a></li>
+    <li><a href="#structure-of-active-directory">Structure of Active Directory</a></li>
+    <li><a href="#components-of-active-directory">Components of Active Directory</a>
+      <ul>
+        <li><a href="#logical-components">Logical Components</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#ad-ds-schema">AD DS Schema:</a></li>
+                <li><a href="#domains">Domains:</a></li>
+                <li><a href="#trees">Trees:</a></li>
+                <li><a href="#forest">Forest:</a></li>
+                <li><a href="#organizational-units-ous">Organizational Units (OUs):</a></li>
+                <li><a href="#trusts">Trusts:</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#physical-components">Physical Components</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#domain-controllers-dc">Domain Controllers (DC):</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#objects-in-active-directory">Objects in Active Directory</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>When we talk about Active Directory it&rsquo;s a huge topic that can be discussed in depth and detail. In this post I&rsquo;ll be discussing some of the core and basic concepts related to Active Directory. So without further ado let&rsquo;s get started.</p>
+<h2 id="what-is-active-directory">What is Active Directory?</h2>
+<p>Active Directory or AD is a directory service developed and provided by Microsoft to manage windows domain networks. A directory service is nothing but a hierarchical structure that stores information about objects such as computers, users, printers etc. on the network. We&rsquo;ll discuss objects in more detail later on. Active Directory runs on Microsoft Windows Server. It provides authentication on Windows based devices using Kerberos and uses RADIUS or LDAP to authenticate non-windows devices such as Linux, firewalls etc.</p>
+<h2 id="so-why-active-directory">So why Active Directory?</h2>
+<p>Nowadays, Active Directory is the most commonly used identity management service in the world. It makes life easier for administrators and end users while also improving security for businesses. Administrators can centrally manage user &amp; rights and centrally control computer and user configurations. Active Directory keeps track of domain members, such as devices and users, verifies their credentials, and establishes their access privileges.</p>
+<br>
+<center>
+<img src="1.gif" alt="nice" width="400"/>
+</center>
+<h2 id="active-directory-domain-services">Active Directory Domain Services</h2>
+<p>Remember the authentication part I talked about earlier? The primary mechanism for authenticating users and identifying which network resources they can access is through Active Directory Domain Services (AD DS), which is a basic component of Active Directory. Single Sign-On (SSO), security certificates, LDAP, and access rights management are all provided by AD DS. AD DS also allows administrators to manage and store information about network resources as well as application data in a distributed database.</p>
+<h2 id="structure-of-active-directory">Structure of Active Directory</h2>
+<p>You can think of Active Directory as a forest. A real world forest has multiple trees and those trees have multiple branches and leaves. In Active Directory, you may think of forest as an organization. So in an Active Directory there can be one or more forests representing an organization and its subsidiaries. Now each forest has one or more trees which we call domains in Active Directory and each tree has various leaves which we call objects in AD. These objects are categorized into Organization Units (OUs) and groups which you can think of as branches of a tree.</p>
+<br>
+<center>
+<img src="2.gif" alt="forest" width="400"/>
+</center>
+<h2 id="components-of-active-directory">Components of Active Directory</h2>
+<p>Active Directory or AD, enables for the hierarchical storing of resources. When adopting AD, there are two components to consider in terms of its structure i.e. Logical and Physical components.</p>
+<h3 id="logical-components">Logical Components</h3>
+<p>Logical Components in Active Directory allow you to organize resources in the directory so that their layout mirrors your organization’s logical structure. The logical side is set up in such a way that the hierarchy permits some resources to be placed into other resources, creating a parent-child relationship between them. This connection can be used to quickly manage access rights and permissions.</p>
+<h5 id="ad-ds-schema">AD DS Schema:</h5>
+<p>It is a kind of rule book that defines the types of objects that can be stored in the AD. Every object class that can be generated in an Active Directory has a formal definition in the Active Directory schema. The schema also has details about every attribute that can exist in an Active Directory object.</p>
+<h5 id="domains">Domains:</h5>
+<p>In an Active Directory context, a domain is a collection of objects. For security and administrative purposes, all objects inside a domain adhere to the same policies. Users attempting to access domain resources must first be authenticated by a server known as a Domain Controller (DC).</p>
+<h5 id="trees">Trees:</h5>
+<p>A tree is basically one or more domains grouped together. All domains in a tree share a common namespace. For example, app.example.com and dev.example.com would be considered a part of the example.com domain tree. All the domains in a tree have a trust relationship with other domains.</p>
+<h5 id="forest">Forest:</h5>
+<p>A forest is simply a group of one or more trees. Forests share a common schema, domain configurations, application information etc. Forests enable trust between all the domains present in the forest.</p>
+<h5 id="organizational-units-ous">Organizational Units (OUs):</h5>
+<p>These are just containers that can contain users, groups, computers, file shares, printers and also other OUs. They can be used to manage a group of objects in a uniform manner, delegate permissions to an administrator group of objects, and apply various policies.</p>
+<h5 id="trusts">Trusts:</h5>
+<p>It provides a mechanism for users within a domain to access resources in another domain. We have Directional Trust and Transitive Trust. <strong>Directive Trust</strong> is when the direction of trust flows from the trusting domain to the trusted domain. While in an Active Directory forest, <strong>Transitive Trust</strong> is a two-way connection that is automatically generated between parent and child domains. By default, when a new domain is created, it shares resources with its parent domain, allowing an authenticated user to access resources in both domains. In transitive trust you can also say that one domain trusts another domain but in this case it also trusts everything that the other domain trusts as well.</p>
+<h3 id="physical-components">Physical Components</h3>
+<p>This refers to where hardware, such as servers, are physically located in the physical world. To maintain performance efficiency between servers and resources, it is critical to properly design the physical structure.
+With the separation of logical and physical components, users are able to find resources more easily and administrators are able to manage them more effectively.</p>
+<h5 id="domain-controllers-dc">Domain Controllers (DC):</h5>
+<p>A domain controller (DC) is a server computer that responds to security authentication requests. It&rsquo;s a network server in charge of granting hosts access to domain resources. It authenticates users, saves account information, and enforces a domain&rsquo;s security policy.</p>
+<h2 id="objects-in-active-directory">Objects in Active Directory</h2>
+<p>Active Directory (AD) objects are entities that represent resources that exist in the AD network. Users, computers, printers, contact persons who may be vendors for the organisation, and other resources are examples of the AD objects.</p>
+<p><strong>User:</strong> In AD, each member of the organization is represented by a user object. The member&rsquo;s details, such as their first and last names, office, phone number, and so on, are stored in the user object.</p>
+<p><strong>Contact:</strong> AD contacts include information about a person’s or business’ such as phone numbers, email addresses etc.</p>
+<p><strong>Printer:</strong> Represents all the printers present in the organization’s network.</p>
+<p><strong>Computer:</strong> Contains information related to all the computers present within the organization.</p>
+<p><strong>Shared Folder:</strong> A pointer object that points to the location of a shared folder within the Active Directory network.</p>
+<p><strong>Group:</strong> Simply a collection of directory objects on which shared security policies can be assigned to them. User accounts, computer accounts, and other groups are grouped together into manageable units using groups. Working with groups rather than individual users makes network maintenance and administration easier.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this post we saw what Active Directory is and why is it so important and useful for organizations. We also looked at different components of the Active Directory, the basic structure and working of the AD. And finally different types of objects present in the AD network. All of this, however, is simply the tip of the iceberg. I strongly advise you to understand more about this topic. I&rsquo;ve also included some references below where you can get more information.</p>
+<br>
+<p>And that is all for this post. Hope you enjoyed and learned something new. I&rsquo;m thinking of writing some posts related to AD Exploitation in the future so stay tuned!</p>
+<br>
+<p><strong>Thanks for reading!</strong></p>
+<br>
+<h1 id="references">References</h1>
+<ul>
+<li>
+<p><a href="https://www.quest.com/solutions/active-directory/what-is-active-directory.aspx" target="_blank" rel="noopener noreffer ">https://www.quest.com/solutions/active-directory/what-is-active-directory.aspx</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Active_Directory" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Active_Directory</a></p>
+</li>
+<li>
+<p><a href="https://www.lepide.com/blog/what-is-active-directory-and-how-does-it-work/" target="_blank" rel="noopener noreffer ">https://www.lepide.com/blog/what-is-active-directory-and-how-does-it-work/</a></p>
+</li>
+<li>
+<p><a href="https://www.windows-active-directory.com/active-directory-ad-fundamentals.html" target="_blank" rel="noopener noreffer ">https://www.windows-active-directory.com/active-directory-ad-fundamentals.html</a></p>
+</li>
+<li>
+<p><a href="https://www.serverbrain.org/active-directory-infrastructure-2003/logical-vs-physical-components.html" target="_blank" rel="noopener noreffer ">https://www.serverbrain.org/active-directory-infrastructure-2003/logical-vs-physical-components.html</a></p>
+</li>
+<li>
+<p><a href="https://www.techtarget.com/searchwindowsserver/definition/Microsoft-Active-Directory-Domain-Services-AD-DS" target="_blank" rel="noopener noreffer ">https://www.techtarget.com/searchwindowsserver/definition/Microsoft-Active-Directory-Domain-Services-AD-DS</a></p>
+</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-06-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/active-directory-basics/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/active-directory-basics/" data-title="Active Directory - An Overview!" data-via="ssaadakhtarr" data-hashtags="active directory,windows"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/active-directory-basics/" data-hashtag="active directory"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/active-directory-basics/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/active-directory/">active directory</a>,&nbsp;<a href="/tags/windows/">windows</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-paper/" class="prev" rel="prev" title="Hackthebox - Paper"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hackthebox - Paper</a>
+            <a href="/pwnable.kr-toddlers-bottle-fd/" class="next" rel="next" title="Pwnable.kr - Toddler&#39;s Battle - [fd]">Pwnable.kr - Toddler's Battle - [fd]<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

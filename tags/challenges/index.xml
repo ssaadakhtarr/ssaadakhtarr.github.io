@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>challenges - Tag - Saad Akhtar</title>
+        <link>/tags/challenges/</link>
+        <description>challenges - Tag - Saad Akhtar</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Dec 2022 11:00:21 &#43;0500</lastBuildDate><atom:link href="/tags/challenges/" rel="self" type="application/rss+xml" /><item>
+    <title>CryptoHack - Challenges - General/Encoding</title>
+    <link>/cryptohack-challenges-general-encoding/</link>
+    <pubDate>Fri, 23 Dec 2022 11:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/cryptohack-challenges-general-encoding/</guid>
+    <description><![CDATA[<p>This post contains the solution of challenges from general category (encoding) from the CryptoHack.</p>]]></description>
+</item>
+</channel>
+</rss>

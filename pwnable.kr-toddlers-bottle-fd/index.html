@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Pwnable.kr - Toddler&#39;s Battle - [fd] - Saad Akhtar</title><meta name="Description" content="Pwnable.kr Toddler&#39;s Battle challenge fd writeup."><meta property="og:title" content="Pwnable.kr - Toddler&#39;s Battle - [fd]" />
+<meta property="og:description" content="Pwnable.kr Toddler&#39;s Battle challenge fd writeup." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pwnable.kr-toddlers-bottle-fd/" /><meta property="og:image" content="/pwnable.kr-toddlers-bottle-fd/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-20T19:26:21+05:00" />
+<meta property="article:modified_time" content="2022-07-20T19:26:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/pwnable.kr-toddlers-bottle-fd/0.png"/>
+<meta name="twitter:title" content="Pwnable.kr - Toddler&#39;s Battle - [fd]"/>
+<meta name="twitter:description" content="Pwnable.kr Toddler&#39;s Battle challenge fd writeup."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/pwnable.kr-toddlers-bottle-fd/" /><link rel="prev" href="/active-directory-basics/" /><link rel="next" href="/pwnable.kr-toddlers-bottle-collision/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pwnable.kr - Toddler's Battle - [fd]",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/pwnable.kr-toddlers-bottle-fd\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/pwnable.kr-toddlers-bottle-fd\/0.png",
+                            "width":  1070 ,
+                            "height":  91 
+                        }],"genre": "posts","keywords": "pwn, binary exploitation","wordcount":  409 ,
+        "url": "\/pwnable.kr-toddlers-bottle-fd\/","datePublished": "2022-07-20T19:26:21+05:00","dateModified": "2022-07-20T19:26:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Pwnable.kr Toddler's Battle challenge fd writeup."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Pwnable.kr - Toddler's Battle - [fd]</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pwnable.kr/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Pwnable.kr</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-20">2022-07-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;409 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pwnable.kr-toddlers-bottle-fd/0.png"
+        data-srcset="/pwnable.kr-toddlers-bottle-fd/0.png, /pwnable.kr-toddlers-bottle-fd/0.png 1.5x, /pwnable.kr-toddlers-bottle-fd/0.png 2x"
+        data-sizes="auto"
+        alt="/pwnable.kr-toddlers-bottle-fd/0.png"
+        title="Pwnable.kr Toddler&#39;s Battle challenge fd writeup." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="description">Description</h2>
+<p>This post will focus on an easy pwn challenge <em>fd</em> from pwnable.kr</p>
+<p>Starting off we have the following description.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/1.png" title="Description" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/1.png" data-sub-html="<h2>Description</h2><p>Description</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/1.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/1.png, /pwnable.kr-toddlers-bottle-fd/1.png 1.5x, /pwnable.kr-toddlers-bottle-fd/1.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/1.png" width="595" height="395" />
+    </a><figcaption class="image-caption">Description</figcaption>
+    </figure></p>
+<p>As the name and description suggests, this challenge has something to do with the file descriptors in linux.</p>
+<p>Let&rsquo;s ssh into the machine.</p>
+<p>We have the following files.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/2.png" title="File Listing" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/2.png" data-sub-html="<h2>File Listing</h2><p>File Listing</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/2.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/2.png, /pwnable.kr-toddlers-bottle-fd/2.png 1.5x, /pwnable.kr-toddlers-bottle-fd/2.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/2.png" width="637" height="236" />
+    </a><figcaption class="image-caption">File Listing</figcaption>
+    </figure></p>
+<p>Checking the fd file.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/3.png" title="fd File" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/3.png" data-sub-html="<h2>fd File</h2><p>fd File</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/3.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/3.png, /pwnable.kr-toddlers-bottle-fd/3.png 1.5x, /pwnable.kr-toddlers-bottle-fd/3.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/3.png" width="1338" height="64" />
+    </a><figcaption class="image-caption">fd File</figcaption>
+    </figure></p>
+<p>Running the binary.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/4.png" title="Running the binary" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/4.png" data-sub-html="<h2>Running the binary</h2><p>Running the binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/4.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/4.png, /pwnable.kr-toddlers-bottle-fd/4.png 1.5x, /pwnable.kr-toddlers-bottle-fd/4.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/4.png" width="228" height="41" />
+    </a><figcaption class="image-caption">Running the binary</figcaption>
+    </figure></p>
+<p>We have to provide a number as argument but whatever we write for now it returns <em>Learn about Linux file IO</em></p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/6.png" title="Output" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/6.png" data-sub-html="<h2>Output</h2><p>Output</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/6.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/6.png, /pwnable.kr-toddlers-bottle-fd/6.png 1.5x, /pwnable.kr-toddlers-bottle-fd/6.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/6.png" width="261" height="41" />
+    </a><figcaption class="image-caption">Output</figcaption>
+    </figure></p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Looking at the source code of the binary.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[],</span> <span class="kt">char</span><span class="o">*</span> <span class="n">envp</span><span class="p">[]){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">argc</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">printf</span><span class="p">(</span><span class="s">&#34;pass argv[1] a number</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="o">-</span> <span class="mh">0x1234</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">len</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">strcmp</span><span class="p">(</span><span class="s">&#34;LETMEWIN</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">buf</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">printf</span><span class="p">(</span><span class="s">&#34;good job :)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/cat flag&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;learn about Linux file IO</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In line number 10, an int fd variable is declared which will be used as a <em>file descriptor</em>.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>File Descriptors<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In simple words, when you open a file, the operating system creates an entry to represent that file and store the information about that opened file. So if there are 100 files opened in your OS then there will be 100 entries in OS (somewhere in kernel). These entries are represented by integers like (&hellip;100, 101, 102&hellip;.). This entry number is the file descriptor. So it is just an integer number that uniquely represents an opened file for the process. If your process opens 10 files then your Process table will have 10 entries for file descriptors.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://stackoverflow.com/a/5256705" target="_blank" rel="noopener noreffer ">https://stackoverflow.com/a/5256705</a></p>
+<p>The 3 basic values for file descriptors are <em>0</em> for Standard Input <em>(stdin)</em>, <em>1</em> for Standard Output <em>(stdout)</em> and <em>2</em> for Standard Error <em>(stderr)</em>.</p>
+<p>Back to our code, the value of our argument is getting subtracted by a hex value <code>0x1234</code>.</p>
+<p>Converting to decimal it becomes, <code>4660</code>.</p>
+<p>Now if we provide <code>4660</code> in the argument the value of file descriptor will become <code>0</code>.</p>
+<p>Meaning we can then enter any value to the buffer.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/7.png" title="stdin" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/7.png" data-sub-html="<h2>stdin</h2><p>stdin</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/7.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/7.png, /pwnable.kr-toddlers-bottle-fd/7.png 1.5x, /pwnable.kr-toddlers-bottle-fd/7.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/7.png" width="266" height="52" />
+    </a><figcaption class="image-caption">stdin</figcaption>
+    </figure></p>
+<p>From line 12 to 17, it simply reading standard input and saving it to the buffer. Then it&rsquo;s comparing the value of the buffer with the string <code>LETMEWIN</code>.</p>
+<p>So we simply write <code>LETMEWIN</code> and hit enter to get the flag.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-fd/8.png" title="Flag" data-thumbnail="/pwnable.kr-toddlers-bottle-fd/8.png" data-sub-html="<h2>Flag</h2><p>Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-fd/8.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-fd/8.png, /pwnable.kr-toddlers-bottle-fd/8.png 1.5x, /pwnable.kr-toddlers-bottle-fd/8.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-fd/8.png" width="651" height="88" />
+    </a><figcaption class="image-caption">Flag</figcaption>
+    </figure></p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/pwnable.kr-toddlers-bottle-fd/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/pwnable.kr-toddlers-bottle-fd/" data-title="Pwnable.kr - Toddler&#39;s Battle - [fd]" data-via="ssaadakhtarr" data-hashtags="pwn,binary exploitation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/pwnable.kr-toddlers-bottle-fd/" data-hashtag="pwn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/pwnable.kr-toddlers-bottle-fd/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pwn/">pwn</a>,&nbsp;<a href="/tags/binary-exploitation/">binary exploitation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/active-directory-basics/" class="prev" rel="prev" title="Active Directory - An Overview!"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Active Directory - An Overview!</a>
+            <a href="/pwnable.kr-toddlers-bottle-collision/" class="next" rel="next" title="Pwnable.kr - Toddler&#39;s Battle - [collision]">Pwnable.kr - Toddler's Battle - [collision]<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

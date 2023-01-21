@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Pwnable.kr - Toddler&#39;s Battle - [coin1] - Saad Akhtar</title><meta name="Description" content="Pwnable.kr Toddler&#39;s Battle challenge coin1 writeup."><meta property="og:title" content="Pwnable.kr - Toddler&#39;s Battle - [coin1]" />
+<meta property="og:description" content="Pwnable.kr Toddler&#39;s Battle challenge coin1 writeup." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pwnable.kr-toddlers-bottle-coin1/" /><meta property="og:image" content="/pwnable.kr-toddlers-bottle-coin1/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-18T11:26:21+05:00" />
+<meta property="article:modified_time" content="2022-08-18T11:26:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/pwnable.kr-toddlers-bottle-coin1/0.png"/>
+<meta name="twitter:title" content="Pwnable.kr - Toddler&#39;s Battle - [coin1]"/>
+<meta name="twitter:description" content="Pwnable.kr Toddler&#39;s Battle challenge coin1 writeup."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/pwnable.kr-toddlers-bottle-coin1/" /><link rel="prev" href="/hackthebox-late/" /><link rel="next" href="/hackthebox-timelapse/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pwnable.kr - Toddler's Battle - [coin1]",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/pwnable.kr-toddlers-bottle-coin1\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/pwnable.kr-toddlers-bottle-coin1\/0.png",
+                            "width":  1343 ,
+                            "height":  622 
+                        }],"genre": "posts","keywords": "pwn, binary exploitation","wordcount":  804 ,
+        "url": "\/pwnable.kr-toddlers-bottle-coin1\/","datePublished": "2022-08-18T11:26:21+05:00","dateModified": "2022-08-18T11:26:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Pwnable.kr Toddler's Battle challenge coin1 writeup."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Pwnable.kr - Toddler's Battle - [coin1]</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/pwnable.kr/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Pwnable.kr</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-18">2022-08-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;804 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pwnable.kr-toddlers-bottle-coin1/0.png"
+        data-srcset="/pwnable.kr-toddlers-bottle-coin1/0.png, /pwnable.kr-toddlers-bottle-coin1/0.png 1.5x, /pwnable.kr-toddlers-bottle-coin1/0.png 2x"
+        data-sizes="auto"
+        alt="/pwnable.kr-toddlers-bottle-coin1/0.png"
+        title="Pwnable.kr Toddler&#39;s Battle challenge coin1 writeup." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="description">Description</h2>
+<p>This post will focus on an easy pwn challenge <em>coin1</em> from Toddler&rsquo;s Bottle series of pwnable.kr.</p>
+<p>Starting off we have the following description.</p>
+<p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-coin1/1.png" title="Description" data-thumbnail="/pwnable.kr-toddlers-bottle-coin1/1.png" data-sub-html="<h2>Description</h2><p>Description</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-coin1/1.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-coin1/1.png, /pwnable.kr-toddlers-bottle-coin1/1.png 1.5x, /pwnable.kr-toddlers-bottle-coin1/1.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-coin1/1.png" width="540" height="360" />
+    </a><figcaption class="image-caption">Description</figcaption>
+    </figure></p>
+<p>Connecting with nc we get the following description of the game.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        ---------------------------------------------------
+</span></span><span class="line"><span class="cl">        -              Shall we play a game?              -
+</span></span><span class="line"><span class="cl">        ---------------------------------------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        You have given some gold coins in your hand
+</span></span><span class="line"><span class="cl">        however, there is one counterfeit coin among them
+</span></span><span class="line"><span class="cl">        counterfeit coin looks exactly same as real coin
+</span></span><span class="line"><span class="cl">        however, its weight is different from real one
+</span></span><span class="line"><span class="cl">        real coin weighs 10, counterfeit coin weighes 9
+</span></span><span class="line"><span class="cl">        help me to find the counterfeit coin with a scale
+</span></span><span class="line"><span class="cl">        if you find 100 counterfeit coins, you will get reward :)
+</span></span><span class="line"><span class="cl">        FYI, you have 60 seconds.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - How to play - 
+</span></span><span class="line"><span class="cl">        1. you get a number of coins (N) and number of chances (C)
+</span></span><span class="line"><span class="cl">        2. then you specify a set of index numbers of coins to be weighed
+</span></span><span class="line"><span class="cl">        3. you get the weight information
+</span></span><span class="line"><span class="cl">        4. 2~3 repeats C time, then you give the answer
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - Example -
+</span></span><span class="line"><span class="cl">        [Server] N=4 C=2        # find counterfeit among 4 coins with 2 trial
+</span></span><span class="line"><span class="cl">        [Client] 0 1            # weigh first and second coin
+</span></span><span class="line"><span class="cl">        [Server] 20                     # scale result : 20
+</span></span><span class="line"><span class="cl">        [Client] 3                      # weigh fourth coin
+</span></span><span class="line"><span class="cl">        [Server] 10                     # scale result : 10
+</span></span><span class="line"><span class="cl">        [Client] 2                      # counterfeit coin is third!
+</span></span><span class="line"><span class="cl">        [Server] Correct!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - Ready? starting in 3 sec... -
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">N=78 C=7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On each turn we are given a set of gold coins in which one is a counterfeit i.e. fake coin with less weight than the original.</p>
+<p>The server&rsquo;s going to give us two values <code>N</code> and <code>C</code>.</p>
+<p>Here <code>N</code> refers to the number of coins we have and <code>C</code> refers to the number of tries we get to guess all the counterfeit coins.</p>
+<p>We can provide a list of indices and the server will return the sum of those coins.</p>
+<p>The real challenge here is that we need to guess the correct counterfeit coins <code>100</code> times in <code>60</code> seconds so we need an efficient way to find the counterfeit coins.</p>
+<p>Finding an item from a list efficiently? <code>Binary Search</code> will save the day!</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Binary Search<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In computer science, binary search, also known as half-interval search, logarithmic search, or binary chop, is a search algorithm that finds the position of a target value within a sorted array. Binary search compares the target value to the middle element of the array.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Binary_search_algorithm</a></p>
+<p>A general algorithm of binary search is shown below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> binarySearch(arr, x, low, high)
+</span></span><span class="line"><span class="cl">        repeat till low = high
+</span></span><span class="line"><span class="cl">               mid = (low + high)/2
+</span></span><span class="line"><span class="cl">                   if (x == arr[mid])
+</span></span><span class="line"><span class="cl">                   return mid
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">                   else if (x &gt; arr[mid]) // x is on the right side
+</span></span><span class="line"><span class="cl">                       low = mid + 1
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">                   else                  // x is on the left side
+</span></span><span class="line"><span class="cl">                       high = mid - 1                    
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Source: <a href="https://www.geeksforgeeks.org/binary-search/" target="_blank" rel="noopener noreffer ">https://www.geeksforgeeks.org/binary-search/</a></p>
+<p>Now since we need to do <code>100</code> correct guesses in <code>60</code> seconds we&rsquo;ll write a python script to do it more efficiently.</p>
+<p>We can make a remote connection to the server and run our exploit but the connection will be slow and the task won&rsquo;t be completed.</p>
+<p>So we can <code>ssh</code> into any of the previous challenges and run the script locally there.</p>
+<h2 id="exploitation">Exploitation</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">9007</span><span class="p">)</span> <span class="c1"># Establishing connection to the port 9007 locally for fast response</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;Ready? starting in 3 sec&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> <span class="c1"># Going over 100 iterations to cover all the questions.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">values</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">:])</span> <span class="c1"># Value of N for each iteration</span>
+</span></span><span class="line"><span class="cl">	<span class="n">C</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">:])</span> <span class="c1"># Value of C for each iteration</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="n">start</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Initial starting index for binary search</span>
+</span></span><span class="line"><span class="cl">	<span class="n">end</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span> <span class="c1"># Initial ending index for binary search</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1"># Binary Search</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span> 
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">		<span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="n">new_list</span> <span class="o">=</span> <span class="s2">&#34; &#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span> <span class="c1"># Create a list of indices to send to the server</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span> <span class="c1"># Sending the list to the server</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="n">sum_result</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span> <span class="c1"># Server&#39;s response of our indices list</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">sum_result</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span> <span class="c1"># If the sum is divisible by 10 then look for the other half of the list</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">			<span class="n">start</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span><span class="p">:</span> <span class="c1"># Else look further in the current half of the list</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">			<span class="n">end</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">))</span> <span class="c1"># Send the correct answer to the server</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">())</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Print the flag</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">())</span> 
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvline</span><span class="p">())</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/pwnable.kr-toddlers-bottle-coin1/2.png" title="Running the Exploit" data-thumbnail="/pwnable.kr-toddlers-bottle-coin1/2.png" data-sub-html="<h2>Running the Exploit</h2><p>Running the Exploit</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/pwnable.kr-toddlers-bottle-coin1/2.png"
+            data-srcset="/pwnable.kr-toddlers-bottle-coin1/2.png, /pwnable.kr-toddlers-bottle-coin1/2.png 1.5x, /pwnable.kr-toddlers-bottle-coin1/2.png 2x"
+            data-sizes="auto"
+            alt="/pwnable.kr-toddlers-bottle-coin1/2.png" width="1366" height="490" />
+    </a><figcaption class="image-caption">Running the Exploit</figcaption>
+    </figure></p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-08-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/pwnable.kr-toddlers-bottle-coin1/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/pwnable.kr-toddlers-bottle-coin1/" data-title="Pwnable.kr - Toddler&#39;s Battle - [coin1]" data-via="ssaadakhtarr" data-hashtags="pwn,binary exploitation"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/pwnable.kr-toddlers-bottle-coin1/" data-hashtag="pwn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/pwnable.kr-toddlers-bottle-coin1/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/pwn/">pwn</a>,&nbsp;<a href="/tags/binary-exploitation/">binary exploitation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-late/" class="prev" rel="prev" title="Hackthebox - Late"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hackthebox - Late</a>
+            <a href="/hackthebox-timelapse/" class="next" rel="next" title="HackTheBox - Timelapse">HackTheBox - Timelapse<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

