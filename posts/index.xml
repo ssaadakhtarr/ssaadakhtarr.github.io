@@ -4,7 +4,15 @@
         <link>/posts/</link>
         <description>All Posts | Saad Akhtar</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
-            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 28 Jan 2023 07:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 Jan 2023 20:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>HackWeek 2023 - CTF</title>
+    <link>/hackweek23-ctf/</link>
+    <pubDate>Sun, 29 Jan 2023 20:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackweek23-ctf/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of HackWeek 2023 CTF by FAST-KHI.</p>]]></description>
+</item>
+<item>
     <title>HackTheBox - Ambassador</title>
     <link>/hackthebox-ambassador/</link>
     <pubDate>Sat, 28 Jan 2023 07:00:21 &#43;0500</pubDate>
@@ -75,14 +83,6 @@
     <author>Saad Akhtar</author>
     <guid>/hackthebox-timelapse/</guid>
     <description><![CDATA[<p>This post is focused on the walkthrough of Easy Machine Timelapse from HackTheBox.</p>]]></description>
-</item>
-<item>
-    <title>Pwnable.kr - Toddler&#39;s Battle - [coin1]</title>
-    <link>/pwnable.kr-toddlers-bottle-coin1/</link>
-    <pubDate>Thu, 18 Aug 2022 11:26:21 &#43;0500</pubDate>
-    <author>Saad Akhtar</author>
-    <guid>/pwnable.kr-toddlers-bottle-coin1/</guid>
-    <description><![CDATA[Pwnable.kr Toddler's Battle challenge coin1 writeup.]]></description>
 </item>
 </channel>
 </rss>

