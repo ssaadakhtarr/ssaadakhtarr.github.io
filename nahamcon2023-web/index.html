@@ -31,7 +31,7 @@
                             "url": "\/nahamcon2023-web\/0.png",
                             "width":  1920 ,
                             "height":  1920 
-                        }],"genre": "posts","keywords": "ctf, writeup, nahamcon2023","wordcount":  4073 ,
+                        }],"genre": "posts","keywords": "ctf, writeup, nahamcon2023","wordcount":  4067 ,
         "url": "\/nahamcon2023-web\/","datePublished": "2023-06-22T07:00:21+05:00","dateModified": "2023-06-22T07:42:06-04:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "","logo": "\/images\/avatar.png"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">NahamCon 2023 CTF - Web Challenges</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ctf/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CTF</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-22">2023-06-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4073 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-22">2023-06-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4067 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;20 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -1177,10 +1177,6 @@
 </span><span class="lnt">87
 </span><span class="lnt">88
 </span><span class="lnt">89
-</span><span class="lnt">90
-</span><span class="lnt">91
-</span><span class="lnt">92
-</span><span class="lnt">93
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
@@ -1197,11 +1193,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="s2">  }
 </span></span></span><span class="line"><span class="cl"><span class="s2">  &#34;&#34;&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">jwt_data</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s2">  {{
-</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;username&#34;: &#34;</span><span class="si">{}</span><span class="s2">&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s2">  }}
-</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_data</span> <span class="o">=</span> <span class="s1">&#39;{ &#34;username&#34;: &#34;</span><span class="si">{}</span><span class="s1">&#34; }&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">jwt_values</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;header&#34;</span><span class="p">:</span> <span class="n">jwt_header</span><span class="p">,</span>

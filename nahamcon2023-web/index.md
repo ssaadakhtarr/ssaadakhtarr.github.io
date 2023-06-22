@@ -524,11 +524,7 @@ def create_jwt_token(username, secret_key):
   }
   """
 
-    jwt_data = """
-  {{
-    "username": "{}"
-  }}
-""".format(username)
+    jwt_data = '{ "username": "{}" }'.format(username)
 
     jwt_values = {
     "header": jwt_header,
