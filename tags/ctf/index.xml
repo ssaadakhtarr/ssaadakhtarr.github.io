@@ -4,7 +4,15 @@
         <link>/tags/ctf/</link>
         <description>ctf - Tag - Saad Akhtar</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
-            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 Jan 2023 20:00:21 &#43;0500</lastBuildDate><atom:link href="/tags/ctf/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 22 Jun 2023 07:00:21 &#43;0500</lastBuildDate><atom:link href="/tags/ctf/" rel="self" type="application/rss+xml" /><item>
+    <title>NahamCon 2023 CTF - Web Challenges</title>
+    <link>/nahamcon2023-web/</link>
+    <pubDate>Thu, 22 Jun 2023 07:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/nahamcon2023-web/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of NahamCon 2023 CTF.</p>]]></description>
+</item>
+<item>
     <title>HackWeek 2023 - CTF</title>
     <link>/hackweek23-ctf/</link>
     <pubDate>Sun, 29 Jan 2023 20:00:21 &#43;0500</pubDate>

