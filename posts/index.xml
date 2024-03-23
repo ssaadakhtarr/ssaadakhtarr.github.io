@@ -4,7 +4,15 @@
         <link>/posts/</link>
         <description>All Posts | Saad Akhtar</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
-            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 22 Jun 2023 07:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Mar 2024 07:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>HackTheBox - Analytics</title>
+    <link>/hackthebox-analytics/</link>
+    <pubDate>Sat, 23 Mar 2024 07:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/hackthebox-analytics/</guid>
+    <description><![CDATA[<p>This post is focused on the walkthrough of Easy machine Analytics from HackTheBox.</p>]]></description>
+</item>
+<item>
     <title>NahamCon 2023 CTF - Web Challenges</title>
     <link>/nahamcon2023-web/</link>
     <pubDate>Thu, 22 Jun 2023 07:00:21 &#43;0500</pubDate>
@@ -75,14 +83,6 @@
     <author>Saad Akhtar</author>
     <guid>/hackthebox-trick/</guid>
     <description><![CDATA[<p>This post is focused on the walkthrough of Easy Linux Machine Trick from HackTheBox.</p>]]></description>
-</item>
-<item>
-    <title>HackTheBox - OpenSource</title>
-    <link>/hackthebox-opensource/</link>
-    <pubDate>Wed, 05 Oct 2022 19:00:21 &#43;0500</pubDate>
-    <author>Saad Akhtar</author>
-    <guid>/hackthebox-opensource/</guid>
-    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Linux Machine OpenSource from HackTheBox.</p>]]></description>
 </item>
 </channel>
 </rss>
