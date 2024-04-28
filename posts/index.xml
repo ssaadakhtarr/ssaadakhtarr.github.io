@@ -4,7 +4,15 @@
         <link>/posts/</link>
         <description>All Posts | Saad Akhtar</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
-            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Mar 2024 07:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Apr 2024 11:00:21 &#43;0500</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>AirOverflow CTF 2024 - Web Write-ups</title>
+    <link>/airoverflow-ctf-2024/</link>
+    <pubDate>Sun, 28 Apr 2024 11:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/airoverflow-ctf-2024/</guid>
+    <description><![CDATA[<p>This post contains the write-ups for all the web challenges that I solved in AirOverflow CTF.</p>]]></description>
+</item>
+<item>
     <title>HackTheBox - Analytics</title>
     <link>/hackthebox-analytics/</link>
     <pubDate>Sat, 23 Mar 2024 07:00:21 &#43;0500</pubDate>
@@ -75,14 +83,6 @@
     <author>Saad Akhtar</author>
     <guid>/hackthebox-shared/</guid>
     <description><![CDATA[<p>This post is focused on the walkthrough of Medium Machine Shared from HackTheBox.</p>]]></description>
-</item>
-<item>
-    <title>HackTheBox - Trick</title>
-    <link>/hackthebox-trick/</link>
-    <pubDate>Sat, 29 Oct 2022 11:00:21 &#43;0500</pubDate>
-    <author>Saad Akhtar</author>
-    <guid>/hackthebox-trick/</guid>
-    <description><![CDATA[<p>This post is focused on the walkthrough of Easy Linux Machine Trick from HackTheBox.</p>]]></description>
 </item>
 </channel>
 </rss>

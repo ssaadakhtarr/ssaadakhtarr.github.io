@@ -4,7 +4,15 @@
         <link>/tags/challenges/</link>
         <description>challenges - Tag - Saad Akhtar</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</managingEditor>
-            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 23 Dec 2022 11:00:21 &#43;0500</lastBuildDate><atom:link href="/tags/challenges/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>muhammadsaadakhtar19@gmail.com (Saad Akhtar)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Apr 2024 11:00:21 &#43;0500</lastBuildDate><atom:link href="/tags/challenges/" rel="self" type="application/rss+xml" /><item>
+    <title>AirOverflow CTF 2024 - Web Write-ups</title>
+    <link>/airoverflow-ctf-2024/</link>
+    <pubDate>Sun, 28 Apr 2024 11:00:21 &#43;0500</pubDate>
+    <author>Saad Akhtar</author>
+    <guid>/airoverflow-ctf-2024/</guid>
+    <description><![CDATA[<p>This post contains the write-ups for all the web challenges that I solved in AirOverflow CTF.</p>]]></description>
+</item>
+<item>
     <title>CryptoHack - Challenges - General/Encoding</title>
     <link>/cryptohack-challenges-general-encoding/</link>
     <pubDate>Fri, 23 Dec 2022 11:00:21 &#43;0500</pubDate>
